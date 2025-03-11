@@ -1,3 +1,64 @@
-[gd_scene format=3 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=6 format=3 uid="uid://3wl8ye02weqh"]
+
+[ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="1_ya4dn"]
+[ext_resource type="Texture2D" uid="uid://coprwom7mlei1" path="res://icon.svg" id="2_go6g7"]
+[ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="2_pxcfg"]
+[ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="4_ifgsf"]
+
+[sub_resource type="Resource" id="Resource_3i2yq"]
+script = ExtResource("2_pxcfg")
+mouse_drag_enabled = true
+edge_move_enabled = true
+move_speed = 15.0
+drag_speed = 5.0
+edge_scroll_speed = 10.0
 
 [node name="GameScene" type="Node2D"]
+
+[node name="Camera" type="Node" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Camera"]
+script = ExtResource("1_ya4dn")
+settings = SubResource("Resource_3i2yq")
+
+[node name="ScrollEdges" type="CanvasLayer" parent="Camera"]
+
+[node name="LeftEdge" type="PanelContainer" parent="Camera/ScrollEdges" groups=["scroll_edge"]]
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("4_ifgsf")
+move_vector = Vector2(-1, 0)
+
+[node name="RightEdge" type="PanelContainer" parent="Camera/ScrollEdges" groups=["scroll_edge"]]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("4_ifgsf")
+move_vector = Vector2(1, 0)
+
+[node name="TopEdge" type="PanelContainer" parent="Camera/ScrollEdges" groups=["scroll_edge"]]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("4_ifgsf")
+move_vector = Vector2(0, -1)
+
+[node name="BottomEdge" type="PanelContainer" parent="Camera/ScrollEdges" groups=["scroll_edge"]]
+custom_minimum_size = Vector2(0, 1)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_ifgsf")
+move_vector = Vector2(0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_go6g7")
