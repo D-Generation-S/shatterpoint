@@ -9,15 +9,23 @@
 script = ExtResource("2_pxcfg")
 mouse_drag_enabled = true
 edge_move_enabled = true
+min_zoom = 1.0
+max_zoom = 15.0
+zoom_steps = 0.3
+zoom_duration = 0.2
 move_speed = 15.0
 drag_speed = 5.0
 edge_scroll_speed = 10.0
+use_position_smoothing = true
+position_smoothing_speed = 10.0
 
 [node name="GameScene" type="Node2D"]
 
 [node name="Camera" type="Node" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Camera"]
+zoom = Vector2(5, 5)
+position_smoothing_speed = 10.0
 script = ExtResource("1_ya4dn")
 settings = SubResource("Resource_3i2yq")
 
