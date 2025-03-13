@@ -1,0 +1,85 @@
+[gd_scene load_steps=22 format=3 uid="uid://d2ccdfwya86u4"]
+
+[ext_resource type="Script" path="res://src/game/towers/tower.gd" id="1_p7m1e"]
+[ext_resource type="Script" path="res://src/resources/tower_data.gd" id="2_bl55y"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/threat_determination.gd" id="2_mp71g"]
+[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/tilemaps/tilemap.png" id="3_mb05g"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/closest_threat.gd" id="3_rxa4k"]
+[ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="4_7qy1c"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/highest_hp.gd" id="4_wy55t"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/lowest_hp.gd" id="5_54aeo"]
+[ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="5_mva04"]
+[ext_resource type="Script" path="res://src/game/interaction/clickable_area.gd" id="7_qd43q"]
+[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="8_o8iqh"]
+[ext_resource type="Script" path="res://src/game/towers/area_of_operation.gd" id="8_v3vj8"]
+
+[sub_resource type="Resource" id="Resource_vsnd1"]
+script = ExtResource("3_rxa4k")
+
+[sub_resource type="Resource" id="Resource_l2nvn"]
+script = ExtResource("5_54aeo")
+
+[sub_resource type="Resource" id="Resource_250fq"]
+script = ExtResource("4_wy55t")
+
+[sub_resource type="Resource" id="Resource_qwosr"]
+script = ExtResource("8_o8iqh")
+hp = 1.0
+armor = 0.0
+fire_rate = 2.0
+damage = 1.0
+attack_range = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvin4"]
+atlas = ExtResource("3_mb05g")
+region = Rect2(222, 0.327103, 14.0854, 15.8094)
+
+[sub_resource type="Resource" id="Resource_l5cwq"]
+script = ExtResource("2_bl55y")
+texture = SubResource("AtlasTexture_lvin4")
+input_color = Array[Color]([Color(0.247059, 0.14902, 0.192157, 1), Color(0.752941, 0.796078, 0.862745, 1), Color(0.545098, 0.607843, 0.705882, 1), Color(0.321569, 0.376471, 0.486275, 1)])
+ouput_color = Array[Color]([Color(0, 0, 0, 0), Color(1, 0.54902, 0.486275, 1), Color(0.999989, 0.346378, 0.281942, 1), Color(0.5, 0.27475, 0.245, 1)])
+allowed_thread_determination = Array[ExtResource("2_mp71g")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
+attackable_groups = Array[String](["ground_enemy"])
+stats = SubResource("Resource_qwosr")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_274qs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqt67"]
+size = Vector2(14, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
+shader = ExtResource("4_7qy1c")
+shader_parameter/base_colors = PackedColorArray()
+shader_parameter/target_colors = PackedColorArray()
+shader_parameter/set_colors = null
+shader_parameter/threshold = 0.001
+
+[node name="TowerTemplate" type="Node2D"]
+script = ExtResource("1_p7m1e")
+tower_data = SubResource("Resource_l5cwq")
+
+[node name="AreaOfOperation" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_v3vj8")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="AreaOfOperation"]
+shape = SubResource("CircleShape2D_274qs")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("7_qd43q")
+
+[node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_vqt67")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vyrh3")
+script = ExtResource("5_mva04")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="something_entered" from="AreaOfOperation" to="." method="is_active"]
+[connection signal="interaction_cancelt" from="InteractionArea" to="." method="interaction_cancelt"]
+[connection signal="interaction_requested" from="InteractionArea" to="." method="interacting"]

@@ -19,7 +19,7 @@ func _process(_delta):
 	handle_drag()
 
 func handle_keyboard():
-	var velocity = Vector2.ZERO
+	var velocity: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		velocity += Vector2.UP
 	if Input.is_action_pressed("move_down"):
@@ -44,7 +44,7 @@ func handle_drag():
 		drag = false
 
 	if drag:
-		var delta_drag = get_viewport().get_mouse_position() - last_mouse_position
+		var delta_drag: Vector2 = get_viewport().get_mouse_position() - last_mouse_position
 		position -= delta_drag * settings.drag_speed
 	
 	last_mouse_position = get_viewport().get_mouse_position()
