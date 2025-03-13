@@ -2,19 +2,39 @@ extends Camera2D
 
 @export var settings: CameraSettings
 
-var drag: bool = false
-var last_mouse_position: Vector2 = Vector2.ZERO
+var _drag: bool = false
+var _last_mouse_position: Vector2 = Vector2.ZERO
+var _zoom_tween: Tween
+var _zoom_level: float = 5
 
 func _ready():
 	setup_edge_ares()
+	initial_setting_setup()
+
+func initial_setting_setup():
+	position_smoothing_enabled = settings.use_position_smoothing
+	position_smoothing_speed = settings.position_smoothing_speed
 
 func setup_edge_ares():
 	for edge in get_tree().get_nodes_in_group("scroll_edge"):
 		if edge is EdgeScrollArea:
 			edge.edge_triggered.connect(edge_scroll)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _set_zoom_level(value: float) -> void:
+	_zoom_level = clamp(value, settings.min_zoom, settings.max_zoom)
+	_zoom_tween = create_tween()
+	_zoom_tween.set_trans(Tween.TRANS_SINE)
+	_zoom_tween.set_ease(Tween.EASE_OUT)
+	_zoom_tween.tween_method(_update_zoom, zoom.x, _zoom_level, settings.zoom_duration)
+
+func _update_zoom(value: float):
+	zoom = Vector2(value, value)
+
 func _process(_delta):
+	if Input.is_action_just_pressed("zoom_out"):
+		_set_zoom_level(_zoom_level - settings.zoom_steps)
+	if Input.is_action_just_pressed("zoom_in"):
+		_set_zoom_level(_zoom_level + settings.zoom_steps)
 	handle_keyboard()
 	handle_drag()
 
@@ -38,16 +58,16 @@ func handle_drag():
 	if !settings.mouse_drag_enabled:
 		return
 	if Input.is_action_pressed("drag"):
-		drag = true
+		_drag = true
 
 	if Input.is_action_just_released("drag"):
-		drag = false
+		_drag = false
 
-	if drag:
-		var delta_drag: Vector2 = get_viewport().get_mouse_position() - last_mouse_position
+	if _drag:
+		var delta_drag: Vector2 = get_viewport().get_mouse_position() - _last_mouse_position
 		position -= delta_drag * settings.drag_speed
 	
-	last_mouse_position = get_viewport().get_mouse_position()
+	_last_mouse_position = get_viewport().get_mouse_position()
 
 func edge_scroll(vector: Vector2):
 	if !settings.edge_move_enabled:
