@@ -1,6 +1,7 @@
 class_name Enemy extends EntityWithStats
 
 signal died(scrap_drop: int)
+signal reached_town(hp: int)
 
 @export var is_debug: bool = false
 @export var enemy_data: EnemyData 
@@ -42,8 +43,16 @@ func deal_damage(damage: float):
 	_health_bar.value = stats.hp
 	if stats.hp <= 0:
 		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
+		is_alive = false
 		died.emit(amount)
 		queue_free()
 
 func activate():
 	process_mode = PROCESS_MODE_INHERIT
+
+func town_reached():
+	if not is_alive:
+		return
+	is_alive = false
+	reached_town.emit(stats.hp)
+	queue_free()
