@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=19 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="1_nt0ty"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="6_prbe7"]
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="7_rccgq"]
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="8_81tdg"]
+[ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="9_o1m0r"]
+[ext_resource type="Script" path="res://src/resources/spawn_information.gd" id="10_5v5xx"]
+[ext_resource type="Script" path="res://src/resources/spawn_set.gd" id="11_6baqy"]
+[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="12_8fqi6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
 agent_radius = 18.0
@@ -28,6 +32,22 @@ zoom_duration = 0.2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrem6"]
 size = Vector2(384, 418)
+
+[sub_resource type="Curve2D" id="Curve2D_2a14o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1050, -560, 0, 0, 0, 0, 1050, 560)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_jcti3"]
+script = ExtResource("11_6baqy")
+enemy_data = ExtResource("12_8fqi6")
+amount = 15
+
+[sub_resource type="Resource" id="Resource_qg6d8"]
+script = ExtResource("10_5v5xx")
+spawn_sets = Array[ExtResource("11_6baqy")]([SubResource("Resource_jcti3")])
+spawn_intervall_in_seconds = 2.0
 
 [node name="GameScene" type="Node2D"]
 
@@ -133,3 +153,18 @@ position = Vector2(-15, 381)
 
 [node name="ResourceOverlay" parent="Resources" instance=ExtResource("7_rccgq")]
 max_city_health = 1000
+
+[node name="EnemySpawnArea" type="Path2D" parent="."]
+curve = SubResource("Curve2D_2a14o")
+
+[node name="Spawner" type="PathFollow2D" parent="EnemySpawnArea" node_paths=PackedStringArray("overlay", "enemy_root_node")]
+position = Vector2(1050, -560)
+rotation = 1.5708
+script = ExtResource("9_o1m0r")
+overlay = NodePath("../../Resources/ResourceOverlay")
+enemy_root_node = NodePath("../../Enemies")
+spawn_information = SubResource("Resource_qg6d8")
+
+[node name="Enemies" type="Node" parent="."]
+
+[connection signal="mesh_baken" from="NavigationRegion2D" to="EnemySpawnArea/Spawner" method="ready_up"]

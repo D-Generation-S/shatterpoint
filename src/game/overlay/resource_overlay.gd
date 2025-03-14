@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name ResourceOverlay extends CanvasLayer
 
 signal scrap_updated(new_value: int)
 signal set_max_health(min: int, max: int)
