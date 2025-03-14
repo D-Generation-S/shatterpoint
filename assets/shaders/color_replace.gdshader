@@ -18,7 +18,7 @@ void fragment()
 		{
 			COLOR = target_colors[i];
 		}
-	} 
+	}
 }
 
 //void light() {

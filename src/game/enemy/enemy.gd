@@ -1,5 +1,7 @@
 class_name Enemy extends EntityWithStats
 
+signal died(scrap_drop: int)
+
 @export var is_debug: bool = false
 @export var enemy_data: EnemyData 
 @export var movement_speed: float = 40
@@ -10,6 +12,8 @@ class_name Enemy extends EntityWithStats
 @onready var _collision: CollisionShape2D = $"%Collision"
 @onready var _navigation_agent: Navigation = $"%Navigation"
 @onready var _health_bar: ProgressBar = $"%HealthBar"
+
+var is_alive: bool = true
 
 func _ready():
 	_base_stats = enemy_data.stats.duplicate()
@@ -32,9 +36,13 @@ func set_target():
 	
 
 func deal_damage(damage: float):
+	if not is_alive:
+		return
 	stats.hp -= damage
 	_health_bar.value = stats.hp
 	if stats.hp <= 0:
+		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
+		died.emit(amount)
 		queue_free()
 
 func activate():
