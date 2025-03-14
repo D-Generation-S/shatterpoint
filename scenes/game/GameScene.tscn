@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=12 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="1_nt0ty"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="2_pxcfg"]
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="4_ifgsf"]
 [ext_resource type="Script" path="res://src/game/resources/scrap_counter.gd" id="6_2el3p"]
+[ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="6_prbe7"]
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="7_rccgq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
@@ -95,9 +96,12 @@ move_vector = Vector2(0, 1)
 [node name="EnemyTarget" type="Node2D" parent="."]
 position = Vector2(-586, 137)
 
-[node name="Area2D" type="Area2D" parent="EnemyTarget"]
+[node name="EnemyTargetArea" type="Area2D" parent="EnemyTarget"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_prbe7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTarget/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTarget/EnemyTargetArea"]
 position = Vector2(-182, 199)
 shape = SubResource("RectangleShape2D_hrem6")
 
@@ -119,3 +123,4 @@ position = Vector2(-15, 381)
 script = ExtResource("6_2el3p")
 
 [node name="ResourceOverlay" parent="Resources" instance=ExtResource("7_rccgq")]
+max_city_health = 1000

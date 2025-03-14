@@ -25,6 +25,7 @@ window/size/viewport_height=1080
 [global_group]
 
 ground_enemy="An enemy walking or driving on ground"
+enemy=""
 
 [input]
 
