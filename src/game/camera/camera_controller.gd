@@ -1,4 +1,4 @@
-extends Camera2D
+class_name CameraController extends Camera2D
 
 @export var settings: CameraSettings
 @export var home_move_time: float = 1
@@ -16,10 +16,12 @@ var home_move_tween: Tween
 var last_navigation_point: Vector2 = Vector2.ZERO
 
 func _ready():
-	setup_edge_ares()
-	initial_setting_setup()
 	_home_position = get_tree().get_first_node_in_group(home_node_group) as CameraPosition
 	_wave_position = get_tree().get_first_node_in_group(wave_node_group) as CameraPosition
+	global_position = _home_position.global_position
+	setup_edge_ares()
+	initial_setting_setup()
+
 
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing
@@ -58,6 +60,8 @@ func animate_camera_scroll(target_position: CameraPosition):
 	scroll_to_position(target_position.global_position)
 
 func scroll_to_position(new_position: Vector2):
+	if global_position.distance_to(new_position) < 1:
+		return
 	_input_active = false
 	last_navigation_point = new_position
 	home_move_tween = create_tween()
@@ -105,3 +109,9 @@ func edge_scroll(vector: Vector2):
 	if !settings.edge_move_enabled:
 		return
 	position += vector * settings.edge_scroll_speed
+
+func move_home():
+	animate_camera_scroll(_home_position)
+
+func move_to_wave():
+	animate_camera_scroll(_wave_position)
