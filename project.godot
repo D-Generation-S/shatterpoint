@@ -69,6 +69,10 @@ zoom_out={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translation.de.translation", "res://translation.en.translation")
+
 [layer_names]
 
 2d_physics/layer_1="Obstracles"
