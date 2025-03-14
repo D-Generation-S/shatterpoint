@@ -18,15 +18,6 @@ func _ready():
 	attack_timer.one_shot = true
 	attack_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 
-	var damage_mod = FixedDamageModifier.new()
-	damage_mod.value = 5
-	damage_mod.priority = 1
-	add_modifier(damage_mod)
-
-	var percentage_mod = PercentageDamageModifier.new()
-	percentage_mod.percentage = 20
-	add_modifier(percentage_mod)
-
 	current_thread_determination = tower_data.allowed_thread_determination[0]
 	visual.texture = tower_data.texture
 	area_of_operation.set_radius(stats.attack_range)

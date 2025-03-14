@@ -14,6 +14,7 @@ func _ready():
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing
 	position_smoothing_speed = settings.position_smoothing_speed
+	zoom = Vector2(_zoom_level, _zoom_level)
 
 func setup_edge_ares():
 	for edge in get_tree().get_nodes_in_group("scroll_edge"):
