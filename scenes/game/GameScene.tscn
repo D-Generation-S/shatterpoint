@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="1_ya4dn"]
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="2_pxcfg"]
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="4_ifgsf"]
-[ext_resource type="Script" path="res://src/game/resources/scrap_counter.gd" id="6_2el3p"]
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="6_prbe7"]
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="7_rccgq"]
+[ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="8_81tdg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
 agent_radius = 18.0
@@ -49,10 +49,22 @@ tile_set = ExtResource("1_hguec")
 
 [node name="Camera" type="Node" parent="."]
 
+[node name="CameraPositions" type="Node2D" parent="Camera"]
+
+[node name="HomePosition" type="Node2D" parent="Camera/CameraPositions" groups=["home"]]
+position = Vector2(-714, 277)
+script = ExtResource("8_81tdg")
+target_zoom = 1.6
+
+[node name="WavePosition" type="Node2D" parent="Camera/CameraPositions" groups=["wave_position"]]
+script = ExtResource("8_81tdg")
+target_zoom = 1.0
+
 [node name="Camera2D" type="Camera2D" parent="Camera"]
 position_smoothing_speed = 10.0
 script = ExtResource("1_ya4dn")
 settings = SubResource("Resource_3i2yq")
+home_move_time = 0.3
 
 [node name="ScrollEdges" type="CanvasLayer" parent="Camera"]
 
@@ -118,9 +130,6 @@ position = Vector2(-26, 287)
 position = Vector2(-15, 381)
 
 [node name="Resources" type="Node" parent="."]
-
-[node name="Scrap" type="Node" parent="Resources"]
-script = ExtResource("6_2el3p")
 
 [node name="ResourceOverlay" parent="Resources" instance=ExtResource("7_rccgq")]
 max_city_health = 1000

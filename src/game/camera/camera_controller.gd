@@ -1,15 +1,25 @@
 extends Camera2D
 
 @export var settings: CameraSettings
+@export var home_move_time: float = 1
+@export var home_node_group: String = "home"
+@export var wave_node_group: String = "wave_position"
 
 var _drag: bool = false
 var _last_mouse_position: Vector2 = Vector2.ZERO
 var _zoom_tween: Tween
 var _zoom_level: float = 5
+var _input_active: bool = true
+var _home_position: CameraPosition = null
+var _wave_position: CameraPosition = null
+var home_move_tween: Tween
+var last_navigation_point: Vector2 = Vector2.ZERO
 
 func _ready():
 	setup_edge_ares()
 	initial_setting_setup()
+	_home_position = get_tree().get_first_node_in_group(home_node_group) as CameraPosition
+	_wave_position = get_tree().get_first_node_in_group(wave_node_group) as CameraPosition
 
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing
@@ -32,14 +42,35 @@ func _update_zoom(value: float):
 	zoom = Vector2(value, value)
 
 func _process(_delta):
+	if not _input_active:
+		if global_position.distance_to(last_navigation_point) < 1:
+			last_navigation_point = Vector2.ZERO
+			_input_active = true
+		return
+	if Input.is_action_pressed("go_home"):
+		animate_camera_scroll(_home_position)
+	_handle_zoom()
+	_handle_keyboard()
+	_handle_drag()
+
+func animate_camera_scroll(target_position: CameraPosition):
+	_set_zoom_level(target_position.target_zoom)
+	scroll_to_position(target_position.global_position)
+
+func scroll_to_position(new_position: Vector2):
+	_input_active = false
+	last_navigation_point = new_position
+	home_move_tween = create_tween()
+	home_move_tween.tween_property(self, "position", new_position, home_move_time)
+	pass
+
+func _handle_zoom():
 	if Input.is_action_just_pressed("zoom_out"):
 		_set_zoom_level(_zoom_level - settings.zoom_steps)
 	if Input.is_action_just_pressed("zoom_in"):
 		_set_zoom_level(_zoom_level + settings.zoom_steps)
-	handle_keyboard()
-	handle_drag()
 
-func handle_keyboard():
+func _handle_keyboard():
 	var velocity: Vector2 = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
 		velocity += Vector2.UP
@@ -55,7 +86,7 @@ func handle_keyboard():
 
 	velocity = Vector2.ZERO
 
-func handle_drag():
+func _handle_drag():
 	if !settings.mouse_drag_enabled:
 		return
 	if Input.is_action_pressed("drag"):
