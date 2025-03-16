@@ -13,11 +13,9 @@ class_name MessageCenter extends Node
 var message_queue: Array[MessageTemplate] = []
 
 func hide_area():
-	print(name)
 	node_to_hide.visible = false
 
 func show_area():
-	print(name)
 	node_to_hide.visible = true
 
 func get_position() -> int:
