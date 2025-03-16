@@ -32,7 +32,6 @@ func _physics_process(_delta: float):
 		last_nav_position = target_position
 		var random_x = enemy_character.position.x + randi_range(-max_reset_pos, max_reset_pos)
 		var random_y = enemy_character.position.y + randi_range(-max_reset_pos, max_reset_pos)
-		print(Vector2(random_x, random_y))
 		set_move_command(Vector2(random_x, random_y))
 
 	if enemy_character.global_position.distance_to(last_position) <= threshold:

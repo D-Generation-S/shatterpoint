@@ -19,7 +19,6 @@ func _process(_delta):
 	edge_triggered.emit(move_vector)
 
 func _mouse_entered():
-	print(name)
 	mouse_inside = true
 
 func _mouse_left():
