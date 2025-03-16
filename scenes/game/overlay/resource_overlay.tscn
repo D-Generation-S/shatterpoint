@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://coxxrxmt2muoi"]
+[gd_scene load_steps=6 format=3 uid="uid://coxxrxmt2muoi"]
 
 [ext_resource type="Script" path="res://src/game/overlay/resource_overlay.gd" id="1_4vyjh"]
 [ext_resource type="PackedScene" uid="uid://h1mxvd5e3sek" path="res://scenes/game/overlay/resource_ui_element.tscn" id="1_b1vq4"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="3_3qwen"]
 [ext_resource type="Script" path="res://src/game/overlay/animated_progress_bar.gd" id="3_8pesf"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_fg4dn"]
 
 [node name="ResourceOverlay" type="CanvasLayer"]
 script = ExtResource("1_4vyjh")
@@ -33,6 +34,7 @@ layout_mode = 2
 [node name="Scrap" parent="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_b1vq4")]
 unique_name_in_owner = true
 layout_mode = 2
+resource_texture = ExtResource("3_fg4dn")
 inital_value = 0
 
 [node name="ProgressBar" type="ProgressBar" parent="ResourcePanel/MarginContainer/VBoxContainer"]

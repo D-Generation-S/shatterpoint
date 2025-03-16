@@ -25,9 +25,7 @@ func _ready():
 		visual.set_color_replacement(tower_data.input_color, tower_data.ouput_color)
 
 func _process(_delta):
-	print("process")
 	var possible_targets = area_of_operation.get_overlapping_bodies().filter(target_filter)
-	print(possible_targets.size())
 	var enemy_targets: Array[Enemy] = []
 	for target in possible_targets:
 		if target is Enemy:
@@ -47,7 +45,6 @@ func start_attack_timer():
 	attack_timer.start(stats.fire_rate)
 
 func fire():
-	print("pew")
 	current_target.deal_damage(stats.damage)
 
 func target_filter(target: Node2D) -> bool:
@@ -67,11 +64,9 @@ func get_target() -> Node2D:
 	return null
 
 func is_active():
-	print("active")
 	process_mode = PROCESS_MODE_INHERIT
 
 func disabled():
-	print("disabled")
 	attack_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 

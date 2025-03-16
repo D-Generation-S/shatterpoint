@@ -8,9 +8,10 @@ enum
 
 signal wave_phase_started()
 signal build_phase_started()
+signal message_requested(target: int, type: MessageType, message: String, duration: float, icon: Texture)
 
 @export var unit_dead_check_interval: float = 1
-@export var message_center: MessageArea
+@export var message_style: MessageStyle
 
 var current_phase = BUILD
 var all_units_spawned: bool = true
@@ -48,10 +49,10 @@ func spawning_started():
 func wave_phase_endet():
 	if all_units_dead and all_units_spawned:
 		build_phase_started.emit()
-		message_center.add_new_message(MessagePosition.CENTER, "BUILD_PHASE_STARTED", 1.0)
+		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)
 
 func build_phase_endet():
 	all_units_spawned = false
 	all_units_dead = false
 	wave_phase_started.emit()
-	message_center.add_new_message(MessagePosition.CENTER, "WAVE_PHASE_STARTED", 1.0)
+	message_requested.emit(MessagePosition.CENTER, message_style, "WAVE_PHASE_STARTED", 1.0)

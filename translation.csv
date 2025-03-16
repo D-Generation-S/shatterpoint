@@ -4,3 +4,7 @@ ENERGY;Energy;Energie
 BUILD_TIME_LEFT;%TIME% seconds until next wave;%TIME% Sekunden bis zur nächsten Welle
 BUILD_PHASE_STARTED;Build phase has started;Bau phase hat begonnen
 WAVE_PHASE_STARTED;Wave phase has started;Wellen Phase hat begonnen
+SCRAP_RECIEVED;+%AMOUNT% Scrap;+%AMOUNT% Schrott
+SCRAP_LOST;%AMOUNT% Scrap;%AMOUNT% Schrott
+BUILD_SPACE_BLOCKED;Build space blocked;Baubereich blockiert
+NO_SCRAP_AVAILABLE;Not enough scrap for that building;Nicht genug Schrott für dieses Gebäude
