@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MessageStyle" load_steps=2 format=3 uid="uid://d26kpn1ruk1t8"]
+
+[ext_resource type="Script" path="res://src/resources/message_style.gd" id="1_u2dkg"]
+
+[resource]
+script = ExtResource("1_u2dkg")
+text_color = Color(0.625575, 1.43189e-06, 5.77569e-07, 1)

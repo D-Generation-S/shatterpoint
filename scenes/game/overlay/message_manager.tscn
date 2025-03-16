@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c32ggwgxsdo34"]
+[gd_scene load_steps=5 format=3 uid="uid://c32ggwgxsdo34"]
 
 [ext_resource type="Script" path="res://src/game/overlay/message_center/message_area.gd" id="1_mg4lp"]
 [ext_resource type="PackedScene" uid="uid://btand62vyewq8" path="res://scenes/game/overlay/message_template.tscn" id="2_b538c"]
 [ext_resource type="Script" path="res://src/game/overlay/message_center/message_center.gd" id="3_fhwah"]
+[ext_resource type="Script" path="res://src/game/overlay/message_center/message_center_replace.gd" id="4_pxvta"]
 
 [node name="MessageArea" type="CanvasLayer" node_paths=PackedStringArray("message_centers")]
 script = ExtResource("1_mg4lp")
@@ -58,7 +59,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("3_fhwah")
+script = ExtResource("4_pxvta")
 message_template = ExtResource("2_b538c")
 node_to_hide = NodePath(".")
 message_target = NodePath(".")

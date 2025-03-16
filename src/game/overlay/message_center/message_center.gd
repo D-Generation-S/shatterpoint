@@ -22,12 +22,14 @@ func get_position() -> int:
 	return message_position
 
 func clear_all_messages():
-	printerr("Not implemented")
+	var nodes_to_clear = get_children().filter(func(child): return child.is_in_group(message_group))
+	for children in nodes_to_clear:
+		children.queue_free()
 
-func add_new_message(message: String, time_to_show: float, message_icon: Texture = null):
+func add_new_message(style: MessageStyle, message: String, time_to_show: float, message_icon: Texture = null):
 	var message_node = message_template.instantiate() as MessageTemplate
 	message_node.add_to_group(message_group)
-	message_node.setup(message, time_to_show, message_icon)
+	message_node.setup(style, message, time_to_show, message_icon)
 	_add_message(message_node)
 
 func _add_message(template: MessageTemplate):

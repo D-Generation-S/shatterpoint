@@ -78,6 +78,7 @@ go_home={
 [internationalization]
 
 locale/translations=PackedStringArray("res://translation.de.translation", "res://translation.en.translation")
+locale/test="en"
 
 [layer_names]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=44 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="1_jrdgx"]
@@ -7,9 +7,12 @@
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="2_pxcfg"]
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="4_ifgsf"]
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="6_prbe7"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="6_rw7at"]
 [ext_resource type="PackedScene" uid="uid://c32ggwgxsdo34" path="res://scenes/game/overlay/message_manager.tscn" id="6_t8s46"]
+[ext_resource type="Resource" uid="uid://bgpl4p85ey5s4" path="res://src/game/overlay/message_center/resources/PositiveMessage.tres" id="7_iaatp"]
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="7_rccgq"]
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="8_81tdg"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="8_c3dmc"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="9_o1m0r"]
 [ext_resource type="Script" path="res://src/resources/spawn_information.gd" id="10_5v5xx"]
 [ext_resource type="Script" path="res://src/resources/spawn_set.gd" id="11_6baqy"]
@@ -25,6 +28,7 @@
 [ext_resource type="Script" path="res://src/resources/tower_data.gd" id="18_twjsg"]
 [ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="19_rj3i8"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="21_411bb"]
+[ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="28_n7t7t"]
 
 [sub_resource type="Resource" id="Resource_3i2yq"]
 script = ExtResource("2_pxcfg")
@@ -169,8 +173,14 @@ move_vector = Vector2(0, 1)
 
 [node name="ResourceOverlay" parent="Resources" instance=ExtResource("7_rccgq")]
 max_city_health = 1000
+scrap_icon = ExtResource("6_rw7at")
+resource_got_message_type = ExtResource("7_iaatp")
+resource_lost_message_type = ExtResource("8_c3dmc")
 
 [node name="MessageArea" parent="Resources" instance=ExtResource("6_t8s46")]
+max_message_center_messages = 5
+default_message_style = ExtResource("28_n7t7t")
+message_group = "message"
 
 [node name="WaveMode" type="Node" parent="."]
 
@@ -229,13 +239,14 @@ spawn_information = SubResource("Resource_qg6d8")
 
 [node name="Buildings" type="Node" parent="WaveMode"]
 
-[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_nodes", "message_area")]
+[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_nodes")]
 script = ExtResource("13_mpr70")
 resource_overlay = NodePath("../Resources/ResourceOverlay")
 building_target_nodes = NodePath("../WaveMode/Buildings")
+building_group = null
 current_test_building = SubResource("Resource_65o7u")
-base_build_mode_time = 15.0
-message_area = NodePath("../Resources/MessageArea")
+default_message_style = ExtResource("28_n7t7t")
+build_error_message_style = ExtResource("8_c3dmc")
 
 [node name="BuildMenu" type="CanvasLayer" parent="BuildMode"]
 
@@ -253,19 +264,22 @@ script = ExtResource("15_yunxs")
 can_build_color = Color(0.372549, 0.568627, 1, 1)
 can_not_build_color = Color(0.909804, 0.239216, 0.356863, 1)
 
-[node name="GameStateManager" type="Node" parent="." node_paths=PackedStringArray("message_center")]
+[node name="GameStateManager" type="Node" parent="."]
 script = ExtResource("1_jrdgx")
-message_center = NodePath("../Resources/MessageArea")
+message_style = ExtResource("28_n7t7t")
 
+[connection signal="message_requested" from="Resources/ResourceOverlay" to="Resources/MessageArea" method="add_new_message"]
 [connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/EnemySpawnArea/Spawner" method="ready_up"]
 [connection signal="spawning_completed" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawn_is_completed"]
 [connection signal="spawning_started" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawning_started"]
 [connection signal="build_mode_is_over" from="BuildMode" to="GameStateManager" method="build_phase_endet"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
+[connection signal="message_requested" from="BuildMode" to="Resources/MessageArea" method="add_new_message"]
 [connection signal="build_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_home"]
 [connection signal="build_phase_started" from="GameStateManager" to="WaveMode/EnemySpawnArea/Spawner" method="disable"]
 [connection signal="build_phase_started" from="GameStateManager" to="BuildMode" method="enable"]
+[connection signal="message_requested" from="GameStateManager" to="Resources/MessageArea" method="add_new_message"]
 [connection signal="wave_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_to_wave"]
 [connection signal="wave_phase_started" from="GameStateManager" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="wave_phase_started" from="GameStateManager" to="BuildMode" method="disable"]

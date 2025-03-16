@@ -30,7 +30,10 @@ layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="Container/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
 
 [node name="Message" type="Label" parent="Container/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
