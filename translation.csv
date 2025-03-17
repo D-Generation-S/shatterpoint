@@ -13,3 +13,4 @@ SCRAP_DESCRIPTION;"Scrap is a resource collected from the remains on the battlef
 It is getting used to construct new buildings, units or any structure on the front line.";"Schrott ist eine Ressource, die von den Überresten auf dem Schlachtfeld gesammelt wurde. Es besteht aus diversenen Metallen, Elektronischen bauteilen, Wasser oder Nahrung.
 
 Es wird an der Front genutzt um neue Gebäude zu bauen, Einheiten auszubilden und zu versorgen."
+NOT_INSIDE_BUILD_AREA;Not inside of build area;Nicht innerhalb des Baubereichs
