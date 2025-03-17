@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://3wauxg2sw8r3"]
+
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu.gd" id="1_1d5ep"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_pqfs5"]
+[ext_resource type="PackedScene" uid="uid://0jl35wrlytvr" path="res://scenes/game/overlay/build_menu/build_menu_group_template.tscn" id="3_kjgpy"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="3_sn81m"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="4_1kyfe"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/slide_animation.gd" id="7_c6k3j"]
+
+[sub_resource type="Resource" id="Resource_cpqmy"]
+script = ExtResource("2_pqfs5")
+name = "Testing"
+icon = ExtResource("4_1kyfe")
+entries = Array[ExtResource("3_sn81m")]([])
+
+[node name="BuildMenu" type="CanvasLayer"]
+script = ExtResource("1_1d5ep")
+_menu_data = Array[ExtResource("2_pqfs5")]([SubResource("Resource_cpqmy")])
+build_group_template = ExtResource("3_kjgpy")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 132.0
+grow_vertical = 0
+
+[node name="StartButton" type="PanelContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/StartButton"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+texture_normal = ExtResource("4_1kyfe")
+stretch_mode = 5
+
+[node name="Groups" type="HBoxContainer" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+script = ExtResource("7_c6k3j")
+
+[node name="ExitTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[connection signal="build_mode_close" from="." to="HBoxContainer/Groups" method="slide_out"]
+[connection signal="build_mode_open" from="." to="HBoxContainer/Groups" method="slide_in"]
+[connection signal="mouse_entered" from="HBoxContainer/StartButton" to="." method="hover_enter"]
+[connection signal="mouse_exited" from="HBoxContainer/StartButton" to="." method="hover_exit"]
+[connection signal="pressed" from="HBoxContainer/StartButton/TextureButton" to="." method="was_pressed"]
+[connection signal="mouse_entered" from="HBoxContainer/Groups" to="." method="hover_enter"]
+[connection signal="mouse_exited" from="HBoxContainer/Groups" to="." method="hover_exit"]

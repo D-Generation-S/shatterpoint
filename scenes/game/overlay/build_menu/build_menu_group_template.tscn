@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://0jl35wrlytvr"]
+
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group_entry.gd" id="1_aod7s"]
+[ext_resource type="PackedScene" uid="uid://dtxoktat3ocdh" path="res://scenes/game/overlay/build_menu/build_menu_entry_template.tscn" id="2_4lp8d"]
+[ext_resource type="Script" path="res://src/game/overlay/custom_tooltip_trigger.gd" id="3_dknb1"]
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("entry_target_node")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+offset_right = 128.0
+grow_vertical = 0
+script = ExtResource("1_aod7s")
+entry_target_node = NodePath("VBoxContainer2/BuildMenuEntries")
+build_menu_entry_template = ExtResource("2_4lp8d")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="BuildMenuEntries" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="ActivationButton" type="TextureButton" parent="VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+mouse_filter = 1
+stretch_mode = 5
+script = ExtResource("3_dknb1")
+
+[connection signal="pressed" from="VBoxContainer2/ActivationButton" to="." method="pressed"]

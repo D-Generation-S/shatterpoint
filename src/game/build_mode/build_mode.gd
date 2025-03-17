@@ -20,6 +20,7 @@ signal message_requested(target: int, style: MessageStyle, message: String, dura
 @onready var build_grid: Node2D = $"%BuildGrid"
 
 var current_building: TowerData
+var in_build_mode: bool = false
 var build_mode_timer: Timer
 var last_build_state: bool = true
 
@@ -34,11 +35,13 @@ func _ready():
 	add_child(build_mode_timer)
 	build_mode_timer.start()
 
-	set_current_building(current_test_building)
 	can_build_changed.emit(true)
 	disable()
 
 func _process(_delta):
+	_check_for_building_abort()
+	if !_check_for_building():
+		return
 	_handle_build_phase_warning()
 	
 	
@@ -60,6 +63,17 @@ func _process(_delta):
 
 	_handle_interaction(can_build, message)
 
+func _check_for_building_abort():
+	if Input.is_action_just_pressed("ui_cancel"):
+		current_building = null
+
+func _check_for_building() -> bool:
+	if current_building == null:
+		build_grid.visible = false
+		return false
+	build_grid.visible = true
+	return true
+	
 
 func _handle_interaction(can_build: bool, message: String):
 	if Input.is_action_just_pressed("interact"):	
@@ -90,13 +104,28 @@ func set_current_building(building_data: TowerData):
 	change_ghost_texture.emit(building_data.texture)
 
 func disable():
+	in_build_mode = false
+	current_building = null
 	process_mode = PROCESS_MODE_DISABLED
 	build_grid.process_mode = build_grid.PROCESS_MODE_DISABLED
 	build_grid.visible = false
 
 func enable():
+	in_build_mode = true
 	process_mode = PROCESS_MODE_INHERIT
 	build_grid.process_mode = build_grid.PROCESS_MODE_INHERIT
 	build_mode_timer.start()
 	build_grid.visible = true
 	timer_shown = false
+
+func mouse_on_menu():
+	process_mode = PROCESS_MODE_DISABLED
+	build_grid.process_mode = build_grid.PROCESS_MODE_DISABLED
+	build_grid.visible = false
+
+func mouse_off_menu():
+	if !in_build_mode:
+		return
+	process_mode = PROCESS_MODE_INHERIT
+	build_grid.process_mode = build_grid.PROCESS_MODE_INHERIT
+	build_grid.visible = true

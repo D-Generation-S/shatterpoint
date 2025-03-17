@@ -8,7 +8,6 @@
 
 [node name="ResourceOverlay" type="CanvasLayer"]
 script = ExtResource("1_4vyjh")
-max_city_health = 5
 
 [node name="ResourcePanel" type="PanelContainer" parent="."]
 anchors_preset = 5

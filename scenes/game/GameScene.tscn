@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=53 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="1_jrdgx"]
@@ -20,14 +20,9 @@
 [ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="12_8fqi6"]
 [ext_resource type="Shader" path="res://assets/shaders/ghost_shader.gdshader" id="13_2i25m"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_mode.gd" id="13_mpr70"]
-[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/threat_determination.gd" id="14_40qm0"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="14_a3s77"]
-[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/closest_threat.gd" id="15_hjewd"]
 [ext_resource type="Script" path="res://src/game/shaders/ghost_sprite.gd" id="15_yunxs"]
-[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/lowest_hp.gd" id="16_t1g2p"]
-[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/highest_hp.gd" id="17_v5pyy"]
-[ext_resource type="Script" path="res://src/resources/tower_data.gd" id="18_twjsg"]
-[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="19_rj3i8"]
+[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/towers/base_tower.tres" id="20_f8t42"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="21_411bb"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="27_thcvj"]
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="28_n7t7t"]
@@ -35,12 +30,28 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="29_njflb"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="30_3jpgi"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="31_dfkfg"]
+[ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="32_jmj48"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="33_q38hf"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="34_hgnbo"]
+[ext_resource type="Texture2D" uid="uid://c2avbyuivc0ce" path="res://assets/atlast_textures/gray_tower.tres" id="35_8xipp"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_hfmdx")
 _start_scrap = 25
 _max_scrap = 9999
 _max_city_hp = 1000
+
+[sub_resource type="Resource" id="Resource_l7i38"]
+script = ExtResource("34_hgnbo")
+building_data = ExtResource("20_f8t42")
+name = "BASIC_TOWER"
+icon = ExtResource("35_8xipp")
+
+[sub_resource type="Resource" id="Resource_blkg7"]
+script = ExtResource("33_q38hf")
+name = "TOWERS"
+icon = ExtResource("35_8xipp")
+entries = Array[ExtResource("34_hgnbo")]([SubResource("Resource_l7i38")])
 
 [sub_resource type="Resource" id="Resource_3i2yq"]
 script = ExtResource("2_pxcfg")
@@ -77,37 +88,6 @@ amount = 15
 script = ExtResource("10_5v5xx")
 spawn_sets = Array[ExtResource("11_6baqy")]([SubResource("Resource_jcti3")])
 spawn_intervall_in_seconds = 2.0
-
-[sub_resource type="Resource" id="Resource_vsnd1"]
-script = ExtResource("15_hjewd")
-
-[sub_resource type="Resource" id="Resource_l2nvn"]
-script = ExtResource("16_t1g2p")
-
-[sub_resource type="Resource" id="Resource_250fq"]
-script = ExtResource("17_v5pyy")
-
-[sub_resource type="Resource" id="Resource_qwosr"]
-script = ExtResource("19_rj3i8")
-hp = 1.0
-armor = 0.0
-fire_rate = 2.0
-damage = 1.0
-attack_range = 100.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvin4"]
-atlas = ExtResource("14_a3s77")
-region = Rect2(222, 0.327103, 14.0854, 15.8094)
-
-[sub_resource type="Resource" id="Resource_65o7u"]
-script = ExtResource("18_twjsg")
-scrap_required = 3
-texture = SubResource("AtlasTexture_lvin4")
-input_color = Array[Color]([Color(0.247059, 0.14902, 0.192157, 1), Color(0.752941, 0.796078, 0.862745, 1), Color(0.545098, 0.607843, 0.705882, 1), Color(0.321569, 0.376471, 0.486275, 1)])
-ouput_color = Array[Color]([Color(0, 0, 0, 0), Color(1, 0.54902, 0.486275, 1), Color(0.999989, 0.346378, 0.281942, 1), Color(0.5, 0.27475, 0.245, 1)])
-allowed_thread_determination = Array[ExtResource("14_40qm0")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
-attackable_groups = Array[String](["ground_enemy"])
-stats = SubResource("Resource_qwosr")
 
 [sub_resource type="Resource" id="Resource_hjbc6"]
 script = ExtResource("28_s0a1i")
@@ -159,6 +139,9 @@ _resource_data = SubResource("Resource_ywp2m")
 
 [node name="MessageArea" parent="Overlay" instance=ExtResource("6_t8s46")]
 default_message_style = ExtResource("28_n7t7t")
+
+[node name="BuildMenu" parent="Overlay" instance=ExtResource("32_jmj48")]
+_menu_data = Array[ExtResource("33_q38hf")]([SubResource("Resource_blkg7")])
 
 [node name="Camera" type="Node" parent="."]
 
@@ -279,12 +262,10 @@ spawn_information = SubResource("Resource_qg6d8")
 script = ExtResource("13_mpr70")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
 building_target_nodes = NodePath("../WaveMode/Buildings")
-current_test_building = SubResource("Resource_65o7u")
+current_test_building = ExtResource("20_f8t42")
 build_validators = Array[ExtResource("27_thcvj")]([SubResource("Resource_hjbc6"), SubResource("Resource_mt7rx"), SubResource("Resource_q7fvk"), SubResource("Resource_0co6w")])
 default_message_style = ExtResource("28_n7t7t")
 build_error_message_style = ExtResource("8_c3dmc")
-
-[node name="BuildMenu" type="CanvasLayer" parent="BuildMode"]
 
 [node name="BuildingGhost" type="Node2D" parent="BuildMode"]
 
@@ -300,11 +281,11 @@ script = ExtResource("15_yunxs")
 can_build_color = Color(0.372549, 0.568627, 1, 1)
 can_not_build_color = Color(0.909804, 0.239216, 0.356863, 1)
 
-[node name="BildMaker" type="Area2D" parent="BuildMode/BuildingGhost/BuildGrid" groups=["build_marker"]]
+[node name="BuildMarker" type="Area2D" parent="BuildMode/BuildingGhost/BuildGrid" groups=["build_marker"]]
 collision_layer = 8388608
 collision_mask = 8388608
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildingGhost/BuildGrid/BildMaker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildingGhost/BuildGrid/BuildMarker"]
 shape = SubResource("RectangleShape2D_fub1o")
 
 [node name="BuildAreas" type="Node" parent="BuildMode"]
@@ -334,6 +315,9 @@ script = ExtResource("1_jrdgx")
 message_style = ExtResource("28_n7t7t")
 
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
+[connection signal="building_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_building"]
+[connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
+[connection signal="no_hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_off_menu"]
 [connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/EnemySpawnArea/Spawner" method="ready_up"]
 [connection signal="spawning_completed" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawn_is_completed"]
 [connection signal="spawning_started" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawning_started"]
@@ -341,10 +325,12 @@ message_style = ExtResource("28_n7t7t")
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
+[connection signal="build_phase_started" from="GameStateManager" to="Overlay/BuildMenu" method="is_enabled"]
 [connection signal="build_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_home"]
 [connection signal="build_phase_started" from="GameStateManager" to="WaveMode/EnemySpawnArea/Spawner" method="disable"]
 [connection signal="build_phase_started" from="GameStateManager" to="BuildMode" method="enable"]
 [connection signal="message_requested" from="GameStateManager" to="Overlay/MessageArea" method="add_new_message"]
+[connection signal="wave_phase_started" from="GameStateManager" to="Overlay/BuildMenu" method="is_disabled"]
 [connection signal="wave_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_to_wave"]
 [connection signal="wave_phase_started" from="GameStateManager" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="wave_phase_started" from="GameStateManager" to="BuildMode" method="disable"]
