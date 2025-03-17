@@ -11,6 +11,8 @@ signal message_requested(target: int, style: MessageStyle, message: String, dura
 @export var current_test_building: TowerData
 @export var base_build_mode_time: float = 30
 
+@export var build_validators: Array[BuildValidator]
+
 @export var default_message_style: MessageStyle
 @export var build_error_message_style: MessageStyle
 
@@ -22,7 +24,6 @@ var build_mode_timer: Timer
 var last_build_state: bool = true
 
 var timer_shown: bool = false
-var build_error_message: String
 
 func _ready():
 	build_mode_timer = Timer.new()
@@ -40,35 +41,39 @@ func _ready():
 func _process(_delta):
 	_handle_build_phase_warning()
 	
-	var all_buildings = get_tree().get_nodes_in_group(building_group) as Array[Node2D]
+	
 	var can_build = true
-	if resource_overlay.get_scrap() < current_test_building.scrap_required:
-			build_error_message = "NO_SCRAP_AVAILABLE"
-			can_build = false
-
-	for building in all_buildings:
-		if building.global_position == build_grid.global_position:
-			build_error_message = "BUILD_SPACE_BLOCKED"
-			can_build = false
+	var resource_data = resource_overlay.get_resource_data()
+	var message: String = ""
+	for build_validator in build_validators:
+		var validation_return = build_validator.is_valid(get_tree(), build_grid.global_position, current_building, resource_data)
+		can_build = validation_return.get_can_build()
+		message = validation_return.get_error_message()
+		if !can_build:
+			break
 
 	if can_build != last_build_state:
 		can_build_changed.emit(can_build)
-
-
 	last_build_state = can_build
+	
 
-	if Input.is_action_just_pressed("interact"):
+
+	_handle_interaction(can_build, message)
+
+
+func _handle_interaction(can_build: bool, message: String):
+	if Input.is_action_just_pressed("interact"):	
 		if !can_build:
-			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, build_error_message, 2)
+			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, message, 2)
 			return
 		var position = build_grid.global_position
 		var template = tower_scene.instantiate() as Tower
 		template.global_position = position
-		template.tower_data = current_test_building
+		template.tower_data = current_building
 		template.add_to_group(building_group)
 		building_target_nodes.add_child(template)
-		resource_overlay.add_scrap(-current_test_building.scrap_required)
-		
+		resource_overlay.add_scrap(-current_building.scrap_required)
+
 func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
 		var message = tr("BUILD_TIME_LEFT")
