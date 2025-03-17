@@ -111,6 +111,17 @@ region = Rect2(136, 0, 16, 16)
 
 [node name="GameScene" type="Node2D"]
 
+[node name="Overlay" type="Node" parent="."]
+
+[node name="ResourceOverlay" parent="Overlay" instance=ExtResource("7_rccgq")]
+max_city_health = 1000
+scrap_icon = ExtResource("6_rw7at")
+resource_got_message_type = ExtResource("7_iaatp")
+resource_lost_message_type = ExtResource("8_c3dmc")
+
+[node name="MessageArea" parent="Overlay" instance=ExtResource("6_t8s46")]
+default_message_style = ExtResource("28_n7t7t")
+
 [node name="Camera" type="Node" parent="."]
 
 [node name="CameraPositions" type="Node2D" parent="Camera"]
@@ -169,19 +180,6 @@ grow_vertical = 0
 script = ExtResource("4_ifgsf")
 move_vector = Vector2(0, 1)
 
-[node name="Resources" type="Node" parent="."]
-
-[node name="ResourceOverlay" parent="Resources" instance=ExtResource("7_rccgq")]
-max_city_health = 1000
-scrap_icon = ExtResource("6_rw7at")
-resource_got_message_type = ExtResource("7_iaatp")
-resource_lost_message_type = ExtResource("8_c3dmc")
-
-[node name="MessageArea" parent="Resources" instance=ExtResource("6_t8s46")]
-max_message_center_messages = 5
-default_message_style = ExtResource("28_n7t7t")
-message_group = "message"
-
 [node name="WaveMode" type="Node" parent="."]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="WaveMode"]
@@ -231,7 +229,7 @@ curve = SubResource("Curve2D_2a14o")
 position = Vector2(1050, -560)
 rotation = 1.5708
 script = ExtResource("9_o1m0r")
-overlay = NodePath("../../../Resources/ResourceOverlay")
+overlay = NodePath("../../../Overlay/ResourceOverlay")
 enemy_root_node = NodePath("../../Enemies")
 spawn_information = SubResource("Resource_qg6d8")
 
@@ -241,7 +239,7 @@ spawn_information = SubResource("Resource_qg6d8")
 
 [node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_nodes")]
 script = ExtResource("13_mpr70")
-resource_overlay = NodePath("../Resources/ResourceOverlay")
+resource_overlay = NodePath("../Overlay/ResourceOverlay")
 building_target_nodes = NodePath("../WaveMode/Buildings")
 building_group = null
 current_test_building = SubResource("Resource_65o7u")
@@ -268,18 +266,18 @@ can_not_build_color = Color(0.909804, 0.239216, 0.356863, 1)
 script = ExtResource("1_jrdgx")
 message_style = ExtResource("28_n7t7t")
 
-[connection signal="message_requested" from="Resources/ResourceOverlay" to="Resources/MessageArea" method="add_new_message"]
+[connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/EnemySpawnArea/Spawner" method="ready_up"]
 [connection signal="spawning_completed" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawn_is_completed"]
 [connection signal="spawning_started" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawning_started"]
 [connection signal="build_mode_is_over" from="BuildMode" to="GameStateManager" method="build_phase_endet"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
-[connection signal="message_requested" from="BuildMode" to="Resources/MessageArea" method="add_new_message"]
+[connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_home"]
 [connection signal="build_phase_started" from="GameStateManager" to="WaveMode/EnemySpawnArea/Spawner" method="disable"]
 [connection signal="build_phase_started" from="GameStateManager" to="BuildMode" method="enable"]
-[connection signal="message_requested" from="GameStateManager" to="Resources/MessageArea" method="add_new_message"]
+[connection signal="message_requested" from="GameStateManager" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="wave_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_to_wave"]
 [connection signal="wave_phase_started" from="GameStateManager" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="wave_phase_started" from="GameStateManager" to="BuildMode" method="disable"]

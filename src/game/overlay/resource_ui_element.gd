@@ -2,7 +2,7 @@
 extends Control
 
 signal image_changed(new_texture: Texture)
-signal name_changed(new_name: String)
+signal name_changed(new_name: String, new_description: String, icon: Texture)
 signal value_changed(new_value: int)
 
 @export var resource_texture: Texture:
@@ -13,7 +13,7 @@ signal value_changed(new_value: int)
 @export_enum("SCRAP", "ENERGY") var resource_name: String = "SCRAP":
 	set(value):
 		resource_name = value
-		name_changed.emit(resource_name)
+		name_changed.emit(resource_name, resource_name + "_DESCRIPTION", resource_texture)
 		
 @export var inital_value: int:
 	set(value):
@@ -22,7 +22,7 @@ signal value_changed(new_value: int)
 
 func _ready():
 	image_changed.emit(resource_texture)
-	name_changed.emit(resource_name)
+	name_changed.emit(resource_name, resource_name + "_DESCRIPTION", resource_texture)
 	update_value(inital_value)
 
 func update_value(new_value: int):

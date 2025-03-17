@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://h1mxvd5e3sek"]
+[gd_scene load_steps=4 format=3 uid="uid://h1mxvd5e3sek"]
 
 [ext_resource type="Script" path="res://src/game/overlay/resource_ui_element.gd" id="1_2y46m"]
 [ext_resource type="Script" path="res://src/game/overlay/changeable_texture_rect.gd" id="3_621qp"]
-[ext_resource type="Script" path="res://src/game/overlay/changeable_label.gd" id="3_ivty0"]
 [ext_resource type="Script" path="res://src/game/overlay/animated_changeable_label.gd" id="5_o8m7h"]
 
 [node name="MarginContainer" type="MarginContainer"]
@@ -22,10 +21,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="ScrapIcon" type="TextureRect" parent="Scrap"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 0
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("3_621qp")
@@ -33,17 +33,12 @@ script = ExtResource("3_621qp")
 [node name="VBoxContainer" type="VBoxContainer" parent="Scrap"]
 layout_mode = 2
 
-[node name="ResourceType" type="Label" parent="Scrap/VBoxContainer"]
-layout_mode = 2
-text = "SCRAP"
-script = ExtResource("3_ivty0")
-
 [node name="ResourceValue" type="Label" parent="Scrap/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 text = "9999"
 script = ExtResource("5_o8m7h")
 time_for_animation = 0.5
 
 [connection signal="image_changed" from="." to="Scrap/ScrapIcon" method="set_new_image"]
-[connection signal="name_changed" from="." to="Scrap/VBoxContainer/ResourceType" method="set_new_label"]
 [connection signal="value_changed" from="." to="Scrap/VBoxContainer/ResourceValue" method="set_value_animated"]
