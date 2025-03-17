@@ -104,6 +104,8 @@ shader_parameter/opacity_speed = 2.0
 shader_parameter/min_opacity = 0.5
 shader_parameter/max_opacity = 0.8
 shader_parameter/color = Color(0.910394, 0.240069, 0.357094, 1)
+shader_parameter/number_of_scanlines = 90.0
+shader_parameter/line_speed = 0.02
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wp2pw"]
 atlas = ExtResource("14_a3s77")
