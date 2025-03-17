@@ -8,3 +8,8 @@ SCRAP_RECIEVED;+%AMOUNT% Scrap;+%AMOUNT% Schrott
 SCRAP_LOST;%AMOUNT% Scrap;%AMOUNT% Schrott
 BUILD_SPACE_BLOCKED;Build space blocked;Baubereich blockiert
 NO_SCRAP_AVAILABLE;Not enough scrap for that building;Nicht genug Schrott für dieses Gebäude
+SCRAP_DESCRIPTION;"Scrap is a resource collected from the remains on the battlefield. It does contain various metals, electronics, water or food. 
+
+It is getting used to construct new buildings, units or any structure on the front line.";"Schrott ist eine Ressource, die von den Überresten auf dem Schlachtfeld gesammelt wurde. Es besteht aus diversenen Metallen, Elektronischen bauteilen, Wasser oder Nahrung.
+
+Es wird an der Front genutzt um neue Gebäude zu bauen, Einheiten auszubilden und zu versorgen."
