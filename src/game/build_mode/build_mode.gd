@@ -25,6 +25,8 @@ var build_mode_timer: Timer
 var last_build_state: bool = true
 
 var timer_shown: bool = false
+var can_build_here: bool = false
+var cannot_build_message: String = ""
 
 func _ready():
 	build_mode_timer = Timer.new()
@@ -37,6 +39,20 @@ func _ready():
 
 	can_build_changed.emit(true)
 	disable()
+
+func _unhandled_input(event):
+	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
+		print("interacting")
+		if !can_build_here:
+			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, cannot_build_message, 2)
+			return
+		var position = build_grid.global_position
+		var template = tower_scene.instantiate() as Tower
+		template.global_position = position
+		template.tower_data = current_building
+		template.add_to_group(building_group)
+		building_target_nodes.add_child(template)
+		resource_overlay.add_scrap(-current_building.scrap_required)
 
 func _process(_delta):
 	_check_for_building_abort()
@@ -60,8 +76,8 @@ func _process(_delta):
 	last_build_state = can_build
 	
 
-
-	_handle_interaction(can_build, message)
+	can_build_here = can_build
+	cannot_build_message = message
 
 func _check_for_building_abort():
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -73,20 +89,6 @@ func _check_for_building() -> bool:
 		return false
 	build_grid.visible = true
 	return true
-	
-
-func _handle_interaction(can_build: bool, message: String):
-	if Input.is_action_just_pressed("interact"):	
-		if !can_build:
-			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, message, 2)
-			return
-		var position = build_grid.global_position
-		var template = tower_scene.instantiate() as Tower
-		template.global_position = position
-		template.tower_data = current_building
-		template.add_to_group(building_group)
-		building_target_nodes.add_child(template)
-		resource_overlay.add_scrap(-current_building.scrap_required)
 
 func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
