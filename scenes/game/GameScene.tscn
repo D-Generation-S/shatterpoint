@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=43 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="1_jrdgx"]
@@ -20,37 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="14_a3s77"]
 [ext_resource type="Script" path="res://src/game/shaders/ghost_sprite.gd" id="15_yunxs"]
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="18_32tny"]
-[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/towers/base_tower.tres" id="20_f8t42"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="21_411bb"]
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="22_muvxg"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="27_thcvj"]
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="28_n7t7t"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="28_s0a1i"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="29_njflb"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="30_3jpgi"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="31_dfkfg"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="32_jmj48"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="33_q38hf"]
-[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="34_hgnbo"]
-[ext_resource type="Texture2D" uid="uid://c2avbyuivc0ce" path="res://assets/atlast_textures/gray_tower.tres" id="35_8xipp"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_hfmdx")
 _start_scrap = 30
 _max_scrap = 9999
 _max_city_hp = 1000
-
-[sub_resource type="Resource" id="Resource_l7i38"]
-script = ExtResource("34_hgnbo")
-building_data = ExtResource("20_f8t42")
-name = "BASIC_TOWER"
-icon = ExtResource("35_8xipp")
-
-[sub_resource type="Resource" id="Resource_blkg7"]
-script = ExtResource("33_q38hf")
-name = "TOWERS"
-icon = ExtResource("35_8xipp")
-entries = Array[ExtResource("34_hgnbo")]([SubResource("Resource_l7i38")])
 
 [sub_resource type="Resource" id="Resource_3i2yq"]
 script = ExtResource("2_pxcfg")
@@ -126,21 +105,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Resource" id="Resource_hjbc6"]
-script = ExtResource("28_s0a1i")
-
-[sub_resource type="Resource" id="Resource_mt7rx"]
-script = ExtResource("29_njflb")
-build_area_group = "build_area"
-
-[sub_resource type="Resource" id="Resource_q7fvk"]
-script = ExtResource("30_3jpgi")
-building_group = "building"
-
-[sub_resource type="Resource" id="Resource_0co6w"]
-script = ExtResource("31_dfkfg")
-tile_map_group = "obstracles"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bow8h"]
 shader = ExtResource("13_2i25m")
 shader_parameter/mix_strengh = 0.7
@@ -178,7 +142,6 @@ _resource_data = SubResource("Resource_ywp2m")
 default_message_style = ExtResource("28_n7t7t")
 
 [node name="BuildMenu" parent="Overlay" instance=ExtResource("32_jmj48")]
-_menu_data = Array[ExtResource("33_q38hf")]([SubResource("Resource_blkg7")])
 
 [node name="Camera" type="Node" parent="."]
 
@@ -305,12 +268,10 @@ enemy_root_node = NodePath("../../Enemies")
 
 [node name="Buildings" type="Node" parent="WaveMode"]
 
-[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_nodes")]
+[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node")]
 script = ExtResource("13_mpr70")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
-building_target_nodes = NodePath("../WaveMode/Buildings")
-current_test_building = ExtResource("20_f8t42")
-build_validators = Array[ExtResource("27_thcvj")]([SubResource("Resource_hjbc6"), SubResource("Resource_mt7rx"), SubResource("Resource_q7fvk"), SubResource("Resource_0co6w")])
+building_target_node = NodePath("../WaveMode/Buildings")
 default_message_style = ExtResource("28_n7t7t")
 build_error_message_style = ExtResource("8_c3dmc")
 
@@ -362,7 +323,7 @@ script = ExtResource("1_jrdgx")
 message_style = ExtResource("28_n7t7t")
 
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
-[connection signal="building_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_building"]
+[connection signal="build_tool_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_tool"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
 [connection signal="no_hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_off_menu"]
 [connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/TopRightSpawner/Spawner" method="ready_up"]

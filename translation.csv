@@ -18,3 +18,7 @@ TOWERS;Towers;Türme
 BASIC_TOWER;Basic Tower;Basis Turm
 TOWERS_DESCRIPTION;This category will contain all the towers available for building.;Diese Kategorie beinhaltet alle Türme die du bauen kannst.
 BASIC_TOWER_DESCRIPTION;This is you default tower, it won't deal much damage, but it's still better than nothing.;Das ist dein Standard turm, er wird zwar nicht viel Schaden anrichten aber es ist immerhin besser als nichts.
+TOOLS;Tools;Werkzeuge
+BULLDOZER;Bulldozer;Planierraupe
+TOOLS_DESCRIPTION;This group does contain tools to manipulate structures you already did build.;Diese Gruppe beinhaltet Werkzete welche es dir erlauben bereits gebaute Strukturen zu manipulieren.
+BULLDOZER_DESCRIPTION;A bulldozer use it if there is a building at a position you do not want it anymore. You will get back half the resources by doing that.;Eine Planierraupe nutze Sie um Gebäude zu entfernen die du hier nicht mehr möchtest. Der Abriss wird dir die hälfte der resourcen zurückgeben.

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal building_selected(data: TowerData)
+signal build_tool_selected(building_tool: BuildModeTool)
 signal build_mode_open()
 signal build_mode_close()
 signal hover_over_build_menu()
@@ -25,7 +25,7 @@ func _ready():
 func _add_build_group(group: BuildMenuGroup):
 	var template = build_group_template.instantiate() as BuildMenuGroupEntry
 	template.setup(group)
-	template.building_selected.connect(func(data): building_selected.emit(data))
+	template.building_selected.connect(func(data): build_tool_selected.emit(data))
 	template.mouse_entered.connect(hover_enter)
 	template.mouse_exited.connect(hover_exit)
 	group_node.add_child(template)

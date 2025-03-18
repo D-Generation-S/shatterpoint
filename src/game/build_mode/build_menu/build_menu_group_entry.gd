@@ -1,6 +1,6 @@
 class_name BuildMenuGroupEntry extends Control
 
-signal building_selected(building: TowerData)
+signal building_selected(building_tool: BuildModeTool)
 
 @export var entry_target_node: Control
 @export var build_menu_entry_template: PackedScene
