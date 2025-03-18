@@ -14,3 +14,7 @@ It is getting used to construct new buildings, units or any structure on the fro
 
 Es wird an der Front genutzt um neue Gebäude zu bauen, Einheiten auszubilden und zu versorgen."
 NOT_INSIDE_BUILD_AREA;Not inside of build area;Nicht innerhalb des Baubereichs
+TOWERS;Towers;Türme
+BASIC_TOWER;Basic Tower;Basis Turm
+TOWERS_DESCRIPTION;This category will contain all the towers available for building.;Diese Kategorie beinhaltet alle Türme die du bauen kannst.
+BASIC_TOWER_DESCRIPTION;This is you default tower, it won't deal much damage, but it's still better than nothing.;Das ist dein Standard turm, er wird zwar nicht viel Schaden anrichten aber es ist immerhin besser als nichts.

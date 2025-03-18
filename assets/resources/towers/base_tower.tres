@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=13 format=3 uid="uid://ctrcr440rcqre"]
+
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/threat_determination.gd" id="1_a68ny"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/closest_threat.gd" id="2_moo3p"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/lowest_hp.gd" id="3_31dfk"]
+[ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/highest_hp.gd" id="4_ix2m1"]
+[ext_resource type="Script" path="res://src/resources/tower_data.gd" id="5_kkc4u"]
+[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="6_1sfe8"]
+[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="7_lmlr5"]
+
+[sub_resource type="Resource" id="Resource_vsnd1"]
+script = ExtResource("2_moo3p")
+
+[sub_resource type="Resource" id="Resource_l2nvn"]
+script = ExtResource("3_31dfk")
+
+[sub_resource type="Resource" id="Resource_250fq"]
+script = ExtResource("4_ix2m1")
+
+[sub_resource type="Resource" id="Resource_qwosr"]
+script = ExtResource("6_1sfe8")
+hp = 1.0
+armor = 0.0
+fire_rate = 2.0
+damage = 1.0
+attack_range = 100.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvin4"]
+atlas = ExtResource("7_lmlr5")
+region = Rect2(222, 0.327103, 14.0854, 15.8094)
+
+[resource]
+script = ExtResource("5_kkc4u")
+scrap_required = 3
+texture = SubResource("AtlasTexture_lvin4")
+input_color = Array[Color]([Color(0.247059, 0.14902, 0.192157, 1), Color(0.752941, 0.796078, 0.862745, 1), Color(0.545098, 0.607843, 0.705882, 1), Color(0.321569, 0.376471, 0.486275, 1)])
+ouput_color = Array[Color]([Color(0, 0, 0, 0), Color(1, 0.54902, 0.486275, 1), Color(0.999989, 0.346378, 0.281942, 1), Color(0.5, 0.27475, 0.245, 1)])
+allowed_thread_determination = Array[ExtResource("1_a68ny")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
+attackable_groups = Array[String](["ground_enemy"])
+stats = SubResource("Resource_qwosr")
