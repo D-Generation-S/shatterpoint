@@ -47,12 +47,12 @@ building_data = ExtResource("4_pkj5e")
 [sub_resource type="Resource" id="Resource_wrl4v"]
 script = ExtResource("3_sn81m")
 building_data = SubResource("Resource_fdhli")
-name = "TOWER"
+name = "BASIC_TOWER"
 icon = ExtResource("10_d6xds")
 
 [sub_resource type="Resource" id="Resource_cpqmy"]
 script = ExtResource("2_pqfs5")
-name = "Testing"
+name = "TOWERS"
 icon = ExtResource("10_d6xds")
 entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_wrl4v")])
 
@@ -73,7 +73,7 @@ region = Rect2(16, 36, 16, 10)
 [sub_resource type="Resource" id="Resource_nuq1m"]
 script = ExtResource("3_sn81m")
 building_data = SubResource("Resource_r3thl")
-name = "DESTROY"
+name = "BULLDOZER"
 icon = SubResource("AtlasTexture_8xbuw")
 
 [sub_resource type="Resource" id="Resource_gph8e"]
