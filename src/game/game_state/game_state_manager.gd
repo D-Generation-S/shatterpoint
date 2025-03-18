@@ -7,6 +7,7 @@ enum
 }
 
 signal wave_phase_started()
+signal dynamic_start_wave_preperation(number: int)
 signal build_phase_started()
 signal message_requested(target: int, type: MessageType, message: String, duration: float, icon: Texture)
 
@@ -18,6 +19,9 @@ var all_units_spawned: bool = true
 var all_units_dead: bool = true
 
 var dead_unit_timer: Timer
+var spawners: Array[Spawner]
+var completed_spawners = 0
+var current_wave: int = 1
 
 
 func _ready():
@@ -28,11 +32,22 @@ func _ready():
 	dead_unit_timer.timeout.connect(check_for_units_alive)
 	add_child(dead_unit_timer)
 
+	for spawner in get_tree().get_nodes_in_group("spawner"):
+		if spawner is Spawner:
+			dynamic_start_wave_preperation.connect(spawner.prepare_wave)
+			spawner.spawning_started.connect(spawning_started)
+			spawner.spawning_completed.connect(spawn_is_completed)
+			wave_phase_started.connect(spawner.ready_up)
+			build_phase_started.connect(spawner.disable)
+
 	wave_phase_endet()
 
 func spawn_is_completed():
-	all_units_spawned = true
-	wave_phase_endet()
+	completed_spawners += 1
+	if completed_spawners >= spawners.size():
+		completed_spawners = 0
+		all_units_spawned = true
+		wave_phase_endet()
 
 func check_for_units_alive():
 	var units = get_tree().get_nodes_in_group("enemy")
@@ -44,10 +59,14 @@ func check_for_units_alive():
 	dead_unit_timer.start()
 
 func spawning_started():
+	if dead_unit_timer.paused:
+		return
 	dead_unit_timer.start()
 
 func wave_phase_endet():
 	if all_units_dead and all_units_spawned:
+		dynamic_start_wave_preperation.emit(current_wave)
+		current_wave += 1
 		build_phase_started.emit()
 		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)
 

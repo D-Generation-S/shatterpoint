@@ -13,7 +13,7 @@ signal game_lost()
 @export var _resource_data: ResourceData
 
 func _ready():
-	_resource_data = ResourceData.new()
+	_resource_data.startup()
 	scrap_updated.emit(_resource_data.get_scrap())
 	set_max_health.emit(0, _resource_data.get_hp())
 	hp_updated.emit(_resource_data.get_hp())
@@ -39,10 +39,10 @@ func take_city_damage(value: int):
 		game_lost.emit()
 
 func get_resource_data() -> ResourceData:
-	var duplicate = _resource_data.duplicate() as ResourceData
-	duplicate.change_hp(_resource_data.get_hp() - duplicate.get_hp())
-	duplicate.change_scrap(_resource_data.get_scrap() - duplicate.get_scrap())
-	return duplicate
+	var duplicated_resource = _resource_data.duplicate() as ResourceData
+	duplicated_resource.change_hp(_resource_data.get_hp() - duplicated_resource.get_hp())
+	duplicated_resource.change_scrap(_resource_data.get_scrap() - duplicated_resource.get_scrap())
+	return duplicated_resource
 
 func get_scrap():
 	return _resource_data.get_scrap()

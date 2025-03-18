@@ -3,11 +3,13 @@ class_name Spawner extends PathFollow2D
 signal spawning_completed()
 signal spawning_started()
 
+@export var configuration: SpawnerConfiguration
 @export var overlay: ResourceOverlay
 @export var enemy_root_node: Node
 
+var spawn_information: SpawnInformation
+
 @onready var enemy_template: PackedScene = load("res://scenes/game/templates/EnemyTemplate.tscn")
-@export var spawn_information: SpawnInformation
 
 var timer: Timer
 var did_spawn_enemy: bool = false
@@ -17,7 +19,8 @@ func _ready():
 	process_mode = PROCESS_MODE_DISABLED
 	timer = Timer.new()
 	timer.autostart = false
-	timer.wait_time = spawn_information.spawn_intervall_in_seconds
+	var spawner_count: float = get_tree().get_node_count_in_group("spawner")
+	configuration.set_balance(1.0 / spawner_count)
 	timer.timeout.connect(spawn_enemy)
 	add_child(timer)
 
@@ -40,6 +43,9 @@ func spawn_enemy():
 	enemy.activate.call_deferred()
 	entry.amount -= 1
 
+func prepare_wave(wave_number: int):
+	spawn_information = configuration.generate_unit_set(wave_number)
+	timer.wait_time = spawn_information.spawn_intervall_in_seconds
 
 func ready_up():
 	did_spawn_enemy = false

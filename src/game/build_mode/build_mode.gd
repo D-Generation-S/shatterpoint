@@ -42,7 +42,6 @@ func _ready():
 
 func _unhandled_input(event):
 	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
-		print("interacting")
 		if !can_build_here:
 			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, cannot_build_message, 2)
 			return

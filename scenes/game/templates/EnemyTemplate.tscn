@@ -26,11 +26,7 @@ shape = SubResource("CircleShape2D_bpvlt")
 
 [node name="Navigation" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
-debug_enabled = true
 script = ExtResource("2_e0fie")
-max_physic_updates_until_reset = null
-max_reset_pos = null
-threshold = null
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
