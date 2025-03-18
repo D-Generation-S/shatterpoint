@@ -22,5 +22,6 @@ texture = SubResource("AtlasTexture_fs5u0")
 input_color = Array[Color]([])
 ouput_color = Array[Color]([])
 min_scrap_drop = 0
-max_scrap_drop = 1
+max_scrap_drop = 2
+min_wave_requirement = 1
 stats = SubResource("Resource_w13ft")

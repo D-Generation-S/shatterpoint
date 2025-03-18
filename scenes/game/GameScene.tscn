@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=58 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="1_jrdgx"]
@@ -15,9 +15,6 @@
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="8_81tdg"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="8_c3dmc"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="9_o1m0r"]
-[ext_resource type="Script" path="res://src/resources/spawn_information.gd" id="10_5v5xx"]
-[ext_resource type="Script" path="res://src/resources/spawn_set.gd" id="11_6baqy"]
-[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="12_8fqi6"]
 [ext_resource type="Shader" path="res://assets/shaders/ghost_shader.gdshader" id="13_2i25m"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_mode.gd" id="13_mpr70"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="14_a3s77"]
@@ -25,6 +22,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="18_32tny"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/towers/base_tower.tres" id="20_f8t42"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="21_411bb"]
+[ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="22_muvxg"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="27_thcvj"]
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="28_n7t7t"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="28_s0a1i"]
@@ -38,7 +36,7 @@
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_hfmdx")
-_start_scrap = 25
+_start_scrap = 30
 _max_scrap = 9999
 _max_city_hp = 1000
 
@@ -118,19 +116,15 @@ size = Vector2(384, 418)
 
 [sub_resource type="Curve2D" id="Curve2D_2a14o"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1050, -560, 0, 0, 0, 0, 1050, 560)
+"points": PackedVector2Array(0, 0, 0, 0, 520, -560, 0, 0, 0, 0, 1050, -560, 0, 0, 0, 0, 1050, 560)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_47tol"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -967, -560, 0, 0, 0, 0, -386, -560)
 }
 point_count = 2
-
-[sub_resource type="Resource" id="Resource_jcti3"]
-script = ExtResource("11_6baqy")
-enemy_data = ExtResource("12_8fqi6")
-amount = 15
-
-[sub_resource type="Resource" id="Resource_qg6d8"]
-script = ExtResource("10_5v5xx")
-spawn_sets = Array[ExtResource("11_6baqy")]([SubResource("Resource_jcti3")])
-spawn_intervall_in_seconds = 2.0
 
 [sub_resource type="Resource" id="Resource_hjbc6"]
 script = ExtResource("28_s0a1i")
@@ -165,7 +159,7 @@ region = Rect2(136, 0, 16, 16)
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gcjbt"]
-size = Vector2(960, 304)
+size = Vector2(960, 329)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egqb7"]
 size = Vector2(490, 520)
@@ -287,16 +281,25 @@ position = Vector2(-26, 287)
 [node name="Target4" type="Node2D" parent="WaveMode/EnemyTarget" groups=["ground_target"]]
 position = Vector2(-15, 381)
 
-[node name="EnemySpawnArea" type="Path2D" parent="WaveMode"]
+[node name="TopRightSpawner" type="Path2D" parent="WaveMode"]
 curve = SubResource("Curve2D_2a14o")
 
-[node name="Spawner" type="PathFollow2D" parent="WaveMode/EnemySpawnArea" node_paths=PackedStringArray("overlay", "enemy_root_node")]
-position = Vector2(1050, -560)
-rotation = 1.5708
+[node name="Spawner" type="PathFollow2D" parent="WaveMode/TopRightSpawner" node_paths=PackedStringArray("overlay", "enemy_root_node") groups=["spawner"]]
+position = Vector2(520, -560)
 script = ExtResource("9_o1m0r")
+configuration = ExtResource("22_muvxg")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
 enemy_root_node = NodePath("../../Enemies")
-spawn_information = SubResource("Resource_qg6d8")
+
+[node name="Path2D" type="Path2D" parent="WaveMode"]
+curve = SubResource("Curve2D_47tol")
+
+[node name="TopSpawner" type="PathFollow2D" parent="WaveMode/Path2D" node_paths=PackedStringArray("overlay", "enemy_root_node") groups=["spawner"]]
+position = Vector2(-967, -560)
+script = ExtResource("9_o1m0r")
+configuration = ExtResource("22_muvxg")
+overlay = NodePath("../../../Overlay/ResourceOverlay")
+enemy_root_node = NodePath("../../Enemies")
 
 [node name="Enemies" type="Node" parent="WaveMode"]
 
@@ -340,7 +343,7 @@ collision_layer = 0
 collision_mask = 8388608
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildAreas/BuildArea"]
-position = Vector2(470, -6)
+position = Vector2(470, -18.5)
 shape = SubResource("RectangleShape2D_gcjbt")
 debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
 
@@ -362,16 +365,13 @@ message_style = ExtResource("28_n7t7t")
 [connection signal="building_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_building"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
 [connection signal="no_hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_off_menu"]
-[connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/EnemySpawnArea/Spawner" method="ready_up"]
-[connection signal="spawning_completed" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawn_is_completed"]
-[connection signal="spawning_started" from="WaveMode/EnemySpawnArea/Spawner" to="GameStateManager" method="spawning_started"]
+[connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/TopRightSpawner/Spawner" method="ready_up"]
 [connection signal="build_mode_is_over" from="BuildMode" to="GameStateManager" method="build_phase_endet"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_phase_started" from="GameStateManager" to="Overlay/BuildMenu" method="is_enabled"]
 [connection signal="build_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_home"]
-[connection signal="build_phase_started" from="GameStateManager" to="WaveMode/EnemySpawnArea/Spawner" method="disable"]
 [connection signal="build_phase_started" from="GameStateManager" to="BuildMode" method="enable"]
 [connection signal="message_requested" from="GameStateManager" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="wave_phase_started" from="GameStateManager" to="Overlay/BuildMenu" method="is_disabled"]

@@ -8,7 +8,7 @@ class_name ResourceData extends Resource
 var _scrap: int = 0
 var _city_hp: int = 0
 
-func _init():
+func startup():
 	_scrap = _start_scrap
 	_city_hp = _max_city_hp
 
