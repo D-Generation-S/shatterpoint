@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://3wauxg2sw8r3"]
+[gd_scene load_steps=32 format=3 uid="uid://3wauxg2sw8r3"]
 
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu.gd" id="1_1d5ep"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_pqfs5"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="7_lq41d"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="9_jv6oy"]
 [ext_resource type="Texture2D" uid="uid://c2avbyuivc0ce" path="res://assets/atlast_textures/gray_tower.tres" id="10_d6xds"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/texture_button_modulate.gd" id="18_h6d7i"]
 
 [sub_resource type="Resource" id="Resource_fruxs"]
 script = ExtResource("6_ritxv")
@@ -104,6 +105,8 @@ size_flags_vertical = 8
 mouse_filter = 1
 texture_normal = ExtResource("6_kkt7x")
 stretch_mode = 5
+script = ExtResource("18_h6d7i")
+hover_color = Color(0.286275, 0.286275, 0.286275, 1)
 
 [node name="Groups" type="HBoxContainer" parent="HBoxContainer"]
 unique_name_in_owner = true
