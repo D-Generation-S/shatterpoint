@@ -9,7 +9,6 @@ func _ready():
 	for message_center in get_tree().get_nodes_in_group(message_center_group):
 		if message_center is MessageCenter:
 			message_centers.append(message_center)
-	print(message_centers.size())
 
 func add_simple_message(target: int, message: String, time_to_show: float):
 	add_new_message(target, default_message_style, message, time_to_show)
