@@ -6,20 +6,16 @@ signal build_mode_is_over()
 signal message_requested(target: int, style: MessageStyle, message: String, duration: float, icon: Texture)
 
 @export var resource_overlay: ResourceOverlay
-@export var building_target_nodes: Node
+@export var building_target_node: Node
 @export var building_group: String = "building"
-@export var current_test_building: TowerData
 @export var base_build_mode_time: float = 30
-
-@export var build_validators: Array[BuildValidator]
 
 @export var default_message_style: MessageStyle
 @export var build_error_message_style: MessageStyle
 
-@onready var tower_scene: PackedScene = load("res://scenes/game/templates/TowerTemplate.tscn")
 @onready var build_grid: Node2D = $"%BuildGrid"
 
-var current_building: TowerData
+var current_tool: BuildModeTool = null
 var in_build_mode: bool = false
 var build_mode_timer: Timer
 var last_build_state: bool = true
@@ -41,17 +37,16 @@ func _ready():
 	disable()
 
 func _unhandled_input(event):
-	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
+	if current_tool != null and event.is_action("interact") and Input.is_action_just_pressed("interact"):
 		if !can_build_here:
 			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, cannot_build_message, 2)
 			return
-		var position = build_grid.global_position
-		var template = tower_scene.instantiate() as Tower
-		template.global_position = position
-		template.tower_data = current_building
-		template.add_to_group(building_group)
-		building_target_nodes.add_child(template)
-		resource_overlay.add_scrap(-current_building.scrap_required)
+		var build_position = build_grid.global_position
+		var building = null
+		var buildings = get_tree().get_nodes_in_group(building_group).filter(func(current_building): return current_building.global_position == build_position)
+		if buildings.size() > 0:
+			building = buildings[0]
+		resource_overlay.add_scrap(current_tool.execute(build_position, building, building_target_node))
 
 func _process(_delta):
 	_check_for_building_abort()
@@ -60,30 +55,23 @@ func _process(_delta):
 	_handle_build_phase_warning()
 	
 	
-	var can_build = true
 	var resource_data = resource_overlay.get_resource_data()
-	var message: String = ""
-	for build_validator in build_validators:
-		var validation_return = build_validator.is_valid(get_tree(), build_grid.global_position, current_building, resource_data)
-		can_build = validation_return.get_can_build()
-		message = validation_return.get_error_message()
-		if !can_build:
-			break
+	var validator = current_tool.can_be_used(get_tree(), build_grid.global_position, resource_data)
 
-	if can_build != last_build_state:
-		can_build_changed.emit(can_build)
-	last_build_state = can_build
+	if validator.get_can_build() != last_build_state:
+		can_build_changed.emit(validator.get_can_build())
+	last_build_state = validator.get_can_build()
 	
 
-	can_build_here = can_build
-	cannot_build_message = message
+	can_build_here = validator.get_can_build()
+	cannot_build_message = validator.get_error_message()
 
 func _check_for_building_abort():
 	if Input.is_action_just_pressed("ui_cancel"):
-		current_building = null
+		current_tool = null
 
 func _check_for_building() -> bool:
-	if current_building == null:
+	if current_tool == null:
 		build_grid.visible = false
 		return false
 	build_grid.visible = true
@@ -100,13 +88,12 @@ func _handle_build_phase_warning():
 func build_mode_endet():
 	build_mode_is_over.emit()
 
-func set_current_building(building_data: TowerData):
-	current_building = building_data
-	change_ghost_texture.emit(building_data.texture)
+func set_current_tool(building_tool: BuildModeTool):
+	current_tool = building_tool
+	change_ghost_texture.emit(current_tool.get_ghost_icon())
 
 func disable():
 	in_build_mode = false
-	current_building = null
 	process_mode = PROCESS_MODE_DISABLED
 	build_grid.process_mode = build_grid.PROCESS_MODE_DISABLED
 	build_grid.visible = false

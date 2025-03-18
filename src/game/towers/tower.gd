@@ -79,3 +79,6 @@ func interaction_cancelt():
 	selected = false
 	area_of_operation.draw_attack_area(selected)
 	pass
+
+func destroy():
+	queue_free()
