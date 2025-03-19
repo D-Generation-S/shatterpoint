@@ -14,7 +14,7 @@ signal reached_town(hp: int)
 @onready var _visuals: Sprite2D = $"%Visuals"
 @onready var _collision: CollisionShape2D = $"%Collision"
 @onready var _navigation_agent: Navigation = $"%Navigation"
-@onready var _health_bar: ProgressBar = $"%HealthBar"
+@onready var _health_bar: AnimatedHealthBar = $"%HealthBar"
 
 var is_alive: bool = true
 
@@ -24,6 +24,8 @@ func _ready():
 	_health_bar.min_value = 0
 	_health_bar.max_value = stats.hp
 	_health_bar.value = stats.hp
+	_health_bar.visible = false
+	
 	_visuals.texture = enemy_data.texture
 	if _collision.shape is CircleShape2D:
 		_collision.shape.radius = collision_radius
@@ -44,7 +46,7 @@ func deal_damage(damage: float):
 	if not is_alive:
 		return
 	stats.hp -= damage
-	_health_bar.value = stats.hp
+	_health_bar.update_value(stats.hp)
 	if stats.hp <= 0:
 		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
 		is_alive = false

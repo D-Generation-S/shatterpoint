@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=24 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/towers/tower.gd" id="1_p7m1e"]
 [ext_resource type="Script" path="res://src/resources/tower_data.gd" id="2_bl55y"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://src/game/interaction/clickable_area.gd" id="7_qd43q"]
 [ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="8_o8iqh"]
 [ext_resource type="Script" path="res://src/game/towers/area_of_operation.gd" id="8_v3vj8"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_4r4ui"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_0xcyr"]
 
 [sub_resource type="Resource" id="Resource_vsnd1"]
 script = ExtResource("3_rxa4k")
@@ -82,6 +84,22 @@ script = ExtResource("5_mva04")
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("13_4r4ui")
+show_percentage = false
+script = ExtResource("14_0xcyr")
 
 [connection signal="something_entered" from="AreaOfOperation" to="." method="is_active"]
 [connection signal="interaction_cancelt" from="InteractionArea" to="." method="interaction_cancelt"]
