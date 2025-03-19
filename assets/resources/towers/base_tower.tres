@@ -20,7 +20,7 @@ script = ExtResource("4_ix2m1")
 
 [sub_resource type="Resource" id="Resource_qwosr"]
 script = ExtResource("6_1sfe8")
-hp = 1.0
+hp = 50.0
 armor = 0.0
 fire_rate = 2.0
 damage = 1.0

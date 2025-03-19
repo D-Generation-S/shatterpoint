@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bognmtipmpagl"]
+[gd_scene load_steps=7 format=3 uid="uid://bognmtipmpagl"]
 
 [ext_resource type="Script" path="res://src/game/enemy/enemy.gd" id="1_5svhe"]
 [ext_resource type="Script" path="res://src/game/enemy/navigation.gd" id="2_e0fie"]
 [ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="2_sodgp"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="5_pm5b4"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="6_df24y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpvlt"]
@@ -40,3 +41,4 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("6_df24y")
 show_percentage = false
+script = ExtResource("5_pm5b4")

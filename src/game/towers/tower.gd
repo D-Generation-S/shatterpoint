@@ -6,15 +6,23 @@ class_name Tower extends EntityWithStats
 @onready var visual: Sprite2D= $"%Visuals"
 @onready var area_of_operation: AreaOfOperation = $"%AreaOfOperation"
 @onready var attack_timer: Timer = $"%AttackTimer"
+@onready var _health_bar: AnimatedHealthBar = $"%HealthBar"
 
 var current_target: Enemy = null
 var selected: bool = false
 var initial_fire: bool = false
+var max_hp: float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_base_stats = tower_data.stats
+	max_hp = tower_data.stats.hp
 	super()
+	
+	_health_bar.max_value = max_hp
+	_health_bar.value = stats.hp
+	_health_bar.visible = false
+
 	attack_timer.timeout.connect(fire)
 	attack_timer.one_shot = true
 	attack_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
@@ -89,6 +97,15 @@ func interaction_cancelt():
 	selected = false
 	area_of_operation.draw_attack_area(selected)
 	pass
+
+func deal_damage(amount: int):
+	stats.hp -= amount
+	stats.hp = clampf(stats.hp, 0, max_hp)
+	if stats.hp == 0:
+		destroy()
+		return
+
+	_health_bar.update_value(stats.hp)
 
 func destroy():
 	queue_free()
