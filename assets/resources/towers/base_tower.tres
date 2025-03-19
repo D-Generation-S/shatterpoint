@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=13 format=3 uid="uid://ctrcr440rcqre"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=14 format=3 uid="uid://ctrcr440rcqre"]
 
 [ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/threat_determination.gd" id="1_a68ny"]
 [ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/closest_threat.gd" id="2_moo3p"]
 [ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/lowest_hp.gd" id="3_31dfk"]
 [ext_resource type="Script" path="res://src/game/towers/threat_determination_algorithms/highest_hp.gd" id="4_ix2m1"]
+[ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="5_7d6iv"]
 [ext_resource type="Script" path="res://src/resources/tower_data.gd" id="5_kkc4u"]
 [ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="6_1sfe8"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="7_lmlr5"]
@@ -37,4 +38,5 @@ input_color = Array[Color]([Color(0.247059, 0.14902, 0.192157, 1), Color(0.75294
 ouput_color = Array[Color]([Color(0, 0, 0, 0), Color(1, 0.54902, 0.486275, 1), Color(0.999989, 0.346378, 0.281942, 1), Color(0.5, 0.27475, 0.245, 1)])
 allowed_thread_determination = Array[ExtResource("1_a68ny")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
 attackable_groups = Array[String](["ground_enemy"])
+projectile = ExtResource("5_7d6iv")
 stats = SubResource("Resource_qwosr")

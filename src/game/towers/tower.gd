@@ -9,6 +9,7 @@ class_name Tower extends EntityWithStats
 
 var current_target: Enemy = null
 var selected: bool = false
+var initial_fire: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +37,9 @@ func _process(_delta):
 	
 	current_target = current_thread_determination.get_threat(self, enemy_targets)
 	if current_target != null:
+		if initial_fire:
+			initial_fire = false
+			fire()
 		start_attack_timer()
 		return
 
@@ -45,7 +49,11 @@ func start_attack_timer():
 	attack_timer.start(stats.fire_rate)
 
 func fire():
-	current_target.deal_damage(stats.damage)
+	var projectile = tower_data.projectile.instantiate() as Projectile
+	projectile.setup(self.global_position, current_target, stats.damage, 0, self)
+	add_child(projectile)
+	projectile.fire()
+	#current_target.deal_damage(stats.damage)
 
 func target_filter(target: Node2D) -> bool:
 	var can_be_targeted = false
@@ -64,9 +72,11 @@ func get_target() -> Node2D:
 	return null
 
 func is_active():
+	initial_fire = true
 	process_mode = PROCESS_MODE_INHERIT
 
 func disabled():
+	initial_fire = false
 	attack_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 
