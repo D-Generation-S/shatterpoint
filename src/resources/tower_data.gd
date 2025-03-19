@@ -11,5 +11,6 @@ class_name TowerData extends Resource
 @export_group("Targeting")
 @export var allowed_thread_determination: Array[ThreatDetermination]
 @export var attackable_groups: Array[String]
+@export var projectile: PackedScene
 
 @export var stats: EntityStats

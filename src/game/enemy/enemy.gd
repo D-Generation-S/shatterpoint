@@ -5,6 +5,7 @@ signal request_scrap_path(start_node: Node2D, amount: int, Resource)
 signal reached_town(hp: int)
 
 @export var is_debug: bool = false
+@export var start_ready: bool = false
 @export var enemy_data: EnemyData 
 @export var movement_speed: float = 40
 @export var collision_radius: int = 8
@@ -30,6 +31,8 @@ func _ready():
 	_navigation_agent.debug_enabled = is_debug
 	set_target.call_deferred()
 	process_mode = PROCESS_MODE_DISABLED
+	if start_ready:
+		activate()
 
 func set_target():
 	var targets = get_tree().get_nodes_in_group(target_group) as Array[Node2D]

@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/towers/base_tower.tres" id="4_pkj5e"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/destroy_building.gd" id="5_f5t10"]
 [ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="5_i4ii2"]
-[ext_resource type="PackedScene" uid="uid://d2ccdfwya86u4" path="res://scenes/game/templates/TowerTemplate.tscn" id="5_mwrl7"]
+[ext_resource type="PackedScene" uid="uid://d2ccdfwya86u4" path="res://scenes/game/templates/tower/TowerTemplate.tscn" id="5_mwrl7"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="6_ajb40"]
 [ext_resource type="Texture2D" uid="uid://bol2qkole2koo" path="res://assets/atlast_textures/hammer.tres" id="6_kkt7x"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="6_ritxv"]

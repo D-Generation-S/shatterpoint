@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://clc1q6pkrn00t"]
+
+[ext_resource type="Script" path="res://src/game/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
+[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="2_atst4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xh6hf"]
+atlas = ExtResource("2_atst4")
+region = Rect2(190, 174, 10, 8)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4l87w"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nu4ke"]
+radius = 5.0
+height = 16.0
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_ysxik")
+speed = 170.0
+time_to_live_in_seconds = 1.0
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("AtlasTexture_xh6hf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_4l87w")
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_nu4ke")
+debug_color = Color(0.940005, 0.0777895, 0.576187, 0.42)
+
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_entered"]
