@@ -10,6 +10,8 @@ signal game_lost()
 @export var resource_got_message_type: MessageStyle
 @export var resource_lost_message_type: MessageStyle
 
+@export var scrap_animation_node: Node2D
+
 @export var _resource_data: ResourceData
 
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=46 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="1_hguec"]
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="1_jrdgx"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="8_81tdg"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="8_c3dmc"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="9_o1m0r"]
+[ext_resource type="Script" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_cjurs"]
 [ext_resource type="Shader" path="res://assets/shaders/ghost_shader.gdshader" id="13_2i25m"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_mode.gd" id="13_mpr70"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="14_a3s77"]
@@ -22,6 +23,8 @@
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="18_32tny"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="21_411bb"]
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="22_muvxg"]
+[ext_resource type="PackedScene" uid="uid://brm17h88x8w2b" path="res://scenes/game/animation/resource_path_animation.tscn" id="25_yfmt4"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/resource_travel_animation.gd" id="27_e6pj3"]
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="28_n7t7t"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="32_jmj48"]
 
@@ -132,10 +135,11 @@ size = Vector2(490, 520)
 
 [node name="Overlay" type="Node" parent="."]
 
-[node name="ResourceOverlay" parent="Overlay" instance=ExtResource("7_rccgq")]
+[node name="ResourceOverlay" parent="Overlay" node_paths=PackedStringArray("scrap_animation_node") instance=ExtResource("7_rccgq")]
 scrap_icon = ExtResource("6_rw7at")
 resource_got_message_type = ExtResource("7_iaatp")
 resource_lost_message_type = ExtResource("8_c3dmc")
+scrap_animation_node = NodePath("../../Camera/Camera2D/ScrapResource")
 _resource_data = SubResource("Resource_ywp2m")
 
 [node name="MessageArea" parent="Overlay" instance=ExtResource("6_t8s46")]
@@ -161,6 +165,10 @@ position_smoothing_speed = 10.0
 script = ExtResource("1_ya4dn")
 settings = SubResource("Resource_3i2yq")
 home_move_time = 0.3
+
+[node name="ScrapResource" type="Node2D" parent="Camera/Camera2D"]
+script = ExtResource("12_cjurs")
+screen_coordinates = Vector2(960, 20)
 
 [node name="ScrollEdges" type="CanvasLayer" parent="Camera"]
 
@@ -268,10 +276,12 @@ enemy_root_node = NodePath("../../Enemies")
 
 [node name="Buildings" type="Node" parent="WaveMode"]
 
-[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node")]
+[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
 script = ExtResource("13_mpr70")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
 building_target_node = NodePath("../WaveMode/Buildings")
+scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
+resource_path_template = ExtResource("25_yfmt4")
 default_message_style = ExtResource("28_n7t7t")
 build_error_message_style = ExtResource("8_c3dmc")
 
@@ -322,15 +332,24 @@ debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
 script = ExtResource("1_jrdgx")
 message_style = ExtResource("28_n7t7t")
 
+[node name="ItemPathAnimator" type="Node" parent="." node_paths=PackedStringArray("scrap_resource_trave_node")]
+unique_name_in_owner = true
+script = ExtResource("27_e6pj3")
+scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
+resource_path_template = ExtResource("25_yfmt4")
+
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_tool_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_tool"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
 [connection signal="no_hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_off_menu"]
 [connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/TopRightSpawner/Spawner" method="ready_up"]
+[connection signal="request_path" from="WaveMode/TopRightSpawner/Spawner" to="ItemPathAnimator" method="create_new_travel_path"]
+[connection signal="request_path" from="WaveMode/Path2D/TopSpawner" to="ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="build_mode_is_over" from="BuildMode" to="GameStateManager" method="build_phase_endet"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
+[connection signal="request_path" from="BuildMode" to="ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="build_phase_started" from="GameStateManager" to="Overlay/BuildMenu" method="is_enabled"]
 [connection signal="build_phase_started" from="GameStateManager" to="Camera/Camera2D" method="move_home"]
 [connection signal="build_phase_started" from="GameStateManager" to="BuildMode" method="enable"]

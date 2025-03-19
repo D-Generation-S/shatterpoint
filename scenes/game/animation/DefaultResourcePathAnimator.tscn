@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0s0vyjpfpvsi"]
+
+[ext_resource type="Script" path="res://src/game/resources/resource_path_item.gd" id="1_akbl3"]
+
+[node name="DefaultResourcePathAnimator" type="Node2D"]
+script = ExtResource("1_akbl3")
+
+[node name="AnimationPath" type="Path2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Follower" type="PathFollow2D" parent="AnimationPath"]
+unique_name_in_owner = true
+
+[node name="Icon" type="Sprite2D" parent="AnimationPath/Follower"]
+unique_name_in_owner = true
