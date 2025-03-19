@@ -14,7 +14,6 @@ func generate_units_for_wave(target_power: float, possible_units: Array[EnemyDat
 	var current_power: float = 0
 	var spawn_speed: float = randomizer.randf_range(0.5, interval_factor_calculator)
 	var spawn_speed_multiplier: float = interval_factor_calculator / spawn_speed
-	print(target_power)
 	var spawn_sets: Array[SpawnSet] = []
 
 	while (current_power < target_power):
