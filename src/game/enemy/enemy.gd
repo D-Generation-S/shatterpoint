@@ -1,6 +1,7 @@
 class_name Enemy extends EntityWithStats
 
 signal died(scrap_drop: int)
+signal request_scrap_path(start_node: Node2D, amount: int, Resource)
 signal reached_town(hp: int)
 
 @export var is_debug: bool = false
@@ -45,6 +46,8 @@ func deal_damage(damage: float):
 		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
 		is_alive = false
 		died.emit(amount)
+		request_scrap_path.emit(AutoDeleteNode.new(10, global_position, true), amount)
+
 		queue_free()
 
 func activate():

@@ -4,11 +4,15 @@ signal change_ghost_texture(new_texture: Texture2D)
 signal can_build_changed(can_build: bool)
 signal build_mode_is_over()
 signal message_requested(target: int, style: MessageStyle, message: String, duration: float, icon: Texture)
+signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount: int, time: float)
 
 @export var resource_overlay: ResourceOverlay
 @export var building_target_node: Node
 @export var building_group: String = "building"
 @export var base_build_mode_time: float = 30
+
+@export var scrap_resource_trave_node: Node2D
+@export var resource_path_template: PackedScene
 
 @export var default_message_style: MessageStyle
 @export var build_error_message_style: MessageStyle
@@ -46,7 +50,19 @@ func _unhandled_input(event):
 		var buildings = get_tree().get_nodes_in_group(building_group).filter(func(current_building): return current_building.global_position == build_position)
 		if buildings.size() > 0:
 			building = buildings[0]
-		resource_overlay.add_scrap(current_tool.execute(build_position, building, building_target_node))
+		var scrap = current_tool.execute(build_position, building, building_target_node)
+
+		var source_node = scrap_resource_trave_node
+		var end_node: Node2D = Node2D.new()
+		end_node.position = build_position
+		if scrap > 0:
+			end_node.global_position = building.global_position
+			source_node = end_node
+			end_node = scrap_resource_trave_node
+			
+		request_path.emit(resource_overlay.scrap_icon, source_node, end_node, absi(scrap), 1)
+
+		resource_overlay.add_scrap(scrap)
 
 func _process(_delta):
 	_check_for_building_abort()
