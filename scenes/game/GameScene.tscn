@@ -299,11 +299,11 @@ script = ExtResource("15_yunxs")
 can_build_color = Color(0.372549, 0.568627, 1, 1)
 can_not_build_color = Color(0.909804, 0.239216, 0.356863, 1)
 
-[node name="BuildMarker" type="Area2D" parent="BuildMode/BuildingGhost/BuildGrid" groups=["build_marker"]]
+[node name="BuildMarker" type="Area2D" parent="BuildMode/BuildingGhost/BuildGrid/GhostSprite" groups=["build_marker"]]
 collision_layer = 8388608
 collision_mask = 8388608
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildingGhost/BuildGrid/BuildMarker"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildingGhost/BuildGrid/GhostSprite/BuildMarker"]
 shape = SubResource("RectangleShape2D_fub1o")
 
 [node name="BuildAreas" type="Node" parent="BuildMode"]
