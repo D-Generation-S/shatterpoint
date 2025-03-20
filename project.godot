@@ -17,6 +17,10 @@ run/main_scene="res://scenes/game/GameScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalSoundManager="*res://scenes/global/SoundManager.tscn"
+
 [display]
 
 window/size/viewport_width=1920
@@ -26,6 +30,7 @@ window/size/viewport_height=1080
 
 ground_enemy="An enemy walking or driving on ground"
 enemy=""
+audio_listener="Group containing all the audio listeners"
 
 [input]
 

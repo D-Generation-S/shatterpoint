@@ -1,5 +1,6 @@
 class_name BuildingConstruction extends BuildModeTool
 
+@export var building_placed_sound: AudioStream
 @export var building_template: PackedScene
 @export var building_group: String = "building"
 
@@ -14,4 +15,5 @@ func execute(global_position: Vector2, _target_building: Node2D, target_node: No
 		scrap_usage = -building_data.scrap_required
 
 	target_node.add_child(template)
+	GlobalSoundManager.play_sound_at_position(global_position, building_placed_sound, 2000, randf_range(0.9, 1.1))
 	return scrap_usage

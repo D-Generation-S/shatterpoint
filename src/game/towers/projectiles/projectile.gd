@@ -2,8 +2,15 @@ class_name Projectile extends CharacterBody2D
 
 signal sticker_requested(sticker_position: Vector2, icon: Texture)
 
+@export_group("Audio")
+@export var fire_sound: AudioStream
+@export var hit_sound: AudioStream
+@export var decay_sound: AudioStream
+
+@export_group("Movement")
 @export var speed: float
 @export var base_move_direction: Vector2 = Vector2.RIGHT
+@export_group("Lifetime")
 @export var min_time_to_live_in_seconds: float = 3
 @export var max_time_to_live_in_seconds: float = 10
 
@@ -41,7 +48,7 @@ func _start_live_time_animation(_time_to_live: float, _visuals: Sprite2D):
 	pass
 
 func _trigger_lifetime_end_effect(_current_position: Vector2, _effect_target_node: Node2D):
-	pass
+	GlobalSoundManager.play_sound_at_position(global_position, decay_sound, 2000, randf_range(0.8, 1.2))
 
 func setup(
 	global_start_position: Vector2,
@@ -65,12 +72,15 @@ func fire():
 	velocity = base_move_direction.rotated(rotation).normalized() * speed
 	process_mode = PROCESS_MODE_PAUSABLE
 
+	GlobalSoundManager.play_sound_at_position(global_position, fire_sound, 2000, randf_range(0.8, 1.2))
+
 func _process(_delta):
 	move_and_slide()
 
 func _on_collision_entered(body: Node2D):
 	if body is Enemy:
 		body.deal_damage(carried_damage)
+		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
 
 	queue_free()
 

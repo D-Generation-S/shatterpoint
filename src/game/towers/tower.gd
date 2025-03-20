@@ -61,7 +61,6 @@ func fire():
 	projectile.setup(self.global_position, current_target, stats.damage, 0, self)
 	add_child(projectile)
 	projectile.fire()
-	#current_target.deal_damage(stats.damage)
 
 func target_filter(target: Node2D) -> bool:
 	var can_be_targeted = false
