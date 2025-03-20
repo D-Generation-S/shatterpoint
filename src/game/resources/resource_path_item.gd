@@ -51,6 +51,7 @@ func _timer_finished() -> void:
 
 func _add_travel_item():
 	var item = ResourcePathItemFollower.new(stored_icon, stored_travel_time)
+	item.finished.connect(_trave_item_destroyed)
 	path.add_child(item)
 	items_left_for_spawning -= 1
 

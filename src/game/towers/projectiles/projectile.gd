@@ -1,8 +1,11 @@
 class_name Projectile extends CharacterBody2D
 
+signal sticker_requested(sticker_position: Vector2, icon: Texture)
+
 @export var speed: float
 @export var base_move_direction: Vector2 = Vector2.RIGHT
-@export var time_to_live_in_seconds: float = 40
+@export var min_time_to_live_in_seconds: float = 3
+@export var max_time_to_live_in_seconds: float = 10
 
 @onready var icon_node: Sprite2D = $"%Visuals"
 
@@ -20,12 +23,17 @@ func _ready():
 	base_move_direction = base_move_direction.normalized()
 	process_mode = PROCESS_MODE_DISABLED
 
+	for system in get_tree().get_nodes_in_group("system"):
+		if system is StickerSystem:
+			sticker_requested.connect(system.request_sticker_at_position)
+
 	timer = Timer.new()
 	timer.autostart = false
-	timer.wait_time = time_to_live_in_seconds
+	var time_to_live = randf_range(min_time_to_live_in_seconds, max_time_to_live_in_seconds)
+	timer.wait_time = time_to_live
 	timer.timeout.connect(_timeout)
 	add_child(timer)
-	_start_live_time_animation(time_to_live_in_seconds, icon_node)
+	_start_live_time_animation(time_to_live, icon_node)
 
 	timer.start()
 
