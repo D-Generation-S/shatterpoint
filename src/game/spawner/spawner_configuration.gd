@@ -2,6 +2,7 @@ class_name SpawnerConfiguration extends Resource
 
 @export var power_function: UnitPowerFunction
 @export var generator: SpawnerUnitGenerator
+@export var max_simultaneous_spawn: int = 1
 @export var possible_data: Array[EnemyData]
 
 var _balance: float = 1
