@@ -8,6 +8,7 @@ class_name Navigation extends NavigationAgent2D
 
 var position_counter: int = 0
 var last_position: Vector2 = Vector2.ZERO
+var main_nav_position: Vector2
 var last_nav_position: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

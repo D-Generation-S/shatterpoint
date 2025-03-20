@@ -10,7 +10,7 @@ signal finished()
 @export var path_template: PackedScene
 
 @export_group("Animation")
-@export var number_of_items: float
+@export var number_of_items: int
 @export var min_spawn_delay_in_seconds: float = 0.005
 @export var max_spawn_delay_in_seconds: float = 0.05
 @export var path_root_node: Node2D
@@ -19,24 +19,8 @@ signal finished()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	setup_timer()
-	timer.start()
-
-func setup_timer() -> void:	
-	timer.wait_time = randf_range(min_spawn_delay_in_seconds, max_spawn_delay_in_seconds)
-	timer.timeout.connect(timer_finished)
-
-func timer_finished() -> void:
-	if number_of_items <= 0:
-		return
-	
 	var path = create_new_path()
-	path_root_node.add_child(path)
-
-	number_of_items -= 1
-	
-	timer.wait_time = randf_range(min_spawn_delay_in_seconds, max_spawn_delay_in_seconds)
-	timer.start()
+	add_child(path)
 
 func _check_for_deletion():
 	if path_root_node.get_children().filter(func(child): return !child.is_queued_for_deletion).size() == 0:
@@ -46,6 +30,12 @@ func _check_for_deletion():
 func create_new_path() -> ResourcePath:
 	var template = path_template.instantiate() as ResourcePath
 	template.finished.connect(_check_for_deletion)
-	template.setup(travel_time, icon, start_point, end_point)
+	template.setup(travel_time, 
+				   icon, start_point,
+				   end_point,
+				   number_of_items,
+				   min_spawn_delay_in_seconds,
+				   max_spawn_delay_in_seconds
+				  )
 
 	return template

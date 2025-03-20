@@ -37,7 +37,6 @@ func _change_modulate(alpha: float):
 	modulate.a = alpha
 
 func _check_auto_hide():
-	print("auto hide")
 	if value < max_value:
 		visible = true
 		return
