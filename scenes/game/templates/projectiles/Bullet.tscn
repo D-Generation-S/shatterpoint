@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clc1q6pkrn00t"]
+[gd_scene load_steps=7 format=3 uid="uid://clc1q6pkrn00t"]
 
 [ext_resource type="Script" path="res://src/game/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="2_atst4"]
+[ext_resource type="Texture2D" uid="uid://c7ot44oopcbo4" path="res://assets/atlast_textures/bullet_hole.tres" id="2_m5uvm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xh6hf"]
 atlas = ExtResource("2_atst4")
@@ -21,8 +22,9 @@ collision_mask = 0
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ysxik")
+impact_texture = Array[Texture]([ExtResource("2_m5uvm")])
 speed = 170.0
-time_to_live_in_seconds = 3.0
+max_time_to_live_in_seconds = 4.0
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true

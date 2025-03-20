@@ -1,4 +1,4 @@
-extends Node
+class_name ItemPathSystem extends Node
 
 @export var scrap_resource_trave_node: Node2D
 @export var resource_path_template: PackedScene
