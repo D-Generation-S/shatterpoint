@@ -1,5 +1,6 @@
 class_name BulletProjectile extends Projectile
 
+
 @export var final_scale: float = 0.2
 @export var impact_texture: Array[Texture]
 
@@ -20,6 +21,7 @@ func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	return aim_point
 
 func _trigger_lifetime_end_effect(current_position, _effect_target_node):
+	super(current_position, _effect_target_node)
 	if impact_texture.size() == 0:
 		return
 

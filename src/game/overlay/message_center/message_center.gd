@@ -1,5 +1,7 @@
 class_name MessageCenter extends Node
 
+@export var message_sound: AudioStream
+@export var message_volume_change: float = 0
 @export var message_template: PackedScene
 @export var node_to_hide: Control
 @export var message_target: Control
@@ -31,6 +33,7 @@ func add_new_message(style: MessageStyle, message: String, time_to_show: float, 
 	message_node.add_to_group(message_group)
 	message_node.setup(style, message, time_to_show, message_icon)
 	_add_message(message_node)
+	GlobalSoundManager.play_sound(message_sound, message_volume_change)
 
 func _add_message(template: MessageTemplate):
 	template.message_vanished.connect(_handle_message_vanished)

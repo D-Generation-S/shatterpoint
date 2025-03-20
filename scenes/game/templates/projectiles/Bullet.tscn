@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://clc1q6pkrn00t"]
+[gd_scene load_steps=10 format=3 uid="uid://clc1q6pkrn00t"]
 
 [ext_resource type="Script" path="res://src/game/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="2_atst4"]
 [ext_resource type="Texture2D" uid="uid://c7ot44oopcbo4" path="res://assets/atlast_textures/bullet_hole.tres" id="2_m5uvm"]
+[ext_resource type="AudioStream" uid="uid://ccoxdxlsnykre" path="res://assets/audio/effects/bullet_fired.wav" id="3_0fa51"]
+[ext_resource type="AudioStream" uid="uid://d3djgvq3ny7uo" path="res://assets/audio/effects/bullet_hit.wav" id="4_4tgb5"]
+[ext_resource type="AudioStream" uid="uid://dosungd6b2te3" path="res://assets/audio/effects/bullet_decay.wav" id="5_7osc6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xh6hf"]
 atlas = ExtResource("2_atst4")
@@ -23,6 +26,9 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_ysxik")
 impact_texture = Array[Texture]([ExtResource("2_m5uvm")])
+fire_sound = ExtResource("3_0fa51")
+hit_sound = ExtResource("4_4tgb5")
+decay_sound = ExtResource("5_7osc6")
 speed = 170.0
 max_time_to_live_in_seconds = 4.0
 
