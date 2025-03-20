@@ -4,7 +4,7 @@ class_name CheckTileMapCollision extends BuildValidator
 
 func is_valid(tree: SceneTree,
 			  global_mouse_position: Vector2,
-			  _building_data: TowerData,
+			  _building_data: BuildingBase,
 			  _resource_data: ResourceData) -> BuildValidatorReturn:
 	var tile_maps = tree.get_nodes_in_group(tile_map_group) as Array[Node2D]
 	for tile_map in tile_maps:

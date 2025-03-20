@@ -1,5 +1,5 @@
 @tool
-extends Control
+class_name ResourceUiElement extends Control
 
 signal image_changed(new_texture: Texture)
 signal name_changed(new_name: String, new_description: String, icon: Texture)

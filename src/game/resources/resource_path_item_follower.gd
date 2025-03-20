@@ -10,6 +10,7 @@ var tween: Tween
 func _init(texture: Texture, travel_time: float):
 	visuals = Sprite2D.new()
 	visuals.texture = texture
+	rotates = false
 	
 	planned_trave_time = travel_time
 	pass
@@ -17,7 +18,6 @@ func _init(texture: Texture, travel_time: float):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(visuals)
-
 	tween = create_tween()
 	tween.tween_method(update_travel_distance, 0.0, 1.0, planned_trave_time)
 	tween.finished.connect(_destroy)

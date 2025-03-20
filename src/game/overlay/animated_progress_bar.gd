@@ -8,18 +8,9 @@ var real_value = 0
 var already_set: bool = false
 var tween: Tween = null
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func set_min_and_max_value(min: int, max: int):
-	min_value = min
-	max_value = max
+func set_min_and_max_value(new_min: int, new_max: int):
+	min_value = new_min
+	max_value = new_max
 
 func set_current_value(new_value: int):
 	var clamped = clampi(new_value, min_value, max_value)
@@ -37,3 +28,6 @@ func set_current_value(new_value: int):
 	
 func _animation_step(new_value: int):
 	value = new_value
+
+func set_max_value(new_max: float):
+	max_value = new_max

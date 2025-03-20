@@ -13,11 +13,17 @@ var selected: bool = false
 var initial_fire: bool = false
 var max_hp: float = 0
 
+var resource_overlay: ResourceOverlay
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_base_stats = tower_data.stats
 	max_hp = tower_data.stats.hp
 	super()
+
+	for overlay in get_tree().get_nodes_in_group("overlay"):
+		if overlay is ResourceOverlay:
+			resource_overlay = overlay
 	
 	_health_bar.max_value = max_hp
 	_health_bar.value = stats.hp
@@ -31,7 +37,7 @@ func _ready():
 	visual.texture = tower_data.texture
 	area_of_operation.set_radius(stats.attack_range)
 	if visual is ColorReplaceShader:
-		visual.set_color_replacement(tower_data.input_color, tower_data.ouput_color)
+		visual.set_color_replacement(tower_data.input_color, tower_data.output_color)
 
 func _process(_delta):
 	var possible_targets = area_of_operation.get_overlapping_bodies().filter(target_filter)
@@ -57,6 +63,9 @@ func start_attack_timer():
 	attack_timer.start(stats.fire_rate)
 
 func fire():
+	if resource_overlay.get_power() < tower_data.power_usage_per_shot:
+		return
+	resource_overlay.add_power(-tower_data.power_usage_per_shot)
 	var projectile = tower_data.projectile.instantiate() as Projectile
 	projectile.setup(self.global_position, current_target, stats.damage, 0, self)
 	add_child(projectile)

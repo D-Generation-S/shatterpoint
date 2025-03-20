@@ -2,6 +2,7 @@ class_name AnimatedHealthBar extends ProgressBar
 
 @export var animation_time = 0.3
 @export var auto_hide_if_full: bool = true
+@export var flash_if_low: bool = true
 @export var lower_flash_alpha: float = 0.5
 
 var tween: Tween
@@ -28,6 +29,8 @@ func update_value(new_value: float):
 	tween.finished.connect(_check_auto_hide)
 
 func _flashing():
+	if !flash_if_low:
+		return
 	flash_tween = create_tween()
 	flash_tween.tween_method(_change_modulate, modulate.a, lower_flash_alpha, 0.3)
 	flash_tween.tween_method(_change_modulate, lower_flash_alpha, 1, 0.3)
