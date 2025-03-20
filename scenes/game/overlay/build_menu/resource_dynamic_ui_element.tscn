@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dn2d63tre8bee"]
+
+[ext_resource type="Script" path="res://src/game/overlay/resource_dynamic_ui_element.gd" id="1_mnyf2"]
+[ext_resource type="Script" path="res://src/game/overlay/changeable_texture_rect.gd" id="2_xo8nf"]
+[ext_resource type="Script" path="res://src/game/overlay/animated_progress_bar.gd" id="3_k012w"]
+[ext_resource type="Theme" uid="uid://xkcu15qx7e2g" path="res://assets/styles/energy_bar.tres" id="3_kfuvb"]
+
+[node name="Energy" type="MarginContainer"]
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_mnyf2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "SCRAP"
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("2_xo8nf")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_kfuvb")
+fill_mode = 3
+show_percentage = false
+script = ExtResource("3_k012w")
+
+[connection signal="image_changed" from="." to="HBoxContainer/TextureRect" method="set_new_image"]
+[connection signal="max_value_has_changed" from="." to="HBoxContainer/ProgressBar" method="set_max_value"]
+[connection signal="name_changed" from="." to="HBoxContainer/TextureRect" method="name_changed"]
+[connection signal="value_changed" from="." to="HBoxContainer/ProgressBar" method="set_current_value"]

@@ -25,6 +25,7 @@ var current_wave: int = 1
 
 
 func _ready():
+	GlobalTickSystem.enable()
 	dead_unit_timer = Timer.new()
 	dead_unit_timer.autostart = false
 	dead_unit_timer.one_shot = true

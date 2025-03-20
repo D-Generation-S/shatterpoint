@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://3wauxg2sw8r3"]
+[gd_scene load_steps=40 format=3 uid="uid://3wauxg2sw8r3"]
 
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu.gd" id="1_1d5ep"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_pqfs5"]
@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="3_sn81m"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="4_1kyfe"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="4_okk5k"]
-[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/towers/base_tower.tres" id="4_pkj5e"]
+[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="4_pkj5e"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/destroy_building.gd" id="5_f5t10"]
 [ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="5_i4ii2"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="5_iqmfa"]
-[ext_resource type="PackedScene" uid="uid://d2ccdfwya86u4" path="res://scenes/game/templates/tower/TowerTemplate.tscn" id="5_mwrl7"]
+[ext_resource type="PackedScene" uid="uid://d2ccdfwya86u4" path="res://scenes/game/templates/buildings/tower/tower_template.tscn" id="5_mwrl7"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="6_ajb40"]
 [ext_resource type="Texture2D" uid="uid://bol2qkole2koo" path="res://assets/atlast_textures/hammer.tres" id="6_kkt7x"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="6_ritxv"]
@@ -19,6 +19,10 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="7_lq41d"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="9_jv6oy"]
 [ext_resource type="Texture2D" uid="uid://c2avbyuivc0ce" path="res://assets/atlast_textures/gray_tower.tres" id="10_d6xds"]
+[ext_resource type="Texture2D" uid="uid://dlxo0pmajycsy" path="res://assets/atlast_textures/orange_tower.tres" id="13_neeqi"]
+[ext_resource type="Texture2D" uid="uid://jj3f2gvtvqrn" path="res://assets/atlast_textures/basic_power_generator.tres" id="14_7pvp4"]
+[ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="14_wmcmq"]
+[ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="15_uylfp"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/texture_button_modulate.gd" id="18_h6d7i"]
 
 [sub_resource type="Resource" id="Resource_fruxs"]
@@ -50,13 +54,34 @@ building_data = ExtResource("4_pkj5e")
 script = ExtResource("3_sn81m")
 building_data = SubResource("Resource_fdhli")
 name = "BASIC_TOWER"
-icon = ExtResource("10_d6xds")
+icon = ExtResource("13_neeqi")
 
 [sub_resource type="Resource" id="Resource_cpqmy"]
 script = ExtResource("2_pqfs5")
 name = "TOWERS"
 icon = ExtResource("10_d6xds")
 entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_wrl4v")])
+
+[sub_resource type="Resource" id="Resource_320j0"]
+script = ExtResource("4_okk5k")
+building_placed_sound = ExtResource("5_iqmfa")
+building_template = ExtResource("15_uylfp")
+building_group = "building"
+validators = Array[ExtResource("6_ajb40")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
+use_build_entry_icon_as_ghost = true
+building_data = ExtResource("14_wmcmq")
+
+[sub_resource type="Resource" id="Resource_jnwla"]
+script = ExtResource("3_sn81m")
+building_data = SubResource("Resource_320j0")
+name = "BASIC_POWER_GENERATOR"
+icon = ExtResource("14_7pvp4")
+
+[sub_resource type="Resource" id="Resource_25oly"]
+script = ExtResource("2_pqfs5")
+name = "POWER_INFRASTRUCTURE"
+icon = ExtResource("14_7pvp4")
+entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_jnwla")])
 
 [sub_resource type="Resource" id="Resource_g7khr"]
 script = ExtResource("7_lq41d")
@@ -86,7 +111,7 @@ entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_nuq1m")])
 
 [node name="BuildMenu" type="CanvasLayer"]
 script = ExtResource("1_1d5ep")
-_menu_data = Array[ExtResource("2_pqfs5")]([SubResource("Resource_cpqmy"), SubResource("Resource_gph8e")])
+_menu_data = Array[ExtResource("2_pqfs5")]([SubResource("Resource_cpqmy"), SubResource("Resource_25oly"), SubResource("Resource_gph8e")])
 build_group_template = ExtResource("3_kjgpy")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

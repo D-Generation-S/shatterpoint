@@ -51,7 +51,7 @@ func deal_damage(damage: float):
 		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
 		is_alive = false
 		died.emit(amount)
-		request_scrap_path.emit(AutoDeleteNode.new(10, global_position, true), amount)
+		request_scrap_path.emit(AutoDeleteNode.new(10, global_position), amount)
 
 		queue_free()
 

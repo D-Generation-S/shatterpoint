@@ -26,5 +26,5 @@ func destroy():
 	queue_free()
 
 func _draw():
-	if !is_debug:
+	if is_debug:
 		draw_circle(global_position, 20, Color.DARK_RED, true)

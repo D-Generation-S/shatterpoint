@@ -4,7 +4,7 @@ class_name BuildModeTool extends Resource
 @export var use_build_entry_icon_as_ghost: bool = true
 @export var ghost_icon: Texture = null
 # This value can be null, this is only required of this should really build something
-@export var building_data: TowerData = null
+@export var building_data: BuildingBase = null
 
 
 func can_be_used(tree: SceneTree, global_position: Vector2, _resource_data: ResourceData) -> BuildValidatorReturn:

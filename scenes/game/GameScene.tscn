@@ -1,7 +1,8 @@
-[gd_scene load_steps=55 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=56 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
+[ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="3_7fdg0"]
 [ext_resource type="Resource" uid="uid://bgpl4p85ey5s4" path="res://src/game/overlay/message_center/resources/PositiveMessage.tres" id="3_k65at"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="4_q7jgq"]
 [ext_resource type="Script" path="res://src/game/resources/resource_data.gd" id="5_udn8i"]
@@ -36,7 +37,7 @@
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
-_start_scrap = 30
+_start_scrap = 35
 _max_scrap = 9999
 _max_city_hp = 1000
 
@@ -157,17 +158,19 @@ size = Vector2(490, 520)
 
 [node name="Overlay" type="Node" parent="."]
 
-[node name="ResourceOverlay" parent="Overlay" node_paths=PackedStringArray("scrap_animation_node") instance=ExtResource("1_52r8n")]
+[node name="ResourceOverlay" parent="Overlay" node_paths=PackedStringArray("scrap_animation_node", "power_animation_node") groups=["overlay"] instance=ExtResource("1_52r8n")]
 scrap_icon = ExtResource("2_g3tpg")
+energy_icon = ExtResource("3_7fdg0")
 resource_got_message_type = ExtResource("3_k65at")
 resource_lost_message_type = ExtResource("4_q7jgq")
 scrap_animation_node = NodePath("../../Camera/Camera2D/ScrapResource")
+power_animation_node = NodePath("../../Camera/Camera2D/EnergyResource")
 _resource_data = SubResource("Resource_ywp2m")
 
-[node name="MessageArea" parent="Overlay" instance=ExtResource("6_iw2jt")]
+[node name="MessageArea" parent="Overlay" groups=["overlay"] instance=ExtResource("6_iw2jt")]
 default_message_style = ExtResource("7_h7fcw")
 
-[node name="BuildMenu" parent="Overlay" instance=ExtResource("8_arm70")]
+[node name="BuildMenu" parent="Overlay" groups=["overlay"] instance=ExtResource("8_arm70")]
 
 [node name="Camera" type="Node" parent="."]
 
@@ -190,7 +193,11 @@ home_move_time = 0.3
 
 [node name="ScrapResource" type="Node2D" parent="Camera/Camera2D"]
 script = ExtResource("12_j2gqh")
-screen_coordinates = Vector2(960, 20)
+screen_coordinates = Vector2(915, 20)
+
+[node name="EnergyResource" type="Node2D" parent="Camera/Camera2D"]
+script = ExtResource("12_j2gqh")
+screen_coordinates = Vector2(995, 20)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Camera/Camera2D" groups=["audio_listener"]]
 current = true

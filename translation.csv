@@ -22,3 +22,16 @@ TOOLS;Tools;Werkzeuge
 BULLDOZER;Bulldozer;Planierraupe
 TOOLS_DESCRIPTION;This group does contain tools to manipulate structures you already did build.;Diese Gruppe beinhaltet Werkzete welche es dir erlauben bereits gebaute Strukturen zu manipulieren.
 BULLDOZER_DESCRIPTION;A bulldozer use it if there is a building at a position you do not want it anymore. You will get back half the resources by doing that.;Eine Planierraupe nutze Sie um Gebäude zu entfernen die du hier nicht mehr möchtest. Der Abriss wird dir die hälfte der resourcen zurückgeben.
+POWER_INFRASTRUCTURE;Power Infastructure;Strom Infastruktur
+POWER_INFRASTRUCTURE_DESCRIPTION;"Contains building to keep your infastructure running.
+
+Those are building like, for example generators";"Beinhaltet Gebäude welche deine Infastruktur am laufen hält.
+
+Dies können Dinge sein wie z.B. ein Generator."
+ENERGY_DESCRIPTION;"Energy is produced by generators and stored in a global storage.
+
+It is getting used for every tower if he want's to fire on an enemy. If you run out of energy no tower will be able to fire.";"Die Energie wird durch Generatoren erzeugt und in einem globalen Speicher gespeichert.
+
+Sie wird von jedem Turm genutzt, sobald er auf einen Feind schießen will. Wenn du keine Energie mehr hast, kann kein Turm mehr schießen."
+BASIC_POWER_GENERATOR;Basic Power Generator;Basis Energy Generator
+BASIC_POWER_GENERATOR_DESCRIPTION;The basic power generator, one of them should be enough to keep your first set of turrets running, do not forget to build more as needed.;Der Basis-Energiegenerator, einer davon sollte ausreichen, um die ersten Geschütztürme in Betrieb zu halten, vergessen Sie nicht, bei Bedarf weitere zu bauen.
