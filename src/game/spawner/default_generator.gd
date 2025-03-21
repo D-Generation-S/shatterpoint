@@ -10,7 +10,7 @@ func _init(seed: int = -1):
 	randomizer.seed = seed
 
 
-func generate_units_for_wave(target_power: float, possible_units: Array[EnemyData]) -> SpawnInformation:
+func generate_units_for_wave(target_power: float, possible_units: Array[UnitData]) -> SpawnInformation:
 	var current_power: float = 0
 	var spawn_speed: float = randomizer.randf_range(0.5, interval_factor_calculator)
 	var spawn_speed_multiplier: float = interval_factor_calculator / spawn_speed

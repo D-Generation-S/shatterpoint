@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=13 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -17,6 +17,9 @@ shader_parameter/base_colors = PackedColorArray()
 shader_parameter/target_colors = PackedColorArray()
 shader_parameter/set_colors = null
 shader_parameter/threshold = 0.001
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p24bp"]
+radius = 8.0
 
 [node name="TowerTemplate" type="Node2D" groups=["building", "tower"]]
 script = ExtResource("1_maaal")
@@ -59,6 +62,13 @@ script = ExtResource("3_njweq")
 
 [node name="SingleSelectionComponent" parent="Components" instance=ExtResource("5_fim6w")]
 
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_p24bp")
+
 [connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
@@ -69,5 +79,6 @@ script = ExtResource("3_njweq")
 [connection signal="request_fire" from="Components/TowerComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
 [connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]

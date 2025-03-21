@@ -1,8 +1,22 @@
-[gd_resource type="Resource" script_class="EnemyData" load_steps=6 format=3 uid="uid://sm3tdm00ffby"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=14 format=3 uid="uid://sm3tdm00ffby"]
 
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_n7mi2"]
 [ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="1_ommp4"]
 [ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="2_ai50h"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_e6esc"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="3_bxrr0"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="3_eykw4"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="4_8htqb"]
+[ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="5_eno2b"]
+
+[sub_resource type="Resource" id="Resource_8asu1"]
+script = ExtResource("2_e6esc")
+
+[sub_resource type="Resource" id="Resource_tir2h"]
+script = ExtResource("3_bxrr0")
+
+[sub_resource type="Resource" id="Resource_svf3s"]
+script = ExtResource("4_8htqb")
 
 [sub_resource type="Resource" id="Resource_w13ft"]
 script = ExtResource("2_ai50h")
@@ -10,7 +24,7 @@ hp = 3.0
 armor = 0.0
 fire_rate = 2.0
 damage = 1.0
-attack_range = 100.0
+attack_range = 75.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs5u0"]
 atlas = ExtResource("3_eykw4")
@@ -23,5 +37,8 @@ input_color = Array[Color]([])
 ouput_color = Array[Color]([])
 min_scrap_drop = 0
 max_scrap_drop = 2
+allowed_thread_determination = Array[ExtResource("1_n7mi2")]([SubResource("Resource_8asu1"), SubResource("Resource_tir2h"), SubResource("Resource_svf3s")])
+attackable_groups = Array[String](["tower", "generator"])
+projectile = ExtResource("5_eno2b")
 min_wave_requirement = 1
 stats = SubResource("Resource_w13ft")

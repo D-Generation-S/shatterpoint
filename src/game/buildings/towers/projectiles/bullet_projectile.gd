@@ -17,7 +17,10 @@ func _start_live_time_animation(time_to_live: float, visuals: Sprite2D):
 func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	var distance = target.global_position.distance_to(global_position)
 	var time_for_hit = distance / speed
-	var aim_point = target.global_position + target.get_velocity() * time_for_hit
+	var target_velocity = Vector2.ZERO
+	if target is Enemy:
+		target_velocity = target.get_velocity()
+	var aim_point = target.global_position + target_velocity * time_for_hit
 	return aim_point
 
 func _trigger_lifetime_end_effect(current_position, _effect_target_node):
@@ -26,4 +29,3 @@ func _trigger_lifetime_end_effect(current_position, _effect_target_node):
 		return
 
 	sticker_requested.emit(current_position, impact_texture.pick_random())
-	

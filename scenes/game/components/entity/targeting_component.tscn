@@ -11,12 +11,13 @@ area_of_operation = NodePath("AreaOfOperation")
 
 [node name="AreaOfOperation" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("2_oqu4o")
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="AreaOfOperation"]
 shape = SubResource("CircleShape2D_274qs")
 
 [connection signal="attack_radius_changed" from="." to="AreaOfOperation" method="set_radius"]
+[connection signal="change_body_or_shape_entered" from="." to="AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="draw_attack_radius_changed" from="." to="AreaOfOperation" method="draw_attack_area"]
 [connection signal="something_entered" from="AreaOfOperation" to="." method="enable"]
