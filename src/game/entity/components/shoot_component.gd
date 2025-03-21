@@ -1,7 +1,5 @@
 class_name ShootComponent extends EntityComponent
 
-@export var isDebug: bool = false
-
 var projectile_scene: PackedScene
 
 func fire(current_target: Node2D, damage: float, penetration: float):

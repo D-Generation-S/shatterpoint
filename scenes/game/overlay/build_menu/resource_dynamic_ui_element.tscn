@@ -11,6 +11,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_mnyf2")
+initial_value = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

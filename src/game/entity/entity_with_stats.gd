@@ -50,11 +50,13 @@ func deal_damage(damage: float):
 	#_health_bar.update_value(stats.hp)
 	if stats.hp <= 0:
 		_is_dying()
-		is_alive = false
-		queue_free()
 
 func _is_dying():
-	pass
+	is_alive = false
+	queue_free()
+
+func destroy():
+	_is_dying()
 
 func _calculate_modifier_stats():
 	_copy_stats()

@@ -47,11 +47,13 @@ func fire():
 		resource_overlay.add_power(-tower_data.power_usage_per_shot)
 	request_fire.emit(current_target, tower_data.stats.damage, 0)
 
-func is_active():
+func enable():
+	super()
 	initial_fire = true
 	process_mode = PROCESS_MODE_INHERIT
 
-func disabled():
+func disable():
+	super()
 	initial_fire = false
 	attack_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
@@ -73,3 +75,9 @@ func set_is_debug(on: bool):
 
 func set_current_target(entity: EntityWithStats):
 	current_target = entity
+
+func tower_active_changed(on: bool):
+	if on:
+		enable()
+	else:
+		disable()

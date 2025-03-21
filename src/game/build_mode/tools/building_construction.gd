@@ -13,9 +13,6 @@ func execute(global_position: Vector2, _target_building: Node2D, target_node: No
 	if template is Building:
 		template.building_data = building_data
 		scrap_usage = -building_data.scrap_required
-	if template is Generator:
-		template.generator_data = building_data
-		scrap_usage = -building_data.scrap_required
 
 	target_node.add_child(template)
 	GlobalSoundManager.play_sound_at_position(global_position, building_placed_sound, 2000, randf_range(0.9, 1.1))

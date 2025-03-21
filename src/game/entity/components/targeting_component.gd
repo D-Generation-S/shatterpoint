@@ -3,6 +3,7 @@ class_name TargetingComponent extends EntityComponent
 signal new_target_found(entity: EntityWithStats)
 signal attack_radius_changed(new_value: float)
 signal draw_attack_radius_changed(on: bool)
+signal active_state_changed(on: bool)
 
 @export var main_entity: EntityWithStats
 @export var area_of_operation: Area2D
@@ -54,3 +55,11 @@ func draw_attack_radius(on: bool):
 
 func set_radius(radius: float):
 	attack_radius_changed.emit(radius)
+
+func enable():
+	super()
+	active_state_changed.emit(true)
+
+func disable():
+	super()
+	active_state_changed.emit(false)

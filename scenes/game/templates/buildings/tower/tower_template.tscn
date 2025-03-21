@@ -21,7 +21,6 @@ shader_parameter/threshold = 0.001
 [node name="TowerTemplate" type="Node2D"]
 script = ExtResource("1_maaal")
 building_data = ExtResource("2_iggqc")
-isDebug = true
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -69,5 +68,6 @@ script = ExtResource("3_njweq")
 [connection signal="projectile_changed" from="Components/TowerComponent" to="Components/ShootComponent" method="set_projectile"]
 [connection signal="request_fire" from="Components/TowerComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
 [connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]

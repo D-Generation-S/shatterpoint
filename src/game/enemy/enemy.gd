@@ -47,6 +47,7 @@ func _is_dying():
 	var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
 	died.emit(amount)
 	request_scrap_path.emit(AutoDeleteNode.new(10, global_position), amount)
+	super()
 
 func activate():
 	process_mode = PROCESS_MODE_INHERIT

@@ -44,3 +44,4 @@ show_percentage = false
 script = ExtResource("5_pm5b4")
 
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]

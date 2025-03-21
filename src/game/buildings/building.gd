@@ -24,4 +24,4 @@ func _ready():
 		visual.set_color_replacement(building_data.input_color, building_data.output_color)
 
 func _is_dying():
-	pass
+	super()
