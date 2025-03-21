@@ -1,7 +1,7 @@
 extends Area2D
 
 signal interaction_requested()
-signal interaction_cancelt()
+signal interaction_canceled()
 
 @onready var interaction_shape: CollisionShape2D = $InteractionShape
 
@@ -15,7 +15,7 @@ func _process(_delta):
 		if mouse_inside:
 			interaction_requested.emit()
 		else:
-			interaction_cancelt.emit()
+			interaction_canceled.emit()
 
 func interaction_enabled():
 	process_mode = PROCESS_MODE_PAUSABLE
@@ -28,3 +28,8 @@ func _mouse_enter():
 
 func _mouse_exit():
 	mouse_inside = false
+
+func change_radius(radius: float):
+	var shape = interaction_shape.shape
+	if shape is CircleShape2D:
+		shape.radius = radius

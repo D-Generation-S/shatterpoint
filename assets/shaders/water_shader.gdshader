@@ -38,11 +38,11 @@ void fragment() {
 		vec4 noise_1 = texture(wave_noise_1, world_position * scale + movement_1);
 		vec2 movement_2 = move_direction_2 * TIME * movement_speed;
 		vec4 noise_2 = texture(wave_noise_2, world_position * scale + movement_2);
-		
+
 		vec2 celluar_movement = caustic_movement_direction * TIME * caustic_movement_speed;
 		vec4 celluar = texture(caustic_data, world_position * caustic_scale + celluar_movement);
 		celluar *= caustic_color;
-		
+
 		noise_1 = step(wave_threshold, noise_1);
 		noise_2 = step(wave_threshold, noise_2);
 		vec4 wave_top = noise_1 + noise_2;

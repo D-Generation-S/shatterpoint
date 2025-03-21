@@ -3,7 +3,7 @@ class_name LowestHp extends ThreatDetermination
 func get_display_name() -> String:
 	return tr("LOWEST_HP")
 
-func get_threat(_tower: Tower, enemies: Array[Enemy]) -> Enemy:
+func get_threat(_tower: Node2D, enemies: Array[EntityWithStats]) -> EntityWithStats:
 	var current_hp: float = 10000000
 	var return_enemy: Enemy = null
 	for enemy in enemies:

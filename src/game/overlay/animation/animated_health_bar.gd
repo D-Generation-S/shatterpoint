@@ -11,6 +11,10 @@ var real_value: float
 
 func _ready():
 	process_mode = PROCESS_MODE_PAUSABLE
+	visible = false
+
+func set_max_health(new_max_health: float):
+	max_value = new_max_health
 
 func update_value(new_value: float):
 	if new_value < max_value:

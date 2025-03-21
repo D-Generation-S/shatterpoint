@@ -16,7 +16,6 @@ signal reached_town(hp: int)
 @onready var _navigation_agent: Navigation = $"%Navigation"
 @onready var _health_bar: AnimatedHealthBar = $"%HealthBar"
 
-var is_alive: bool = true
 
 func _ready():
 	_base_stats = enemy_data.stats.duplicate()
@@ -38,22 +37,16 @@ func _ready():
 
 func set_target():
 	var targets = get_tree().get_nodes_in_group(target_group) as Array[Node2D]
+	if targets.size() == 0:
+		printerr("No targets can be found!")
+		return
 	var index = randi_range(0, targets.size() - 1)
 	_navigation_agent.set_move_command(targets[index].global_position)
 	
-
-func deal_damage(damage: float):
-	if not is_alive:
-		return
-	stats.hp -= damage
-	_health_bar.update_value(stats.hp)
-	if stats.hp <= 0:
-		var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
-		is_alive = false
-		died.emit(amount)
-		request_scrap_path.emit(AutoDeleteNode.new(10, global_position), amount)
-
-		queue_free()
+func _is_dying():
+	var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
+	died.emit(amount)
+	request_scrap_path.emit(AutoDeleteNode.new(10, global_position), amount)
 
 func activate():
 	process_mode = PROCESS_MODE_INHERIT

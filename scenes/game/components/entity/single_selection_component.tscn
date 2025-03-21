@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://k5yf0vythp0r"]
+
+[ext_resource type="Script" path="res://src/game/entity/components/selection_component.gd" id="1_7dg8i"]
+[ext_resource type="Script" path="res://src/game/interaction/clickable_area.gd" id="2_dtkd5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o62an"]
+radius = 8.0
+
+[node name="SingleSelectionComponent" type="Node2D"]
+script = ExtResource("1_7dg8i")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("2_dtkd5")
+
+[node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_o62an")
+
+[connection signal="interaction_canceled" from="InteractionArea" to="." method="interaction_canceled"]
+[connection signal="interaction_requested" from="InteractionArea" to="." method="interacting"]

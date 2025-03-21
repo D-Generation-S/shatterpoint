@@ -8,12 +8,9 @@ class_name Generator extends EntityWithStats
 var resource_overlay: ResourceOverlay
 var path_system: ItemPathSystem
 
-var max_hp: float = 0
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_base_stats = generator_data.stats
-	max_hp = generator_data.stats.hp
 	super()
 
 	for system in get_tree().get_nodes_in_group("system"):
