@@ -18,7 +18,7 @@ shader_parameter/target_colors = PackedColorArray()
 shader_parameter/set_colors = null
 shader_parameter/threshold = 0.001
 
-[node name="TowerTemplate" type="Node2D"]
+[node name="TowerTemplate" type="Node2D" groups=["building", "tower"]]
 script = ExtResource("1_maaal")
 building_data = ExtResource("2_iggqc")
 

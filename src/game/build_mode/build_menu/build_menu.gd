@@ -18,7 +18,7 @@ var build_mode: bool = false
 func _ready():
 	for group in _menu_data:
 		_add_build_group(group)
-	is_enabled()
+	is_disabled()
 	group_node.visible = false
 	exit_timer.timeout.connect(communicate_hover_exit)
 

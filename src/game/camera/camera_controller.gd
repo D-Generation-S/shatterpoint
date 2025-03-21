@@ -18,15 +18,20 @@ var last_navigation_point: Vector2 = Vector2.ZERO
 func _ready():
 	_home_position = get_tree().get_first_node_in_group(home_node_group) as CameraPosition
 	_wave_position = get_tree().get_first_node_in_group(wave_node_group) as CameraPosition
+	
 	global_position = _home_position.global_position
+	zoom = Vector2(_home_position.target_zoom, _home_position.target_zoom)
+	_zoom_level = _home_position.target_zoom
+
+	await get_tree().physics_frame
 	setup_edge_ares()
 	initial_setting_setup()
+	
 
 
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing
 	position_smoothing_speed = settings.position_smoothing_speed
-	zoom = Vector2(_zoom_level, _zoom_level)
 
 func setup_edge_ares():
 	for edge in get_tree().get_nodes_in_group("scroll_edge"):

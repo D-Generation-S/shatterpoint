@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_qpi2g"]
 [ext_resource type="Script" path="res://src/game/entity/components/generator_component.gd" id="4_d4hvb"]
 
-[node name="GeneratorTemplate" type="Node2D"]
+[node name="GeneratorTemplate" type="Node2D" groups=["building", "generator"]]
 script = ExtResource("1_t6acd")
 
 [node name="Visuals" type="Sprite2D" parent="."]

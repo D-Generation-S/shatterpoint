@@ -35,3 +35,5 @@ It is getting used for every tower if he want's to fire on an enemy. If you run 
 Sie wird von jedem Turm genutzt, sobald er auf einen Feind schießen will. Wenn du keine Energie mehr hast, kann kein Turm mehr schießen."
 BASIC_POWER_GENERATOR;Basic Power Generator;Basis Energy Generator
 BASIC_POWER_GENERATOR_DESCRIPTION;The basic power generator, one of them should be enough to keep your first set of turrets running, do not forget to build more as needed.;Der Basis-Energiegenerator, einer davon sollte ausreichen, um die ersten Geschütztürme in Betrieb zu halten, vergessen Sie nicht, bei Bedarf weitere zu bauen.
+BUILD_GENERATOR_TO_START;Build a generator to start the game;Baue einen Generator um das Spiel zu starten
+CANT_ABORT_BUILDING_RIGHT_NOW;Can't abort building right now, please place it first;Kann das bauen momentan nicht abbrechen, bitte platziere das Gebäude zuerst.

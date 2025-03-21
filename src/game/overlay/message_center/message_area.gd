@@ -25,3 +25,7 @@ func add_new_message(target: int, style: MessageStyle, message: String, time_to_
 
 	message_target.add_new_message(style, message, time_to_show, message_icon)
 
+func clear_message_area(position: int):
+	var message_target: MessageCenter = message_centers.filter(func(center: MessageCenter): return center.get_position() == position).pop_front()
+	if message_target != null:
+		message_target.clear_all_messages()
