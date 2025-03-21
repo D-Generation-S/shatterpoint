@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=73 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -34,6 +34,18 @@
 [ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="31_uypbf"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/resource_travel_animation.gd" id="32_sqino"]
 [ext_resource type="Script" path="res://src/game/sticker_system/sticker_system.gd" id="33_eksmu"]
+[ext_resource type="Script" path="res://src/game/tutorial/game_start_system.gd" id="35_vubuj"]
+[ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="36_ryx4r"]
+[ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
+[ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="39_4s4a4"]
+[ext_resource type="Texture2D" uid="uid://jj3f2gvtvqrn" path="res://assets/atlast_textures/basic_power_generator.tres" id="39_hspbf"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="40_pmcoi"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="41_3ian8"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="42_heux3"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="43_0gjul"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="44_53maf"]
+[ext_resource type="Script" path="res://src/game/restart_game_system.gd" id="46_vydfs"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -153,6 +165,32 @@ size = Vector2(960, 329)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egqb7"]
 size = Vector2(490, 520)
+
+[sub_resource type="Resource" id="Resource_fruxs"]
+script = ExtResource("41_3ian8")
+
+[sub_resource type="Resource" id="Resource_g4gv6"]
+script = ExtResource("42_heux3")
+build_area_group = "build_area"
+
+[sub_resource type="Resource" id="Resource_2momy"]
+script = ExtResource("43_0gjul")
+building_group = "building"
+reverse = false
+
+[sub_resource type="Resource" id="Resource_jeql6"]
+script = ExtResource("44_53maf")
+tile_map_group = "obstracles"
+
+[sub_resource type="Resource" id="Resource_b1nur"]
+script = ExtResource("39_4s4a4")
+building_placed_sound = ExtResource("37_uvsn1")
+building_template = ExtResource("38_3y0yw")
+building_group = "building"
+validators = Array[ExtResource("40_pmcoi")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
+use_build_entry_icon_as_ghost = false
+ghost_icon = ExtResource("39_hspbf")
+building_data = ExtResource("36_ryx4r")
 
 [node name="GameScene" type="Node2D"]
 
@@ -321,6 +359,7 @@ enemy_root_node = NodePath("../../Enemies")
 script = ExtResource("25_ghlpk")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
 building_target_node = NodePath("../WaveMode/Buildings")
+building_group = null
 scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
 resource_path_template = ExtResource("26_yjpy8")
 default_message_style = ExtResource("7_h7fcw")
@@ -387,6 +426,13 @@ root_sticker_node = NodePath("../../WaveMode/NavigationRegion2D/StickerPosition"
 min_time_to_life = 30.0
 max_time_to_life = 200.0
 
+[node name="GameStartSystem" type="Node" parent="Systems"]
+script = ExtResource("35_vubuj")
+build_mode = SubResource("Resource_b1nur")
+
+[node name="RestartGameSystem" type="Node" parent="Systems"]
+script = ExtResource("46_vydfs")
+
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_tool_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_tool"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
@@ -395,7 +441,7 @@ max_time_to_life = 200.0
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner1" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner2" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/Path2D/TopSpawner" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
-[connection signal="build_mode_is_over" from="BuildMode" to="Systems/GameStateManager" method="build_phase_endet"]
+[connection signal="building_was_placed" from="BuildMode" to="Systems/GameStartSystem" method="_start_game_now"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
@@ -408,3 +454,9 @@ max_time_to_life = 200.0
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="Camera/Camera2D" method="move_to_wave"]
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="BuildMode" method="disable"]
+[connection signal="add_new_message" from="Systems/GameStartSystem" to="Overlay/MessageArea" method="add_simple_message"]
+[connection signal="change_can_abort_building" from="Systems/GameStartSystem" to="BuildMode" method="allow_build_abort"]
+[connection signal="clear_message_area" from="Systems/GameStartSystem" to="Overlay/MessageArea" method="clear_message_area"]
+[connection signal="enable_build_mode" from="Systems/GameStartSystem" to="BuildMode" method="enable"]
+[connection signal="set_build_tool" from="Systems/GameStartSystem" to="BuildMode" method="set_current_tool"]
+[connection signal="start_game" from="Systems/GameStartSystem" to="Systems/GameStateManager" method="start_game"]

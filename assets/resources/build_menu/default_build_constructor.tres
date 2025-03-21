@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="BuildingConstruction" load_steps=12 format=3 uid="uid://dhggo6w5by6mp"]
+
+[ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="2_pmmam"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="4_ke2qk"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="5_w14ua"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="6_npsis"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="7_ct1x7"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="8_n0ce3"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="9_mxd6v"]
+
+[sub_resource type="Resource" id="Resource_fruxs"]
+script = ExtResource("6_npsis")
+
+[sub_resource type="Resource" id="Resource_g4gv6"]
+script = ExtResource("7_ct1x7")
+build_area_group = "build_area"
+
+[sub_resource type="Resource" id="Resource_2momy"]
+script = ExtResource("8_n0ce3")
+building_group = "building"
+reverse = false
+
+[sub_resource type="Resource" id="Resource_jeql6"]
+script = ExtResource("9_mxd6v")
+tile_map_group = "obstracles"
+
+[resource]
+script = ExtResource("4_ke2qk")
+building_placed_sound = ExtResource("2_pmmam")
+building_group = "building"
+validators = Array[ExtResource("5_w14ua")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
+use_build_entry_icon_as_ghost = true
