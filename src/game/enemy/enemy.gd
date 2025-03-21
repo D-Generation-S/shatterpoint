@@ -1,12 +1,14 @@
 class_name Enemy extends EntityWithStats
 
+signal entity_data_changed(entity_data: UnitData)
+
 signal died(scrap_drop: int)
 signal request_scrap_path(start_node: Node2D, amount: int, Resource)
 signal reached_town(hp: int)
 
 @export var is_debug: bool = false
 @export var start_ready: bool = false
-@export var enemy_data: EnemyData 
+@export var enemy_data: UnitData 
 @export var movement_speed: float = 40
 @export var collision_radius: int = 8
 @export_enum("ground_target") var target_group: String = "ground_target"
@@ -20,6 +22,7 @@ signal reached_town(hp: int)
 func _ready():
 	_base_stats = enemy_data.stats.duplicate()
 	super()
+	entity_data_changed.emit(enemy_data)
 	_health_bar.min_value = 0
 	_health_bar.max_value = stats.hp
 	_health_bar.value = stats.hp

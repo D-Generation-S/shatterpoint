@@ -58,6 +58,9 @@ func _is_dying():
 func destroy():
 	_is_dying()
 
+func get_hp():
+	return stats.hp
+
 func _calculate_modifier_stats():
 	_copy_stats()
 	stat_modifiers.sort_custom(func(a,b): return a.priority < b.priority)

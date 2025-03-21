@@ -1,4 +1,4 @@
-class_name EnemyData extends Resource
+class_name UnitData extends Resource
 
 @export_group("Visual")
 @export var texture: Texture2D
@@ -8,6 +8,11 @@ class_name EnemyData extends Resource
 @export_group("Drops")
 @export var min_scrap_drop: int = 0
 @export var max_scrap_drop: int = 1
+
+@export_group("Targeting")
+@export var allowed_thread_determination: Array[ThreatDetermination]
+@export var attackable_groups: Array[String]
+@export var projectile: PackedScene
 
 @export_group("Difficulty")
 @export var min_wave_requirement: int = 1

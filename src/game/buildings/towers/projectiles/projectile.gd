@@ -1,6 +1,8 @@
 class_name Projectile extends CharacterBody2D
 
 signal sticker_requested(sticker_position: Vector2, icon: Texture)
+signal update_collision_mask(new_mask: int)
+signal update_layer_mask(new_mask: int)
 
 @export_group("Audio")
 @export var fire_sound: AudioStream
@@ -84,7 +86,21 @@ func _on_collision_entered(body: Node2D):
 
 	queue_free()
 
+func _on_area_entered(area: Area2D):
+	var parent = area.get_parent()
+	if parent is EntityWithStats:
+		parent.deal_damage(carried_damage)
+		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
+	queue_free()
+
 
 func _timeout():
 	_trigger_lifetime_end_effect(global_position, visual_effect_container)
 	queue_free()
+
+	
+func set_custom_collision_mask(new_mask: int):
+	update_collision_mask.emit(new_mask)
+
+func set_custom_layer_mask(new_mask: int):
+	update_layer_mask.emit(new_mask)

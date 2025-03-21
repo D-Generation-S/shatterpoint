@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://mwkus00fsoud"]
+[gd_scene load_steps=6 format=3 uid="uid://mwkus00fsoud"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_t6acd"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_50n60"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_qpi2g"]
 [ext_resource type="Script" path="res://src/game/entity/components/generator_component.gd" id="4_d4hvb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_if2x2"]
 
 [node name="GeneratorTemplate" type="Node2D" groups=["building", "generator"]]
 script = ExtResource("1_t6acd")
@@ -29,6 +31,13 @@ script = ExtResource("3_qpi2g")
 
 [node name="GeneratorComponent" type="Node2D" parent="Components"]
 script = ExtResource("4_d4hvb")
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_if2x2")
 
 [connection signal="building_data_changed" from="." to="Components/GeneratorComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
