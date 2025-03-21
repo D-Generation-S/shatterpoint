@@ -8,3 +8,5 @@ class_name EntityStats extends Resource
 @export var fire_rate: float = 2
 @export var damage: float = 1
 @export var attack_range: float = 100
+
+var max_hp: float = 1

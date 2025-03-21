@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://3wauxg2sw8r3"]
+[gd_scene load_steps=46 format=3 uid="uid://3wauxg2sw8r3"]
 
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu.gd" id="1_1d5ep"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_pqfs5"]
@@ -23,6 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://jj3f2gvtvqrn" path="res://assets/atlast_textures/basic_power_generator.tres" id="14_7pvp4"]
 [ext_resource type="Resource" uid="uid://bmwbegvcgt85c" path="res://assets/resources/build_menu/basic_generator_build_entry.tres" id="15_itboo"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/texture_button_modulate.gd" id="18_h6d7i"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/repair_building.gd" id="19_qfj8o"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/hp_is_not_full.gd" id="20_4dmgm"]
+[ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="20_sx5sp"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/enough_scrap_for_repair.gd" id="21_ecbm3"]
 
 [sub_resource type="Resource" id="Resource_fruxs"]
 script = ExtResource("6_ritxv")
@@ -87,11 +91,34 @@ building_data = SubResource("Resource_r3thl")
 name = "BULLDOZER"
 icon = SubResource("AtlasTexture_8xbuw")
 
+[sub_resource type="Resource" id="Resource_00x07"]
+script = ExtResource("7_lq41d")
+building_group = "building"
+reverse = true
+
+[sub_resource type="Resource" id="Resource_frq2i"]
+script = ExtResource("21_ecbm3")
+
+[sub_resource type="Resource" id="Resource_18pfi"]
+script = ExtResource("20_4dmgm")
+
+[sub_resource type="Resource" id="Resource_1sxwt"]
+script = ExtResource("19_qfj8o")
+building_group = "building"
+validators = Array[ExtResource("6_ajb40")]([SubResource("Resource_00x07"), SubResource("Resource_frq2i"), SubResource("Resource_18pfi")])
+use_build_entry_icon_as_ghost = true
+
+[sub_resource type="Resource" id="Resource_5hit1"]
+script = ExtResource("3_sn81m")
+building_data = SubResource("Resource_1sxwt")
+name = "REPAIR"
+icon = ExtResource("20_sx5sp")
+
 [sub_resource type="Resource" id="Resource_gph8e"]
 script = ExtResource("2_pqfs5")
 name = "TOOLS"
 icon = ExtResource("4_1kyfe")
-entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_nuq1m")])
+entries = Array[ExtResource("3_sn81m")]([SubResource("Resource_nuq1m"), SubResource("Resource_5hit1")])
 
 [node name="BuildMenu" type="CanvasLayer"]
 script = ExtResource("1_1d5ep")

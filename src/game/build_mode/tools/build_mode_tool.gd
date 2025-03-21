@@ -7,10 +7,17 @@ class_name BuildModeTool extends Resource
 @export var building_data: BuildingBase = null
 
 
-func can_be_used(tree: SceneTree, global_position: Vector2, _resource_data: ResourceData) -> BuildValidatorReturn:
+func can_be_used(tree: SceneTree, building: Building , global_position: Vector2, _resource_data: ResourceData) -> BuildValidatorReturn:
 	var return_data: BuildValidatorReturn = null
 	for validator in validators:
-		return_data = validator.is_valid(tree, global_position, building_data, _resource_data)
+		var stats: EntityStats = null
+		if building != null:
+			stats = building.stats
+		var building_data_to_use = building_data
+		if building_data_to_use == null and building != null:
+			building_data_to_use = building.building_data
+			
+		return_data = validator.is_valid(tree, global_position, building_data_to_use, stats, _resource_data)
 		if !return_data.get_can_build():
 			break
 
