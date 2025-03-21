@@ -7,3 +7,5 @@ class_name BuildingBase extends Resource
 @export var texture: Texture2D
 @export var input_color: Array[Color]
 @export var output_color: Array[Color]
+
+@export var stats: EntityStats

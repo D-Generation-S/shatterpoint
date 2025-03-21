@@ -1,56 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=12 format=3 uid="uid://d2ccdfwya86u4"]
 
-[ext_resource type="Script" path="res://src/game/buildings/towers/tower.gd" id="1_maaal"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="2_7n1wy"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="3_2b42g"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="4_lodrm"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="5_f26ek"]
-[ext_resource type="Script" path="res://src/resources/buildings/tower_data.gd" id="6_vkva7"]
-[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="7_fxgpp"]
-[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="8_eeops"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/area_of_operation.gd" id="9_2k55i"]
-[ext_resource type="Script" path="res://src/game/interaction/clickable_area.gd" id="10_ib71t"]
+[ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
+[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
+[ext_resource type="Script" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
+[ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="3_mywu7"]
+[ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
+[ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
 [ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
 [ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
-
-[sub_resource type="Resource" id="Resource_vsnd1"]
-script = ExtResource("3_2b42g")
-
-[sub_resource type="Resource" id="Resource_l2nvn"]
-script = ExtResource("4_lodrm")
-
-[sub_resource type="Resource" id="Resource_250fq"]
-script = ExtResource("5_f26ek")
-
-[sub_resource type="Resource" id="Resource_qwosr"]
-script = ExtResource("7_fxgpp")
-hp = 1.0
-armor = 0.0
-fire_rate = 2.0
-damage = 1.0
-attack_range = 100.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvin4"]
-atlas = ExtResource("8_eeops")
-region = Rect2(222, 0.327103, 14.0854, 15.8094)
-
-[sub_resource type="Resource" id="Resource_l5cwq"]
-script = ExtResource("6_vkva7")
-allowed_thread_determination = Array[ExtResource("2_7n1wy")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
-attackable_groups = Array[String](["ground_enemy"])
-power_usage_per_shot = 1.0
-stats = SubResource("Resource_qwosr")
-scrap_required = 3
-texture = SubResource("AtlasTexture_lvin4")
-input_color = Array[Color]([Color(0.247059, 0.14902, 0.192157, 1), Color(0.752941, 0.796078, 0.862745, 1), Color(0.545098, 0.607843, 0.705882, 1), Color(0.321569, 0.376471, 0.486275, 1)])
-output_color = Array[Color]([])
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_274qs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqt67"]
-size = Vector2(14, 14)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
 shader = ExtResource("11_put42")
@@ -61,30 +20,12 @@ shader_parameter/threshold = 0.001
 
 [node name="TowerTemplate" type="Node2D"]
 script = ExtResource("1_maaal")
-tower_data = SubResource("Resource_l5cwq")
-
-[node name="AreaOfOperation" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_2k55i")
-
-[node name="CollisionCircle" type="CollisionShape2D" parent="AreaOfOperation"]
-shape = SubResource("CircleShape2D_274qs")
-
-[node name="InteractionArea" type="Area2D" parent="."]
-script = ExtResource("10_ib71t")
-
-[node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
-shape = SubResource("RectangleShape2D_vqt67")
+building_data = ExtResource("2_iggqc")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_vyrh3")
 script = ExtResource("12_8k11b")
-
-[node name="AttackTimer" type="Timer" parent="."]
-unique_name_in_owner = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -102,6 +43,31 @@ theme = ExtResource("13_o6x4w")
 show_percentage = false
 script = ExtResource("14_v4ldh")
 
-[connection signal="something_entered" from="AreaOfOperation" to="." method="is_active"]
-[connection signal="interaction_cancelt" from="InteractionArea" to="." method="interaction_cancelt"]
-[connection signal="interaction_requested" from="InteractionArea" to="." method="interacting"]
+[node name="Components" type="Node2D" parent="."]
+
+[node name="TowerComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_ml2b7")
+
+[node name="AttackTimer" type="Timer" parent="Components/TowerComponent"]
+unique_name_in_owner = true
+
+[node name="TargetingComponent" parent="Components" node_paths=PackedStringArray("main_entity") instance=ExtResource("3_mywu7")]
+main_entity = NodePath("../..")
+
+[node name="ShootComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_njweq")
+
+[node name="SingleSelectionComponent" parent="Components" instance=ExtResource("5_fim6w")]
+
+[connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
+[connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
+[connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="attack_groups_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_attack_groups"]
+[connection signal="change_attack_radius" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_radius"]
+[connection signal="projectile_changed" from="Components/TowerComponent" to="Components/ShootComponent" method="set_projectile"]
+[connection signal="request_fire" from="Components/TowerComponent" to="Components/ShootComponent" method="fire"]
+[connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
+[connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
+[connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]

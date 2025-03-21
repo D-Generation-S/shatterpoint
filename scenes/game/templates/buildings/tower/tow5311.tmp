@@ -1,0 +1,83 @@
+[gd_scene load_steps=14 format=3 uid="uid://d2ccdfwya86u4"]
+
+[ext_resource type="Script" path="res://src/game/buildings/towers/tower.gd" id="1_maaal"]
+[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
+[ext_resource type="Script" path="res://src/game/entity/components/targeting_component.gd" id="3_fq3wq"]
+[ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/area_of_operation.gd" id="9_2k55i"]
+[ext_resource type="Script" path="res://src/game/interaction/clickable_area.gd" id="10_ib71t"]
+[ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
+[ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_274qs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqt67"]
+size = Vector2(14, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
+shader = ExtResource("11_put42")
+shader_parameter/base_colors = PackedColorArray()
+shader_parameter/target_colors = PackedColorArray()
+shader_parameter/set_colors = null
+shader_parameter/threshold = 0.001
+
+[node name="TowerTemplate" type="Node2D"]
+script = ExtResource("1_maaal")
+isDebug = null
+tower_data = ExtResource("2_iggqc")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="TargetingComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_fq3wq")
+
+[node name="ShootComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_njweq")
+
+[node name="AreaOfOperation" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("9_2k55i")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="AreaOfOperation"]
+shape = SubResource("CircleShape2D_274qs")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("10_ib71t")
+
+[node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_vqt67")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vyrh3")
+script = ExtResource("12_8k11b")
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("13_o6x4w")
+show_percentage = false
+script = ExtResource("14_v4ldh")
+
+[connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="projectile_changed" from="." to="Components/ShootComponent" method="set_projectile"]
+[connection signal="request_fire" from="." to="Components/ShootComponent" method="fire"]
+[connection signal="something_entered" from="AreaOfOperation" to="." method="is_active"]
+[connection signal="interaction_cancelt" from="InteractionArea" to="." method="interaction_cancelt"]
+[connection signal="interaction_requested" from="InteractionArea" to="." method="interacting"]

@@ -15,15 +15,15 @@ signal value_changed(new_value: int)
 		resource_name = value
 		name_changed.emit(resource_name, resource_name + "_DESCRIPTION", resource_texture)
 		
-@export var inital_value: int:
+@export var initial_value: int:
 	set(value):
-		inital_value = value
-		update_value(inital_value)
+		initial_value = value
+		update_value(initial_value)
 
 func _ready():
 	image_changed.emit(resource_texture)
 	name_changed.emit(resource_name, resource_name + "_DESCRIPTION", resource_texture)
-	update_value(inital_value)
+	update_value(initial_value)
 
 func update_value(new_value: int):
 	value_changed.emit(new_value)

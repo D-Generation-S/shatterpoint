@@ -78,7 +78,7 @@ func _process(_delta):
 	move_and_slide()
 
 func _on_collision_entered(body: Node2D):
-	if body is Enemy:
+	if body is EntityWithStats:
 		body.deal_damage(carried_damage)
 		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
 
