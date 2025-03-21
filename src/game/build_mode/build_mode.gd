@@ -27,6 +27,8 @@ var can_build_here: bool = false
 var cannot_build_message: String = ""
 var can_abort_building: bool = true
 
+var last_global_position: Vector2
+
 func _ready():
 	can_build_changed.emit(true)
 	disable()
@@ -54,15 +56,22 @@ func _unhandled_input(event):
 		request_path.emit(resource_overlay.scrap_icon, source_node, end_node, absi(scrap), 1)
 		building_was_placed.emit()
 		resource_overlay.add_scrap(scrap)
+		last_global_position = Vector2(-100000, -100000)
 
 func _process(_delta):
 	_check_for_building_abort()
 	if !_check_for_building():
 		return
-	
+	var build_position = build_grid.global_position
+	if last_global_position == build_position:
+		return
+	var building = null
+	var buildings = get_tree().get_nodes_in_group(building_group).filter(func(current_building): return current_building.global_position == build_position)
+	if buildings.size() > 0:
+		building = buildings[0]
 	
 	var resource_data = resource_overlay.get_resource_data()
-	var validator = current_tool.can_be_used(get_tree(), build_grid.global_position, resource_data)
+	var validator = current_tool.can_be_used(get_tree(), building, build_grid.global_position, resource_data)
 
 	if validator.get_can_build() != last_build_state:
 		can_build_changed.emit(validator.get_can_build())
@@ -71,6 +80,8 @@ func _process(_delta):
 
 	can_build_here = validator.get_can_build()
 	cannot_build_message = validator.get_error_message()
+
+	last_global_position = build_position
 
 func _check_for_building_abort():
 	if Input.is_action_just_pressed("ui_cancel"):

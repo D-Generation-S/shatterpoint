@@ -7,6 +7,7 @@ var _build_areas: Array[Area2D] = []
 func is_valid(tree: SceneTree,
 			  _global_mouse_position: Vector2,
 			  _building_data: BuildingBase,
+			  _building_stats: EntityStats,
 			  _resource_data: ResourceData) -> BuildValidatorReturn:
 	check_for_build_areas(tree)
 	for build_area in _build_areas:
