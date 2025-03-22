@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=74 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="7_h7fcw"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="8_arm70"]
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="9_mxlxq"]
+[ext_resource type="PackedScene" uid="uid://rs4rptwfl221" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
 [ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="10_xerwt"]
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="11_evce7"]
 [ext_resource type="Script" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_j2gqh"]
@@ -210,6 +211,8 @@ _resource_data = SubResource("Resource_ywp2m")
 default_message_style = ExtResource("7_h7fcw")
 
 [node name="BuildMenu" parent="Overlay" groups=["overlay"] instance=ExtResource("8_arm70")]
+
+[node name="Version" parent="Overlay" instance=ExtResource("10_tprig")]
 
 [node name="Camera" type="Node" parent="."]
 
