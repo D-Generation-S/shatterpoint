@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="GeneratorData" load_steps=6 format=3 uid="uid://dhuk6e5xlsd4o"]
+
+[ext_resource type="Script" path="res://src/resources/buildings/generator_data.gd" id="1_bda1w"]
+[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="2_05f2s"]
+[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="3_h2qto"]
+
+[sub_resource type="Resource" id="Resource_r7ifn"]
+script = ExtResource("2_05f2s")
+hp = 20.0
+armor = 5.0
+fire_rate = 0.0
+damage = 0.0
+attack_range = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cefxj"]
+atlas = ExtResource("3_h2qto")
+region = Rect2(186, 68, 17, 15)
+
+[resource]
+script = ExtResource("1_bda1w")
+generation_per_tick = 3.0
+scrap_required = 5
+texture = SubResource("AtlasTexture_cefxj")
+input_color = Array[Color]([])
+output_color = Array[Color]([])
+stats = SubResource("Resource_r7ifn")

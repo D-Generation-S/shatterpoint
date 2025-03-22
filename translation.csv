@@ -1,0 +1,44 @@
+key;en;de
+SCRAP;Scrap;Schrott
+ENERGY;Energy;Energie
+BUILD_TIME_LEFT;%TIME% seconds until next wave;%TIME% Sekunden bis zur nächsten Welle
+BUILD_PHASE_STARTED;Build phase has started;Bau phase hat begonnen
+WAVE_PHASE_STARTED;Wave phase has started;Wellen Phase hat begonnen
+SCRAP_RECIEVED;+%AMOUNT% Scrap;+%AMOUNT% Schrott
+SCRAP_LOST;%AMOUNT% Scrap;%AMOUNT% Schrott
+BUILD_SPACE_BLOCKED;Build space blocked;Baubereich blockiert
+NO_SCRAP_AVAILABLE;Not enough scrap for that building;Nicht genug Schrott für dieses Gebäude
+SCRAP_DESCRIPTION;"Scrap is a resource collected from the remains on the battlefield. It does contain various metals, electronics, water or food. 
+
+It is getting used to construct new buildings, units or any structure on the front line.";"Schrott ist eine Ressource, die von den Überresten auf dem Schlachtfeld gesammelt wurde. Es besteht aus diversenen Metallen, Elektronischen bauteilen, Wasser oder Nahrung.
+
+Es wird an der Front genutzt um neue Gebäude zu bauen, Einheiten auszubilden und zu versorgen."
+NOT_INSIDE_BUILD_AREA;Not inside of build area;Nicht innerhalb des Baubereichs
+TOWERS;Towers;Türme
+BASIC_TOWER;Basic Tower;Basis Turm
+TOWERS_DESCRIPTION;This category will contain all the towers available for building.;Diese Kategorie beinhaltet alle Türme die du bauen kannst.
+BASIC_TOWER_DESCRIPTION;This is you default tower, it won't deal much damage, but it's still better than nothing.;Das ist dein Standard turm, er wird zwar nicht viel Schaden anrichten aber es ist immerhin besser als nichts.
+TOOLS;Tools;Werkzeuge
+BULLDOZER;Bulldozer;Planierraupe
+TOOLS_DESCRIPTION;This group does contain tools to manipulate structures you already did build.;Diese Gruppe beinhaltet Werkzete welche es dir erlauben bereits gebaute Strukturen zu manipulieren.
+BULLDOZER_DESCRIPTION;A bulldozer use it if there is a building at a position you do not want it anymore. You will get back half the resources by doing that.;Eine Planierraupe nutze Sie um Gebäude zu entfernen die du hier nicht mehr möchtest. Der Abriss wird dir die hälfte der resourcen zurückgeben.
+POWER_INFRASTRUCTURE;Power Infastructure;Strom Infastruktur
+POWER_INFRASTRUCTURE_DESCRIPTION;"Contains building to keep your infastructure running.
+
+Those are building like, for example generators";"Beinhaltet Gebäude welche deine Infastruktur am laufen hält.
+
+Dies können Dinge sein wie z.B. ein Generator."
+ENERGY_DESCRIPTION;"Energy is produced by generators and stored in a global storage.
+
+It is getting used for every tower if he want's to fire on an enemy. If you run out of energy no tower will be able to fire.";"Die Energie wird durch Generatoren erzeugt und in einem globalen Speicher gespeichert.
+
+Sie wird von jedem Turm genutzt, sobald er auf einen Feind schießen will. Wenn du keine Energie mehr hast, kann kein Turm mehr schießen."
+BASIC_POWER_GENERATOR;Basic Power Generator;Basis Energy Generator
+BASIC_POWER_GENERATOR_DESCRIPTION;The basic power generator, one of them should be enough to keep your first set of turrets running, do not forget to build more as needed.;Der Basis-Energiegenerator, einer davon sollte ausreichen, um die ersten Geschütztürme in Betrieb zu halten, vergessen Sie nicht, bei Bedarf weitere zu bauen.
+BUILD_GENERATOR_TO_START;Build a generator to start the game;Baue einen Generator um das Spiel zu starten
+CANT_ABORT_BUILDING_RIGHT_NOW;Can't abort building right now, please place it first;Kann das bauen momentan nicht abbrechen, bitte platziere das Gebäude zuerst.
+BUILDING_AT_FULL_HEALTH;Building is already at full health;Das Gebäude ist bereits vollständig repariert
+NOT_ON_BUILDING;You are not on a building;Du befindest dich auf keinem Gebäude
+REPAIR;Repair;Reparieren
+REPAIR_DESCRIPTION;Repair the building, this will only take as much scrap as the building got damaged.;Repariert das Gebäude, hierbei wird nur so viel Schrott verbraucht wie das Gebäude auch beschädigt ist.
+VERSION;Version;Version

@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://coxxrxmt2muoi"]
+
+[ext_resource type="Script" path="res://src/game/overlay/resource_overlay.gd" id="1_4vyjh"]
+[ext_resource type="PackedScene" uid="uid://h1mxvd5e3sek" path="res://scenes/game/overlay/resource_ui_element.tscn" id="1_b1vq4"]
+[ext_resource type="Script" path="res://src/game/overlay/animated_progress_bar.gd" id="3_8pesf"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_fg4dn"]
+[ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="4_elwtp"]
+[ext_resource type="PackedScene" uid="uid://dn2d63tre8bee" path="res://scenes/game/overlay/build_menu/resource_dynamic_ui_element.tscn" id="5_vt0lm"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="6_jorik"]
+
+[node name="ResourceOverlay" type="CanvasLayer"]
+script = ExtResource("1_4vyjh")
+
+[node name="ResourcePanel" type="PanelContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ResourcePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResourcePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResourcePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Scrap" parent="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_b1vq4")]
+unique_name_in_owner = true
+layout_mode = 2
+resource_texture = ExtResource("3_fg4dn")
+
+[node name="Energy" parent="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_vt0lm")]
+unique_name_in_owner = true
+layout_mode = 2
+resource_texture = ExtResource("4_elwtp")
+resource_name = "ENERGY"
+
+[node name="ProgressBar" type="ProgressBar" parent="ResourcePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("6_jorik")
+script = ExtResource("3_8pesf")
+
+[connection signal="hp_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/ProgressBar" method="set_current_value"]
+[connection signal="max_power_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy" method="set_max_value"]
+[connection signal="power_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy" method="update_value"]
+[connection signal="scrap_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap" method="update_value"]
+[connection signal="set_max_health" from="." to="ResourcePanel/MarginContainer/VBoxContainer/ProgressBar" method="set_min_and_max_value"]

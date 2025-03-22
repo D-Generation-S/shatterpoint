@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SpawnerConfiguration" load_steps=9 format=3 uid="uid://787f37sn4rlu"]
+
+[ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="1_3fdcg"]
+[ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="2_asum0"]
+[ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="2_ihd1m"]
+[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="2_us8ti"]
+[ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="3_6lh1o"]
+[ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/LightTank.tres" id="4_6jup3"]
+
+[sub_resource type="Resource" id="Resource_eopsd"]
+script = ExtResource("1_3fdcg")
+interval_factor_calculator = 4.0
+default_spawn_interval = 0.5
+
+[sub_resource type="Resource" id="Resource_a7f8v"]
+script = ExtResource("2_ihd1m")
+base_power = 100.0
+
+[resource]
+script = ExtResource("3_6lh1o")
+power_function = SubResource("Resource_a7f8v")
+generator = SubResource("Resource_eopsd")
+max_simultaneous_spawn = 5
+possible_data = Array[ExtResource("2_asum0")]([ExtResource("2_us8ti"), ExtResource("4_6jup3")])

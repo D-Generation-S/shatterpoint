@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://qhihjjgqvq2"]
+
+[ext_resource type="Script" path="res://src/game/entity/components/targeting_component.gd" id="1_oejv7"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/area_of_operation.gd" id="2_oqu4o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_274qs"]
+
+[node name="TargetingComponent" type="Node2D" node_paths=PackedStringArray("area_of_operation")]
+script = ExtResource("1_oejv7")
+area_of_operation = NodePath("AreaOfOperation")
+
+[node name="AreaOfOperation" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_oqu4o")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="AreaOfOperation"]
+shape = SubResource("CircleShape2D_274qs")
+
+[connection signal="attack_radius_changed" from="." to="AreaOfOperation" method="set_radius"]
+[connection signal="change_body_or_shape_entered" from="." to="AreaOfOperation" method="change_body_or_shape_entered"]
+[connection signal="draw_attack_radius_changed" from="." to="AreaOfOperation" method="draw_attack_area"]
+[connection signal="something_entered" from="AreaOfOperation" to="." method="enable"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://btand62vyewq8"]
+
+[ext_resource type="Script" path="res://src/game/overlay/message_center/message_template.gd" id="1_lxiul"]
+
+[node name="MessageContainer" type="MarginContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -257.0
+offset_right = 257.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_lxiul")
+
+[node name="Container" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Container/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Message" type="Label" parent="Container/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "PLACEHOLDER"
+autowrap_mode = 2
+
+[node name="Timer" type="Timer" parent="Container"]
+unique_name_in_owner = true
+one_shot = true

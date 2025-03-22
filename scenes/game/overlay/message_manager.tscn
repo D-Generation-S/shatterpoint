@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c32ggwgxsdo34"]
+
+[ext_resource type="Script" path="res://src/game/overlay/message_center/message_area.gd" id="1_mg4lp"]
+[ext_resource type="PackedScene" uid="uid://btand62vyewq8" path="res://scenes/game/overlay/message_template.tscn" id="2_b538c"]
+[ext_resource type="AudioStream" uid="uid://b0vh6n4c2htsh" path="res://assets/audio/effects/pickup.wav" id="3_26cl6"]
+[ext_resource type="Script" path="res://src/game/overlay/message_center/message_center.gd" id="3_fhwah"]
+[ext_resource type="Script" path="res://src/game/overlay/message_center/message_center_replace.gd" id="4_pxvta"]
+
+[node name="MessageArea" type="CanvasLayer"]
+script = ExtResource("1_mg4lp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="BottomRight" type="VBoxContainer" parent="MarginContainer" node_paths=PackedStringArray("node_to_hide", "message_target") groups=["message_center"]]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+script = ExtResource("3_fhwah")
+message_volume_change = -30.0
+message_template = ExtResource("2_b538c")
+node_to_hide = NodePath("..")
+message_target = NodePath(".")
+number_of_allowed_message = 5
+message_position = 1
+
+[node name="CenterMessages" type="MarginContainer" parent="." node_paths=PackedStringArray("node_to_hide", "message_target") groups=["message_center"]]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fhwah")
+message_template = ExtResource("2_b538c")
+node_to_hide = NodePath(".")
+message_target = NodePath(".")
+
+[node name="BottomCenter" type="MarginContainer" parent="." node_paths=PackedStringArray("node_to_hide", "message_target") groups=["message_center"]]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_pxvta")
+message_sound = ExtResource("3_26cl6")
+message_template = ExtResource("2_b538c")
+node_to_hide = NodePath(".")
+message_target = NodePath(".")
+message_position = 2

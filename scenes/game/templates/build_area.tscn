@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://clb3cxuf0gy5s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcjbt"]
+
+[node name="BuildArea" type="Area2D" groups=["build_area"]]
+position = Vector2(-950, -105)
+collision_layer = 0
+collision_mask = 8388608
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(470, 31)
+shape = SubResource("RectangleShape2D_gcjbt")
+debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)

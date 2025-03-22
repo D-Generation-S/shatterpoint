@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MessageStyle" load_steps=2 format=3 uid="uid://bgpl4p85ey5s4"]
+
+[ext_resource type="Script" path="res://src/resources/message_style.gd" id="1_pdmjq"]
+
+[resource]
+script = ExtResource("1_pdmjq")
+text_color = Color(0, 1, 0, 1)

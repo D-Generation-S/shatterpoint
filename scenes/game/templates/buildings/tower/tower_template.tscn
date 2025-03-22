@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2ccdfwya86u4"]
+
+[ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
+[ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
+[ext_resource type="Script" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
+[ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="3_mywu7"]
+[ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
+[ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
+[ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
+[ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
+shader = ExtResource("11_put42")
+shader_parameter/base_colors = PackedColorArray()
+shader_parameter/target_colors = PackedColorArray()
+shader_parameter/set_colors = null
+shader_parameter/threshold = 0.001
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p24bp"]
+radius = 8.0
+
+[node name="TowerTemplate" type="Node2D" groups=["building", "tower"]]
+script = ExtResource("1_maaal")
+building_data = ExtResource("2_iggqc")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_vyrh3")
+script = ExtResource("12_8k11b")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("13_o6x4w")
+show_percentage = false
+script = ExtResource("14_v4ldh")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="TowerComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_ml2b7")
+
+[node name="AttackTimer" type="Timer" parent="Components/TowerComponent"]
+unique_name_in_owner = true
+
+[node name="TargetingComponent" parent="Components" node_paths=PackedStringArray("main_entity") instance=ExtResource("3_mywu7")]
+main_entity = NodePath("../..")
+
+[node name="ShootComponent" type="Node2D" parent="Components"]
+script = ExtResource("3_njweq")
+
+[node name="SingleSelectionComponent" parent="Components" instance=ExtResource("5_fim6w")]
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_p24bp")
+
+[connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
+[connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
+[connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="attack_groups_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_attack_groups"]
+[connection signal="change_attack_radius" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_radius"]
+[connection signal="projectile_changed" from="Components/TowerComponent" to="Components/ShootComponent" method="set_projectile"]
+[connection signal="request_fire" from="Components/TowerComponent" to="Components/ShootComponent" method="fire"]
+[connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
+[connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
+[connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]

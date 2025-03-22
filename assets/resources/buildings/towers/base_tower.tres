@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=13 format=3 uid="uid://ctrcr440rcqre"]
+
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_orkoc"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_ee4fy"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="3_7rlt0"]
+[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="4_h4380"]
+[ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="5_xateg"]
+[ext_resource type="Script" path="res://src/resources/buildings/tower_data.gd" id="6_y6q1c"]
+[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="7_8cqrl"]
+[ext_resource type="Texture2D" uid="uid://dlxo0pmajycsy" path="res://assets/atlast_textures/orange_tower.tres" id="8_uhtxb"]
+
+[sub_resource type="Resource" id="Resource_vsnd1"]
+script = ExtResource("2_ee4fy")
+
+[sub_resource type="Resource" id="Resource_l2nvn"]
+script = ExtResource("3_7rlt0")
+
+[sub_resource type="Resource" id="Resource_250fq"]
+script = ExtResource("4_h4380")
+
+[sub_resource type="Resource" id="Resource_qwosr"]
+script = ExtResource("7_8cqrl")
+hp = 50.0
+armor = 0.0
+fire_rate = 2.0
+damage = 1.0
+attack_range = 130.0
+
+[resource]
+script = ExtResource("6_y6q1c")
+allowed_thread_determination = Array[ExtResource("1_orkoc")]([SubResource("Resource_vsnd1"), SubResource("Resource_l2nvn"), SubResource("Resource_250fq")])
+attackable_groups = Array[String](["ground_enemy"])
+projectile = ExtResource("5_xateg")
+power_usage_per_shot = 2.0
+scrap_required = 3
+texture = ExtResource("8_uhtxb")
+input_color = Array[Color]([])
+output_color = Array[Color]([])
+stats = SubResource("Resource_qwosr")
