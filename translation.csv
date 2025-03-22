@@ -41,3 +41,4 @@ BUILDING_AT_FULL_HEALTH;Building is already at full health;Das Gebäude ist bere
 NOT_ON_BUILDING;You are not on a building;Du befindest dich auf keinem Gebäude
 REPAIR;Repair;Reparieren
 REPAIR_DESCRIPTION;Repair the building, this will only take as much scrap as the building got damaged.;Repariert das Gebäude, hierbei wird nur so viel Schrott verbraucht wie das Gebäude auch beschädigt ist.
+VERSION;Version;Version
