@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://rs4rptwfl221"]
+[gd_scene load_steps=2 format=3 uid="uid://c8p0gnhowdx23"]
 
 [ext_resource type="Script" path="res://src/game/overlay/version/version_string.gd" id="1_0hp7h"]
 
