@@ -11,6 +11,7 @@ signal change_can_abort_building(on: bool)
 @export var message_center: MessageCenter
 
 func _ready():
+	GlobalDataAccess.game_started()
 	change_can_abort_building.emit(false)
 	add_new_message.emit(MessagePosition.CENTER, "BUILD_GENERATOR_TO_START", 10)
 	enable_build_mode.emit()
