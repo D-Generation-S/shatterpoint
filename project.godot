@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 
 GlobalSoundManager="*res://scenes/global/SoundManager.tscn"
 GlobalTickSystem="*res://src/global/tick_system.gd"
+GlobalDataAccess="*res://src/global/global_data_access.gd"
 
 [display]
 

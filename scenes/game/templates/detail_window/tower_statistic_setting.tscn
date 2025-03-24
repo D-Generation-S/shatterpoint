@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0d3k3rsr84ma"]
+
+[ext_resource type="Script" path="res://scenes/game/templates/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
+[ext_resource type="PackedScene" uid="uid://c2cn44tmy4ia2" path="res://scenes/game/templates/detail_window/templates/key_value.tscn" id="2_j3cg2"]
+
+[node name="TowerStatisticSetting" type="Control" node_paths=PackedStringArray("_statistic_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xnbd2")
+_statistic_node = NodePath("ScrollContainer/Statistic")
+_key_value_template = ExtResource("2_j3cg2")
+_content_name = "STATISTIC"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Statistic" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3

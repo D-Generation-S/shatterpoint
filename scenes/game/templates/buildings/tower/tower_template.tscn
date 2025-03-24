@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=16 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -7,8 +7,11 @@
 [ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
 [ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
 [ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
+[ext_resource type="Script" path="res://src/game/entity/components/tower_information_request_component.gd" id="11_rsxk6"]
 [ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
+[ext_resource type="PackedScene" uid="uid://jkoasuu4iwby" path="res://scenes/game/templates/detail_window/tower_settings_content.tscn" id="12_fg872"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
+[ext_resource type="PackedScene" uid="uid://b0d3k3rsr84ma" path="res://scenes/game/templates/detail_window/tower_statistic_setting.tscn" id="13_otfmv"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
@@ -62,6 +65,11 @@ script = ExtResource("3_njweq")
 
 [node name="SingleSelectionComponent" parent="Components" instance=ExtResource("5_fim6w")]
 
+[node name="TowerInformationRequestComponent" type="Node2D" parent="Components"]
+script = ExtResource("11_rsxk6")
+settings_content = ExtResource("12_fg872")
+statistic_content = ExtResource("13_otfmv")
+
 [node name="Collision" type="Area2D" parent="."]
 collision_layer = 9
 collision_mask = 0
@@ -70,6 +78,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_p24bp")
 
 [connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
+[connection signal="building_data_changed" from="." to="Components/TowerInformationRequestComponent" method="data_was_changed"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
@@ -82,3 +91,7 @@ shape = SubResource("CircleShape2D_p24bp")
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="request_add_projectile"]
 [connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]
+[connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TowerInformationRequestComponent" method="got_selected"]
+[connection signal="change_threat_method" from="Components/TowerInformationRequestComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="modifier_added" from="Components/TowerInformationRequestComponent" to="." method="add_modifier"]
+[connection signal="show_detail_window" from="Components/TowerInformationRequestComponent" to="." method="request_detail_window"]
