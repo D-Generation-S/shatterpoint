@@ -80,4 +80,5 @@ shape = SubResource("CircleShape2D_p24bp")
 [connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
+[connection signal="add_projectile" from="Components/ShootComponent" to="." method="request_add_projectile"]
 [connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]
