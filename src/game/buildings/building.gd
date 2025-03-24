@@ -23,5 +23,8 @@ func _ready():
 	if visual is ColorReplaceShader:
 		visual.set_color_replacement(building_data.input_color, building_data.output_color)
 
+func request_add_projectile(node: Node2D):
+	get_parent().add_child(node)
+
 func _is_dying():
 	super()

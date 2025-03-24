@@ -53,6 +53,10 @@ func _ready():
 func _process(_delta):
 	_handle_build_phase_warning()	
 
+func _unhandled_input(event):
+	if event.is_action("skip_building_phase") and current_phase == BUILD:
+		build_phase_endet()
+
 func _setup_build_mode_timer():
 	build_mode_timer = Timer.new()
 	build_mode_timer.wait_time = base_build_mode_time
@@ -99,6 +103,7 @@ func wave_phase_endet():
 		build_phase_started.emit()
 		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)
 
+		current_phase = BUILD
 		build_mode_timer.start()
 		timer_shown = false
 
@@ -106,6 +111,9 @@ func build_phase_endet():
 	all_units_spawned = false
 	all_units_dead = false
 	wave_phase_started.emit()
+	if !build_mode_timer.is_stopped():
+		build_mode_timer.stop()
+	current_phase = WAVE
 	message_requested.emit(MessagePosition.CENTER, message_style, "WAVE_PHASE_STARTED", 1.0)
 
 func start_game():

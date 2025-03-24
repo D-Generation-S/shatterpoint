@@ -339,14 +339,14 @@ position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
 
 [node name="TopRightSpawner2" type="PathFollow2D" parent="WaveMode/TopRightSpawner" node_paths=PackedStringArray("overlay", "enemy_root_node") groups=["spawner"]]
 position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = SubResource("Resource_gii0u")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
 active_after_wave = 5
 
 [node name="Path2D" type="Path2D" parent="WaveMode"]
@@ -357,16 +357,18 @@ position = Vector2(-967, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
 
-[node name="Enemies" type="Node" parent="WaveMode"]
+[node name="Entites" type="Node" parent="WaveMode"]
 
-[node name="Buildings" type="Node" parent="WaveMode"]
+[node name="Enemies" type="Node" parent="WaveMode/Entites"]
+
+[node name="Buildings" type="Node" parent="WaveMode/Entites"]
 
 [node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
 script = ExtResource("25_ghlpk")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
-building_target_node = NodePath("../WaveMode/Buildings")
+building_target_node = NodePath("../WaveMode/Entites/Buildings")
 building_group = null
 scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
 resource_path_template = ExtResource("26_yjpy8")
