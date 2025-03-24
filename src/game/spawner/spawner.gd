@@ -7,8 +7,10 @@ signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount:
 @export var configuration: SpawnerConfiguration
 @export var overlay: ResourceOverlay
 @export var enemy_root_node: Node
+@export var active_after_wave: int = 0
 
 var spawn_information: SpawnInformation
+var is_active: bool = false
 
 @onready var enemy_template: PackedScene = load("res://scenes/game/templates/EnemyTemplate.tscn")
 
@@ -20,10 +22,19 @@ func _ready():
 	process_mode = PROCESS_MODE_DISABLED
 	timer = Timer.new()
 	timer.autostart = false
-	var spawner_count: float = get_tree().get_node_count_in_group("spawner")
-	configuration.set_balance(1.0 / spawner_count)
+
+	recalculate_balance()
+
 	timer.timeout.connect(spawn_enemy)
 	add_child(timer)
+
+func recalculate_balance() -> void:
+	var spawner_count: float = get_active_spawner_count()
+	configuration.set_balance(1.0 / spawner_count)
+
+func get_active_spawner_count() -> int:
+	var spawner_count: int = get_tree().get_nodes_in_group("spawner").filter(func(spawner): return spawner.is_spawner_active()).size()
+	return spawner_count
 
 func spawn_enemy():
 	var number_to_spawn = randi_range(1, configuration.max_simultaneous_spawn)
@@ -53,9 +64,17 @@ func unit_scrap_path_requested(unit_node: Node2D, amount: int):
 		return
 	request_path.emit(overlay.scrap_icon, unit_node, overlay.scrap_animation_node, amount, 1)
 
+func prepare_spawner(wave_number: int):
+	if wave_number > active_after_wave:
+		is_active = true
+
 func prepare_wave(wave_number: int):
+	recalculate_balance()
 	spawn_information = configuration.generate_unit_set(wave_number)
 	timer.wait_time = spawn_information.spawn_intervall_in_seconds
+
+func is_spawner_active():
+	return is_active
 
 func ready_up():
 	did_spawn_enemy = false

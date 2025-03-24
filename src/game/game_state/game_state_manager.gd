@@ -7,7 +7,8 @@ enum
 }
 
 signal wave_phase_started()
-signal dynamic_start_wave_preperation(number: int)
+signal dynamic_start_spawner_pre_calculate(number: int)
+signal dynamic_start_wave_preparation(number: int)
 signal build_phase_started()
 signal message_requested(target: int, type: MessageType, message: String, duration: float, icon: Texture)
 
@@ -42,7 +43,8 @@ func _ready():
 
 	for spawner in get_tree().get_nodes_in_group("spawner"):
 		if spawner is Spawner:
-			dynamic_start_wave_preperation.connect(spawner.prepare_wave)
+			dynamic_start_spawner_pre_calculate.connect(spawner.prepare_spawner)
+			dynamic_start_wave_preparation.connect(spawner.prepare_wave)
 			spawner.spawning_started.connect(spawning_started)
 			spawner.spawning_completed.connect(spawn_is_completed)
 			wave_phase_started.connect(spawner.ready_up)
@@ -91,7 +93,8 @@ func spawning_started():
 
 func wave_phase_endet():
 	if all_units_dead and all_units_spawned:
-		dynamic_start_wave_preperation.emit(current_wave)
+		dynamic_start_spawner_pre_calculate.emit(current_wave)
+		dynamic_start_wave_preparation.emit(current_wave)
 		current_wave += 1
 		build_phase_started.emit()
 		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)

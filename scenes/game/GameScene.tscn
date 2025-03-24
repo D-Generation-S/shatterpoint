@@ -10,7 +10,7 @@
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="7_h7fcw"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="8_arm70"]
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="9_mxlxq"]
-[ext_resource type="PackedScene" uid="uid://rs4rptwfl221" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
+[ext_resource type="PackedScene" uid="uid://c8p0gnhowdx23" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
 [ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="10_xerwt"]
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="11_evce7"]
 [ext_resource type="Script" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_j2gqh"]
@@ -23,9 +23,9 @@
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="19_kvgan"]
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="20_qox08"]
 [ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="21_snw6j"]
-[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="22_s3cqc"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="23_ppst3"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="24_8m5a3"]
+[ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/LightTank.tres" id="24_gk3ek"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_mode.gd" id="25_ghlpk"]
 [ext_resource type="PackedScene" uid="uid://brm17h88x8w2b" path="res://scenes/game/animation/resource_path_animation.tscn" id="26_yjpy8"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="27_123vq"]
@@ -130,13 +130,16 @@ default_spawn_interval = 0.5
 [sub_resource type="Resource" id="Resource_yd5hr"]
 script = ExtResource("23_ppst3")
 base_power = 100.0
+linear_base_value = 50.0
+exponential_base = 1.8
+wave_to_start_exponential = 5
 
 [sub_resource type="Resource" id="Resource_gii0u"]
 script = ExtResource("24_8m5a3")
 power_function = SubResource("Resource_yd5hr")
 generator = SubResource("Resource_sc4x3")
-max_simultaneous_spawn = 2
-possible_data = Array[ExtResource("21_snw6j")]([ExtResource("22_s3cqc")])
+max_simultaneous_spawn = 5
+possible_data = Array[ExtResource("21_snw6j")]([ExtResource("24_gk3ek")])
 
 [sub_resource type="Curve2D" id="Curve2D_47tol"]
 _data = {
@@ -344,6 +347,7 @@ script = ExtResource("18_s7e6s")
 configuration = SubResource("Resource_gii0u")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
 enemy_root_node = NodePath("../../Enemies")
+active_after_wave = 5
 
 [node name="Path2D" type="Path2D" parent="WaveMode"]
 curve = SubResource("Curve2D_47tol")
