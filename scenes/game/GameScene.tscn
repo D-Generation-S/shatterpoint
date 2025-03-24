@@ -71,7 +71,8 @@ zoom_steps = 0.3
 zoom_duration = 0.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
-agent_radius = 18.0
+parsed_collision_mask = 9
+agent_radius = 40.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t1oyk"]
 noise_type = 2

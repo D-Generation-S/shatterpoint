@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PercentDamageGenerator" load_steps=5 format=3 uid="uid://ccnjsuy2j80lh"]
+[gd_resource type="Resource" script_class="PercentGenerator" load_steps=5 format=3 uid="uid://ccnjsuy2j80lh"]
 
 [ext_resource type="Script" path="res://src/game/modifier/generator/percentage_generator.gd" id="1_2ltm3"]
 [ext_resource type="Script" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="1_sxefg"]
@@ -21,6 +21,6 @@ script = ExtResource("1_2ltm3")
 min_percentage = 5.0
 max_base_percentage = 10.0
 sample_curve = SubResource("Curve_7ug2d")
-modifier_template = SubResource("Resource_8cich")
 valid_after_wave = 0
 valid_until_wave = 100
+modifier_template = SubResource("Resource_8cich")
