@@ -55,6 +55,9 @@ func _is_dying():
 func activate():
 	process_mode = PROCESS_MODE_INHERIT
 
+func add_projectile_requested(projectile: Projectile):
+	get_parent().add_child(projectile)
+
 func town_reached():
 	if not is_alive:
 		return

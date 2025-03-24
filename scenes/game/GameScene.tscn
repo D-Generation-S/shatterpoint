@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=76 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -10,12 +10,13 @@
 [ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="7_h7fcw"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="8_arm70"]
 [ext_resource type="Script" path="res://src/game/camera/camera_position.gd" id="9_mxlxq"]
-[ext_resource type="PackedScene" uid="uid://rs4rptwfl221" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
+[ext_resource type="PackedScene" uid="uid://c8p0gnhowdx23" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
 [ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="10_xerwt"]
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="11_evce7"]
 [ext_resource type="Script" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_j2gqh"]
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="13_vwlyg"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="14_1ioao"]
+[ext_resource type="PackedScene" uid="uid://rihqoggarad2" path="res://scenes/game/templates/detail_window/default_detail_window.tscn" id="14_wn1c3"]
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="15_ytff2"]
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="16_175xq"]
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="17_gtavo"]
@@ -23,19 +24,19 @@
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="19_kvgan"]
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="20_qox08"]
 [ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="21_snw6j"]
-[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="22_s3cqc"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="23_ppst3"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="24_8m5a3"]
+[ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/LightTank.tres" id="24_gk3ek"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_mode.gd" id="25_ghlpk"]
 [ext_resource type="PackedScene" uid="uid://brm17h88x8w2b" path="res://scenes/game/animation/resource_path_animation.tscn" id="26_yjpy8"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_grid.gd" id="27_123vq"]
 [ext_resource type="Shader" path="res://assets/shaders/ghost_shader.gdshader" id="28_flnpx"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="29_6n6du"]
 [ext_resource type="Script" path="res://src/game/shaders/ghost_sprite.gd" id="30_ky73b"]
-[ext_resource type="Script" path="res://src/game/game_state/game_state_manager.gd" id="31_uypbf"]
+[ext_resource type="Script" path="res://src/game/systems/game_state/game_state_manager.gd" id="31_uypbf"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/resource_travel_animation.gd" id="32_sqino"]
-[ext_resource type="Script" path="res://src/game/sticker_system/sticker_system.gd" id="33_eksmu"]
-[ext_resource type="Script" path="res://src/game/tutorial/game_start_system.gd" id="35_vubuj"]
+[ext_resource type="Script" path="res://src/game/systems/sticker_system/sticker_system.gd" id="33_eksmu"]
+[ext_resource type="Script" path="res://src/game/systems/tutorial/game_start_system.gd" id="35_vubuj"]
 [ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="36_ryx4r"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
 [ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
@@ -46,7 +47,8 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="42_heux3"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="43_0gjul"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="44_53maf"]
-[ext_resource type="Script" path="res://src/game/restart_game_system.gd" id="46_vydfs"]
+[ext_resource type="Script" path="res://src/game/systems/restart_game_system.gd" id="46_vydfs"]
+[ext_resource type="Script" path="res://src/game/systems/entity_detail_window_system/entity_detail_window_system.gd" id="48_kdeyx"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -69,7 +71,8 @@ zoom_steps = 0.3
 zoom_duration = 0.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
-agent_radius = 18.0
+parsed_collision_mask = 9
+agent_radius = 40.0
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t1oyk"]
 noise_type = 2
@@ -130,13 +133,16 @@ default_spawn_interval = 0.5
 [sub_resource type="Resource" id="Resource_yd5hr"]
 script = ExtResource("23_ppst3")
 base_power = 100.0
+linear_base_value = 50.0
+exponential_base = 1.8
+wave_to_start_exponential = 5
 
 [sub_resource type="Resource" id="Resource_gii0u"]
 script = ExtResource("24_8m5a3")
 power_function = SubResource("Resource_yd5hr")
 generator = SubResource("Resource_sc4x3")
-max_simultaneous_spawn = 2
-possible_data = Array[ExtResource("21_snw6j")]([ExtResource("22_s3cqc")])
+max_simultaneous_spawn = 5
+possible_data = Array[ExtResource("21_snw6j")]([ExtResource("24_gk3ek")])
 
 [sub_resource type="Curve2D" id="Curve2D_47tol"]
 _data = {
@@ -213,6 +219,10 @@ default_message_style = ExtResource("7_h7fcw")
 [node name="BuildMenu" parent="Overlay" groups=["overlay"] instance=ExtResource("8_arm70")]
 
 [node name="Version" parent="Overlay" instance=ExtResource("10_tprig")]
+
+[node name="EntityDetailWindowSystem" type="CanvasLayer" parent="Overlay" groups=["system"]]
+script = ExtResource("48_kdeyx")
+default_window_template = ExtResource("14_wn1c3")
 
 [node name="Camera" type="Node" parent="."]
 
@@ -336,14 +346,15 @@ position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
 
 [node name="TopRightSpawner2" type="PathFollow2D" parent="WaveMode/TopRightSpawner" node_paths=PackedStringArray("overlay", "enemy_root_node") groups=["spawner"]]
 position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = SubResource("Resource_gii0u")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
+active_after_wave = 5
 
 [node name="Path2D" type="Path2D" parent="WaveMode"]
 curve = SubResource("Curve2D_47tol")
@@ -353,16 +364,18 @@ position = Vector2(-967, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
 overlay = NodePath("../../../Overlay/ResourceOverlay")
-enemy_root_node = NodePath("../../Enemies")
+enemy_root_node = NodePath("../../Entites/Enemies")
 
-[node name="Enemies" type="Node" parent="WaveMode"]
+[node name="Entites" type="Node" parent="WaveMode"]
 
-[node name="Buildings" type="Node" parent="WaveMode"]
+[node name="Enemies" type="Node" parent="WaveMode/Entites"]
+
+[node name="Buildings" type="Node" parent="WaveMode/Entites"]
 
 [node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
 script = ExtResource("25_ghlpk")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
-building_target_node = NodePath("../WaveMode/Buildings")
+building_target_node = NodePath("../WaveMode/Entites/Buildings")
 building_group = null
 scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
 resource_path_template = ExtResource("26_yjpy8")

@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://jkoasuu4iwby"]
+
+[ext_resource type="Script" path="res://scenes/game/templates/detail_window/tower_settings_content.gd" id="1_rwx4w"]
+
+[node name="TowerSettingsContent" type="Control" node_paths=PackedStringArray("thread_mode_dropdown", "modification_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rwx4w")
+thread_mode_dropdown = NodePath("MarginContainer/VBoxContainer/ThreatMode/OptionButton")
+modification_node = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+_content_name = "SETTINGS"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ThreatMode" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ThreatMode"]
+layout_mode = 2
+text = "THREAT_MODE"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ThreatMode"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10

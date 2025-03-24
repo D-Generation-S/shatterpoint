@@ -17,12 +17,12 @@ func generate_units_for_wave(target_power: float, possible_units: Array[UnitData
 	var spawn_sets: Array[SpawnSet] = []
 
 	while (current_power < target_power):
-		var allowed_units = possible_units.filter(func(unit): return unit.get_power_number() * spawn_speed_multiplier < target_power)
+		var allowed_units = possible_units.filter(func(unit): return unit.get_power_number() < target_power)
 		if allowed_units.size() == 0:
 			print("No more units to spawn")
 			break
 		var current_unit = allowed_units[randomizer.randi_range(0, allowed_units.size() - 1)]
-		var existing_sets = spawn_sets.filter(func(current_set): return current_set.enemy_data == current_unit)
+		var existing_sets = spawn_sets.filter(func(_set): return _set.enemy_data == current_unit)
 		var current_set = null
 		if existing_sets.size() == 0:
 			current_set = SpawnSet.new()

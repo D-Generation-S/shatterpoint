@@ -6,3 +6,6 @@ class_name TowerData extends BuildingBase
 @export var projectile: PackedScene
 
 @export var power_usage_per_shot: float = 1
+
+@export_group("Modifiers")
+@export var possible_generators: Array[StatGenerator]

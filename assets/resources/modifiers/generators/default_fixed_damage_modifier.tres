@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="FixedGenerator" load_steps=5 format=3 uid="uid://cg624hbctwrv2"]
+
+[ext_resource type="Script" path="res://src/game/modifier/stats/fixed_damage_modifier.gd" id="1_mlx8g"]
+[ext_resource type="Script" path="res://src/game/modifier/generator/fixed_generator.gd" id="2_dijuw"]
+
+[sub_resource type="Resource" id="Resource_iw663"]
+script = ExtResource("1_mlx8g")
+_name = "FIXED_DAMAGE"
+_scap_cost = 2
+priority = 1
+value = 0.0
+
+[sub_resource type="Curve" id="Curve_lpnb7"]
+min_value = 1.0
+max_value = 5.0
+_data = [Vector2(0, 1), 0.0, 4.0, 0, 1, Vector2(1, 5), 4.0, 0.0, 1, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("2_dijuw")
+min_value = 1.0
+max_base_value = 4.0
+sample_curve = SubResource("Curve_lpnb7")
+valid_after_wave = 0
+valid_until_wave = 100
+modifier_template = SubResource("Resource_iw663")

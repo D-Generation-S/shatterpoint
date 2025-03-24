@@ -37,6 +37,7 @@ func draw_attack_area(on: bool):
 func set_radius(radius: float):
 	if collision_shape.shape is CircleShape2D:
 		collision_shape.shape.radius = radius
+		queue_redraw()
 
 func _draw():
 	if !custom_draw:

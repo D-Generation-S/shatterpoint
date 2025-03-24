@@ -10,8 +10,8 @@ var mouse_inside: bool = false
 func _ready():
 	interaction_enabled()
 
-func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
+func _unhandled_input(event):
+	if event.is_action("interact") and Input.is_action_just_pressed("interact"):
 		if mouse_inside:
 			interaction_requested.emit()
 		else:

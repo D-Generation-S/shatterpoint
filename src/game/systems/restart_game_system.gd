@@ -4,5 +4,6 @@ extends Node
 
 func _unhandled_input(event):
 	if event.is_action("restart_game") and Input.is_action_pressed("restart_game"):
+		GlobalDataAccess.game_stopped()
 		get_tree().reload_current_scene()
 		
