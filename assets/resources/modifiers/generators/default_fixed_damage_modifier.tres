@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FixedDamageGenerator" load_steps=5 format=3 uid="uid://cg624hbctwrv2"]
+[gd_resource type="Resource" script_class="FixedGenerator" load_steps=5 format=3 uid="uid://cg624hbctwrv2"]
 
 [ext_resource type="Script" path="res://src/game/modifier/stats/fixed_damage_modifier.gd" id="1_mlx8g"]
 [ext_resource type="Script" path="res://src/game/modifier/generator/fixed_generator.gd" id="2_dijuw"]
@@ -18,9 +18,9 @@ point_count = 2
 
 [resource]
 script = ExtResource("2_dijuw")
-min_damage = 1.0
-max_damage_base = 4.0
+min_value = 1.0
+max_base_value = 4.0
 sample_curve = SubResource("Curve_lpnb7")
-modifier_template = SubResource("Resource_iw663")
 valid_after_wave = 0
 valid_until_wave = 100
+modifier_template = SubResource("Resource_iw663")
