@@ -3,7 +3,7 @@ SCRAP;Scrap;Schrott
 ENERGY;Energy;Energie
 BUILD_TIME_LEFT;%TIME% seconds until next wave;%TIME% Sekunden bis zur nächsten Welle
 BUILD_PHASE_STARTED;Build phase has started;Bau phase hat begonnen
-WAVE_PHASE_STARTED;Wave phase has started;Wellen Phase hat begonnen
+WAVE_PHASE_STARTED;Wave %s has started;Wellen %s hat begonnen
 SCRAP_RECIEVED;+%AMOUNT% Scrap;+%AMOUNT% Schrott
 SCRAP_LOST;%AMOUNT% Scrap;%AMOUNT% Schrott
 BUILD_SPACE_BLOCKED;Build space blocked;Baubereich blockiert
@@ -69,5 +69,6 @@ TOWER_OPTIONS;Tower Options;Turmeinstellungen
 FIXED_RANGE;Fixed Range;Feste Reichweite
 FIXED_RANGE_DESCRIPTION;This will add an addition %s points of range to this tower;Dies wird weitere %s punkte auf die Reichweite der Turms packen
 UPGRADES_AND_MODIFIERS;Upgrades / Modifier;Upgrades / Modifikationen
-TOTAL_ENERGY_RECEIVED;Got %s energy storage;%s Energiespeicher erhalten
-TOTAL_ENERGY_LOST;Lost %s energy storage;%s Energiespeicher erhalten
+TOTAL_ENERGY_RECEIVED;+%s energy storage;+%s Energiespeicher
+TOTAL_ENERGY_LOST;-%s energy storage;-%s Energiespeicher
+BUILDING_WAS_DESTROYED;Building %s was destroyed;Das Gebäude %s wurde zerstört

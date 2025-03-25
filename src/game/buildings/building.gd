@@ -8,6 +8,8 @@ signal building_removed(building: Building)
 
 @export var building_data: BuildingBase
 @export var isDebug: bool = false
+@export var destroyed_style: MessageStyle
+@export var building_destroyed_message: String = "BUILDING_WAS_DESTROYED"
 
 @onready var visual: Sprite2D= $"%Visuals"
 
@@ -52,3 +54,7 @@ func add_modifier(modifier: StatModifier):
 func _is_dying():
 	super()
 	building_removed.emit(self)
+
+func _hp_reached_zero():
+	var message = tr(building_destroyed_message) % tr(building_data.building_name)
+	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message, 3, visual.texture)

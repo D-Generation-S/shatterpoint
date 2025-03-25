@@ -19,13 +19,13 @@ reverse = true
 
 [sub_resource type="Resource" id="Resource_r3thl"]
 script = ExtResource("2_koutw")
+return_name = "BULLDOZER"
 validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_g7khr")])
 use_build_entry_icon_as_ghost = true
 
 [sub_resource type="Resource" id="Resource_nuq1m"]
 script = ExtResource("1_uw6xw")
 building_data = SubResource("Resource_r3thl")
-name = "BULLDOZER"
 icon = ExtResource("5_ljeif")
 
 [sub_resource type="Resource" id="Resource_00x07"]
@@ -41,6 +41,7 @@ script = ExtResource("8_337e4")
 
 [sub_resource type="Resource" id="Resource_1sxwt"]
 script = ExtResource("6_j8k8v")
+return_name = "REPAIR"
 building_group = "building"
 validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_00x07"), SubResource("Resource_frq2i"), SubResource("Resource_18pfi")])
 use_build_entry_icon_as_ghost = true
@@ -48,7 +49,6 @@ use_build_entry_icon_as_ghost = true
 [sub_resource type="Resource" id="Resource_5hit1"]
 script = ExtResource("1_uw6xw")
 building_data = SubResource("Resource_1sxwt")
-name = "REPAIR"
 icon = ExtResource("9_2njth")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_acebg"]

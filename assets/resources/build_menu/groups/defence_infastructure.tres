@@ -42,7 +42,6 @@ building_data = ExtResource("2_frd7u")
 [sub_resource type="Resource" id="Resource_wrl4v"]
 script = ExtResource("1_p6yrw")
 building_data = SubResource("Resource_fodb8")
-name = "BASIC_TOWER"
 icon = ExtResource("11_otqf0")
 
 [resource]
