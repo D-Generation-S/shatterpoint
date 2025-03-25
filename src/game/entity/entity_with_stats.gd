@@ -27,14 +27,17 @@ func _ready():
 func _copy_stats():
 	var copy_stats: bool = stats != null
 	var current_hp = 0
+	var current_max_hp = 1
 	if copy_stats:
 		current_hp = stats.hp
+		current_max_hp = stats.max_hp
 
 	_base_stats_copy = _base_stats.duplicate()
 	stats = _base_stats_copy.duplicate()
 
 	if copy_stats:
 		stats.hp = current_hp
+		stats.max_hp = current_max_hp
 
 func add_modifier(modifier: StatModifier):
 	stat_modifiers.append(modifier)
