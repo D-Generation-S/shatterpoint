@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="FixedGenerator" load_steps=5 format=3 uid="uid://11hmytmsgkqd"]
+[gd_resource type="Resource" script_class="FixedGenerator" load_steps=6 format=3 uid="uid://11hmytmsgkqd"]
 
+[ext_resource type="Texture2D" uid="uid://ct2alj8wgb4ba" path="res://assets/atlast_textures/range_up_icon.tres" id="1_padgg"]
 [ext_resource type="Script" path="res://src/game/modifier/stats/fixed_range_modifier.gd" id="1_xx8s7"]
 [ext_resource type="Script" path="res://src/game/modifier/generator/fixed_generator.gd" id="2_ovoq3"]
 
 [sub_resource type="Resource" id="Resource_lsaoq"]
 script = ExtResource("1_xx8s7")
 _name = "FIXED_RANGE"
+_icon = ExtResource("1_padgg")
 _scap_cost = 4
 priority = 10000
 value = 0.0

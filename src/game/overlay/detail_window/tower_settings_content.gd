@@ -32,13 +32,14 @@ func setup(threat_determinations: Array[ThreatDetermination],
 		GlobalDataAccess.get_resource_overlay().scrap_updated.connect(button.global_scrap_updated)
 
 		button.modifier_selected.connect(_modifier_selected)
-		button.disabled = blocked
+		if blocked:
+			button.block_button()
 		modification_node.add_child(button)
 
 func _modifier_selected(modifier: StatModifier):
 	for child in modification_node.get_children():
-		if child is Button:
-			child.disabled = true
+		if child is ButtonWithModifier:
+			child.block_button()
 
 	GlobalDataAccess.get_resource_overlay().add_scrap(-modifier.get_scrap_requirement())
 	modification_added.emit(modifier)
