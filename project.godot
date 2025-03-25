@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shatterpoint"
-config/version="0.0.3"
+config/version="0.0.4"
 config/tags=PackedStringArray("wip")
 run/main_scene="res://scenes/game/GameScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
