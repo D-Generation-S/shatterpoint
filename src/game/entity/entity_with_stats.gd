@@ -3,6 +3,8 @@ class_name EntityWithStats extends Node2D
 signal health_changed(value: float)
 signal max_health_changed(new_max_health: float)
 
+signal request_message(target: int, style: MessageStyle, message: String, time_to_show: float, message_icon: Texture)
+
 @export var _base_stats: EntityStats
 
 var _base_stats_copy: EntityStats
@@ -20,6 +22,7 @@ func _ready():
 	stats.max_hp = stats.hp
 	max_health_changed.emit(stats.max_hp)
 	health_changed.emit(stats.hp)
+	request_message.connect(GlobalDataAccess.get_message_area().add_new_message)
 	
 func _copy_stats():
 	var copy_stats: bool = stats != null
@@ -46,9 +49,12 @@ func deal_damage(damage: float):
 	stats.hp -= damage
 	stats.hp = clampf(stats.hp, 0, stats.max_hp)
 	health_changed.emit(stats.hp)
-	#_health_bar.update_value(stats.hp)
 	if stats.hp <= 0:
+		_hp_reached_zero()
 		_is_dying()
+
+func _hp_reached_zero():
+	pass
 
 func _is_dying():
 	is_alive = false

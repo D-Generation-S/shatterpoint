@@ -26,7 +26,7 @@ var build_mode_timer: Timer
 var dead_unit_timer: Timer
 var spawners: Array[Spawner]
 var completed_spawners = 0
-var current_wave: int = 1
+var current_wave: int = 0
 
 
 func _ready():
@@ -114,7 +114,8 @@ func build_phase_endet():
 	if !build_mode_timer.is_stopped():
 		build_mode_timer.stop()
 	current_phase = WAVE
-	message_requested.emit(MessagePosition.CENTER, message_style, "WAVE_PHASE_STARTED", 1.0)
+	var message = tr("WAVE_PHASE_STARTED") % current_wave
+	message_requested.emit(MessagePosition.CENTER, message_style, message, 1.0)
 
 func start_game():
 	all_units_dead = true
