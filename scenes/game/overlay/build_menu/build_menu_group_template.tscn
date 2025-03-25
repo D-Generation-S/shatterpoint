@@ -8,9 +8,11 @@
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -128.0
-offset_right = 128.0
+offset_top = -68.0
+offset_right = 64.0
 grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
 script = ExtResource("1_aod7s")
 entry_target_node = NodePath("VBoxContainer2/BuildMenuEntries")
 build_menu_entry_template = ExtResource("2_4lp8d")

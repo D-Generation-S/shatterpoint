@@ -54,6 +54,7 @@
 script = ExtResource("5_udn8i")
 _start_scrap = 35
 _max_scrap = 9999
+_max_power = 0.0
 _max_city_hp = 1000
 
 [sub_resource type="Resource" id="Resource_3i2yq"]
@@ -208,7 +209,6 @@ scrap_icon = ExtResource("2_g3tpg")
 energy_icon = ExtResource("3_7fdg0")
 resource_got_message_type = ExtResource("3_k65at")
 resource_lost_message_type = ExtResource("4_q7jgq")
-base_power = 56.0
 scrap_animation_node = NodePath("../../Camera/Camera2D/ScrapResource")
 power_animation_node = NodePath("../../Camera/Camera2D/EnergyResource")
 _resource_data = SubResource("Resource_ywp2m")

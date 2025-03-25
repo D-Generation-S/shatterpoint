@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shatterpoint"
-config/version="0.0.2"
+config/version="0.0.3"
 config/tags=PackedStringArray("wip")
 run/main_scene="res://scenes/game/GameScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -22,11 +22,20 @@ config/icon="res://icon.svg"
 GlobalSoundManager="*res://scenes/global/SoundManager.tscn"
 GlobalTickSystem="*res://src/global/tick_system.gd"
 GlobalDataAccess="*res://src/global/global_data_access.gd"
+GlobalMessageLine="*res://src/global/global_message_line.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://scenes/": "purple",
+"res://src/": "red"
+}
 
 [global_group]
 

@@ -40,5 +40,4 @@ building_data = ExtResource("1_rgjq1")
 [resource]
 script = ExtResource("11_dqoa1")
 building_data = SubResource("Resource_320j0")
-name = "BASIC_POWER_GENERATOR"
 icon = ExtResource("10_bsq81")

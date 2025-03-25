@@ -1,11 +1,15 @@
 class_name Building extends EntityWithStats
 
-signal show_detail_window(request_position: Vector2, size: Vector2, title: String, content: Array[DefaultDetailContent])
+signal show_detail_window(request_position: Vector2, size: Vector2, title: String, content: Array[DefaultDetailContent], close_others: bool)
 signal building_data_changed(building_data: BuildingBase)
 signal in_debug_mode(on: bool)
+signal building_added(building: Building)
+signal building_removed(building: Building)
 
 @export var building_data: BuildingBase
 @export var isDebug: bool = false
+@export var destroyed_style: MessageStyle
+@export var building_destroyed_message: String = "BUILDING_WAS_DESTROYED"
 
 @onready var visual: Sprite2D= $"%Visuals"
 
@@ -13,11 +17,15 @@ signal in_debug_mode(on: bool)
 var resource_overlay: ResourceOverlay
 
 func _ready():
+	building_added.connect(GlobalMessageLine.building_was_added)
+	building_removed.connect(GlobalMessageLine.building_was_removed)
+
 	building_data = building_data.duplicate()
 	in_debug_mode.emit(isDebug)
-	building_data_changed.emit(building_data)
 	_base_stats = building_data.stats
 	super()
+	building_data.stats.max_hp = stats.max_hp
+	building_data_changed.emit(building_data)
 	for overlay in get_tree().get_nodes_in_group("overlay"):
 		if overlay is ResourceOverlay:
 			resource_overlay = overlay
@@ -30,11 +38,13 @@ func _ready():
 	if visual is ColorReplaceShader:
 		visual.set_color_replacement(building_data.input_color, building_data.output_color)
 
+	building_added.emit(self)
+
 func request_add_projectile(node: Node2D):
 	get_parent().add_child(node)
 
 func request_detail_window(request_position: Vector2, size: Vector2, title: String, content: Array[DefaultDetailContent]):
-	show_detail_window.emit(request_position, size, title, content)
+	show_detail_window.emit(request_position, size, title, content, true)
 
 func add_modifier(modifier: StatModifier):
 	super(modifier)
@@ -43,3 +53,8 @@ func add_modifier(modifier: StatModifier):
 
 func _is_dying():
 	super()
+	building_removed.emit(self)
+
+func _hp_reached_zero():
+	var message = tr(building_destroyed_message) % tr(building_data.building_name)
+	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message, 3, visual.texture)

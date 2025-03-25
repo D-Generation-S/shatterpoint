@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://mwkus00fsoud"]
+[gd_scene load_steps=7 format=3 uid="uid://mwkus00fsoud"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_t6acd"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_3w0gm"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_50n60"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_qpi2g"]
 [ext_resource type="Script" path="res://src/game/entity/components/generator_component.gd" id="4_d4hvb"]
@@ -9,6 +10,7 @@
 
 [node name="GeneratorTemplate" type="Node2D" groups=["building", "generator"]]
 script = ExtResource("1_t6acd")
+destroyed_style = ExtResource("2_3w0gm")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true

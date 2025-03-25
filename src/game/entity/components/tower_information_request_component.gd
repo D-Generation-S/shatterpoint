@@ -1,6 +1,7 @@
 extends Node2D
 
 signal show_detail_window(request_position: Vector2, size: Vector2, title: String, content: Array[DefaultDetailContent])
+signal create_travel_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount: int, time: float)
 signal change_threat_method(new_method: ThreatDetermination)
 signal modifier_added(modifier: StatModifier)
 
@@ -19,6 +20,7 @@ var block_modifier_generator: bool = false
 
 func _ready():
 	GlobalDataAccess.get_phase_manager().dynamic_start_wave_preparation.connect(generate_new_modifiers_for_wave)
+	create_travel_path.connect(GlobalDataAccess.get_item_path_system().create_new_travel_path)
 
 func got_selected(on: bool):
 	if !on or data_showed:
@@ -40,10 +42,7 @@ func got_selected(on: bool):
 	settings.threat_changed.connect(threat_changed)
 	settings.threat_changed.connect(tell_threat_changed)
 
-	settings.modification_added.connect(func(modifier): 
-		block_modifier_generator = true
-		modifier_added.emit(modifier)
-		)
+	settings.modification_added.connect(_modifier_was_added)
 
 	var statistic = statistic_content.instantiate() as TowerStatisticContent
 	statistic.statistic_updated(stored_data)
@@ -56,6 +55,16 @@ func got_selected(on: bool):
 	last_data_statistic = statistic 
 	show_detail_window.emit(global_position, Vector2(300,400), "TOWER_OPTIONS", content)
 	data_showed = true
+
+func _modifier_was_added(modifier: StatModifier):
+	block_modifier_generator = true
+	modifier_added.emit(modifier)
+	var scrap = modifier.get_scrap_requirement()
+	create_travel_path.emit(GlobalDataAccess.get_resource_overlay().scrap_icon,
+							GlobalDataAccess.get_resource_overlay().power_animation_node,
+							self,
+							abs(scrap),
+							1)
 
 func threat_changed(threat: ThreatDetermination):
 	current_threat_determination = threat

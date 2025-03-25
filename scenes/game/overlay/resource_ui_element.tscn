@@ -13,7 +13,6 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 script = ExtResource("1_2y46m")
-initial_value = null
 
 [node name="Scrap" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -37,7 +36,7 @@ layout_mode = 2
 [node name="ResourceValue" type="Label" parent="Scrap/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "9999"
+text = "0"
 script = ExtResource("5_o8m7h")
 time_for_animation = 0.5
 
