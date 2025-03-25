@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0d3k3rsr84ma"]
+[gd_scene load_steps=8 format=3 uid="uid://b0d3k3rsr84ma"]
 
-[ext_resource type="Script" path="res://scenes/game/templates/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
+[ext_resource type="Script" path="res://src/game/overlay/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
 [ext_resource type="PackedScene" uid="uid://c2cn44tmy4ia2" path="res://scenes/game/templates/detail_window/templates/key_value.tscn" id="2_j3cg2"]
+[ext_resource type="Texture2D" uid="uid://ek4s20818gv" path="res://assets/atlast_textures/damage_icon.tres" id="3_8nd3g"]
+[ext_resource type="Texture2D" uid="uid://cwb7af1m00i6i" path="res://assets/atlast_textures/health_icon.tres" id="3_kut4b"]
+[ext_resource type="Texture2D" uid="uid://tngll1481eo7" path="res://assets/atlast_textures/armor_icon.tres" id="3_qqdvr"]
+[ext_resource type="Texture2D" uid="uid://cw135dw5l2swk" path="res://assets/atlast_textures/range_icon.tres" id="4_u8gwr"]
+[ext_resource type="Texture2D" uid="uid://bdgluljy3r0y2" path="res://assets/atlast_textures/fire_rate_icon.tres" id="4_yld16"]
 
 [node name="TowerStatisticSetting" type="Control" node_paths=PackedStringArray("_statistic_node")]
 layout_mode = 3
@@ -13,6 +18,11 @@ grow_vertical = 2
 script = ExtResource("1_xnbd2")
 _statistic_node = NodePath("ScrollContainer/Statistic")
 _key_value_template = ExtResource("2_j3cg2")
+_hp_icon = ExtResource("3_kut4b")
+_armor_icon = ExtResource("3_qqdvr")
+_fire_rate_icon = ExtResource("4_yld16")
+_damage_rate_icon = ExtResource("3_8nd3g")
+_range_rate_icon = ExtResource("4_u8gwr")
 _content_name = "STATISTIC"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

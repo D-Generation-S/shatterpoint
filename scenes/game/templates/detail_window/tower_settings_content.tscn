@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jkoasuu4iwby"]
 
-[ext_resource type="Script" path="res://scenes/game/templates/detail_window/tower_settings_content.gd" id="1_rwx4w"]
+[ext_resource type="Script" path="res://src/game/overlay/detail_window/tower_settings_content.gd" id="1_rwx4w"]
 
 [node name="TowerSettingsContent" type="Control" node_paths=PackedStringArray("thread_mode_dropdown", "modification_node")]
 layout_mode = 3
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rwx4w")
 thread_mode_dropdown = NodePath("MarginContainer/VBoxContainer/ThreatMode/OptionButton")
-modification_node = NodePath("MarginContainer/VBoxContainer/HBoxContainer")
+modification_node = NodePath("MarginContainer/VBoxContainer/Modifiers/HBoxContainer")
 _content_name = "SETTINGS"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -39,6 +39,20 @@ text = "THREAT_MODE"
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/ThreatMode"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Modifiers" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Modifiers"]
 layout_mode = 2
 size_flags_vertical = 10
+text = "UPGRADES_AND_MODIFIERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/Modifiers"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Modifiers"]
+layout_mode = 2
+size_flags_vertical = 8

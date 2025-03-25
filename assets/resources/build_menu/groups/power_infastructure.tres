@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=5 format=3 uid="uid://bhnojr5uyl0ai"]
+
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="1_kvdo6"]
+[ext_resource type="Resource" uid="uid://bmwbegvcgt85c" path="res://assets/resources/build_menu/basic_generator_build_entry.tres" id="2_768lc"]
+[ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="3_pw5b4"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="4_3i3np"]
+
+[resource]
+script = ExtResource("4_3i3np")
+name = "POWER_INFRASTRUCTURE"
+icon = ExtResource("3_pw5b4")
+entries = Array[ExtResource("1_kvdo6")]([ExtResource("2_768lc")])

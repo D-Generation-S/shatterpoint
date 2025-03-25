@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=21 format=3 uid="uid://bv3a2jvxlp3i2"]
+
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="1_uw6xw"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/destroy_building.gd" id="2_koutw"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="3_mlpyl"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="4_uy37q"]
+[ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="5_0wp6g"]
+[ext_resource type="Texture2D" uid="uid://dbym3q5ao630a" path="res://assets/atlast_textures/bulldozer_icon.tres" id="5_ljeif"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/repair_building.gd" id="6_j8k8v"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/enough_scrap_for_repair.gd" id="7_gd0uw"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/hp_is_not_full.gd" id="8_337e4"]
+[ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="9_2njth"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="11_whwit"]
+
+[sub_resource type="Resource" id="Resource_g7khr"]
+script = ExtResource("4_uy37q")
+building_group = "building"
+reverse = true
+
+[sub_resource type="Resource" id="Resource_r3thl"]
+script = ExtResource("2_koutw")
+validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_g7khr")])
+use_build_entry_icon_as_ghost = true
+
+[sub_resource type="Resource" id="Resource_nuq1m"]
+script = ExtResource("1_uw6xw")
+building_data = SubResource("Resource_r3thl")
+name = "BULLDOZER"
+icon = ExtResource("5_ljeif")
+
+[sub_resource type="Resource" id="Resource_00x07"]
+script = ExtResource("4_uy37q")
+building_group = "building"
+reverse = true
+
+[sub_resource type="Resource" id="Resource_frq2i"]
+script = ExtResource("7_gd0uw")
+
+[sub_resource type="Resource" id="Resource_18pfi"]
+script = ExtResource("8_337e4")
+
+[sub_resource type="Resource" id="Resource_1sxwt"]
+script = ExtResource("6_j8k8v")
+building_group = "building"
+validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_00x07"), SubResource("Resource_frq2i"), SubResource("Resource_18pfi")])
+use_build_entry_icon_as_ghost = true
+
+[sub_resource type="Resource" id="Resource_5hit1"]
+script = ExtResource("1_uw6xw")
+building_data = SubResource("Resource_1sxwt")
+name = "REPAIR"
+icon = ExtResource("9_2njth")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acebg"]
+atlas = ExtResource("5_0wp6g")
+region = Rect2(48, 32, 16, 16)
+
+[resource]
+script = ExtResource("11_whwit")
+name = "TOOLS"
+icon = SubResource("AtlasTexture_acebg")
+entries = Array[ExtResource("1_uw6xw")]([SubResource("Resource_nuq1m"), SubResource("Resource_5hit1")])

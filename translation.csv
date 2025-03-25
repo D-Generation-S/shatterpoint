@@ -64,3 +64,4 @@ Der Basis schaden ist der Grundschaden sowie alle Fixen Schadens Modifikatoren."
 TOWER_OPTIONS;Tower Options;Turmeinstellungen
 FIXED_RANGE;Fixed Range;Feste Reichweite
 FIXED_RANGE_DESCRIPTION;This will add an addition %s points of range to this tower;Dies wird weitere %s punkte auf die Reichweite der Turms packen
+UPGRADES_AND_MODIFIERS;Upgrades / Modifier;Upgrades / Modifikationen
