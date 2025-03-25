@@ -17,7 +17,7 @@ var resource_overlay: ResourceOverlay
 func _ready():
 	building_added.connect(GlobalMessageLine.building_was_added)
 	building_removed.connect(GlobalMessageLine.building_was_removed)
-	
+
 	building_data = building_data.duplicate()
 	in_debug_mode.emit(isDebug)
 	_base_stats = building_data.stats

@@ -38,6 +38,7 @@ projectile = ExtResource("5_xateg")
 power_usage_per_shot = 2.0
 possible_generators = Array[ExtResource("5_rtxmx")]([ExtResource("6_2ehaf"), ExtResource("7_38btf"), ExtResource("8_32o02")])
 scrap_required = 3
+building_name = "BASIC_TOWER"
 texture = ExtResource("8_uhtxb")
 input_color = Array[Color]([])
 output_color = Array[Color]([])
