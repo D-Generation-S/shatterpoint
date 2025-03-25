@@ -1,12 +1,16 @@
 class_name ResourceData extends Resource
 
 
+@export_group("Scrap")
 @export var _start_scrap: int = 25
 @export var _max_scrap: int = 9999
+@export_group("Power")
+@export var _max_power: float = 0
+@export_group("City")
 @export var _max_city_hp: int = 1000
 
+
 var _scrap: int = 0
-var _max_power: float = 0
 var _power: float = 0
 var _city_hp: int = 0
 
@@ -22,6 +26,9 @@ func get_power() -> float:
 
 func set_max_power(amount: float):
 	_max_power = amount
+
+func get_max_power() -> float:
+	return _max_power
 
 func change_power(amount: float) -> bool:
 	if _power + amount < 0:

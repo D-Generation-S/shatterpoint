@@ -19,6 +19,7 @@ region = Rect2(186, 68, 17, 15)
 [resource]
 script = ExtResource("1_bda1w")
 generation_per_tick = 3.0
+storage_capacity = 50.0
 scrap_required = 5
 texture = SubResource("AtlasTexture_cefxj")
 input_color = Array[Color]([])
