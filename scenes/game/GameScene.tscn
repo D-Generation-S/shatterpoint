@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=78 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://src/game/camera/camera_controller.gd" id="10_xerwt"]
 [ext_resource type="Script" path="res://src/resources/camera_settings.gd" id="11_evce7"]
 [ext_resource type="Script" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_j2gqh"]
+[ext_resource type="PackedScene" uid="uid://dgcygfjfykbdw" path="res://scenes/game/overlay/popup_manager/popup_manager.tscn" id="13_qkw67"]
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="13_vwlyg"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="14_1ioao"]
 [ext_resource type="PackedScene" uid="uid://rihqoggarad2" path="res://scenes/game/templates/detail_window/default_detail_window.tscn" id="14_wn1c3"]
@@ -38,6 +39,7 @@
 [ext_resource type="Script" path="res://src/game/systems/sticker_system/sticker_system.gd" id="33_eksmu"]
 [ext_resource type="Script" path="res://src/game/systems/tutorial/game_start_system.gd" id="35_vubuj"]
 [ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="36_ryx4r"]
+[ext_resource type="PackedScene" uid="uid://bk7keckkd78ia" path="res://scenes/game/overlay/popups/GameEnd.tscn" id="37_18hsh"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
 [ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="39_4s4a4"]
@@ -223,6 +225,8 @@ default_message_style = ExtResource("7_h7fcw")
 [node name="EntityDetailWindowSystem" type="CanvasLayer" parent="Overlay" groups=["system"]]
 script = ExtResource("48_kdeyx")
 default_window_template = ExtResource("14_wn1c3")
+
+[node name="PopupManager" parent="Overlay" groups=["overlay"] instance=ExtResource("13_qkw67")]
 
 [node name="Camera" type="Node" parent="."]
 
@@ -429,6 +433,7 @@ debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
 
 [node name="GameStateManager" type="Node" parent="Systems" groups=["system"]]
 script = ExtResource("31_uypbf")
+game_end_screen_template = ExtResource("37_18hsh")
 message_style = ExtResource("7_h7fcw")
 
 [node name="ItemPathAnimator" type="Node" parent="Systems" node_paths=PackedStringArray("scrap_resource_trave_node") groups=["system"]]
@@ -450,6 +455,7 @@ build_mode = SubResource("Resource_b1nur")
 [node name="RestartGameSystem" type="Node" parent="Systems"]
 script = ExtResource("46_vydfs")
 
+[connection signal="game_lost" from="Overlay/ResourceOverlay" to="Systems/GameStateManager" method="game_has_been_lost"]
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_tool_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_tool"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]

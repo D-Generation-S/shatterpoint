@@ -12,6 +12,7 @@ signal dynamic_start_wave_preparation(number: int)
 signal build_phase_started()
 signal message_requested(target: int, type: MessageType, message: String, duration: float, icon: Texture)
 
+@export var game_end_screen_template: PackedScene
 @export var unit_dead_check_interval: float = 1
 @export var message_style: MessageStyle
 
@@ -121,3 +122,10 @@ func start_game():
 	all_units_dead = true
 	all_units_spawned = true
 	wave_phase_endet()
+
+func game_has_been_lost():
+	var end_screen = game_end_screen_template.instantiate() as GameEnd
+	end_screen.set_current_wave(current_wave - 1)
+	var popup_manager = GlobalDataAccess.get_popup_manager()
+	popup_manager.show_popup(PopupPosition.CENTER, end_screen, true)
+	pass
