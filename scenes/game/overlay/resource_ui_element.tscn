@@ -30,16 +30,18 @@ expand_mode = 2
 stretch_mode = 5
 script = ExtResource("3_621qp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Scrap"]
-layout_mode = 2
-
-[node name="ResourceValue" type="Label" parent="Scrap/VBoxContainer"]
+[node name="ResourceValue" type="Label" parent="Scrap"]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 1
+mouse_filter = 1
 text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("5_o8m7h")
 time_for_animation = 0.5
 
 [connection signal="image_changed" from="." to="Scrap/ScrapIcon" method="set_new_image"]
 [connection signal="name_changed" from="." to="Scrap/ScrapIcon" method="name_changed"]
-[connection signal="value_changed" from="." to="Scrap/VBoxContainer/ResourceValue" method="set_value_animated"]
+[connection signal="update_tooltip" from="." to="Scrap/ResourceValue" method="_update_tooltip"]
+[connection signal="value_changed" from="." to="Scrap/ResourceValue" method="set_value_animated"]

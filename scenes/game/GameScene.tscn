@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=83 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="13_vwlyg"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="14_1ioao"]
 [ext_resource type="PackedScene" uid="uid://rihqoggarad2" path="res://scenes/game/templates/detail_window/default_detail_window.tscn" id="14_wn1c3"]
+[ext_resource type="Script" path="res://src/game/overlay/debug/debug_menu.gd" id="14_ysgl5"]
+[ext_resource type="PackedScene" uid="uid://deewj0muqtqqw" path="res://scenes/game/overlay/debug/debug_menu.tscn" id="15_to5wg"]
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="15_ytff2"]
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="16_175xq"]
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="17_gtavo"]
@@ -43,19 +45,21 @@
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
 [ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="39_4s4a4"]
-[ext_resource type="Texture2D" uid="uid://jj3f2gvtvqrn" path="res://assets/atlast_textures/basic_power_generator.tres" id="39_hspbf"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="40_pmcoi"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="41_3ian8"]
+[ext_resource type="Resource" uid="uid://7iywprfg275c" path="res://assets/resources/buildings/storage/startup_scrap_storage.tres" id="41_p1h88"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="42_heux3"]
+[ext_resource type="AudioStream" uid="uid://do5db5kr4jvrq" path="res://assets/audio/effects/building_placed_2.wav" id="42_yfmtm"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="43_0gjul"]
+[ext_resource type="PackedScene" uid="uid://b6l2b21q7muf0" path="res://scenes/game/templates/buildings/storage/scrap_storage.tscn" id="43_v5iml"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="44_53maf"]
 [ext_resource type="Script" path="res://src/game/systems/restart_game_system.gd" id="46_vydfs"]
 [ext_resource type="Script" path="res://src/game/systems/entity_detail_window_system/entity_detail_window_system.gd" id="48_kdeyx"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
-_start_scrap = 35
-_max_scrap = 9999
+_start_scrap = 0
+_max_scrap = 0
 _max_power = 0.0
 _max_city_hp = 1000
 
@@ -191,14 +195,22 @@ reverse = false
 script = ExtResource("44_53maf")
 tile_map_group = "obstracles"
 
-[sub_resource type="Resource" id="Resource_b1nur"]
+[sub_resource type="Resource" id="Resource_f36gh"]
+script = ExtResource("39_4s4a4")
+building_placed_sound = ExtResource("42_yfmtm")
+building_template = ExtResource("43_v5iml")
+building_group = "building"
+validators = Array[ExtResource("40_pmcoi")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
+use_build_entry_icon_as_ghost = true
+building_data = ExtResource("41_p1h88")
+
+[sub_resource type="Resource" id="Resource_vm6ia"]
 script = ExtResource("39_4s4a4")
 building_placed_sound = ExtResource("37_uvsn1")
 building_template = ExtResource("38_3y0yw")
 building_group = "building"
 validators = Array[ExtResource("40_pmcoi")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
-use_build_entry_icon_as_ghost = false
-ghost_icon = ExtResource("39_hspbf")
+use_build_entry_icon_as_ghost = true
 building_data = ExtResource("36_ryx4r")
 
 [node name="GameScene" type="Node2D"]
@@ -226,6 +238,10 @@ script = ExtResource("48_kdeyx")
 default_window_template = ExtResource("14_wn1c3")
 
 [node name="PopupManager" parent="Overlay" groups=["overlay"] instance=ExtResource("13_qkw67")]
+
+[node name="DebugMenu" type="CanvasLayer" parent="Overlay"]
+script = ExtResource("14_ysgl5")
+debug_menu_template = ExtResource("15_to5wg")
 
 [node name="Camera" type="Node" parent="."]
 
@@ -451,7 +467,8 @@ max_time_to_life = 200.0
 
 [node name="GameStartSystem" type="Node" parent="Systems"]
 script = ExtResource("35_vubuj")
-build_mode = SubResource("Resource_b1nur")
+scrap_storage_build_mode = SubResource("Resource_f36gh")
+generator_build_mode = SubResource("Resource_vm6ia")
 
 [node name="RestartGameSystem" type="Node" parent="Systems"]
 script = ExtResource("46_vydfs")
@@ -465,7 +482,6 @@ script = ExtResource("46_vydfs")
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner1" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner2" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/Path2D/TopSpawner" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
-[connection signal="building_was_placed" from="BuildMode" to="Systems/GameStartSystem" method="_start_game_now"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]

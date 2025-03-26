@@ -2,8 +2,8 @@ class_name ResourceData extends Resource
 
 
 @export_group("Scrap")
-@export var _start_scrap: int = 25
-@export var _max_scrap: int = 9999
+@export var _start_scrap: int = 0
+@export var _max_scrap: int = 0
 @export_group("Power")
 @export var _max_power: float = 0
 @export_group("City")
@@ -20,6 +20,12 @@ func startup():
 
 func get_scrap() -> int:
 	return _scrap
+
+func set_max_scrap(amount: int):
+	_max_scrap = amount
+
+func get_max_scrap() -> int:
+	return _max_scrap
 
 func get_power() -> float:
 	return _power

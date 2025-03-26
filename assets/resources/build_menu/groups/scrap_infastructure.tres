@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=20 format=3 uid="uid://cwyrg0w0yofi4"]
+
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="1_pccod"]
+[ext_resource type="Resource" uid="uid://d26bj2kyamgkq" path="res://assets/resources/buildings/storage/basic_scrap_storage.tres" id="2_g50lc"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_yrta1"]
+[ext_resource type="AudioStream" uid="uid://do5db5kr4jvrq" path="res://assets/audio/effects/building_placed_2.wav" id="3_a4ptf"]
+[ext_resource type="PackedScene" uid="uid://b6l2b21q7muf0" path="res://scenes/game/templates/buildings/storage/scrap_storage.tscn" id="4_aoddn"]
+[ext_resource type="Script" path="res://src/game/build_mode/tools/building_construction.gd" id="5_lt60x"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="6_tewac"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="7_wiyi3"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="8_sy8l3"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/inside_of_build_area.gd" id="10_l3vhk"]
+[ext_resource type="Script" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="10_tbo65"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="11_3suaq"]
+[ext_resource type="Texture2D" uid="uid://doqhrkci5n1l6" path="res://assets/atlast_textures/scrap_storage.tres" id="11_op110"]
+
+[sub_resource type="Resource" id="Resource_3widk"]
+script = ExtResource("7_wiyi3")
+building_group = "building"
+reverse = false
+
+[sub_resource type="Resource" id="Resource_a0rvk"]
+script = ExtResource("8_sy8l3")
+tile_map_group = "obstracles"
+
+[sub_resource type="Resource" id="Resource_m16n3"]
+script = ExtResource("10_l3vhk")
+build_area_group = "build_area"
+
+[sub_resource type="Resource" id="Resource_v6sgo"]
+script = ExtResource("10_tbo65")
+
+[sub_resource type="Resource" id="Resource_ta2s8"]
+script = ExtResource("5_lt60x")
+building_placed_sound = ExtResource("3_a4ptf")
+building_template = ExtResource("4_aoddn")
+building_group = "building"
+validators = Array[ExtResource("6_tewac")]([SubResource("Resource_3widk"), SubResource("Resource_a0rvk"), SubResource("Resource_m16n3"), SubResource("Resource_v6sgo")])
+use_build_entry_icon_as_ghost = true
+building_data = ExtResource("2_g50lc")
+
+[sub_resource type="Resource" id="Resource_wkwq6"]
+script = ExtResource("1_pccod")
+building_data = SubResource("Resource_ta2s8")
+icon = ExtResource("11_op110")
+
+[resource]
+script = ExtResource("2_yrta1")
+name = "SCRAP_INFRASTRUCTURE"
+icon = ExtResource("11_3suaq")
+entries = Array[ExtResource("1_pccod")]([SubResource("Resource_wkwq6")])

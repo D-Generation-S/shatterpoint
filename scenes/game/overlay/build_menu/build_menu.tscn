@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://3wauxg2sw8r3"]
+[gd_scene load_steps=11 format=3 uid="uid://3wauxg2sw8r3"]
 
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu.gd" id="1_1d5ep"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_pqfs5"]
 [ext_resource type="PackedScene" uid="uid://0jl35wrlytvr" path="res://scenes/game/overlay/build_menu/build_menu_group_template.tscn" id="3_kjgpy"]
+[ext_resource type="Resource" uid="uid://cwyrg0w0yofi4" path="res://assets/resources/build_menu/groups/scrap_infastructure.tres" id="3_r51kc"]
 [ext_resource type="Resource" uid="uid://b5gc2v84j0i5x" path="res://assets/resources/build_menu/groups/defence_infastructure.tres" id="3_u2tf8"]
 [ext_resource type="Resource" uid="uid://bhnojr5uyl0ai" path="res://assets/resources/build_menu/groups/power_infastructure.tres" id="4_m5b8g"]
 [ext_resource type="Resource" uid="uid://bv3a2jvxlp3i2" path="res://assets/resources/build_menu/groups/tools.tres" id="5_iiqo6"]
@@ -12,7 +13,7 @@
 
 [node name="BuildMenu" type="CanvasLayer"]
 script = ExtResource("1_1d5ep")
-_menu_data = Array[ExtResource("2_pqfs5")]([ExtResource("3_u2tf8"), ExtResource("4_m5b8g"), ExtResource("5_iiqo6")])
+_menu_data = Array[ExtResource("2_pqfs5")]([ExtResource("3_r51kc"), ExtResource("4_m5b8g"), ExtResource("3_u2tf8"), ExtResource("5_iiqo6")])
 build_group_template = ExtResource("3_kjgpy")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

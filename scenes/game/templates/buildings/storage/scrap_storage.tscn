@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6l2b21q7muf0"]
+
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="1_3wnx1"]
+[ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_7e4xk"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_6v1xe"]
+[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="2_pl675"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_updg7"]
+
+[node name="ScrapStorage" type="Node2D" groups=["building", "storage"]]
+script = ExtResource("1_7e4xk")
+destroyed_style = ExtResource("2_6v1xe")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+theme = ExtResource("1_3wnx1")
+show_percentage = false
+script = ExtResource("2_pl675")
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_updg7")
+
+[connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
