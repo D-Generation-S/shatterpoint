@@ -19,10 +19,7 @@ var initial_fire: bool = false
 var resource_overlay: ResourceOverlay
 
 func _ready():
-	for overlay in get_tree().get_nodes_in_group("overlay"):
-		if overlay is ResourceOverlay:
-			resource_overlay = overlay
-
+	resource_overlay = GlobalDataAccess.get_resource_overlay()
 	
 	attack_timer.timeout.connect(fire)
 	attack_timer.one_shot = true

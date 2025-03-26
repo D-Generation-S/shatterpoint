@@ -1,21 +1,25 @@
 class_name Navigation extends NavigationAgent2D
 
-@export var max_physic_updates_until_reset: int = 25
-@export var max_reset_pos: int = 50
-@export var threshold: float = 0.6
+signal got_stuck()
+signal new_target_required()
+signal change_velocity(new_velocity: Vector2)
 
-@onready var enemy_character: Enemy = $".."
+@export var controlled_character: CharacterBody2D
+@export var position_scan_interval_in_physic_ticks: int = 60
+@export var max_reset_pos: int = 50
+@export var threshold: float = 5
 
 var position_counter: int = 0
-var last_position: Vector2 = Vector2.ZERO
+var scan_position: Vector2 = Vector2.ZERO
 var main_nav_position: Vector2
-var last_nav_position: Vector2 = Vector2.ZERO
 
-# Called when the node enters the scene tree for the first time.
+var collision_off = false
+
 func _ready():
 	velocity_computed.connect(_velocity_computed)
 	process_mode = ProcessMode.PROCESS_MODE_DISABLED
 	navigation_setup.call_deferred()
+	scan_position = controlled_character.global_position
 
 func navigation_setup():
 	await get_tree().physics_frame
@@ -23,41 +27,39 @@ func navigation_setup():
 
 
 func _physics_process(_delta: float):
-	var current_agent_position = enemy_character.global_position
+	var current_agent_position = controlled_character.global_position
 	var next_path_position = get_next_path_position()
 	var new_velocity = current_agent_position.direction_to(next_path_position)
-	new_velocity = new_velocity.normalized() * enemy_character.movement_speed
+	new_velocity = new_velocity.normalized()
 
-	if position_counter >= max_physic_updates_until_reset:
+	if position_counter > position_scan_interval_in_physic_ticks:
 		position_counter = 0
-		last_nav_position = target_position
-		var random_x = enemy_character.position.x + randi_range(-max_reset_pos, max_reset_pos)
-		var random_y = enemy_character.position.y + randi_range(-max_reset_pos, max_reset_pos)
-		set_move_command(Vector2(random_x, random_y))
+		if controlled_character.global_position.distance_to(scan_position) <= threshold:
+			var random_x = controlled_character.position.x + randi_range(-max_reset_pos, max_reset_pos)
+			var random_y = controlled_character.position.y + randi_range(-max_reset_pos, max_reset_pos)
+			set_move_command(Vector2(random_x, random_y))
+			got_stuck.emit()
 
-	if enemy_character.global_position.distance_to(last_position) <= threshold:
-		position_counter += 1
-	else:
-		position_counter = 0
+		scan_position = controlled_character.global_position
 
-	last_position = enemy_character.global_position
+	position_counter += 1
 
 	if is_navigation_finished():
-		if last_nav_position != Vector2.ZERO:
-			set_move_command(last_nav_position)
-			last_nav_position = Vector2.ZERO
-			return
-		return
+		position_counter = 0
+		new_target_required.emit()
 
 	if avoidance_enabled:
 		set_velocity(new_velocity)
 	else:
 		_velocity_computed(new_velocity)
 
-	enemy_character.move_and_slide()
+	controlled_character.move_and_slide()
 
 func set_move_command(target: Vector2):
 	target_position = target
 
+func set_debug(on: bool):
+	debug_enabled = on
+
 func _velocity_computed(safe_velocity: Vector2):
-	enemy_character.velocity = safe_velocity
+	change_velocity.emit(safe_velocity)

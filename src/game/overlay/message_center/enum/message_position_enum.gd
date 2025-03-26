@@ -1,6 +1,5 @@
 class_name MessagePosition
 
-
 enum 
 {
 	CENTER,

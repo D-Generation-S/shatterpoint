@@ -33,7 +33,7 @@ func add_scrap(value: int):
 	_resource_data.change_scrap(value)
 	scrap_updated.emit(_resource_data.get_scrap())
 
-	var new_scrap_message = tr("SCRAP_RECIEVED")
+	var new_scrap_message = tr("SCRAP_RECEIVED")
 	var message_style = resource_got_message_type
 	if value < 0:
 		new_scrap_message = tr("SCRAP_LOST")

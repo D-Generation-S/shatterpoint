@@ -7,12 +7,8 @@ var path_system: ItemPathSystem
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for system in get_tree().get_nodes_in_group("system"):
-		if system is ItemPathSystem:
-			path_system = system
-	for overlay in get_tree().get_nodes_in_group("overlay"):
-		if overlay is ResourceOverlay:
-			resource_overlay = overlay
+	path_system = GlobalDataAccess.get_item_path_system()
+	resource_overlay = GlobalDataAccess.get_resource_overlay()
 
 	GlobalTickSystem.game_tick.connect(_game_tick)
 
@@ -26,5 +22,5 @@ func _game_tick():
 	path_system.create_new_travel_path(resource_overlay.energy_icon,
 										AutoDeleteNode.new(5, global_position),
 										resource_overlay.power_animation_node,
-										generator_data.generation_per_tick, 1
+										int(generator_data.generation_per_tick), 1.0
 									  )

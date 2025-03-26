@@ -29,6 +29,10 @@ GlobalMessageLine="*res://src/global/global_message_line.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/localization_editor/plugin.cfg")
+
 [file_customization]
 
 folder_colors={

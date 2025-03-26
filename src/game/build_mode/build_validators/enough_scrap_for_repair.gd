@@ -1,6 +1,6 @@
 class_name EnoughScrapForRepair extends BuildValidator
 
-func is_valid(tree: SceneTree,
+func is_valid(_tree: SceneTree,
 			  _global_mouse_position: Vector2,
 			  building_data: BuildingBase,
 			  building_stats: EntityStats,

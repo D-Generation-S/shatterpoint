@@ -12,8 +12,6 @@ var stats: EntityStats
 
 var stat_modifiers: Array[StatModifier]
 
-var _last_position: Vector2 = Vector2.ZERO
-
 var is_alive: bool = true
 
 # Called when the node enters the scene tree for the first time.

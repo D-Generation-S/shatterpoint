@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="SpawnerConfiguration" load_steps=9 format=3 uid="uid://787f37sn4rlu"]
+[gd_resource type="Resource" script_class="SpawnerConfiguration" load_steps=10 format=3 uid="uid://787f37sn4rlu"]
 
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="1_3fdcg"]
 [ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="2_asum0"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="2_ihd1m"]
-[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/DefaultSoldier.tres" id="2_us8ti"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="3_6lh1o"]
-[ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/LightTank.tres" id="4_6jup3"]
+[ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/default_soldier.tres" id="3_1386k"]
+[ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/light_tank.tres" id="4_6jup3"]
+[ext_resource type="Resource" uid="uid://dcfdt74yfgt6v" path="res://assets/resources/enemies/fast_soldier.tres" id="4_6l8fu"]
 
 [sub_resource type="Resource" id="Resource_eopsd"]
 script = ExtResource("1_3fdcg")
@@ -24,4 +25,4 @@ script = ExtResource("3_6lh1o")
 power_function = SubResource("Resource_a7f8v")
 generator = SubResource("Resource_eopsd")
 max_simultaneous_spawn = 10
-possible_data = Array[ExtResource("2_asum0")]([ExtResource("2_us8ti"), ExtResource("4_6jup3")])
+possible_data = Array[ExtResource("2_asum0")]([ExtResource("3_1386k"), ExtResource("4_6l8fu"), ExtResource("4_6jup3")])

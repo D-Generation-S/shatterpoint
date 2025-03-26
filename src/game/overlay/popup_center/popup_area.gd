@@ -40,6 +40,6 @@ func show_next_popup():
 	add_child(currently_active_popup)
 
 
-func popup_closing(popup: GamePopup):
+func popup_closing(_popup: GamePopup):
 	get_tree().paused = false
 	show_next_popup()

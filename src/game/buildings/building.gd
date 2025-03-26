@@ -26,13 +26,11 @@ func _ready():
 	super()
 	building_data.stats.max_hp = stats.max_hp
 	building_data_changed.emit(building_data)
-	for overlay in get_tree().get_nodes_in_group("overlay"):
-		if overlay is ResourceOverlay:
-			resource_overlay = overlay
 
-	for system in get_tree().get_nodes_in_group("system"):
-		if system is EntityDetailWindowSystem:
-			show_detail_window.connect(system.request_window)
+	resource_overlay = GlobalDataAccess.get_resource_overlay()
+	var detail_system = GlobalDataAccess.get_entity_detail_system()
+	show_detail_window.connect(detail_system.request_window)
+	
 
 	visual.texture = building_data.texture
 	if visual is ColorReplaceShader:
