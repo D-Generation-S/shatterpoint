@@ -15,7 +15,6 @@ offset_bottom = 57.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jx7rf")
-reached_wave_translation = null
 pause_game = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

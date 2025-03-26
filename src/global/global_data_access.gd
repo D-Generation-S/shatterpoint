@@ -5,6 +5,8 @@ var _phase_manager: GameStateManager
 var _item_path_system: ItemPathSystem
 var _message_area: MessageArea
 var _popup_manager: PopupManager
+var _entity_detail_window: EntityDetailWindowSystem
+var _sticker_system: StickerSystem
 
 
 func get_resource_overlay() -> ResourceOverlay:
@@ -22,6 +24,12 @@ func get_message_area() -> MessageArea:
 func get_popup_manager() -> PopupManager:
 	return _popup_manager
 
+func get_entity_detail_system() -> EntityDetailWindowSystem:
+	return _entity_detail_window
+
+func get_sticker_system() -> StickerSystem:
+	return _sticker_system
+
 func game_started():
 	for overlay in get_tree().get_nodes_in_group("overlay"):
 		if overlay is ResourceOverlay:
@@ -36,6 +44,10 @@ func game_started():
 			_phase_manager = system
 		if system is ItemPathSystem:
 			_item_path_system = system
+		if system is EntityDetailWindowSystem:
+			_entity_detail_window = system
+		if system is StickerSystem:
+			_sticker_system = system
 
 func game_stopped():
 	_resource_overlay = null

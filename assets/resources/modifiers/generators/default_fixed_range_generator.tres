@@ -8,7 +8,7 @@
 script = ExtResource("1_xx8s7")
 _name = "FIXED_RANGE"
 _icon = ExtResource("1_padgg")
-_scap_cost = 4
+_scrap_cost = 4
 priority = 10000
 value = 0.0
 

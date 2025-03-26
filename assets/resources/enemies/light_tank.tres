@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=12 format=3 uid="uid://56ndv3mjcc5i"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=11 format=3 uid="uid://56ndv3mjcc5i"]
 
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_the3p"]
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="2_0s81q"]
 [ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="2_amdfa"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="3_qpvr2"]
+[ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="3_u4bhp"]
 [ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="3_xits5"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="4_37pi8"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="4_f6088"]
@@ -11,15 +11,12 @@
 [sub_resource type="Resource" id="Resource_7jnor"]
 script = ExtResource("2_0s81q")
 
-[sub_resource type="Resource" id="Resource_ldmax"]
-script = ExtResource("3_qpvr2")
-
 [sub_resource type="Resource" id="Resource_cqvcy"]
 script = ExtResource("3_xits5")
 hp = 20.0
 armor = 25.0
 fire_rate = 2.0
-damage = 15.0
+damage = 6.0
 attack_range = 100.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqdlc"]
@@ -28,13 +25,15 @@ region = Rect2(136, 137, 16, 14)
 
 [resource]
 script = ExtResource("2_amdfa")
+enemy_template = ExtResource("3_u4bhp")
 texture = SubResource("AtlasTexture_gqdlc")
 input_color = Array[Color]([])
-ouput_color = Array[Color]([])
-min_scrap_drop = 0
+output_color = Array[Color]([])
+min_scrap_drop = 2
 max_scrap_drop = 5
-allowed_thread_determination = Array[ExtResource("1_the3p")]([SubResource("Resource_7jnor"), SubResource("Resource_ldmax")])
+movement_speed = 30.0
+allowed_thread_determination = Array[ExtResource("1_the3p")]([SubResource("Resource_7jnor")])
 attackable_groups = Array[String](["tower", "generator"])
 projectile = ExtResource("4_37pi8")
-min_wave_requirement = 1
+min_wave_requirement = 5
 stats = SubResource("Resource_cqvcy")

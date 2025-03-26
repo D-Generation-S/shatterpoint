@@ -14,7 +14,7 @@ func set_min_and_max_value(new_min: int, new_max: int):
 	_update_tooltip(real_value)
 
 func set_current_value(new_value: int):
-	var clamped = clampi(new_value, min_value, max_value)
+	var clamped = clampi(new_value, int(min_value), int(max_value))
 	
 	if not already_set and not should_animated_first_set:
 		real_value = new_value
@@ -22,7 +22,7 @@ func set_current_value(new_value: int):
 		already_set = true
 		return
 	
-	real_value = new_value
+	real_value = clamped
 	tween = create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.tween_method(_animation_step, value, real_value, time_for_animation)

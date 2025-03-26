@@ -5,14 +5,13 @@ signal spawning_started()
 signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount: int, time: float)
 
 @export var configuration: SpawnerConfiguration
-@export var overlay: ResourceOverlay
+
 @export var enemy_root_node: Node
 @export var active_after_wave: int = 0
 
+var overlay: ResourceOverlay
 var spawn_information: SpawnInformation
 var is_active: bool = false
-
-@onready var enemy_template: PackedScene = load("res://scenes/game/templates/EnemyTemplate.tscn")
 
 var timer: Timer
 var did_spawn_enemy: bool = false
@@ -22,6 +21,8 @@ func _ready():
 	process_mode = PROCESS_MODE_DISABLED
 	timer = Timer.new()
 	timer.autostart = false
+	await get_tree().physics_frame
+	overlay = GlobalDataAccess.get_resource_overlay()
 
 	recalculate_balance()
 
@@ -47,13 +48,16 @@ func spawn_enemy():
 		if !did_spawn_enemy:
 			did_spawn_enemy = true
 			spawning_started.emit()
-		var entry = valid_entries[randi_range(0, valid_entries.size() - 1)]
+		var entry = valid_entries[randi_range(0, valid_entries.size() - 1)] as SpawnSet
 		progress_ratio = randf()
-		var enemy = enemy_template.instantiate() as Enemy
+		
+		var enemy = entry.enemy_data.enemy_template.instantiate() as Enemy
+		if enemy == null:
+			printerr("Could not find enemy template!")
 		enemy.enemy_data = entry.enemy_data
 		enemy.global_position = global_position
 		enemy.died.connect(overlay.add_scrap)
-		enemy.reached_town.connect(overlay.take_city_damage)
+		#enemy.reached_town.connect(overlay.take_city_damage)
 		enemy_root_node.add_child(enemy)
 		enemy.activate.call_deferred()
 		enemy.request_scrap_path.connect(unit_scrap_path_requested)
@@ -71,7 +75,7 @@ func prepare_spawner(wave_number: int):
 func prepare_wave(wave_number: int):
 	recalculate_balance()
 	spawn_information = configuration.generate_unit_set(wave_number)
-	timer.wait_time = spawn_information.spawn_intervall_in_seconds
+	timer.wait_time = spawn_information.spawn_interval_in_seconds
 
 func is_spawner_active():
 	return is_active

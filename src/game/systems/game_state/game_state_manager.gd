@@ -56,21 +56,21 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if event.is_action("skip_building_phase") and current_phase == BUILD:
-		build_phase_endet()
+		build_phase_ended()
 
 func _setup_build_mode_timer():
 	build_mode_timer = Timer.new()
 	build_mode_timer.wait_time = base_build_mode_time
 	build_mode_timer.one_shot = true
 	build_mode_timer.autostart = false
-	build_mode_timer.timeout.connect(build_phase_endet)
+	build_mode_timer.timeout.connect(build_phase_ended)
 	
 	add_child(build_mode_timer)
 
 func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
 		var message = tr("BUILD_TIME_LEFT")
-		var time_left: int = build_mode_timer.time_left
+		var time_left: int = int(build_mode_timer.time_left)
 		message = message.replace("%TIME%", str(time_left))
 		message_requested.emit(MessagePosition.CENTER, message_style, message, 2)
 		timer_shown = true
@@ -80,13 +80,13 @@ func spawn_is_completed():
 	if completed_spawners >= spawners.size():
 		completed_spawners = 0
 		all_units_spawned = true
-		wave_phase_endet()
+		wave_phase_ended()
 
 func check_for_units_alive():
 	var units = get_tree().get_nodes_in_group("enemy")
 	if units.size() == 0 and all_units_spawned:
 		all_units_dead = true
-		wave_phase_endet()
+		wave_phase_ended()
 		return
 
 	dead_unit_timer.start()
@@ -96,7 +96,7 @@ func spawning_started():
 		return
 	dead_unit_timer.start()
 
-func wave_phase_endet():
+func wave_phase_ended():
 	if all_units_dead and all_units_spawned:
 		dynamic_start_spawner_pre_calculate.emit(current_wave)
 		dynamic_start_wave_preparation.emit(current_wave)
@@ -108,7 +108,7 @@ func wave_phase_endet():
 		build_mode_timer.start()
 		timer_shown = false
 
-func build_phase_endet():
+func build_phase_ended():
 	all_units_spawned = false
 	all_units_dead = false
 	wave_phase_started.emit()
@@ -121,7 +121,7 @@ func build_phase_endet():
 func start_game():
 	all_units_dead = true
 	all_units_spawned = true
-	wave_phase_endet()
+	wave_phase_ended()
 
 func game_has_been_lost():
 	var end_screen = game_end_screen_template.instantiate() as GameEnd

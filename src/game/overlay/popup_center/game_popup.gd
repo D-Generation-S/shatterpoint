@@ -1,5 +1,6 @@
 class_name GamePopup extends Control
 
+@warning_ignore("unused_signal")
 signal closing(popup: GamePopup)
 
 @export var pause_game: bool = false
