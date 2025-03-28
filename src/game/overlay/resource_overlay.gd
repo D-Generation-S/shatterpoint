@@ -31,6 +31,8 @@ func _ready():
 	GlobalMessageLine.building_added.connect(building_was_added)
 	GlobalMessageLine.building_removed.connect(building_was_destroyed)
 
+	_add_commands()
+
 func add_scrap(value: int):
 	if value == 0:
 		return
@@ -94,7 +96,9 @@ func recalculate_max_scrap():
 
 	message_requested.emit(MessagePosition.BOTTOM_RIGHT, message_style, message, 4.0, energy_icon)
 
-	var percentage_remains = new_max_scrap / _resource_data.get_max_power()
+	var percentage_remains = 1
+	if _resource_data.get_max_scrap() != 0:
+		percentage_remains = new_max_scrap / float(_resource_data.get_max_scrap())
 	var scrap_lost_percentage: float = 0
 	if percentage_remains < 1:
 		scrap_lost_percentage = 1 - percentage_remains
@@ -131,9 +135,12 @@ func recalculate_max_power():
 	max_power_updated.emit(new_max_power)
 	_resource_data.set_max_power(new_max_power)
 
+func _get_active_buildings_in_group(group: String) -> Array[Node]:
+	return get_tree().get_nodes_in_group(group).filter(func(building): return !building.is_queued_for_deletion())
+
 func _get_power_storage_from_buildings() -> float:
 	var return_power: float = 0
-	var generators = get_tree().get_nodes_in_group(generator_group).filter(func(building): return !building.is_queued_for_deletion())
+	var generators = _get_active_buildings_in_group(generator_group)
 	for generator in generators:
 		if generator is Building:
 			var stats = generator.building_data
@@ -144,7 +151,7 @@ func _get_power_storage_from_buildings() -> float:
 
 func _get_scrap_storage_from_buildings() -> int:
 	var return_scrap: int = 0
-	var scrap_storages = get_tree().get_nodes_in_group(scrap_group).filter(func(building): return !building.is_queued_for_deletion())
+	var scrap_storages = _get_active_buildings_in_group(scrap_group)
 	for scrap_storage in scrap_storages:
 		if scrap_storage is Building:
 			var stats = scrap_storage.building_data
@@ -160,3 +167,11 @@ func building_was_destroyed(_building: Building):
 
 func get_scrap():
 	return _resource_data.get_scrap()
+
+
+func _add_commands():
+	Console.register_custom_command("add scrap", add_scrap_command, ["(int) scrap amount"])
+	
+func add_scrap_command(scrap: String):
+	if scrap.is_valid_int():
+		add_scrap(int(scrap))

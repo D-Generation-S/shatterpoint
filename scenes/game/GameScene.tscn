@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=81 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -18,8 +18,6 @@
 [ext_resource type="Script" path="res://src/game/camera/edge_scroll_area.gd" id="13_vwlyg"]
 [ext_resource type="Script" path="res://src/game/map/navigation_mesh.gd" id="14_1ioao"]
 [ext_resource type="PackedScene" uid="uid://rihqoggarad2" path="res://scenes/game/templates/detail_window/default_detail_window.tscn" id="14_wn1c3"]
-[ext_resource type="Script" path="res://src/game/overlay/debug/debug_menu.gd" id="14_ysgl5"]
-[ext_resource type="PackedScene" uid="uid://deewj0muqtqqw" path="res://scenes/game/overlay/debug/debug_menu.tscn" id="15_to5wg"]
 [ext_resource type="Shader" path="res://assets/shaders/water_shader.gdshader" id="15_ytff2"]
 [ext_resource type="TileSet" uid="uid://bce0xiw0128lx" path="res://assets/tilemaps/tiny-battle.tres" id="16_175xq"]
 [ext_resource type="Script" path="res://src/game/enemy_target/enemy_target_area.gd" id="17_gtavo"]
@@ -238,10 +236,6 @@ script = ExtResource("48_kdeyx")
 default_window_template = ExtResource("14_wn1c3")
 
 [node name="PopupManager" parent="Overlay" groups=["overlay"] instance=ExtResource("13_qkw67")]
-
-[node name="DebugMenu" type="CanvasLayer" parent="Overlay"]
-script = ExtResource("14_ysgl5")
-debug_menu_template = ExtResource("15_to5wg")
 
 [node name="Camera" type="Node" parent="."]
 

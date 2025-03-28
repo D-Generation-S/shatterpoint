@@ -29,6 +29,7 @@ var spawners: Array[Spawner]
 var completed_spawners = 0
 var current_wave: int = 1
 
+var input_locked: bool = false
 
 func _ready():
 	GlobalTickSystem.enable()
@@ -37,6 +38,8 @@ func _ready():
 	dead_unit_timer.one_shot = true
 	dead_unit_timer.wait_time = unit_dead_check_interval
 	dead_unit_timer.timeout.connect(check_for_units_alive)
+	Console.console_open.connect(func(): input_locked = true)
+	Console.console_closed.connect(func(): input_locked = false)
 
 	_setup_build_mode_timer()
 
@@ -55,6 +58,8 @@ func _process(_delta):
 	_handle_build_phase_warning()	
 
 func _unhandled_input(event):
+	if input_locked:
+		return
 	if event.is_action("skip_building_phase") and current_phase == BUILD:
 		build_phase_ended()
 
