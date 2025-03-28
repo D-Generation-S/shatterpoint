@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=83 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -54,6 +54,7 @@
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/check_tile_map_collision.gd" id="44_53maf"]
 [ext_resource type="Script" path="res://src/game/systems/restart_game_system.gd" id="46_vydfs"]
 [ext_resource type="Script" path="res://src/game/systems/entity_detail_window_system/entity_detail_window_system.gd" id="48_kdeyx"]
+[ext_resource type="Script" path="res://src/global/global_debug_commands.gd" id="55_rw2b2"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -468,6 +469,9 @@ generator_build_mode = SubResource("Resource_vm6ia")
 
 [node name="RestartGameSystem" type="Node" parent="Systems"]
 script = ExtResource("46_vydfs")
+
+[node name="GlobalDebugSystem" type="Node" parent="Systems"]
+script = ExtResource("55_rw2b2")
 
 [connection signal="game_lost" from="Overlay/ResourceOverlay" to="Systems/GameStateManager" method="game_has_been_lost"]
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
