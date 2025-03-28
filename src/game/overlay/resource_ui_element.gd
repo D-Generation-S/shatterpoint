@@ -4,6 +4,11 @@ class_name ResourceUiElement extends Control
 signal image_changed(new_texture: Texture)
 signal name_changed(new_name: String, new_description: String, icon: Texture)
 signal value_changed(new_value: int)
+signal max_value_has_changed(amount: int)
+signal update_tooltip(current_value: int, max_value: int)
+
+var current_value: int
+var max_storage: int
 
 @export var resource_texture: Texture:
 	set(value):
@@ -26,4 +31,12 @@ func _ready():
 	update_value(initial_value)
 
 func update_value(new_value: int):
-	value_changed.emit(new_value)
+	current_value = new_value
+	value_changed.emit(current_value)
+	update_tooltip.emit(current_value, max_storage)
+
+func set_max_value(amount: int):
+	max_storage = amount
+	max_value_has_changed.emit(amount)
+	update_tooltip.emit(current_value, max_storage)
+		

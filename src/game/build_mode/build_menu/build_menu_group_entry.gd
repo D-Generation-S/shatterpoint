@@ -19,9 +19,9 @@ func _ready():
 	_button.tooltip_text = _group_data.name
 	_button.description = _group_data.name + "_DESCRIPTION"
 	for entry in _group_data.entries:
-		add_entry(entry)
+		_add_entry(entry)
 
-func add_entry(entry: BuildMenuEntry):
+func _add_entry(entry: BuildMenuEntry):
 	var template = build_menu_entry_template.instantiate() as BuildMenuEntryTemplate
 	template.setup(entry)
 	template.building_requested.connect(func(data): building_selected.emit(data))

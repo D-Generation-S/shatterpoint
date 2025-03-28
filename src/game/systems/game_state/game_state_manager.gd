@@ -12,6 +12,7 @@ signal dynamic_start_wave_preparation(number: int)
 signal build_phase_started()
 signal message_requested(target: int, type: MessageType, message: String, duration: float, icon: Texture)
 
+@export var game_end_screen_template: PackedScene
 @export var unit_dead_check_interval: float = 1
 @export var message_style: MessageStyle
 
@@ -28,14 +29,18 @@ var spawners: Array[Spawner]
 var completed_spawners = 0
 var current_wave: int = 1
 
+var input_locked: bool = false
 
 func _ready():
+	_register_commands()
 	GlobalTickSystem.enable()
 	dead_unit_timer = Timer.new()
 	dead_unit_timer.autostart = false
 	dead_unit_timer.one_shot = true
 	dead_unit_timer.wait_time = unit_dead_check_interval
 	dead_unit_timer.timeout.connect(check_for_units_alive)
+	Console.console_open.connect(func(): input_locked = true)
+	Console.console_closed.connect(func(): input_locked = false)
 
 	_setup_build_mode_timer()
 
@@ -54,22 +59,24 @@ func _process(_delta):
 	_handle_build_phase_warning()	
 
 func _unhandled_input(event):
+	if input_locked:
+		return
 	if event.is_action("skip_building_phase") and current_phase == BUILD:
-		build_phase_endet()
+		build_phase_ended()
 
 func _setup_build_mode_timer():
 	build_mode_timer = Timer.new()
 	build_mode_timer.wait_time = base_build_mode_time
 	build_mode_timer.one_shot = true
 	build_mode_timer.autostart = false
-	build_mode_timer.timeout.connect(build_phase_endet)
+	build_mode_timer.timeout.connect(build_phase_ended)
 	
 	add_child(build_mode_timer)
 
 func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
 		var message = tr("BUILD_TIME_LEFT")
-		var time_left: int = build_mode_timer.time_left
+		var time_left: int = int(build_mode_timer.time_left)
 		message = message.replace("%TIME%", str(time_left))
 		message_requested.emit(MessagePosition.CENTER, message_style, message, 2)
 		timer_shown = true
@@ -79,13 +86,13 @@ func spawn_is_completed():
 	if completed_spawners >= spawners.size():
 		completed_spawners = 0
 		all_units_spawned = true
-		wave_phase_endet()
+		wave_phase_ended()
 
 func check_for_units_alive():
 	var units = get_tree().get_nodes_in_group("enemy")
 	if units.size() == 0 and all_units_spawned:
 		all_units_dead = true
-		wave_phase_endet()
+		wave_phase_ended()
 		return
 
 	dead_unit_timer.start()
@@ -95,7 +102,7 @@ func spawning_started():
 		return
 	dead_unit_timer.start()
 
-func wave_phase_endet():
+func wave_phase_ended():
 	if all_units_dead and all_units_spawned:
 		dynamic_start_spawner_pre_calculate.emit(current_wave)
 		dynamic_start_wave_preparation.emit(current_wave)
@@ -107,7 +114,7 @@ func wave_phase_endet():
 		build_mode_timer.start()
 		timer_shown = false
 
-func build_phase_endet():
+func build_phase_ended():
 	all_units_spawned = false
 	all_units_dead = false
 	wave_phase_started.emit()
@@ -120,4 +127,27 @@ func build_phase_endet():
 func start_game():
 	all_units_dead = true
 	all_units_spawned = true
-	wave_phase_endet()
+	wave_phase_ended()
+
+func game_has_been_lost():
+	var end_screen = game_end_screen_template.instantiate() as GameEnd
+	end_screen.set_current_wave(current_wave - 1)
+	var popup_manager = GlobalDataAccess.get_popup_manager()
+	popup_manager.show_popup(PopupPosition.CENTER, end_screen, true)
+	pass
+
+func _register_commands():
+	Console.register_custom_command("start_wave", build_phase_ended, [], "Start the wave phase")
+	Console.register_custom_command("start_build", wave_phase_ended, [], "Start the build phase")
+	Console.register_custom_command("set_wave", _set_wave, ["(int) wave number to set"], "Start the build phase")
+
+func _set_wave(wave: String) -> String:
+	if !wave.is_valid_int():
+		return "Argument is not a valid int"
+	current_wave = int(wave)
+	return "Wave set to %d" % current_wave
+
+func _exit_tree():
+	Console.remove_command("start_wave")
+	Console.remove_command("start_build")
+	Console.remove_command("set_wave")

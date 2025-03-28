@@ -13,5 +13,5 @@ func is_valid(wave_number: int) -> bool:
 func _get_template() -> StatModifier:
 	return modifier_template.duplicate()
 
-func generate_stats(wave_number: int) -> StatModifier:
+func generate_stats(_wave_number: int) -> StatModifier:
 	return null

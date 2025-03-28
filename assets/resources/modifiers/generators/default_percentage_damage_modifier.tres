@@ -8,7 +8,7 @@
 script = ExtResource("1_sxefg")
 _name = "PROCEDUAL_DAMAGE"
 _icon = ExtResource("1_p8ynk")
-_scap_cost = 5
+_scrap_cost = 5
 priority = 10000
 value = 0.0
 

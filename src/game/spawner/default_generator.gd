@@ -2,12 +2,12 @@ class_name DefaultGenerator extends SpawnerUnitGenerator
 
 var randomizer: RandomNumberGenerator
 
-func _init(seed: int = -1):
-	if seed == -1:
-		seed = randi()
+func _init(randomizer_seed: int = -1):
+	if randomizer_seed == -1:
+		randomizer_seed = randi()
 
 	randomizer = RandomNumberGenerator.new()
-	randomizer.seed = seed
+	randomizer.seed = randomizer_seed
 
 
 func generate_units_for_wave(target_power: float, possible_units: Array[UnitData]) -> SpawnInformation:

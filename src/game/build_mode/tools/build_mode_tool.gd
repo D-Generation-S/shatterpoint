@@ -6,7 +6,6 @@ class_name BuildModeTool extends Resource
 # This value can be null, this is only required of this should really build something
 @export var building_data: BuildingBase = null
 
-
 func can_be_used(tree: SceneTree, building: Building, global_position: Vector2, resource_data: ResourceData) -> BuildValidatorReturn:
 	var return_data: BuildValidatorReturn = null
 	for validator in validators:
@@ -27,6 +26,8 @@ func execute(_global_position: Vector2, _target_building: Node2D, _target_node: 
 	return 0
 	
 func get_ghost_icon() -> Texture:
+	if use_build_entry_icon_as_ghost and building_data != null and building_data.texture != null:
+		return building_data.texture
 	return ghost_icon
 
 func get_tool_name() -> String:

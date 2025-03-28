@@ -32,9 +32,8 @@ func _ready():
 	base_move_direction = base_move_direction.normalized()
 	process_mode = PROCESS_MODE_DISABLED
 
-	for system in get_tree().get_nodes_in_group("system"):
-		if system is StickerSystem:
-			sticker_requested.connect(system.request_sticker_at_position)
+	var sticker_system = GlobalDataAccess.get_sticker_system()
+	sticker_requested.connect(sticker_system.request_sticker_at_position)
 
 	timer = Timer.new()
 	timer.autostart = false
@@ -57,12 +56,12 @@ func setup(
 	target: Node2D,
 	damage: float,
 	penetration: float,
-	visual_effect_container: Node):
+	visual_effect: Node):
 	initial_position = global_start_position
 	target_node = target
 	carried_damage = damage
 	armor_penetration = penetration
-	self.visual_effect_container = visual_effect_container
+	visual_effect_container = visual_effect
 
 func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	return target.global_position

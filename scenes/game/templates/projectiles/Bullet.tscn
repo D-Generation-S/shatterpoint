@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://clc1q6pkrn00t"]
+[gd_scene load_steps=10 format=3 uid="uid://clc1q6pkrn00t"]
 
 [ext_resource type="Script" path="res://src/game/buildings/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="2_atst4"]
@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://ccoxdxlsnykre" path="res://assets/audio/effects/bullet_fired.wav" id="3_0fa51"]
 [ext_resource type="AudioStream" uid="uid://d3djgvq3ny7uo" path="res://assets/audio/effects/bullet_hit.wav" id="4_4tgb5"]
 [ext_resource type="AudioStream" uid="uid://dosungd6b2te3" path="res://assets/audio/effects/bullet_decay.wav" id="5_7osc6"]
-[ext_resource type="Script" path="res://src/game/updateable_collision.gd" id="7_60u75"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xh6hf"]
 atlas = ExtResource("2_atst4")
@@ -47,7 +46,6 @@ shape = SubResource("CapsuleShape2D_4l87w")
 [node name="Collision" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("7_60u75")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 rotation = -1.5708

@@ -26,3 +26,6 @@ func set_value_animated(new_value: int):
 func _animation_step(value: int):
 	fake_value = value
 	text = str(fake_value)	
+
+func _update_tooltip(current_value: float, max_value: float):
+	tooltip_text = "%s / %s" % [current_value, max_value]

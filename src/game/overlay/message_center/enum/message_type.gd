@@ -1,6 +1,5 @@
 class_name MessageType
 
-
 enum 
 {
 	NORMAL,
