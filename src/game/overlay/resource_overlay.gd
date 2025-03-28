@@ -175,3 +175,6 @@ func _add_commands():
 func add_scrap_command(scrap: String):
 	if scrap.is_valid_int():
 		add_scrap(int(scrap))
+
+func _exit_tree():
+	Console.remove_command("add scrap")

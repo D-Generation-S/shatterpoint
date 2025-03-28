@@ -32,6 +32,7 @@ var current_wave: int = 1
 var input_locked: bool = false
 
 func _ready():
+	_register_commands()
 	GlobalTickSystem.enable()
 	dead_unit_timer = Timer.new()
 	dead_unit_timer.autostart = false
@@ -134,3 +135,19 @@ func game_has_been_lost():
 	var popup_manager = GlobalDataAccess.get_popup_manager()
 	popup_manager.show_popup(PopupPosition.CENTER, end_screen, true)
 	pass
+
+func _register_commands():
+	Console.register_custom_command("start_wave", build_phase_ended, [], "Start the wave phase")
+	Console.register_custom_command("start_build", wave_phase_ended, [], "Start the build phase")
+	Console.register_custom_command("set_wave", _set_wave, ["(int) wave number to set"], "Start the build phase")
+
+func _set_wave(wave: String) -> String:
+	if !wave.is_valid_int():
+		return "Argument is not a valid int"
+	current_wave = int(wave)
+	return "Wave set to %d" % current_wave
+
+func _exit_tree():
+	Console.remove_command("start_wave")
+	Console.remove_command("start_build")
+	Console.remove_command("set_wave")

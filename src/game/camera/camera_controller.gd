@@ -26,8 +26,6 @@ func _ready():
 	await get_tree().physics_frame
 	setup_edge_ares()
 	initial_setting_setup()
-	
-
 
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing

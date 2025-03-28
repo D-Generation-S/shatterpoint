@@ -45,6 +45,7 @@ func set_color_alpha(alpha: float):
 func hide_drawing():
 	draw_active = false
 	queue_redraw()
-	tween.kill()
+	if tween != null:
+		tween.kill()
 	current_color.a = max_alpha
 
