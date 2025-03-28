@@ -16,6 +16,7 @@ func list_commands() -> String:
     return  return_data
 
 func generate_command_list(commands: Array) -> String:
+    commands.sort_custom(sort_commands)
     var return_data = "";
     for command in commands:
         if command is Command:
@@ -23,3 +24,5 @@ func generate_command_list(commands: Array) -> String:
     
     return return_data
 
+func sort_commands(a: Command, b: Command) -> bool:
+    return a.command < b.command
