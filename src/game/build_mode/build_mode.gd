@@ -1,10 +1,12 @@
-extends Node
+extends Node2D
 
 signal change_ghost_texture(new_texture: Texture2D)
 signal can_build_changed(can_build: bool)
 signal message_requested(target: int, style: MessageStyle, message: String, duration: float, icon: Texture)
 signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount: int, time: float)
 
+signal trying_to_place_building()
+signal stopped_trying_to_place_building()
 signal building_was_placed()
 
 @export var resource_overlay: ResourceOverlay
@@ -28,10 +30,18 @@ var cannot_build_message: String = ""
 var can_abort_building: bool = true
 
 var last_global_position: Vector2
+var draw_turret_range: bool
+var draw_range: float = 0
 
 func _ready():
 	can_build_changed.emit(true)
 	disable()
+	draw_turret_range = false
+
+	for build_area in get_tree().get_nodes_in_group("build_area_collision"):
+		if build_area is CollisionAreaWithOverlay:
+			trying_to_place_building.connect(build_area.show_drawing)
+			stopped_trying_to_place_building.connect(build_area.hide_drawing)
 
 func _unhandled_input(event):
 	if current_tool != null and event.is_action("interact") and Input.is_action_just_pressed("interact"):
@@ -59,6 +69,8 @@ func _unhandled_input(event):
 		last_global_position = Vector2(-100000, -100000)
 
 func _process(_delta):
+	if draw_turret_range:
+		queue_redraw()
 	_check_for_building_abort()
 	if !_check_for_building():
 		return
@@ -88,7 +100,7 @@ func _check_for_building_abort():
 		if !can_abort_building:
 			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, "CANT_ABORT_BUILDING_RIGHT_NOW", 2)
 			return
-		current_tool = null
+		set_current_tool(null)
 
 func _check_for_building() -> bool:
 	if current_tool == null:
@@ -100,11 +112,27 @@ func _check_for_building() -> bool:
 func set_current_tool(building_tool: BuildModeTool):
 	if building_tool == null:
 		current_tool = null
+		draw_turret_range = false
+		queue_redraw()
+		stopped_trying_to_place_building.emit()
 		return
 	current_tool = building_tool
+	if current_tool is BuildingConstruction:
+		trying_to_place_building.emit()
+		draw_turret_range = false
+		if current_tool.building_data.stats.attack_range > 0:
+			draw_range = current_tool.building_data.stats.attack_range
+			draw_turret_range = true
+		
+		queue_redraw()
+	else:
+		draw_turret_range = false
+		stopped_trying_to_place_building.emit()
+		queue_redraw()
 	change_ghost_texture.emit(current_tool.get_ghost_icon())
 
 func disable():
+	set_current_tool(null)
 	in_build_mode = false
 	process_mode = PROCESS_MODE_DISABLED
 	build_grid.process_mode = build_grid.PROCESS_MODE_DISABLED
@@ -130,3 +158,9 @@ func mouse_off_menu():
 
 func allow_build_abort(on: bool):
 	can_abort_building = on
+
+func _draw():
+	if !draw_turret_range:
+		return
+
+	draw_circle(build_grid.global_position, draw_range, Color(1,0,0,0.2))

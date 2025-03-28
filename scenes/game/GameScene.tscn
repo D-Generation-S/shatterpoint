@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=82 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" path="res://src/game/overlay/animation/resource_travel_animation.gd" id="32_sqino"]
 [ext_resource type="Script" path="res://src/game/systems/sticker_system/sticker_system.gd" id="33_eksmu"]
 [ext_resource type="Script" path="res://src/game/systems/tutorial/game_start_system.gd" id="35_vubuj"]
+[ext_resource type="Script" path="res://src/game/build_mode/sync_collision_rect_size.gd" id="36_0dt14"]
 [ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="36_ryx4r"]
 [ext_resource type="PackedScene" uid="uid://bk7keckkd78ia" path="res://scenes/game/overlay/popups/GameEnd.tscn" id="37_18hsh"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
@@ -387,11 +388,10 @@ enemy_root_node = NodePath("../../Entites/Enemies")
 
 [node name="Buildings" type="Node" parent="WaveMode/Entites"]
 
-[node name="BuildMode" type="Node" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
+[node name="BuildMode" type="Node2D" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
 script = ExtResource("25_ghlpk")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
 building_target_node = NodePath("../WaveMode/Entites/Buildings")
-building_group = null
 scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
 resource_path_template = ExtResource("26_yjpy8")
 default_message_style = ExtResource("7_h7fcw")
@@ -425,20 +425,22 @@ position = Vector2(-950, -105)
 collision_layer = 0
 collision_mask = 8388608
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildAreas/BuildArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildAreas/BuildArea" groups=["build_area_collision"]]
 position = Vector2(470, -18.5)
 shape = SubResource("RectangleShape2D_gcjbt")
 debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
+script = ExtResource("36_0dt14")
 
 [node name="BuildArea2" type="Area2D" parent="BuildMode/BuildAreas" groups=["build_area"]]
 position = Vector2(-950, -105)
 collision_layer = 0
 collision_mask = 8388608
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildAreas/BuildArea2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildMode/BuildAreas/BuildArea2" groups=["build_area_collision"]]
 position = Vector2(705, 406)
 shape = SubResource("RectangleShape2D_egqb7")
 debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
+script = ExtResource("36_0dt14")
 
 [node name="Systems" type="Node" parent="."]
 
