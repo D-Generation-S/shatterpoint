@@ -4,8 +4,9 @@ signal console_closed()
 signal console_open()
 
 signal console_output(text: String)
+signal is_current_command_valid(confirmed: bool)
 
-@onready var console_template: PackedScene = preload("res://addons/commandline/console/command_line_template.tscn")
+@onready var console_template: PackedScene = preload("res://addons/commandline/console/console/default_console_template.tscn")
 
 var console_commands := {}
 var used_template: PackedScene
@@ -16,6 +17,8 @@ var should_pause: bool = false
 var console_shown: bool = false
 var is_disabled: bool = false
 var last_state: bool = false
+
+var _stored_console_content: String = ""
 
 
 func _ready():
@@ -35,7 +38,6 @@ func _input(event):
 			get_tree().get_root().set_input_as_handled()
 		last_state = event.is_pressed()
 
-
 func toggle_console():
 	if is_disabled:
 		return
@@ -49,20 +51,37 @@ func show_console():
 	if template == null:
 		template = console_template.instantiate() as ConsoleTemplate
 	template.command_requested.connect(search_and_execute_command)
+	template.store_content.connect(_store_console_content)
+	template.clear_output.connect(_clear_stored_console_content)
+	template.confirm_command.connect(check_command)
+	is_current_command_valid.connect(template.command_valid)
 	console_output.connect(template.add_console_output)
 	overlay_node.add_child(template)
+	template.set_text(_stored_console_content)
 
 	if should_pause:
 		search_and_execute_command("pause")
 	console_shown = true
 	console_open.emit()
 
+func _store_console_content(text: String):
+	_stored_console_content = text
+
+func _clear_stored_console_content():
+	_stored_console_content = ""
+
+func check_command(text: String):
+	var executer = CommandDefinition.new(text)
+	is_current_command_valid.emit(console_commands.has(executer.command))
+
 func hide_console():
 	for child in overlay_node.get_children():
 		if child is ConsoleTemplate:
+			child.close_requested()
 			overlay_node.remove_child(child)
 			console_shown = false
 			console_closed.emit()	
+			child.queue_free()
 			if should_pause:
 				search_and_execute_command("unpause")
 
