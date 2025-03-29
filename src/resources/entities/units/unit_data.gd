@@ -14,6 +14,7 @@ class_name UnitData extends Resource
 
 @export_group("Movement")
 @export var movement_speed: float = 40
+@export var animation: EntityAnimation = null
 
 @export_group("Targeting")
 @export var allowed_thread_determination: Array[ThreatDetermination]
@@ -25,9 +26,9 @@ class_name UnitData extends Resource
 @export var stats: EntityStats
 
 func get_power_number() -> float:
-    var return_data: float = stats.hp
-    return_data += stats.armor * 1.3
-    return_data -= (min_scrap_drop + max_scrap_drop) / 2.0
-    return_data += stats.damage * 2
-    return_data += 4 / stats.fire_rate 
-    return return_data
+	var return_data: float = stats.hp
+	return_data += stats.armor * 1.3
+	return_data -= (min_scrap_drop + max_scrap_drop) / 2.0
+	return_data += stats.damage * 2
+	return_data += 4 / stats.fire_rate 
+	return return_data

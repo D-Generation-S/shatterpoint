@@ -1,30 +1,37 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=11 format=3 uid="uid://dcfdt74yfgt6v"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=13 format=3 uid="uid://dcfdt74yfgt6v"]
 
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_qj3mh"]
-[ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="2_b3gx8"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="2_j0t2o"]
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="2_uiquw"]
+[ext_resource type="Script" path="res://src/resources/entities/animation/walk_animation.gd" id="3_2e5id"]
 [ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="3_88ckp"]
-[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="4_ax7mx"]
+[ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="5_4tlt6"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="5_ddv1p"]
+[ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="6_ff4pw"]
 
 [sub_resource type="Resource" id="Resource_1kx8t"]
 script = ExtResource("2_uiquw")
 
+[sub_resource type="Resource" id="Resource_oogl1"]
+script = ExtResource("3_2e5id")
+max_rotation = 0.1
+speed = 0.2
+
 [sub_resource type="Resource" id="Resource_w0n3d"]
-script = ExtResource("4_ax7mx")
+script = ExtResource("6_ff4pw")
 hp = 1.0
 armor = 0.0
 fire_rate = 1.0
 damage = 0.5
 attack_range = 100.0
+armor_penetration = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvlwt"]
 atlas = ExtResource("5_ddv1p")
 region = Rect2(272, 119, 16, 16)
 
 [resource]
-script = ExtResource("2_b3gx8")
+script = ExtResource("5_4tlt6")
 enemy_template = ExtResource("3_88ckp")
 texture = SubResource("AtlasTexture_yvlwt")
 input_color = Array[Color]([])
@@ -32,6 +39,7 @@ output_color = Array[Color]([])
 min_scrap_drop = 1
 max_scrap_drop = 3
 movement_speed = 80.0
+animation = SubResource("Resource_oogl1")
 allowed_thread_determination = Array[ExtResource("1_qj3mh")]([SubResource("Resource_1kx8t")])
 attackable_groups = Array[String](["tower", "generator"])
 projectile = ExtResource("2_j0t2o")

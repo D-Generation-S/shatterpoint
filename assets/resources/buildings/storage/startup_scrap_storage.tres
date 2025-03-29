@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="StorageData" load_steps=5 format=3 uid="uid://7iywprfg275c"]
 
-[ext_resource type="Script" path="res://src/resources/buildings/storage_data.gd" id="1_wuqmi"]
-[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="2_8av8j"]
+[ext_resource type="Script" path="res://src/resources/entities/buildings/storage_data.gd" id="1_wuqmi"]
+[ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="2_8av8j"]
 [ext_resource type="Texture2D" uid="uid://doqhrkci5n1l6" path="res://assets/atlast_textures/scrap_storage.tres" id="3_5u5lh"]
 
 [sub_resource type="Resource" id="Resource_5qovb"]
