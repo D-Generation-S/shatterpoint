@@ -42,7 +42,7 @@ func fire():
 		if resource_overlay.get_power() < tower_data.power_usage_per_shot:
 			return
 		resource_overlay.add_power(-tower_data.power_usage_per_shot)
-	request_fire.emit(current_target, tower_data.stats.damage, 0)
+	request_fire.emit(current_target, tower_data.stats.damage, tower_data.stats.armor_penetration)
 
 func enable():
 	super()

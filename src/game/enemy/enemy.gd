@@ -14,6 +14,7 @@ signal is_in_debug()
 @onready var _visuals: Sprite2D = $"%Visuals"
 @onready var _collision: CollisionShape2D = $"%Collision"
 @onready var _health_bar: AnimatedHealthBar = $"%HealthBar"
+@onready var _armor_bar: AnimatedHealthBar = $"%ArmorBar"
 
 func _ready():
 	_base_stats = enemy_data.stats.duplicate()
@@ -23,6 +24,11 @@ func _ready():
 	_health_bar.max_value = stats.hp
 	_health_bar.value = stats.hp
 	_health_bar.visible = false
+
+	_armor_bar.min_value = 0
+	_armor_bar.max_value = stats.armor
+	_armor_bar.value = stats.armor
+	_armor_bar.visible = false
 	
 	_visuals.texture = enemy_data.texture
 	if _collision.shape is CircleShape2D:
@@ -43,3 +49,4 @@ func activate():
 
 func add_projectile_requested(projectile: Projectile):
 	get_parent().add_child(projectile)
+	

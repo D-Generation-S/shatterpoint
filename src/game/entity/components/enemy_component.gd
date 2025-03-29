@@ -34,7 +34,7 @@ func enemy_data_changed(enemy_data: UnitData):
 	_updated_stats()
 
 func fire():
-	request_fire.emit(current_target, stats.stats.damage, 0)
+	request_fire.emit(current_target, stats.stats.damage, stats.stats.armor_penetration)
 
 func _updated_stats():
 	projectile_changed.emit(stats.projectile)
