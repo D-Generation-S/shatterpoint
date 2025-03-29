@@ -174,21 +174,21 @@ func enable():
 	is_disabled = false
 
 func print(text: String):
-	print(text)
+	text = text + "\n"
 	if !console_shown:
-		_stored_console_content += text + "\n"
+		_stored_console_content += text
 		return
 	console_output.emit(text)
 
 func print_as_error(text: String):
 	#This method will show the text as an error, if you want to show a line number in the godot output please use the godot "printerr" method as well
-	text = "[color=red]%s[/color]" % text
+	text = "[color=red]%s[/color]\n" % text
 	if !console_shown:
-		_stored_console_content += text + "\n"
+		_stored_console_content += text
 	console_output.emit(text)
 
 func print_as_warning(text: String):
-	text = "[color=yellow]%s[/color]" % text
+	text = "[color=yellow]%s[/color]\n" % text
 	if !console_shown:
-		_stored_console_content += text + "\n"
+		_stored_console_content += text
 	console_output.emit(text)
