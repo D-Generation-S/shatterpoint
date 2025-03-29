@@ -78,3 +78,14 @@ TOTAL_SCRAP_LOST;-%s Scrap Storage;-%s Schrott Speicher
 BUILD_GENERATOR_NEXT;Build a generator next, this will start the game;Baue als nächstes einen Generator um das Spiel zu starten
 BUILD_SCRAP_STORAGE_TO_START;Build scrap storage to continue	;Baue einen Schrott Speicher um zu beginnen
 NOT_ENOUGH_STORAGE;Not enough scrap storage;Nicht genung Schrott Speicher
+ARMOR_PENETRATION;Armor penetration;Rüstungsdurchdringung
+HP_DESCRIPTION;The maximal health points of an unit or building.;Die maximalen Lebenspunkte einer Einheit oder eines Gebäudes.
+ARMOR_DESCRIPTION;"The armor of this entity, armor is getting attacked first and double in strenght than the health points.
+Armor can't be repaired and will be damaged forever.";"Die Rüstung einer Entität, wird diese Entität angegriffen wird zuerst Ihr Rüstugswert veringert.
+Wichtig hierbei ist das Rüstung doppelt so stark ist wie Lebenspunkte, dafür kann diese nicht wiederhergestellt werden."
+FIRE_RATE_DESCRIPTION;How fast a turret or unit can fire, this value is set in seconds and smaller values are better.;Beschreibt wie schnell ein Gebäude oder eine Einheit in sekunden  feuern kann, kleinere Werte sind hierbei besser.
+DAMAGE_DESCRIPTION;The amount of damage this entity deals with each shot fired.;Die Menge an schaden welche diese Eintät pro schuss austeilt.
+RANGE_DESCRIPTION;The range of this unit allowing it to attack.;Die Reichweite der Einheit, in welchem Sie angreifen kann.
+ARMOR_PENETRATION_DESCRIPTION;"The percentage of damage which does penetrate the armor attacking the health directy.
+This is a huge benefit against enemies later in the game.	";"Der Prozentuale wert an schaden welcher die Rüstung ignoriert,
+dieser Wert macht im späteren spiel einen großen unterschied."

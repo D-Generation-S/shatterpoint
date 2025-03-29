@@ -137,11 +137,19 @@ func game_has_been_lost():
 	pass
 
 func _register_commands():
-	Console.register_custom_command("start_wave", build_phase_ended, [], "Start the wave phase")
-	Console.register_custom_command("start_build", wave_phase_ended, [], "Start the build phase")
-	Console.register_custom_command("set_wave", _set_wave, ["(int) wave number to set"], "Start the build phase")
+	Console.register_custom_command("start_wave", _command_start_wave, [], "Start the wave phase")
+	Console.register_custom_command("start_build", _command_start_build, [], "Start the build phase")
+	Console.register_custom_command("set_wave", _command_set_wave, ["(int) wave number to set"], "Start the build phase")
 
-func _set_wave(wave: String) -> String:
+func _command_start_wave() -> String:
+	build_phase_ended()
+	return "Wave phase started"
+
+func _command_start_build() -> String:
+	wave_phase_ended()
+	return "Build phase started"
+
+func _command_set_wave(wave: String) -> String:
 	if !wave.is_valid_int():
 		return "Argument is not a valid int"
 	current_wave = int(wave)
