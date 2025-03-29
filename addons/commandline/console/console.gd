@@ -20,7 +20,6 @@ var last_state: bool = false
 
 var _stored_console_content: String = ""
 
-
 func _ready():
 	_preregister_commands()
 	used_template = console_template
@@ -173,3 +172,23 @@ func disable():
 
 func enable():
 	is_disabled = false
+
+func print(text: String):
+	print(text)
+	if !console_shown:
+		_stored_console_content += text + "\n"
+		return
+	console_output.emit(text)
+
+func print_as_error(text: String):
+	#This method will show the text as an error, if you want to show a line number in the godot output please use the godot "printerr" method as well
+	text = "[color=red]%s[/color]" % text
+	if !console_shown:
+		_stored_console_content += text + "\n"
+	console_output.emit(text)
+
+func print_as_warning(text: String):
+	text = "[color=yellow]%s[/color]" % text
+	if !console_shown:
+		_stored_console_content += text + "\n"
+	console_output.emit(text)
