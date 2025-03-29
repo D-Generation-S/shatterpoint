@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="18_s7e6s"]
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="19_kvgan"]
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="20_qox08"]
-[ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="21_snw6j"]
+[ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="21_snw6j"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="23_ppst3"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="24_8m5a3"]
 [ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/light_tank.tres" id="24_gk3ek"]

@@ -11,7 +11,7 @@ signal is_in_debug()
 @export var enemy_data: UnitData 
 @export var collision_radius: int = 8
 
-@onready var _visuals: Sprite2D = $"%Visuals"
+@onready var _visuals: Sprite2D = $"%VisualsComponent"
 @onready var _collision: CollisionShape2D = $"%Collision"
 @onready var _health_bar: AnimatedHealthBar = $"%HealthBar"
 @onready var _armor_bar: AnimatedHealthBar = $"%ArmorBar"
