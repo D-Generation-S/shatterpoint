@@ -40,6 +40,7 @@ func _ready():
 		activate()
 	
 func _hp_reached_zero():
+	super()
 	var amount = randi_range(enemy_data.min_scrap_drop, enemy_data.max_scrap_drop)
 	died.emit(amount)
 	request_scrap_path.emit(AutoDeleteNode.new(10, global_position), amount)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://sn0lvuj8s7uj"]
+
+[ext_resource type="Script" path="res://src/game/particle/self_deleting_particles.gd" id="1_d2mi6"]
+
+[sub_resource type="Gradient" id="Gradient_nkiyu"]
+colors = PackedColorArray(0.88, 0, 0, 1, 0.39, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7a7lk"]
+gradient = SubResource("Gradient_nkiyu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_duanj"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 25.0
+radial_accel_max = 55.0
+scale_min = 3.2
+scale_max = 5.0
+color = Color(0.72, 0, 0, 1)
+color_initial_ramp = SubResource("GradientTexture1D_7a7lk")
+
+[node name="BloodParticle" type="GPUParticles2D"]
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_duanj")
+lifetime = 0.75
+preprocess = 0.2
+explosiveness = 0.7
+script = ExtResource("1_d2mi6")

@@ -6,6 +6,8 @@ signal max_health_changed(new_max_health: float)
 signal armor_changed(value: float)
 signal max_armor_changed(new_max_health: float)
 
+signal is_dying()
+
 signal request_message(target: int, style: MessageStyle, message: String, time_to_show: float, message_icon: Texture)
 
 @export var _base_stats: EntityStats
@@ -85,6 +87,7 @@ func calculate_penetration_damage(damage: float, penetration_percentage: float) 
 	return damage * percentage
 
 func _hp_reached_zero():
+	is_dying.emit()
 	pass
 
 func _is_dying():

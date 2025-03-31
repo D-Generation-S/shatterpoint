@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bognmtipmpagl"]
+[gd_scene load_steps=15 format=3 uid="uid://bognmtipmpagl"]
 
 [ext_resource type="Script" path="res://src/game/enemy/enemy.gd" id="1_5svhe"]
 [ext_resource type="Script" path="res://src/game/enemy/navigation.gd" id="2_e0fie"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://src/game/entity/components/select_target_component.gd" id="7_2mwat"]
 [ext_resource type="Script" path="res://src/game/entity/components/town_reached_component.gd" id="8_735tr"]
 [ext_resource type="Script" path="res://src/game/entity/components/visuals_component.gd" id="9_eo0or"]
+[ext_resource type="Script" path="res://src/game/entity/components/death_animation_component.gd" id="10_32ggi"]
 [ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="11_7d726"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpvlt"]
@@ -53,6 +54,10 @@ parent_to_compare = NodePath("../..")
 [node name="VisualsComponent" type="Sprite2D" parent="Components"]
 unique_name_in_owner = true
 script = ExtResource("9_eo0or")
+
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("10_32ggi")
+root_node_to_get_parent_from = NodePath("../..")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -97,11 +102,13 @@ script = ExtResource("5_pm5b4")
 [connection signal="entity_data_changed" from="." to="Components/TownReachedComponent" method="stats_updated"]
 [connection signal="entity_data_changed" from="." to="Components/VisualsComponent" method="data_changed"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="is_in_debug" from="." to="Components/NavigationComponent" method="set_debug"]
 [connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
 [connection signal="attack_groups_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_attack_groups"]
 [connection signal="change_attack_radius" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_radius"]
+[connection signal="death_scene_changed" from="Components/EnemyComponent" to="Components/DeathAnimationComponent" method="data_updated"]
 [connection signal="projectile_changed" from="Components/EnemyComponent" to="Components/ShootComponent" method="set_projectile"]
 [connection signal="request_fire" from="Components/EnemyComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]

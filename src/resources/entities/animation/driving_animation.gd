@@ -9,7 +9,7 @@ func animate_visuals(visuals: Sprite2D):
 	tween = visuals.create_tween()
 	tween.tween_property(visuals, "position", max_movement, speed)
 	tween.tween_property(visuals, "position", Vector2(0, 0), speed)
-	tween.finished.connect(func(_data): 
+	tween.finished.connect(func(): 
 		animate_visuals(visuals)
 	)
 
