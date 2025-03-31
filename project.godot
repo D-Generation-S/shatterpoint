@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Shatterpoint"
 config/version="0.0.6"
-config/tags=PackedStringArray("wip")
+config/tags=PackedStringArray("2d", "wip")
 run/main_scene="res://scenes/game/GameScene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -23,8 +23,8 @@ GlobalSoundManager="*res://scenes/global/SoundManager.tscn"
 GlobalTickSystem="*res://src/global/tick_system.gd"
 GlobalDataAccess="*res://src/global/global_data_access.gd"
 GlobalMessageLine="*res://src/global/global_message_line.gd"
-Console="*res://addons/commandline/console/console.gd"
 ScreenshotSystem="*res://src/global/screenshot_system.gd"
+Console="*res://addons/gameconsole/console/console.gd"
 
 [display]
 
@@ -33,7 +33,7 @@ window/size/viewport_height=1080
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/commandline/plugin.cfg")
+enabled=PackedStringArray("res://addons/gameconsole/plugin.cfg")
 
 [file_customization]
 
