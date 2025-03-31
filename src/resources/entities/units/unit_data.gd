@@ -2,6 +2,7 @@ class_name UnitData extends Resource
 
 @export_group("Template")
 @export var enemy_template: PackedScene = preload("res://scenes/game/templates/EnemyTemplate.tscn")
+@export var death_animation: PackedScene = null
 
 @export_group("Visual")
 @export var texture: Texture2D

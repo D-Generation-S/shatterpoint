@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=13 format=3 uid="uid://dcfdt74yfgt6v"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=14 format=3 uid="uid://dcfdt74yfgt6v"]
 
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_qj3mh"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="2_j0t2o"]
 [ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="2_uiquw"]
 [ext_resource type="Script" path="res://src/resources/entities/animation/walk_animation.gd" id="3_2e5id"]
 [ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="3_88ckp"]
+[ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="4_7ars2"]
 [ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="5_4tlt6"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="5_ddv1p"]
 [ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="6_ff4pw"]
@@ -33,6 +34,7 @@ region = Rect2(272, 119, 16, 16)
 [resource]
 script = ExtResource("5_4tlt6")
 enemy_template = ExtResource("3_88ckp")
+death_animation = ExtResource("4_7ars2")
 texture = SubResource("AtlasTexture_yvlwt")
 input_color = Array[Color]([])
 output_color = Array[Color]([])
