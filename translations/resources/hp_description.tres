@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://hdjpd1lmmt61"]
+
+[ext_resource type="Script" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_7fp2k"]
+
+[resource]
+script = ExtResource("1_7fp2k")
+key = "HP"

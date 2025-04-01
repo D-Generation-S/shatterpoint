@@ -9,3 +9,6 @@ class_name BuildMenuEntry extends Resource
 
 func get_building_name() -> String:
 	return building_data.get_tool_name()
+
+func get_building_description() -> String:
+	return "%s_DESCRIPTION" % get_building_name()

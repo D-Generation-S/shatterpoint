@@ -29,8 +29,8 @@ func _update_data():
 	if icon_box.texture == null:
 		icon_box.visible = false
 	key_label.text = key_to_set
-	key_label.tooltip_text = "%s_DESCRIPTION" % key_to_set
-	icon_box.tooltip_text = "%s_DESCRIPTION" % key_to_set
+	key_label.tooltip_text = tooltip_to_set
+	icon_box.tooltip_text = tooltip_to_set
 	value_label.text = value_to_set
 
 	

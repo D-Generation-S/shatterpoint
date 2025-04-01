@@ -27,4 +27,4 @@ func store_popup():
 	pass
 
 func destroy():
-	pass
+	closing.emit(self)

@@ -1,10 +1,10 @@
 extends Label
 
-@export var version_translation: String
+@export var version_translation: TranslationResource
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = tr(version_translation) 
+	text = tr(version_translation.key) 
 	text += ": "
 	text += ProjectSettings.get_setting("application/config/version")
 

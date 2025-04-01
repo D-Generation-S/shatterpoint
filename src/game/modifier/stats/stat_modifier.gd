@@ -14,10 +14,10 @@ func get_scrap_requirement() -> int:
     return _scrap_cost
 
 func get_display_name() -> String:
-    return tr(_name)
+    return _name
 
 func get_display_description() -> String:
-    return tr(_name + "_DESCRIPTION")
+    return _name + "_DESCRIPTION"
 
 func get_display_icon() -> Texture:
     return _icon

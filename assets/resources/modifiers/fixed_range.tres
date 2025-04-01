@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FixedRangeModifier" load_steps=3 format=3 uid="uid://wuh8vjaergc3"]
+
+[ext_resource type="Texture2D" uid="uid://ct2alj8wgb4ba" path="res://assets/atlast_textures/range_up_icon.tres" id="1_yheb1"]
+[ext_resource type="Script" path="res://src/game/modifier/stats/fixed_range_modifier.gd" id="2_7r2m0"]
+
+[resource]
+script = ExtResource("2_7r2m0")
+_name = "FIXED_RANGE"
+_icon = ExtResource("1_yheb1")
+_scrap_cost = 4
+priority = 10000
+value = 0.0

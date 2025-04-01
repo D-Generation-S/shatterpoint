@@ -15,4 +15,5 @@ func set_current_wave(wave: int):
 	wave_reached = wave
 
 func restart_game():
+	destroy()
 	get_tree().reload_current_scene()

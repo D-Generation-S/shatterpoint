@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=21 format=3 uid="uid://bv3a2jvxlp3i2"]
+[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=23 format=3 uid="uid://bv3a2jvxlp3i2"]
 
 [ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="1_uw6xw"]
+[ext_resource type="Resource" uid="uid://bou5qp4fcq77k" path="res://translations/resources/bulldozer.tres" id="2_52n6u"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/destroy_building.gd" id="2_koutw"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_validator.gd" id="3_mlpyl"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/build_space_blocked.gd" id="4_uy37q"]
 [ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="5_0wp6g"]
 [ext_resource type="Texture2D" uid="uid://dbym3q5ao630a" path="res://assets/atlast_textures/bulldozer_icon.tres" id="5_ljeif"]
 [ext_resource type="Script" path="res://src/game/build_mode/tools/repair_building.gd" id="6_j8k8v"]
+[ext_resource type="Resource" uid="uid://bff0u87n5wxfm" path="res://translations/resources/repair.tres" id="7_f4l44"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/enough_scrap_for_repair.gd" id="7_gd0uw"]
 [ext_resource type="Script" path="res://src/game/build_mode/build_validators/hp_is_not_full.gd" id="8_337e4"]
 [ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="9_2njth"]
@@ -19,7 +21,7 @@ reverse = true
 
 [sub_resource type="Resource" id="Resource_r3thl"]
 script = ExtResource("2_koutw")
-return_name = "BULLDOZER"
+return_name = ExtResource("2_52n6u")
 validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_g7khr")])
 use_build_entry_icon_as_ghost = true
 
@@ -41,7 +43,7 @@ script = ExtResource("8_337e4")
 
 [sub_resource type="Resource" id="Resource_1sxwt"]
 script = ExtResource("6_j8k8v")
-return_name = "REPAIR"
+return_name = ExtResource("7_f4l44")
 building_group = "building"
 validators = Array[ExtResource("3_mlpyl")]([SubResource("Resource_00x07"), SubResource("Resource_frq2i"), SubResource("Resource_18pfi")])
 use_build_entry_icon_as_ghost = true
@@ -57,6 +59,6 @@ region = Rect2(48, 32, 16, 16)
 
 [resource]
 script = ExtResource("11_whwit")
-name = "TOOLS"
+display_name = "TOOLS"
 icon = SubResource("AtlasTexture_acebg")
 entries = Array[ExtResource("1_uw6xw")]([SubResource("Resource_nuq1m"), SubResource("Resource_5hit1")])

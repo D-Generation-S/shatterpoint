@@ -1,6 +1,6 @@
 class_name RepairBuilding extends BuildModeTool
 
-@export var return_name: String = "REPAIR"
+@export var return_name: TranslationResource
 @export var building_group: String = "building"
 
 func execute(_global_position: Vector2, target_building: Node2D, _target_node: Node) -> int:
@@ -19,4 +19,4 @@ func execute(_global_position: Vector2, target_building: Node2D, _target_node: N
 	return 0
 
 func get_tool_name() -> String:
-	return return_name
+	return return_name.key

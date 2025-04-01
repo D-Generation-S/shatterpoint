@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://cic2ik8tc7au2"]
+
+[ext_resource type="Script" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_xtcex"]
+
+[resource]
+script = ExtResource("1_xtcex")
+key = "BULLDOZER_DESCRIPTION"
