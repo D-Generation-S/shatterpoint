@@ -77,7 +77,7 @@ func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
 		var message = tr("BUILD_TIME_LEFT")
 		var time_left: int = int(build_mode_timer.time_left)
-		message = message.replace("%TIME%", str(time_left))
+		message = message % time_left
 		message_requested.emit(MessagePosition.CENTER, message_style, message, 2)
 		timer_shown = true
 
@@ -108,7 +108,7 @@ func wave_phase_ended():
 		dynamic_start_wave_preparation.emit(current_wave)
 		current_wave += 1
 		build_phase_started.emit()
-		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)
+		message_requested.emit(MessagePosition.CENTER, message_style, tr("BUILD_PHASE_STARTED"), 1.0)
 
 		current_phase = BUILD
 		build_mode_timer.start()

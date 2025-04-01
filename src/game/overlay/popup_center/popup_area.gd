@@ -34,6 +34,7 @@ func show_next_popup():
 	if popup_queue.size() == 0:
 		return
 	currently_active_popup = popup_queue.pop_front()
+	currently_active_popup.closing.connect(popup_closing)
 	if currently_active_popup.should_pause_game():
 		get_tree().paused = true
 	currently_active_popup.unstore_popup()

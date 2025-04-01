@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=19 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -14,6 +14,8 @@
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
 [ext_resource type="PackedScene" uid="uid://b0d3k3rsr84ma" path="res://scenes/game/templates/detail_window/tower_statistic_setting.tscn" id="13_otfmv"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
+[ext_resource type="Resource" uid="uid://6ji12wnf6uop" path="res://translations/resources/details.tres" id="15_4dm5s"]
+[ext_resource type="Resource" uid="uid://cafpk0xsw8j8n" path="res://translations/resources/statistic.tres" id="15_xryhp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
 shader = ExtResource("11_put42")
@@ -71,6 +73,8 @@ script = ExtResource("3_njweq")
 script = ExtResource("11_rsxk6")
 settings_content = ExtResource("12_fg872")
 statistic_content = ExtResource("13_otfmv")
+settings_translation = ExtResource("15_4dm5s")
+statistic_translation = ExtResource("15_xryhp")
 
 [node name="Collision" type="Area2D" parent="."]
 collision_layer = 9

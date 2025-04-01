@@ -7,6 +7,6 @@
 
 [resource]
 script = ExtResource("4_3i3np")
-name = "POWER_INFRASTRUCTURE"
+display_name = "POWER_INFRASTRUCTURE"
 icon = ExtResource("3_pw5b4")
 entries = Array[ExtResource("1_kvdo6")]([ExtResource("2_768lc")])

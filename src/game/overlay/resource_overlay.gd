@@ -44,7 +44,7 @@ func add_scrap(value: int):
 	scrap_updated.emit(_resource_data.get_scrap())
 
 	if value == 0:
-		message_requested.emit(MessagePosition.BOTTOM_RIGHT, resource_lost_message_type, "NOT_ENOUGH_STORAGE", 4.0, scrap_icon)
+		message_requested.emit(MessagePosition.BOTTOM_RIGHT, resource_lost_message_type, tr("NOT_ENOUGH_STORAGE"), 4.0, scrap_icon)
 		return
 
 	var new_scrap_message = tr("SCRAP_RECEIVED")
@@ -52,7 +52,7 @@ func add_scrap(value: int):
 	if value < 0:
 		new_scrap_message = tr("SCRAP_LOST")
 		message_style = resource_lost_message_type
-	new_scrap_message = new_scrap_message.replace("%AMOUNT%", str(value))
+	new_scrap_message = new_scrap_message % value
 	
 	if value != 0:
 		message_requested.emit(MessagePosition.BOTTOM_RIGHT, message_style, new_scrap_message, 4.0, scrap_icon)
@@ -171,7 +171,14 @@ func get_scrap():
 
 func _add_commands():
 	Console.register_custom_command("add scrap", add_scrap_command, ["(int) scrap amount"])
+	Console.register_custom_command("damage_health", _damage_city_health, ["(int) damage points"], "Damage the player city", "", ["damage_health 5"])
 	
+
+func _damage_city_health(damage: String):
+	if !damage.is_valid_int():
+		return "[color=red]The damage value was not a valid int[/color]"
+	take_city_damage(int(damage))
+	pass
 func add_scrap_command(scrap: String):
 	if scrap.is_valid_int():
 		add_scrap(int(scrap))
