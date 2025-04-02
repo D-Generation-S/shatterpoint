@@ -288,3 +288,7 @@ msgstr "Restart"
 #: translations/resources/version.tres
 msgid "VERSION"
 msgstr "Version"
+
+#: translations/resources/building_destroyed_meta.tres
+msgid "BUILDING_WAS_DESTROYED_WITH_META"
+msgstr "[color=%s][url=%s]Building %s was destroyed[/url][/color]"

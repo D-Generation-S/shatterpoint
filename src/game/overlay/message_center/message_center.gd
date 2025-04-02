@@ -35,6 +35,11 @@ func add_new_message(style: MessageStyle, message: String, time_to_show: float, 
 	_add_message(message_node)
 	GlobalSoundManager.play_sound(message_sound, message_volume_change)
 
+func add_custom_message(message: MessageTemplate):
+	message.add_to_group(message_group)
+	_add_message(message)
+	GlobalSoundManager.play_sound(message_sound, message_volume_change)
+
 func _add_message(template: MessageTemplate):
 	template.message_vanished.connect(_handle_message_vanished)
 	message_queue.append(template)

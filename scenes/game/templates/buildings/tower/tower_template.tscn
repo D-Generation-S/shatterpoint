@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=21 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
 [ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="3_mywu7"]
 [ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
+[ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="4_fbnch"]
 [ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
 [ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
 [ext_resource type="Script" path="res://src/game/entity/components/tower_information_request_component.gd" id="11_rsxk6"]
@@ -32,6 +33,7 @@ radius = 8.0
 script = ExtResource("1_maaal")
 building_data = ExtResource("2_iggqc")
 destroyed_style = ExtResource("3_1v26b")
+custom_destroyed_message = ExtResource("4_fbnch")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
