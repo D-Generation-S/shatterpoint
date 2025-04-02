@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=20 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
 [ext_resource type="Resource" uid="uid://6ji12wnf6uop" path="res://translations/resources/details.tres" id="15_4dm5s"]
 [ext_resource type="Resource" uid="uid://cafpk0xsw8j8n" path="res://translations/resources/statistic.tres" id="15_xryhp"]
+[ext_resource type="Script" path="res://src/game/entity/components/death_animation_component.gd" id="17_0hwiu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
 shader = ExtResource("11_put42")
@@ -76,6 +77,10 @@ statistic_content = ExtResource("13_otfmv")
 settings_translation = ExtResource("15_4dm5s")
 statistic_translation = ExtResource("15_xryhp")
 
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("17_0hwiu")
+root_node_to_get_parent_from = NodePath("../..")
+
 [node name="Collision" type="Area2D" parent="."]
 collision_layer = 9
 collision_mask = 0
@@ -87,12 +92,16 @@ shape = SubResource("CircleShape2D_p24bp")
 [connection signal="building_data_changed" from="." to="Components/TowerInformationRequestComponent" method="data_was_changed"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
+[connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
 [connection signal="attack_groups_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_attack_groups"]
 [connection signal="change_attack_radius" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_radius"]
 [connection signal="projectile_changed" from="Components/TowerComponent" to="Components/ShootComponent" method="set_projectile"]
 [connection signal="request_fire" from="Components/TowerComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="update_death_animation" from="Components/TowerComponent" to="Components/DeathAnimationComponent" method="data_updated"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="request_add_projectile"]

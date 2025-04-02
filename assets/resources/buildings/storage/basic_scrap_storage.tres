@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="StorageData" load_steps=5 format=3 uid="uid://d26bj2kyamgkq"]
+[gd_resource type="Resource" script_class="StorageData" load_steps=6 format=3 uid="uid://d26bj2kyamgkq"]
 
 [ext_resource type="Script" path="res://src/resources/entities/buildings/storage_data.gd" id="1_0yc81"]
+[ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_uj4e2"]
 [ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="2_ivkv2"]
 [ext_resource type="Texture2D" uid="uid://doqhrkci5n1l6" path="res://assets/atlast_textures/scrap_storage.tres" id="3_3xe8h"]
 
@@ -16,6 +17,7 @@ armor_penetration = 0.0
 [resource]
 script = ExtResource("1_0yc81")
 storage_capacity = 40
+death_animation = ExtResource("1_uj4e2")
 scrap_required = 2
 building_name = "SCRAP_STORAGE"
 texture = ExtResource("3_3xe8h")

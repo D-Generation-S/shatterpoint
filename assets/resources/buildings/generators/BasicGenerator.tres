@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="GeneratorData" load_steps=6 format=3 uid="uid://dhuk6e5xlsd4o"]
+[gd_resource type="Resource" script_class="GeneratorData" load_steps=7 format=3 uid="uid://dhuk6e5xlsd4o"]
 
+[ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_6n0l8"]
 [ext_resource type="Script" path="res://src/resources/entities/buildings/generator_data.gd" id="1_bda1w"]
 [ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="2_05f2s"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="3_h2qto"]
@@ -21,6 +22,7 @@ region = Rect2(186, 68, 17, 15)
 script = ExtResource("1_bda1w")
 generation_per_tick = 3.0
 storage_capacity = 50.0
+death_animation = ExtResource("1_6n0l8")
 scrap_required = 5
 building_name = "BASIC_POWER_GENERATOR"
 texture = SubResource("AtlasTexture_cefxj")

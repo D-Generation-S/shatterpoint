@@ -8,7 +8,7 @@ func _ready():
 	Console.register_custom_command("damage_buildings", _damage_all_buildings, ["(float) percentage to damage"], "Damage all the player buildings on the map by a percentage of their max hp", "", ["damage_buildings 0.5"])
 	if effects.size() > 0:
 		Console.register_custom_command("list_effects", _list_all_effects, [], "List all the possible effect")
-		Console.register_custom_command("spawn_effect", _spawn_effect, ["(float) x position", "(float) y position", "effect name"], "Spawn a given effect at the given position")
+		Console.register_custom_command("spawn_effect", _spawn_effect, ["effect name", "(float) x position", "(float) y position"], "Spawn a given effect at the given position")
 
 func _exit_tree():
 	Console.remove_command("clear_enemies")
@@ -60,10 +60,10 @@ func _damage_all_buildings(percentage: String) -> String:
 func _list_all_effects() -> String:
 	var return_data = ""
 	for effect in effects:
-		return_data += "- %s" % effect.name
+		return_data += "- [url={\"type\": \"enter\", \"command\": \"spawn_effect %s\"}]%s[/url]\n" % [effect.name, effect.name]
 	return return_data
 
-func _spawn_effect(pos_x: String, pos_y: String, effect_name: String) -> String:
+func _spawn_effect(effect_name: String, pos_x: String, pos_y: String) -> String:
 	if !pos_x.is_valid_float():
 		return "[color=red]X position is not a valid float[/color]"
 	if !pos_y.is_valid_float():
@@ -76,7 +76,7 @@ func _spawn_effect(pos_x: String, pos_y: String, effect_name: String) -> String:
 
 	var x_pos_float = float(pos_x)
 	var y_pos_float = float(pos_y)
-	var instance = effects[0].scene.instantiate() as Node2D
+	var instance = matching_effects[0].scene.instantiate() as Node2D
 	instance.global_position = Vector2(x_pos_float, y_pos_float)
 	add_child(instance)
 	return "Added effect %s at position %s/%s" % [effect_name, pos_x, pos_y]

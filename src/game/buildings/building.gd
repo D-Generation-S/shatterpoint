@@ -5,6 +5,7 @@ signal building_data_changed(building_data: BuildingBase)
 signal in_debug_mode(on: bool)
 signal building_added(building: Building)
 signal building_removed(building: Building)
+signal texture_changed(texture: Texture2D)
 
 @export var building_data: BuildingBase
 @export var isDebug: bool = false
@@ -32,7 +33,7 @@ func _ready():
 	show_detail_window.connect(detail_system.request_window)
 	
 
-	visual.texture = building_data.texture
+	texture_changed.emit(building_data.texture)
 	if visual is ColorReplaceShader:
 		visual.set_color_replacement(building_data.input_color, building_data.output_color)
 
@@ -54,5 +55,6 @@ func _is_dying():
 	building_removed.emit(self)
 
 func _hp_reached_zero():
+	super()
 	var message = tr(building_destroyed_message.key) % tr(building_data.building_name)
 	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message, 3, visual.texture)
