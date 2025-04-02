@@ -5,6 +5,7 @@ signal projectile_changed(projectile_template: PackedScene)
 signal thread_determination_changed(thread_determination: ThreatDetermination)
 signal attack_groups_changed(groups: Array[String])
 signal change_attack_radius(new_radius: float)
+signal update_death_animation(scene: PackedScene)
 
 
 @onready var attack_timer: Timer = $"%AttackTimer"
@@ -42,7 +43,7 @@ func fire():
 		if resource_overlay.get_power() < tower_data.power_usage_per_shot:
 			return
 		resource_overlay.add_power(-tower_data.power_usage_per_shot)
-	request_fire.emit(current_target, tower_data.stats.damage, 0)
+	request_fire.emit(current_target, tower_data.stats.damage, tower_data.stats.armor_penetration)
 
 func enable():
 	super()
@@ -59,6 +60,7 @@ func building_data_updated(building_data: BuildingBase):
 	if building_data is TowerData:
 		tower_data = building_data
 		_trigger_stats_update()
+		update_death_animation.emit(building_data.death_animation)
 
 func _trigger_stats_update():
 	projectile_changed.emit(tower_data.projectile)

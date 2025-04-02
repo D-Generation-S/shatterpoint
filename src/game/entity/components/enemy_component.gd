@@ -6,6 +6,8 @@ signal thread_determination_changed(thread_determination: ThreatDetermination)
 signal attack_groups_changed(groups: Array[String])
 signal change_attack_radius(new_radius: float)
 
+signal death_scene_changed(scene: PackedScene)
+
 @onready var attack_timer: Timer = $"%AttackTimer"
 
 var initial_fire: bool = false
@@ -31,10 +33,11 @@ func _start_attack_timer():
 
 func enemy_data_changed(enemy_data: UnitData):
 	stats = enemy_data
+	death_scene_changed.emit(enemy_data.death_animation)
 	_updated_stats()
 
 func fire():
-	request_fire.emit(current_target, stats.stats.damage, 0)
+	request_fire.emit(current_target, stats.stats.damage, stats.stats.armor_penetration)
 
 func _updated_stats():
 	projectile_changed.emit(stats.projectile)

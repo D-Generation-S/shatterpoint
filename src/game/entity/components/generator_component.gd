@@ -1,5 +1,7 @@
 extends Node2D
 
+signal update_death_animation(scene: PackedScene)
+
 var generator_data: GeneratorData
 
 var resource_overlay: ResourceOverlay
@@ -16,6 +18,7 @@ func _ready():
 func building_data_updated(building_data: BuildingBase):
 	if building_data is GeneratorData:
 		generator_data = building_data
+		update_death_animation.emit(building_data.death_animation)
 
 func _game_tick():
 	resource_overlay.add_power(generator_data.generation_per_tick)

@@ -1,0 +1,336 @@
+# LANGUAGE translation for Shatterpoint for the following files:
+# res://src/game/systems/tutorial/game_start_system.gd
+# res://translations/resources/building_destroyed.tres
+# res://assets/resources/buildings/generators/BasicGenerator.tres
+# res://assets/resources/buildings/storage/basic_scrap_storage.tres
+# res://assets/resources/buildings/storage/startup_scrap_storage.tres
+# res://assets/resources/buildings/towers/base_tower.tres
+# res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd
+# res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd
+# res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd
+# res://src/game/systems/game_state/game_state_manager.gd
+# res://assets/resources/build_menu/groups/defence_infastructure.tres
+# res://assets/resources/build_menu/groups/power_infastructure.tres
+# res://assets/resources/build_menu/groups/scrap_infastructure.tres
+# res://assets/resources/build_menu/groups/tools.tres
+# res://translations/resources/statistic.tres
+# res://translations/resources/armor.tres
+# res://translations/resources/armor_penetration.tres
+# res://translations/resources/damage.tres
+# res://translations/resources/fire_rate.tres
+# res://translations/resources/hp.tres
+# res://translations/resources/range.tres
+# res://src/game/entity/components/tower_information_request_component.gd
+# res://src/game/overlay/resource_overlay.gd
+# res://assets/resources/modifiers/fixed_damage.tres
+# res://assets/resources/modifiers/fixed_range.tres
+# res://assets/resources/modifiers/percentage_damage.tres
+# res://translations/resources/armor_description.tres
+# res://translations/resources/armor_penetration_description.tres
+# res://translations/resources/building_destroyed_description.tres
+# res://translations/resources/damage_description.tres
+# res://translations/resources/fire_rate_description.tres
+# res://translations/resources/hp_description.tres
+# res://translations/resources/range_description.tres
+# res://translations/resources/details.tres
+# res://scenes/game/templates/detail_window/default_detail_window.tscn
+# res://scenes/game/templates/detail_window/tower_settings_content.tscn
+# res://scenes/game/templates/detail_window/tower_statistic_setting.tscn
+# res://translations/resources/Bulldozer.tres
+# res://translations/resources/repair.tres
+# res://translations/resources/bulldozer.tres
+# res://translations/resources/bulldozer_description.tres
+# res://translations/resources/repair_description.tres
+# res://translations/resources/energy.tres
+# res://translations/resources/energy_description.tres
+# res://translations/resources/scrap.tres
+# res://translations/resources/scrap_description.tres
+# res://scenes/game/overlay/popups/GameEnd.tscn
+# res://translations/resources/version.tres
+# res://translations/resources/building_destroyed_meta.tres
+# res://src/game/build_mode/build_validators/build_space_blocked.gd
+# res://src/game/build_mode/build_validators/build_validator.gd
+# res://src/game/build_mode/build_validators/build_validator_return.gd
+# res://src/game/build_mode/build_validators/check_tile_map_collision.gd
+# res://src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+# res://src/game/build_mode/build_validators/hp_is_not_full.gd
+# res://src/game/build_mode/build_validators/inside_of_build_area.gd
+# res://src/game/build_mode/build_validators/resource_build_validator.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Shatterpoint\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: src/game/systems/tutorial/game_start_system.gd
+msgid "BUILD_SCRAP_STORAGE_TO_START"
+msgstr ""
+
+#: src/game/systems/tutorial/game_start_system.gd
+msgid "BUILD_GENERATOR_NEXT"
+msgstr ""
+
+#: translations/resources/building_destroyed.tres
+#: translations/resources/building_destroyed_description.tres
+msgid "BUILDING_WAS_DESTROYED"
+msgstr ""
+
+#: assets/resources/buildings/generators/BasicGenerator.tres
+msgid "BASIC_POWER_GENERATOR"
+msgstr ""
+
+#: assets/resources/buildings/generators/BasicGenerator.tres
+msgid "BASIC_POWER_GENERATOR_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/buildings/storage/basic_scrap_storage.tres
+#: assets/resources/buildings/storage/startup_scrap_storage.tres
+msgid "SCRAP_STORAGE"
+msgstr ""
+
+#: assets/resources/buildings/storage/basic_scrap_storage.tres
+#: assets/resources/buildings/storage/startup_scrap_storage.tres
+msgid "SCRAP_STORAGE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/buildings/towers/base_tower.tres
+msgid "BASIC_TOWER"
+msgstr ""
+
+#: assets/resources/buildings/towers/base_tower.tres
+msgid "BASIC_TOWER_DESCRIPTION"
+msgstr ""
+
+#: src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd
+msgid "CLOSEST_ENEMY"
+msgstr ""
+
+#: src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd
+msgid "MOST_HP"
+msgstr ""
+
+#: src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd
+msgid "LOWEST_HP"
+msgstr ""
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "BUILD_TIME_LEFT"
+msgstr ""
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "BUILD_PHASE_STARTED"
+msgstr ""
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "WAVE_PHASE_STARTED"
+msgstr ""
+
+#: assets/resources/build_menu/groups/defence_infastructure.tres
+msgid "DEFENCE_INFRASTRUCTURE"
+msgstr ""
+
+#: assets/resources/build_menu/groups/defence_infastructure.tres
+msgid "DEFENCE_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/build_menu/groups/power_infastructure.tres
+msgid "POWER_INFRASTRUCTURE"
+msgstr ""
+
+#: assets/resources/build_menu/groups/power_infastructure.tres
+msgid "POWER_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/build_menu/groups/scrap_infastructure.tres
+msgid "STORAGE_INFRASTRUCTURE"
+msgstr ""
+
+#: assets/resources/build_menu/groups/scrap_infastructure.tres
+msgid "STORAGE_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/build_menu/groups/tools.tres
+msgid "TOOLS"
+msgstr ""
+
+#: assets/resources/build_menu/groups/tools.tres
+msgid "TOOLS_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/statistic.tres
+msgid "STATISTIC"
+msgstr ""
+
+#: translations/resources/armor.tres
+#: translations/resources/armor_description.tres
+msgid "ARMOR"
+msgstr ""
+
+#: translations/resources/armor_penetration.tres
+#: translations/resources/armor_penetration_description.tres
+msgid "ARMOR_PENETRATION"
+msgstr ""
+
+#: translations/resources/damage.tres
+#: translations/resources/damage_description.tres
+msgid "DAMAGE"
+msgstr ""
+
+#: translations/resources/fire_rate.tres
+#: translations/resources/fire_rate_description.tres
+msgid "FIRE_RATE"
+msgstr ""
+
+#: translations/resources/hp.tres
+#: translations/resources/hp_description.tres
+msgid "HP"
+msgstr ""
+
+#: translations/resources/range.tres
+#: translations/resources/range_description.tres
+msgid "RANGE"
+msgstr ""
+
+#: src/game/entity/components/tower_information_request_component.gd
+msgid "TOWER_OPTIONS"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "NOT_ENOUGH_STORAGE"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "SCRAP_RECEIVED"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "SCRAP_LOST"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_SCRAP_RECEIVED"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_SCRAP_LOST"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_ENERGY_RECEIVED"
+msgstr ""
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_ENERGY_LOST"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_damage.tres
+msgid "FIXED_DAMAGE"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_damage.tres
+msgid "FIXED_DAMAGE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_range.tres
+msgid "FIXED_RANGE"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_range.tres
+msgid "FIXED_RANGE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/percentage_damage.tres
+msgid "PROCEDUAL_DAMAGE"
+msgstr ""
+
+#: assets/resources/modifiers/percentage_damage.tres
+msgid "PROCEDUAL_DAMAGE_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/details.tres
+msgid "DETAILS"
+msgstr ""
+
+#: scenes/game/templates/detail_window/tower_settings_content.tscn
+msgid "THREAT_MODE"
+msgstr ""
+
+#: scenes/game/templates/detail_window/tower_settings_content.tscn
+msgid "UPGRADES_AND_MODIFIERS"
+msgstr ""
+
+#: translations/resources/Bulldozer.tres
+#: translations/resources/bulldozer.tres
+msgid "BULLDOZER"
+msgstr ""
+
+#: translations/resources/repair.tres
+msgid "REPAIR"
+msgstr ""
+
+#: translations/resources/bulldozer_description.tres
+msgid "BULLDOZER_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/repair_description.tres
+msgid "REPAIR_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/energy.tres
+msgid "ENERGY"
+msgstr ""
+
+#: translations/resources/energy_description.tres
+msgid "ENERGY_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/scrap.tres
+msgid "SCRAP"
+msgstr ""
+
+#: translations/resources/scrap_description.tres
+msgid "SCRAP_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/overlay/popups/GameEnd.tscn
+msgid "GAME_LOST"
+msgstr ""
+
+#: scenes/game/overlay/popups/GameEnd.tscn
+msgid "RESTART"
+msgstr ""
+
+#: translations/resources/version.tres
+msgid "VERSION"
+msgstr ""
+
+#: translations/resources/building_destroyed_meta.tres
+msgid "BUILDING_WAS_DESTROYED_WITH_META"
+msgstr ""
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+#: src/game/build_mode/build_validators/check_tile_map_collision.gd
+msgid "BUILD_SPACE_BLOCKED"
+msgstr ""
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+msgid "NOT_ON_BUILDING"
+msgstr ""
+
+#: src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+#: src/game/build_mode/build_validators/resource_build_validator.gd
+msgid "NO_SCRAP_AVAILABLE"
+msgstr ""
+
+#: src/game/build_mode/build_validators/hp_is_not_full.gd
+msgid "BUILDING_AT_FULL_HEALTH"
+msgstr ""
+
+#: src/game/build_mode/build_validators/inside_of_build_area.gd
+msgid "NOT_INSIDE_BUILD_AREA"
+msgstr ""

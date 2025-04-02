@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://6ji12wnf6uop"]
+
+[ext_resource type="Script" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_m7oyq"]
+
+[resource]
+script = ExtResource("1_m7oyq")
+key = "DETAILS"

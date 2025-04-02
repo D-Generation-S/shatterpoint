@@ -1,20 +1,23 @@
-[gd_resource type="Resource" script_class="StorageData" load_steps=5 format=3 uid="uid://7iywprfg275c"]
+[gd_resource type="Resource" script_class="StorageData" load_steps=6 format=3 uid="uid://7iywprfg275c"]
 
-[ext_resource type="Script" path="res://src/resources/buildings/storage_data.gd" id="1_wuqmi"]
-[ext_resource type="Script" path="res://src/resources/entity_stats.gd" id="2_8av8j"]
+[ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_krsr6"]
+[ext_resource type="Script" path="res://src/resources/entities/buildings/storage_data.gd" id="1_wuqmi"]
+[ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="2_8av8j"]
 [ext_resource type="Texture2D" uid="uid://doqhrkci5n1l6" path="res://assets/atlast_textures/scrap_storage.tres" id="3_5u5lh"]
 
 [sub_resource type="Resource" id="Resource_5qovb"]
 script = ExtResource("2_8av8j")
-hp = 10.0
-armor = 5.0
+hp = 20.0
+armor = 0.0
 fire_rate = 0.0
 damage = 0.0
 attack_range = 0.0
+armor_penetration = 0.0
 
 [resource]
 script = ExtResource("1_wuqmi")
 storage_capacity = 40
+death_animation = ExtResource("1_krsr6")
 scrap_required = 0
 building_name = "SCRAP_STORAGE"
 texture = ExtResource("3_5u5lh")

@@ -46,6 +46,6 @@ icon = ExtResource("11_op110")
 
 [resource]
 script = ExtResource("2_yrta1")
-name = "SCRAP_INFRASTRUCTURE"
+display_name = "STORAGE_INFRASTRUCTURE"
 icon = ExtResource("11_3suaq")
 entries = Array[ExtResource("1_pccod")]([SubResource("Resource_wkwq6")])

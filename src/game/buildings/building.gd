@@ -5,11 +5,14 @@ signal building_data_changed(building_data: BuildingBase)
 signal in_debug_mode(on: bool)
 signal building_added(building: Building)
 signal building_removed(building: Building)
+signal texture_changed(texture: Texture2D)
 
 @export var building_data: BuildingBase
 @export var isDebug: bool = false
 @export var destroyed_style: MessageStyle
-@export var building_destroyed_message: String = "BUILDING_WAS_DESTROYED"
+@export var building_destroyed_message: TranslationResource = preload("res://translations/resources/building_destroyed.tres")
+@export var building_destroyed_meta: TranslationResource = preload("res://translations/resources/building_destroyed_meta.tres")
+@export var custom_destroyed_message: PackedScene = null
 
 @onready var visual: Sprite2D= $"%Visuals"
 
@@ -32,7 +35,7 @@ func _ready():
 	show_detail_window.connect(detail_system.request_window)
 	
 
-	visual.texture = building_data.texture
+	texture_changed.emit(building_data.texture)
 	if visual is ColorReplaceShader:
 		visual.set_color_replacement(building_data.input_color, building_data.output_color)
 
@@ -54,5 +57,17 @@ func _is_dying():
 	building_removed.emit(self)
 
 func _hp_reached_zero():
-	var message = tr(building_destroyed_message) % tr(building_data.building_name)
-	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message, 3, visual.texture)
+	super()
+	var message_text = tr(building_destroyed_message.key) % tr(building_data.building_name)
+	if custom_destroyed_message:
+		var message = custom_destroyed_message.instantiate() as MessageTemplate
+		if message:
+			var meta_tag = "{\"type\": \"move_camera\", \"data\": \"\", \"additional\": {\"x\": %s, \"y\": %s} }" % [global_position.x, global_position.y]
+			message_text = tr(building_destroyed_meta.key) % [destroyed_style.text_color.to_html(), meta_tag, tr(building_data.building_name)]
+			message.meta_request.connect(InteractionHandler.handle_interaction)
+			message.setup(destroyed_style, message_text, 3, visual.texture)
+			
+			GlobalDataAccess.get_message_area().add_custom_message(MessagePosition.BOTTOM_RIGHT, message)
+			return
+
+	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message_text, 3, visual.texture)

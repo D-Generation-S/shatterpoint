@@ -16,8 +16,8 @@ func _ready():
 		queue_free()
 	build_menu_inactive()
 	_button.texture_normal = _group_data.icon
-	_button.tooltip_text = _group_data.name
-	_button.description = _group_data.name + "_DESCRIPTION"
+	_button.tooltip_text = _group_data.get_display_name()
+	_button.description = _group_data.get_display_description()
 	for entry in _group_data.entries:
 		_add_entry(entry)
 

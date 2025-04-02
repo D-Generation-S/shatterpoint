@@ -21,7 +21,7 @@ func _ready():
 	GlobalDataAccess.game_started()
 	overlay = GlobalDataAccess.get_resource_overlay()
 	change_can_abort_building.emit(false)
-	add_new_message.emit(MessagePosition.CENTER, "BUILD_SCRAP_STORAGE_TO_START", 10)
+	add_new_message.emit(MessagePosition.CENTER, tr("BUILD_SCRAP_STORAGE_TO_START"), 10)
 	enable_build_mode.emit()
 	set_build_tool.emit(scrap_storage_build_mode)
 
@@ -32,7 +32,7 @@ func _building_was_placed(_building: Building):
 	if added_buildings == 1:
 		overlay.add_scrap(start_scrap)
 	
-		add_new_message.emit(MessagePosition.CENTER, "BUILD_GENERATOR_NEXT", 10)
+		add_new_message.emit(MessagePosition.CENTER, tr("BUILD_GENERATOR_NEXT"), 10)
 		set_build_tool.emit(generator_build_mode)
 		return
 

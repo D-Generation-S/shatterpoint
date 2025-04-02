@@ -1,12 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://b0d3k3rsr84ma"]
+[gd_scene load_steps=23 format=3 uid="uid://b0d3k3rsr84ma"]
 
 [ext_resource type="Script" path="res://src/game/overlay/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
 [ext_resource type="PackedScene" uid="uid://c2cn44tmy4ia2" path="res://scenes/game/templates/detail_window/templates/key_value.tscn" id="2_j3cg2"]
 [ext_resource type="Texture2D" uid="uid://ek4s20818gv" path="res://assets/atlast_textures/damage_icon.tres" id="3_8nd3g"]
+[ext_resource type="Resource" uid="uid://bu74y80pm6yog" path="res://translations/resources/hp.tres" id="3_klr26"]
 [ext_resource type="Texture2D" uid="uid://cwb7af1m00i6i" path="res://assets/atlast_textures/health_icon.tres" id="3_kut4b"]
 [ext_resource type="Texture2D" uid="uid://tngll1481eo7" path="res://assets/atlast_textures/armor_icon.tres" id="3_qqdvr"]
+[ext_resource type="Resource" uid="uid://hdjpd1lmmt61" path="res://translations/resources/hp_description.tres" id="4_a507c"]
 [ext_resource type="Texture2D" uid="uid://cw135dw5l2swk" path="res://assets/atlast_textures/range_icon.tres" id="4_u8gwr"]
 [ext_resource type="Texture2D" uid="uid://bdgluljy3r0y2" path="res://assets/atlast_textures/fire_rate_icon.tres" id="4_yld16"]
+[ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="5_7frdd"]
+[ext_resource type="Resource" uid="uid://dg4ivlf8y6nff" path="res://translations/resources/armor.tres" id="5_hkddq"]
+[ext_resource type="Resource" uid="uid://fc3jwp22jf7y" path="res://translations/resources/armor_description.tres" id="7_6t4ym"]
+[ext_resource type="Resource" uid="uid://bioeptlagvjko" path="res://translations/resources/armor_penetration.tres" id="7_c23vf"]
+[ext_resource type="Resource" uid="uid://cafpk0xsw8j8n" path="res://translations/resources/statistic.tres" id="9_ojdw6"]
+[ext_resource type="Resource" uid="uid://dpvsm3ribtmmt" path="res://translations/resources/armor_penetration_description.tres" id="10_q2i0s"]
+[ext_resource type="Resource" uid="uid://k2ejvbucwjs6" path="res://translations/resources/fire_rate.tres" id="12_m1gbq"]
+[ext_resource type="Resource" uid="uid://b22rn7dtmou1y" path="res://translations/resources/fire_rate_description.tres" id="13_27n20"]
+[ext_resource type="Resource" uid="uid://ylfwks77kkhl" path="res://translations/resources/damage.tres" id="15_upcri"]
+[ext_resource type="Resource" uid="uid://vqjadgnnhwr1" path="res://translations/resources/damage_description.tres" id="16_ednxm"]
+[ext_resource type="Resource" uid="uid://bxqawttuhu7io" path="res://translations/resources/range.tres" id="18_mksax"]
+[ext_resource type="Resource" uid="uid://bdqnnvgrlavm3" path="res://translations/resources/range_description.tres" id="19_mhwgs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acwxj"]
+atlas = ExtResource("5_7frdd")
+region = Rect2(0, 128, 16, 16)
 
 [node name="TowerStatisticSetting" type="Control" node_paths=PackedStringArray("_statistic_node")]
 layout_mode = 3
@@ -18,12 +36,25 @@ grow_vertical = 2
 script = ExtResource("1_xnbd2")
 _statistic_node = NodePath("ScrollContainer/Statistic")
 _key_value_template = ExtResource("2_j3cg2")
+_hp_text = ExtResource("3_klr26")
+_hp_description = ExtResource("4_a507c")
 _hp_icon = ExtResource("3_kut4b")
+_armor_text = ExtResource("5_hkddq")
+_armor_description = ExtResource("7_6t4ym")
 _armor_icon = ExtResource("3_qqdvr")
+_armor_penetration_text = ExtResource("7_c23vf")
+_armor_penetration_description = ExtResource("10_q2i0s")
+_armor_penetration_icon = SubResource("AtlasTexture_acwxj")
+_fire_rate_text = ExtResource("12_m1gbq")
+_fire_rate_description = ExtResource("13_27n20")
 _fire_rate_icon = ExtResource("4_yld16")
+_damage_rate_text = ExtResource("15_upcri")
+_damage_rate_description = ExtResource("16_ednxm")
 _damage_rate_icon = ExtResource("3_8nd3g")
+_range_rate_text = ExtResource("18_mksax")
+_range_description = ExtResource("19_mhwgs")
 _range_rate_icon = ExtResource("4_u8gwr")
-_content_name = "STATISTIC"
+_content_name = ExtResource("9_ojdw6")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1

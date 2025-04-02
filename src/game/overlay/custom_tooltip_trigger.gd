@@ -6,5 +6,5 @@ class_name CustomTooltipTrigger extends Control
 
 func _make_custom_tooltip(for_text) -> Object:
 	var template = tooltip_template.instantiate() as CustomTooltip
-	template.setup(tr(for_text), description, tooltip_icon)
+	template.setup(tr(for_text), tr(description), tooltip_icon)
 	return template

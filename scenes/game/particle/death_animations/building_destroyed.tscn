@@ -1,0 +1,121 @@
+[gd_scene load_steps=20 format=3 uid="uid://cvuwxclyg820x"]
+
+[ext_resource type="Script" path="res://scenes/game/particle/conditional_entity_destruct.gd" id="1_3bwy2"]
+[ext_resource type="Script" path="res://scenes/game/particle/death_animations/fadeout_sprite.gd" id="2_n8rij"]
+[ext_resource type="Shader" path="res://assets/shaders/destroyed_building.gdshader" id="2_p1fj4"]
+[ext_resource type="Script" path="res://src/game/particle/timed_particle_emitter.gd" id="2_vnuva"]
+[ext_resource type="Script" path="res://src/game/particle/self_deleting_particles.gd" id="3_h78jj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4vafm"]
+noise_type = 0
+frequency = 0.0414
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_asau5"]
+seamless = true
+noise = SubResource("FastNoiseLite_4vafm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xiqk3"]
+shader = ExtResource("2_p1fj4")
+shader_parameter/rect_info = Vector4(0, 0, 16, 16)
+shader_parameter/zoom = 0.4052
+shader_parameter/percent_destroyed = 0.33
+shader_parameter/alpha_threshold = 0.25
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/solid_modifier = 1.32
+shader_parameter/noise = SubResource("NoiseTexture2D_asau5")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ojra6"]
+size = Vector2(16, 16)
+
+[sub_resource type="Gradient" id="Gradient_x72k1"]
+colors = PackedColorArray(0.776471, 0, 0, 1, 1, 0.513726, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tqfy0"]
+gradient = SubResource("Gradient_x72k1")
+
+[sub_resource type="Gradient" id="Gradient_b4vmm"]
+offsets = PackedFloat32Array(0.00290276, 0.367199, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0.388235)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h0xq8"]
+gradient = SubResource("Gradient_b4vmm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_doaqx"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10.63
+angle_min = -80.0
+angle_max = 80.0
+gravity = Vector3(0, -50, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+scale_min = 3.0
+scale_max = 8.0
+color_ramp = SubResource("GradientTexture1D_h0xq8")
+color_initial_ramp = SubResource("GradientTexture1D_tqfy0")
+turbulence_enabled = true
+turbulence_noise_scale = 5.0
+
+[sub_resource type="Gradient" id="Gradient_ebf36"]
+colors = PackedColorArray(0.921502, 0.902025, 1.54018e-06, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kywve"]
+gradient = SubResource("Gradient_ebf36")
+
+[sub_resource type="Gradient" id="Gradient_rnapg"]
+offsets = PackedFloat32Array(0, 0.734398, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kubyo"]
+gradient = SubResource("Gradient_rnapg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7nd1p"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 7.54
+angle_min = -80.0
+angle_max = 80.0
+gravity = Vector3(0, -40, 0)
+radial_accel_min = 10.0
+radial_accel_max = 50.0
+scale_max = 6.0
+color_ramp = SubResource("GradientTexture1D_kubyo")
+color_initial_ramp = SubResource("GradientTexture1D_kywve")
+
+[node name="BuildingDestroyed" type="Node2D"]
+script = ExtResource("1_3bwy2")
+number_of_conditions = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_xiqk3")
+texture = SubResource("PlaceholderTexture2D_ojra6")
+script = ExtResource("2_n8rij")
+
+[node name="FireAndSmoke" type="GPUParticles2D" parent="."]
+z_index = 5
+position = Vector2(0, -4)
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_doaqx")
+lifetime = 5.0
+randomness = 0.5
+script = ExtResource("2_vnuva")
+min_start_delay_in_seconds = 0.05
+max_start_delay_in_seconds = 0.2
+
+[node name="Explosion" type="GPUParticles2D" parent="."]
+z_index = 5
+emitting = false
+amount = 400
+process_material = SubResource("ParticleProcessMaterial_7nd1p")
+explosiveness = 1.0
+randomness = 0.43
+script = ExtResource("3_h78jj")
+
+[connection signal="texture_was_set" from="." to="Sprite2D" method="set_texture"]
+[connection signal="fadeout_complete" from="Sprite2D" to="." method="condition_fulfilled"]
+[connection signal="completed" from="FireAndSmoke" to="." method="condition_fulfilled"]
+[connection signal="emitter_stopped" from="FireAndSmoke" to="Sprite2D" method="start_fadeout"]
+[connection signal="finished" from="Explosion" to="." method="condition_fulfilled"]

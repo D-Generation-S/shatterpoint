@@ -8,6 +8,8 @@ signal modifier_added(modifier: StatModifier)
 @export var settings_content: PackedScene
 @export var statistic_content: PackedScene
 @export var modifiers_to_generate: int = 3
+@export var settings_translation: TranslationResource
+@export var statistic_translation: TranslationResource
 
 var stored_data: TowerData
 var data_showed: bool = false
@@ -28,7 +30,7 @@ func got_selected(on: bool):
 	var content: Array[DefaultDetailContent] = []		
 	var settings = settings_content.instantiate() as TowerSettingContent
 
-	settings.set_content_name("SETTINGS")
+	settings.set_content_name(settings_translation)
 	var pre_selected_thread: int = 0
 	for i in range(stored_data.allowed_thread_determination.size()):
 		if stored_data.allowed_thread_determination[i] == current_threat_determination:
@@ -46,14 +48,14 @@ func got_selected(on: bool):
 
 	var statistic = statistic_content.instantiate() as TowerStatisticContent
 	statistic.statistic_updated(stored_data)
-	statistic.set_content_name("STATISTIC")
+	statistic.set_content_name(statistic_translation)
 	statistic.tree_exiting.connect(func(): last_data_statistic = null)
 
 	content.append(settings)
 	content.append(statistic)
 	statistic.tree_exiting.connect(func(): data_showed = false)
 	last_data_statistic = statistic 
-	show_detail_window.emit(global_position, Vector2(300,400), "TOWER_OPTIONS", content)
+	show_detail_window.emit(global_position, Vector2(300,400), tr("TOWER_OPTIONS"), content)
 	data_showed = true
 
 func _modifier_was_added(modifier: StatModifier):

@@ -80,7 +80,7 @@ func _process(_delta):
 
 func _on_collision_entered(body: Node2D):
 	if body is EntityWithStats:
-		body.deal_damage(carried_damage)
+		body.deal_damage(carried_damage, armor_penetration)
 		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
 
 	queue_free()
@@ -88,7 +88,7 @@ func _on_collision_entered(body: Node2D):
 func _on_area_entered(area: Area2D):
 	var parent = area.get_parent()
 	if parent is EntityWithStats:
-		parent.deal_damage(carried_damage)
+		parent.deal_damage(carried_damage, armor_penetration)
 		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
 	queue_free()
 

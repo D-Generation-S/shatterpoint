@@ -46,6 +46,6 @@ icon = ExtResource("11_otqf0")
 
 [resource]
 script = ExtResource("13_nuxat")
-name = "TOWERS"
+display_name = "DEFENCE_INFRASTRUCTURE"
 icon = ExtResource("12_48ltj")
 entries = Array[ExtResource("1_p6yrw")]([SubResource("Resource_wrl4v")])

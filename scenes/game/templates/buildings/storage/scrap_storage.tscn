@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6l2b21q7muf0"]
+[gd_scene load_steps=9 format=3 uid="uid://b6l2b21q7muf0"]
 
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="1_3wnx1"]
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_7e4xk"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_6v1xe"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="2_pl675"]
+[ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="3_qyg3l"]
+[ext_resource type="Script" path="res://src/game/entity/components/scrap_storage_component.gd" id="5_msbm5"]
+[ext_resource type="Script" path="res://src/game/entity/components/death_animation_component.gd" id="5_t0q4q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_updg7"]
 
 [node name="ScrapStorage" type="Node2D" groups=["building", "storage"]]
 script = ExtResource("1_7e4xk")
 destroyed_style = ExtResource("2_6v1xe")
+custom_destroyed_message = ExtResource("3_qyg3l")
 
 [node name="Visuals" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -29,5 +33,19 @@ script = ExtResource("2_pl675")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("CircleShape2D_updg7")
 
+[node name="Components" type="Node2D" parent="."]
+
+[node name="ScrapStorageComponent" type="Node2D" parent="Components"]
+script = ExtResource("5_msbm5")
+
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("5_t0q4q")
+root_node_to_get_parent_from = NodePath("../..")
+
+[connection signal="building_data_changed" from="." to="Components/ScrapStorageComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
+[connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
+[connection signal="update_death_animation" from="Components/ScrapStorageComponent" to="Components/DeathAnimationComponent" method="data_updated"]

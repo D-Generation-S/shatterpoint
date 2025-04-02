@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SpawnerConfiguration" load_steps=10 format=3 uid="uid://787f37sn4rlu"]
 
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="1_3fdcg"]
-[ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="2_asum0"]
+[ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="2_asum0"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="2_ihd1m"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="3_6lh1o"]
 [ext_resource type="Resource" uid="uid://sm3tdm00ffby" path="res://assets/resources/enemies/default_soldier.tres" id="3_1386k"]

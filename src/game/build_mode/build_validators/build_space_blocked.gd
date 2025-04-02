@@ -13,9 +13,9 @@ func is_valid(tree: SceneTree,
 			if reverse:
 				return BuildValidatorReturn.new(true, "")
 			else:
-				return BuildValidatorReturn.new(false, "BUILD_SPACE_BLOCKED")
+				return BuildValidatorReturn.new(false, tr("BUILD_SPACE_BLOCKED"))
 
 	if reverse:
-		return BuildValidatorReturn.new(false, "NOT_ON_BUILDING")
+		return BuildValidatorReturn.new(false, tr("NOT_ON_BUILDING"))
 	else:
 		return BuildValidatorReturn.new(true, "")

@@ -1,0 +1,316 @@
+# LANGUAGE translation for Shatterpoint for the following files:
+# res://src/game/systems/tutorial/game_start_system.gd
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Shatterpoint\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Xanatos\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.6\n"
+
+#: src/game/systems/tutorial/game_start_system.gd
+msgid "BUILD_SCRAP_STORAGE_TO_START"
+msgstr "Build scrap storage to continue"
+
+#: src/game/systems/tutorial/game_start_system.gd
+msgid "BUILD_GENERATOR_NEXT"
+msgstr "Build a generator next, this will start the game"
+
+#: translations/resources/building_destroyed.tres
+#: translations/resources/building_destroyed_description.tres
+msgid "BUILDING_WAS_DESTROYED"
+msgstr "Building %s was destroyed"
+
+#: assets/resources/buildings/generators/BasicGenerator.tres
+msgid "BASIC_POWER_GENERATOR"
+msgstr "Basic Power Generator"
+
+#: assets/resources/buildings/generators/BasicGenerator.tres
+msgid "BASIC_POWER_GENERATOR_DESCRIPTION"
+msgstr ""
+"The basic power generator, one of them should be enough to keep your first "
+"set of turrets running, do not forget to build more as needed.\n"
+"\n"
+"The generator will also provide some energy storage, if you lose all of them "
+"you won't be able to fire your turrets"
+
+#: assets/resources/buildings/storage/basic_scrap_storage.tres
+#: assets/resources/buildings/storage/startup_scrap_storage.tres
+msgid "SCRAP_STORAGE"
+msgstr "Scrap Storage"
+
+#: assets/resources/buildings/storage/basic_scrap_storage.tres
+#: assets/resources/buildings/storage/startup_scrap_storage.tres
+msgid "SCRAP_STORAGE_DESCRIPTION"
+msgstr ""
+"This storage will increase your global scrap cap allowing you to collect "
+"more of it."
+
+#: assets/resources/buildings/towers/base_tower.tres
+msgid "BASIC_TOWER"
+msgstr "Basic Tower"
+
+#: assets/resources/buildings/towers/base_tower.tres
+msgid "BASIC_TOWER_DESCRIPTION"
+msgstr "This is your basic tower there is nothing special about it."
+
+#: src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd
+msgid "CLOSEST_ENEMY"
+msgstr "Closest enemy"
+
+#: src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd
+msgid "MOST_HP"
+msgstr "Most HP"
+
+#: src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd
+msgid "LOWEST_HP"
+msgstr "Lowest HP"
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "BUILD_TIME_LEFT"
+msgstr "%s seconds left for build phase"
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "BUILD_PHASE_STARTED"
+msgstr "Build phase has started"
+
+#: src/game/systems/game_state/game_state_manager.gd
+msgid "WAVE_PHASE_STARTED"
+msgstr "Wave %s has started"
+
+#: assets/resources/build_menu/groups/defence_infastructure.tres
+msgid "DEFENCE_INFRASTRUCTURE"
+msgstr "Defence Structures"
+
+#: assets/resources/build_menu/groups/defence_infastructure.tres
+msgid "DEFENCE_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+"This category will contain all defence structure like towers available for "
+"building."
+
+#: assets/resources/build_menu/groups/power_infastructure.tres
+msgid "POWER_INFRASTRUCTURE"
+msgstr "Power Infastructure"
+
+#: assets/resources/build_menu/groups/power_infastructure.tres
+msgid "POWER_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+"Contains building to keep your infastructure running.\n"
+"\n"
+"Those are building like, for example generators"
+
+#: assets/resources/build_menu/groups/scrap_infastructure.tres
+msgid "STORAGE_INFRASTRUCTURE"
+msgstr "Storage infastructure"
+
+#: assets/resources/build_menu/groups/scrap_infastructure.tres
+msgid "STORAGE_INFRASTRUCTURE_DESCRIPTION"
+msgstr ""
+"This category will contain buildings to increase your global storage "
+"amount.\n"
+"\n"
+"You should always make sure to keep that storage higher than what you "
+"collect to prevent scrap getting lost"
+
+#: assets/resources/build_menu/groups/tools.tres
+msgid "TOOLS"
+msgstr "Tools"
+
+#: assets/resources/build_menu/groups/tools.tres
+msgid "TOOLS_DESCRIPTION"
+msgstr "This will contain tools to repair or remove your buildings"
+
+#: translations/resources/statistic.tres
+msgid "STATISTIC"
+msgstr "Statistic"
+
+#: translations/resources/armor.tres
+#: translations/resources/armor_description.tres
+msgid "ARMOR"
+msgstr "Armor"
+
+#: translations/resources/armor_penetration.tres
+#: translations/resources/armor_penetration_description.tres
+msgid "ARMOR_PENETRATION"
+msgstr "Armor Penetration"
+
+#: translations/resources/damage.tres
+#: translations/resources/damage_description.tres
+msgid "DAMAGE"
+msgstr "Damage"
+
+#: translations/resources/fire_rate.tres
+#: translations/resources/fire_rate_description.tres
+msgid "FIRE_RATE"
+msgstr "Fire rate"
+
+#: translations/resources/hp.tres translations/resources/hp_description.tres
+msgid "HP"
+msgstr "Health Points"
+
+#: translations/resources/range.tres
+#: translations/resources/range_description.tres
+msgid "RANGE"
+msgstr "Range"
+
+#: src/game/entity/components/tower_information_request_component.gd
+msgid "TOWER_OPTIONS"
+msgstr "Tower Options"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "NOT_ENOUGH_STORAGE"
+msgstr "Not enough storage space"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "SCRAP_RECEIVED"
+msgstr "+%s Scrap"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "SCRAP_LOST"
+msgstr "%s Scrap"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_SCRAP_RECEIVED"
+msgstr "+%s Scrap Storage"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_SCRAP_LOST"
+msgstr "-%s Scrap Storage"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_ENERGY_RECEIVED"
+msgstr "+%s energy storage"
+
+#: src/game/overlay/resource_overlay.gd
+msgid "TOTAL_ENERGY_LOST"
+msgstr "%s energy storage"
+
+#: assets/resources/modifiers/fixed_damage.tres
+msgid "FIXED_DAMAGE"
+msgstr "Fixed Damage"
+
+#: assets/resources/modifiers/fixed_damage.tres
+msgid "FIXED_DAMAGE_DESCRIPTION"
+msgstr ""
+"This modifier will increase the damage of the entity by a fixed amount of %s"
+
+#: assets/resources/modifiers/fixed_range.tres
+msgid "FIXED_RANGE"
+msgstr "Fixed Range"
+
+#: assets/resources/modifiers/fixed_range.tres
+msgid "FIXED_RANGE_DESCRIPTION"
+msgstr ""
+"This modifier will increase the range of this entity by a fixed amount or %s"
+
+#: assets/resources/modifiers/percentage_damage.tres
+msgid "PROCEDUAL_DAMAGE"
+msgstr "Percentage Dame"
+
+#: assets/resources/modifiers/percentage_damage.tres
+msgid "PROCEDUAL_DAMAGE_DESCRIPTION"
+msgstr "This modifier will increase the damage of the entity by %s"
+
+#: translations/resources/details.tres
+msgid "DETAILS"
+msgstr "Details"
+
+#: scenes/game/templates/detail_window/tower_settings_content.tscn
+msgid "THREAT_MODE"
+msgstr "Threat Mode"
+
+#: scenes/game/templates/detail_window/tower_settings_content.tscn
+msgid "UPGRADES_AND_MODIFIERS"
+msgstr "Upgrades and Modifiers"
+
+#: translations/resources/Bulldozer.tres translations/resources/bulldozer.tres
+msgid "BULLDOZER"
+msgstr "Bulldozer"
+
+#: translations/resources/repair.tres
+msgid "REPAIR"
+msgstr "Repair"
+
+#: translations/resources/bulldozer_description.tres
+msgid "BULLDOZER_DESCRIPTION"
+msgstr ""
+"This will destroy a building, giving back around 50% of the scrap required "
+"for building it."
+
+#: translations/resources/repair_description.tres
+msgid "REPAIR_DESCRIPTION"
+msgstr ""
+"This will repair a building, the scrap will be calculated based of the "
+"damage the building already took"
+
+#: translations/resources/energy.tres
+msgid "ENERGY"
+msgstr "Energy"
+
+#: translations/resources/energy_description.tres
+msgid "ENERGY_DESCRIPTION"
+msgstr ""
+"Energy is produced by generators and stored in a global storage.\n"
+"\n"
+"It is getting used for every tower if he want's to fire on an enemy. If you "
+"run out of energy no tower will be able to fire."
+
+#: translations/resources/scrap.tres
+msgid "SCRAP"
+msgstr "Scrap"
+
+#: translations/resources/scrap_description.tres
+msgid "SCRAP_DESCRIPTION"
+msgstr ""
+"Scrap is a resource collected from the remains on the battlefield. It does "
+"contain various metals, electronics, water or food. \n"
+"\n"
+"It is getting used to construct new buildings, units or any structure on the "
+"front line."
+
+#: scenes/game/overlay/popups/GameEnd.tscn
+msgid "GAME_LOST"
+msgstr "Game lost"
+
+#: scenes/game/overlay/popups/GameEnd.tscn
+msgid "RESTART"
+msgstr "Restart"
+
+#: translations/resources/version.tres
+msgid "VERSION"
+msgstr "Version"
+
+#: translations/resources/building_destroyed_meta.tres
+msgid "BUILDING_WAS_DESTROYED_WITH_META"
+msgstr "[color=%s][url=%s]Building %s was destroyed[/url][/color]"
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+#: src/game/build_mode/build_validators/check_tile_map_collision.gd
+msgid "BUILD_SPACE_BLOCKED"
+msgstr "Build space is already blocked"
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+msgid "NOT_ON_BUILDING"
+msgstr "No building at that position"
+
+#: src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+#: src/game/build_mode/build_validators/resource_build_validator.gd
+msgid "NO_SCRAP_AVAILABLE"
+msgstr "No scrap available for that action/building"
+
+#: src/game/build_mode/build_validators/hp_is_not_full.gd
+msgid "BUILDING_AT_FULL_HEALTH"
+msgstr "Building is already at full health"
+
+#: src/game/build_mode/build_validators/inside_of_build_area.gd
+msgid "NOT_INSIDE_BUILD_AREA"
+msgstr "You're not inside the building area"

@@ -77,7 +77,7 @@ func _handle_build_phase_warning():
 	if build_mode_timer.time_left < 6 and not timer_shown:
 		var message = tr("BUILD_TIME_LEFT")
 		var time_left: int = int(build_mode_timer.time_left)
-		message = message.replace("%TIME%", str(time_left))
+		message = message % time_left
 		message_requested.emit(MessagePosition.CENTER, message_style, message, 2)
 		timer_shown = true
 
@@ -108,7 +108,7 @@ func wave_phase_ended():
 		dynamic_start_wave_preparation.emit(current_wave)
 		current_wave += 1
 		build_phase_started.emit()
-		message_requested.emit(MessagePosition.CENTER, message_style, "BUILD_PHASE_STARTED", 1.0)
+		message_requested.emit(MessagePosition.CENTER, message_style, tr("BUILD_PHASE_STARTED"), 1.0)
 
 		current_phase = BUILD
 		build_mode_timer.start()
@@ -137,11 +137,19 @@ func game_has_been_lost():
 	pass
 
 func _register_commands():
-	Console.register_custom_command("start_wave", build_phase_ended, [], "Start the wave phase")
-	Console.register_custom_command("start_build", wave_phase_ended, [], "Start the build phase")
-	Console.register_custom_command("set_wave", _set_wave, ["(int) wave number to set"], "Start the build phase")
+	Console.register_custom_command("start_wave", _command_start_wave, [], "Start the wave phase")
+	Console.register_custom_command("start_build", _command_start_build, [], "Start the build phase")
+	Console.register_custom_command("set_wave", _command_set_wave, ["(int) wave number to set"], "Start the build phase")
 
-func _set_wave(wave: String) -> String:
+func _command_start_wave() -> String:
+	build_phase_ended()
+	return "Wave phase started"
+
+func _command_start_build() -> String:
+	wave_phase_ended()
+	return "Build phase started"
+
+func _command_set_wave(wave: String) -> String:
 	if !wave.is_valid_int():
 		return "Argument is not a valid int"
 	current_wave = int(wave)

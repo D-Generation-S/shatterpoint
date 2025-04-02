@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=88 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
@@ -24,7 +24,7 @@
 [ext_resource type="Script" path="res://src/game/spawner/spawner.gd" id="18_s7e6s"]
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="19_kvgan"]
 [ext_resource type="Script" path="res://src/game/spawner/default_generator.gd" id="20_qox08"]
-[ext_resource type="Script" path="res://src/resources/enemy_data.gd" id="21_snw6j"]
+[ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="21_snw6j"]
 [ext_resource type="Script" path="res://src/game/spawner/unit_power_function.gd" id="23_ppst3"]
 [ext_resource type="Script" path="res://src/game/spawner/spawner_configuration.gd" id="24_8m5a3"]
 [ext_resource type="Resource" uid="uid://56ndv3mjcc5i" path="res://assets/resources/enemies/light_tank.tres" id="24_gk3ek"]
@@ -55,6 +55,9 @@
 [ext_resource type="Script" path="res://src/game/systems/restart_game_system.gd" id="46_vydfs"]
 [ext_resource type="Script" path="res://src/game/systems/entity_detail_window_system/entity_detail_window_system.gd" id="48_kdeyx"]
 [ext_resource type="Script" path="res://src/global/global_debug_commands.gd" id="55_rw2b2"]
+[ext_resource type="Script" path="res://src/global/resources/effect_resource.gd" id="56_y1eit"]
+[ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="57_2w470"]
+[ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="58_o8v4c"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -212,6 +215,16 @@ building_group = "building"
 validators = Array[ExtResource("40_pmcoi")]([SubResource("Resource_fruxs"), SubResource("Resource_g4gv6"), SubResource("Resource_2momy"), SubResource("Resource_jeql6")])
 use_build_entry_icon_as_ghost = true
 building_data = ExtResource("36_ryx4r")
+
+[sub_resource type="Resource" id="Resource_8guxr"]
+script = ExtResource("56_y1eit")
+name = "blood_death"
+scene = ExtResource("57_2w470")
+
+[sub_resource type="Resource" id="Resource_tsnqa"]
+script = ExtResource("56_y1eit")
+name = "building_destroyed"
+scene = ExtResource("58_o8v4c")
 
 [node name="GameScene" type="Node2D"]
 
@@ -406,6 +419,7 @@ script = ExtResource("27_123vq")
 map = NodePath("../../../WaveMode/NavigationRegion2D/Ground")
 
 [node name="GhostSprite" type="Sprite2D" parent="BuildMode/BuildingGhost/BuildGrid"]
+z_index = 10
 material = SubResource("ShaderMaterial_bow8h")
 texture = SubResource("AtlasTexture_wp2pw")
 script = ExtResource("30_ky73b")
@@ -472,6 +486,7 @@ script = ExtResource("46_vydfs")
 
 [node name="GlobalDebugSystem" type="Node" parent="Systems"]
 script = ExtResource("55_rw2b2")
+effects = Array[ExtResource("56_y1eit")]([SubResource("Resource_8guxr"), SubResource("Resource_tsnqa")])
 
 [connection signal="game_lost" from="Overlay/ResourceOverlay" to="Systems/GameStateManager" method="game_has_been_lost"]
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
