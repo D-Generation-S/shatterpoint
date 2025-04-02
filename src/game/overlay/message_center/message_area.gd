@@ -1,4 +1,5 @@
 class_name MessageArea extends CanvasLayer
+
 @export var message_center_group: String = "message_center"
 @export var default_message_style: MessageStyle
 
@@ -16,14 +17,26 @@ func add_simple_message(target: int, message: String, time_to_show: float):
 func add_simple_styled_message(target: int, style: MessageStyle, message: String, time_to_show: float):
 	add_new_message(target, style, message, time_to_show)
 
+func add_custom_message(target: int, message: MessageTemplate):
+	var message_target: MessageCenter = get_message_center(target)
+	
+	if message_target == null:
+		printerr("Could not get any message template for requested message area: " + str(target))
+		return
+
+	message_target.add_custom_message(message)
+
 func add_new_message(target: int, style: MessageStyle, message: String, time_to_show: float, message_icon: Texture = null):
-	var message_target: MessageCenter = message_centers.filter(func(center: MessageCenter): return center.get_position() == target).pop_front()
+	var message_target: MessageCenter = get_message_center(target)
 
 	if message_target == null:
 		printerr("Could not get any message template for requested message area: " + str(target))
 		return
 
 	message_target.add_new_message(style, message, time_to_show, message_icon)
+
+func get_message_center(target: int):
+	return message_centers.filter(func(center: MessageCenter): return center.get_position() == target).pop_front()
 
 func clear_message_area(position: int):
 	var message_target: MessageCenter = message_centers.filter(func(center: MessageCenter): return center.get_position() == position).pop_front()

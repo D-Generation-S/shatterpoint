@@ -47,6 +47,7 @@
 # res://translations/resources/scrap_description.tres
 # res://scenes/game/overlay/popups/GameEnd.tscn
 # res://translations/resources/version.tres
+# res://translations/resources/building_destroyed_meta.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -298,4 +299,8 @@ msgstr ""
 
 #: translations/resources/version.tres
 msgid "VERSION"
+msgstr ""
+
+#: translations/resources/building_destroyed_meta.tres
+msgid "BUILDING_WAS_DESTROYED_WITH_META"
 msgstr ""

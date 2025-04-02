@@ -1,13 +1,15 @@
 class_name MessageTemplate extends Control
 
 signal message_vanished()
+signal icon_changed(texture: Texture2D)
+signal text_changed(text: String)
+signal font_color_changed(color: Color)
+signal theme_color_changed(name: String, color: Color)
 
 @export var in_animation_time: float = 0.5
 @export var vanish_time_in_seconds: float = 0.5
 
-@onready var icon_node: TextureRect = $"%Icon"
-@onready var message_node: Label = $"%Message"
-@onready var timer: Timer = $"%Timer"
+var timer
 
 var text: String
 var icon_texture: Texture
@@ -19,12 +21,18 @@ var animation_tween: Tween
 func _ready():
 	var alternative_modulate = modulate
 	modulate.a = 0
-	message_node.text = tr(text)
-	message_node.set("theme_override_colors/font_color", message_style.text_color)
-	icon_node.texture = icon_texture
+	text_changed.emit(tr(text))
+	font_color_changed.emit(message_style.text_color)
+	theme_color_changed.emit("font_color", message_style.text_color)
+	icon_changed.emit(icon_texture)
+
+	timer = Timer.new()
+	timer.autostart = false
+	timer.one_shot = true
 
 	timer.timeout.connect(_destroy)
 	timer.wait_time = time_to_show
+	add_child(timer)
 
 	animation_tween = create_tween()
 	animation_tween.finished.connect(func(): timer.start())

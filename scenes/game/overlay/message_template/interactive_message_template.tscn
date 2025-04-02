@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dguw0vagfbv55"]
+
+[ext_resource type="Script" path="res://scenes/game/overlay/message_template/interactive_message_template.gd" id="1_kjolj"]
+
+[node name="InteractiveMessageTemplate" type="MarginContainer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 43.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_kjolj")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="RichTextLabel" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "PLACEHOLDER"
+fit_content = true
+scroll_active = false
+
+[connection signal="clear_text" from="." to="PanelContainer/MarginContainer/Content" method="clear"]
+[connection signal="text_changed" from="." to="PanelContainer/MarginContainer/Content" method="append_text"]
+[connection signal="meta_clicked" from="PanelContainer/MarginContainer/Content" to="." method="meta_changed"]

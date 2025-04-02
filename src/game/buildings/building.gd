@@ -11,6 +11,8 @@ signal texture_changed(texture: Texture2D)
 @export var isDebug: bool = false
 @export var destroyed_style: MessageStyle
 @export var building_destroyed_message: TranslationResource = preload("res://translations/resources/building_destroyed.tres")
+@export var building_destroyed_meta: TranslationResource = preload("res://translations/resources/building_destroyed_meta.tres")
+@export var custom_destroyed_message: PackedScene = null
 
 @onready var visual: Sprite2D= $"%Visuals"
 
@@ -56,5 +58,16 @@ func _is_dying():
 
 func _hp_reached_zero():
 	super()
-	var message = tr(building_destroyed_message.key) % tr(building_data.building_name)
-	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message, 3, visual.texture)
+	var message_text = tr(building_destroyed_message.key) % tr(building_data.building_name)
+	if custom_destroyed_message:
+		var message = custom_destroyed_message.instantiate() as MessageTemplate
+		if message:
+			var meta_tag = "{\"type\": \"move_camera\", \"data\": \"\", \"additional\": {\"x\": %s, \"y\": %s} }" % [global_position.x, global_position.y]
+			message_text = tr(building_destroyed_meta.key) % [destroyed_style.text_color.to_html(), meta_tag, tr(building_data.building_name)]
+			message.meta_request.connect(InteractionHandler.handle_interaction)
+			message.setup(destroyed_style, message_text, 3, visual.texture)
+			
+			GlobalDataAccess.get_message_area().add_custom_message(MessagePosition.BOTTOM_RIGHT, message)
+			return
+
+	request_message.emit(MessagePosition.BOTTOM_RIGHT, destroyed_style, message_text, 3, visual.texture)

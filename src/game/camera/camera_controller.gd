@@ -22,6 +22,7 @@ func _ready():
 	global_position = _home_position.global_position
 	zoom = Vector2(_home_position.target_zoom, _home_position.target_zoom)
 	_zoom_level = _home_position.target_zoom
+	InteractionHandler.camera_target_request.connect(scroll_to_position)
 
 	await get_tree().physics_frame
 	setup_edge_ares()

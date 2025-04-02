@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://cbx4n6awx8pja"]
+
+[ext_resource type="Script" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_pj33p"]
+
+[resource]
+script = ExtResource("1_pj33p")
+key = "BUILDING_WAS_DESTROYED_WITH_META"
