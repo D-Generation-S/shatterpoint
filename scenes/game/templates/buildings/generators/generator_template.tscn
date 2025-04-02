@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://mwkus00fsoud"]
+[gd_scene load_steps=8 format=3 uid="uid://mwkus00fsoud"]
 
 [ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_t6acd"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_3w0gm"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_50n60"]
 [ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_qpi2g"]
 [ext_resource type="Script" path="res://src/game/entity/components/generator_component.gd" id="4_d4hvb"]
+[ext_resource type="Script" path="res://src/game/entity/components/death_animation_component.gd" id="6_xwd6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2x2"]
 
@@ -34,6 +35,10 @@ script = ExtResource("3_qpi2g")
 [node name="GeneratorComponent" type="Node2D" parent="Components"]
 script = ExtResource("4_d4hvb")
 
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("6_xwd6p")
+root_node_to_get_parent_from = NodePath("../..")
+
 [node name="Collision" type="Area2D" parent="."]
 collision_layer = 9
 collision_mask = 0
@@ -43,4 +48,8 @@ shape = SubResource("CircleShape2D_if2x2")
 
 [connection signal="building_data_changed" from="." to="Components/GeneratorComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
+[connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
+[connection signal="update_death_animation" from="Components/GeneratorComponent" to="Components/DeathAnimationComponent" method="data_updated"]

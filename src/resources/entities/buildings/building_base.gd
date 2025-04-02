@@ -1,5 +1,8 @@
 class_name BuildingBase extends Resource
 
+@export_group("Templates")
+@export var death_animation: PackedScene = preload("res://scenes/game/particle/death_animations/building_destroyed.tscn")
+
 @export_group("Resources")
 @export var scrap_required: int = 3
 
