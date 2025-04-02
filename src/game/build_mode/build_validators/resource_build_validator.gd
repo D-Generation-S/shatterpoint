@@ -7,5 +7,5 @@ func is_valid(_tree: SceneTree,
 			  resource_data: ResourceData) -> BuildValidatorReturn:
 	if building_data.scrap_required <= resource_data.get_scrap():
 		return BuildValidatorReturn.new(true, "")
-	return BuildValidatorReturn.new(false, "NO_SCRAP_AVAILABLE")
+	return BuildValidatorReturn.new(false, tr("NO_SCRAP_AVAILABLE"))
 

@@ -13,7 +13,7 @@ func is_valid(tree: SceneTree,
 	for build_area in _build_areas:
 			if build_area.get_overlapping_areas().any(func(area): return area.is_in_group("build_marker") ):
 				return BuildValidatorReturn.new(true, "")
-	return BuildValidatorReturn.new(false, "NOT_INSIDE_BUILD_AREA")
+	return BuildValidatorReturn.new(false, tr("NOT_INSIDE_BUILD_AREA"))
 
 func check_for_build_areas(tree: SceneTree):
 	if _build_areas.size() > 0:

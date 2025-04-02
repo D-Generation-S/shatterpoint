@@ -48,6 +48,14 @@
 # res://scenes/game/overlay/popups/GameEnd.tscn
 # res://translations/resources/version.tres
 # res://translations/resources/building_destroyed_meta.tres
+# res://src/game/build_mode/build_validators/build_space_blocked.gd
+# res://src/game/build_mode/build_validators/build_validator.gd
+# res://src/game/build_mode/build_validators/build_validator_return.gd
+# res://src/game/build_mode/build_validators/check_tile_map_collision.gd
+# res://src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+# res://src/game/build_mode/build_validators/hp_is_not_full.gd
+# res://src/game/build_mode/build_validators/inside_of_build_area.gd
+# res://src/game/build_mode/build_validators/resource_build_validator.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -303,4 +311,26 @@ msgstr ""
 
 #: translations/resources/building_destroyed_meta.tres
 msgid "BUILDING_WAS_DESTROYED_WITH_META"
+msgstr ""
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+#: src/game/build_mode/build_validators/check_tile_map_collision.gd
+msgid "BUILD_SPACE_BLOCKED"
+msgstr ""
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+msgid "NOT_ON_BUILDING"
+msgstr ""
+
+#: src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+#: src/game/build_mode/build_validators/resource_build_validator.gd
+msgid "NO_SCRAP_AVAILABLE"
+msgstr ""
+
+#: src/game/build_mode/build_validators/hp_is_not_full.gd
+msgid "BUILDING_AT_FULL_HEALTH"
+msgstr ""
+
+#: src/game/build_mode/build_validators/inside_of_build_area.gd
+msgid "NOT_INSIDE_BUILD_AREA"
 msgstr ""

@@ -12,5 +12,5 @@ func is_valid(tree: SceneTree,
 		if tile_map is TileMapLayer:
 			var local_coords = tile_map.to_local(global_mouse_position)
 			if tile_map.get_cell_tile_data(tile_map.local_to_map(local_coords)) != null:
-				return BuildValidatorReturn.new(false, "BUILD_SPACE_BLOCKED")
-	return BuildValidatorReturn.new(true, "BUILD_SPAC_BLOCKED")
+				return BuildValidatorReturn.new(false, tr("BUILD_SPACE_BLOCKED"))
+	return BuildValidatorReturn.new(true, tr("BUILD_SPACE_BLOCKED"))

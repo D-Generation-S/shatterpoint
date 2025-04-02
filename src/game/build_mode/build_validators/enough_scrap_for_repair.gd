@@ -13,4 +13,4 @@ func is_valid(_tree: SceneTree,
 	var repair_costs: int = ceili(scrap_required_for_building * percent_alive)
 	if repair_costs <= resource_data.get_scrap():
 		return BuildValidatorReturn.new(true, "")
-	return BuildValidatorReturn.new(false, "NO_SCRAP_AVAILABLE")
+	return BuildValidatorReturn.new(false, tr("NO_SCRAP_AVAILABLE"))
