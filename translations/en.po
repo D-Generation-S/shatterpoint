@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Shatterpoint\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Xanatos\n"
 "Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
@@ -292,3 +292,25 @@ msgstr "Version"
 #: translations/resources/building_destroyed_meta.tres
 msgid "BUILDING_WAS_DESTROYED_WITH_META"
 msgstr "[color=%s][url=%s]Building %s was destroyed[/url][/color]"
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+#: src/game/build_mode/build_validators/check_tile_map_collision.gd
+msgid "BUILD_SPACE_BLOCKED"
+msgstr "Build space is already blocked"
+
+#: src/game/build_mode/build_validators/build_space_blocked.gd
+msgid "NOT_ON_BUILDING"
+msgstr "No building at that position"
+
+#: src/game/build_mode/build_validators/enough_scrap_for_repair.gd
+#: src/game/build_mode/build_validators/resource_build_validator.gd
+msgid "NO_SCRAP_AVAILABLE"
+msgstr "No scrap available for that action/building"
+
+#: src/game/build_mode/build_validators/hp_is_not_full.gd
+msgid "BUILDING_AT_FULL_HEALTH"
+msgstr "Building is already at full health"
+
+#: src/game/build_mode/build_validators/inside_of_build_area.gd
+msgid "NOT_INSIDE_BUILD_AREA"
+msgstr "You're not inside the building area"

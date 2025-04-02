@@ -419,6 +419,7 @@ script = ExtResource("27_123vq")
 map = NodePath("../../../WaveMode/NavigationRegion2D/Ground")
 
 [node name="GhostSprite" type="Sprite2D" parent="BuildMode/BuildingGhost/BuildGrid"]
+z_index = 10
 material = SubResource("ShaderMaterial_bow8h")
 texture = SubResource("AtlasTexture_wp2pw")
 script = ExtResource("30_ky73b")
