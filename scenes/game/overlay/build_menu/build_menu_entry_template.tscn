@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtxoktat3ocdh"]
 
-[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_entry_template.gd" id="1_ak3ra"]
-[ext_resource type="Script" path="res://src/game/overlay/custom_tooltip_trigger.gd" id="2_qej0q"]
+[ext_resource type="Script" uid="uid://bx21tvqk5or0o" path="res://src/game/build_mode/build_menu/build_menu_entry_template.gd" id="1_ak3ra"]
+[ext_resource type="Script" uid="uid://cnmff17r6kjcl" path="res://src/game/overlay/custom_tooltip_trigger.gd" id="2_qej0q"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 offset_right = 40.0

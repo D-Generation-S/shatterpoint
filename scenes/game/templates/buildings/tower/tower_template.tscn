@@ -1,29 +1,29 @@
 [gd_scene load_steps=21 format=3 uid="uid://d2ccdfwya86u4"]
 
-[ext_resource type="Script" path="res://src/game/buildings/building.gd" id="1_maaal"]
+[ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="3_1v26b"]
-[ext_resource type="Script" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
+[ext_resource type="Script" uid="uid://ckory6mlhxw1r" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
 [ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="3_mywu7"]
-[ext_resource type="Script" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
+[ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
 [ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="4_fbnch"]
 [ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
-[ext_resource type="Shader" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
-[ext_resource type="Script" path="res://src/game/entity/components/tower_information_request_component.gd" id="11_rsxk6"]
-[ext_resource type="Script" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
+[ext_resource type="Shader" uid="uid://b677y63fsco3n" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
+[ext_resource type="Script" uid="uid://bwv4gjn6yb33y" path="res://src/game/entity/components/tower_information_request_component.gd" id="11_rsxk6"]
+[ext_resource type="Script" uid="uid://jhvpiusmqkxw" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
 [ext_resource type="PackedScene" uid="uid://jkoasuu4iwby" path="res://scenes/game/templates/detail_window/tower_settings_content.tscn" id="12_fg872"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="13_o6x4w"]
 [ext_resource type="PackedScene" uid="uid://b0d3k3rsr84ma" path="res://scenes/game/templates/detail_window/tower_statistic_setting.tscn" id="13_otfmv"]
-[ext_resource type="Script" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
+[ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="14_v4ldh"]
 [ext_resource type="Resource" uid="uid://6ji12wnf6uop" path="res://translations/resources/details.tres" id="15_4dm5s"]
 [ext_resource type="Resource" uid="uid://cafpk0xsw8j8n" path="res://translations/resources/statistic.tres" id="15_xryhp"]
-[ext_resource type="Script" path="res://src/game/entity/components/death_animation_component.gd" id="17_0hwiu"]
+[ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="17_0hwiu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyrh3"]
 shader = ExtResource("11_put42")
 shader_parameter/base_colors = PackedColorArray()
 shader_parameter/target_colors = PackedColorArray()
-shader_parameter/set_colors = null
+shader_parameter/set_colors = 0
 shader_parameter/threshold = 0.001
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p24bp"]

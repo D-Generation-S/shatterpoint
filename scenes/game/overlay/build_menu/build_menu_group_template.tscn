@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://0jl35wrlytvr"]
 
-[ext_resource type="Script" path="res://src/game/build_mode/build_menu/build_menu_group_entry.gd" id="1_aod7s"]
+[ext_resource type="Script" uid="uid://36l6qy78074u" path="res://src/game/build_mode/build_menu/build_menu_group_entry.gd" id="1_aod7s"]
 [ext_resource type="PackedScene" uid="uid://dtxoktat3ocdh" path="res://scenes/game/overlay/build_menu/build_menu_entry_template.tscn" id="2_4lp8d"]
-[ext_resource type="Script" path="res://src/game/overlay/custom_tooltip_trigger.gd" id="3_dknb1"]
+[ext_resource type="Script" uid="uid://cnmff17r6kjcl" path="res://src/game/overlay/custom_tooltip_trigger.gd" id="3_dknb1"]
 
 [node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("entry_target_node")]
 anchors_preset = 2

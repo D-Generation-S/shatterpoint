@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://uon26itdva7d"]
 
-[ext_resource type="Script" path="res://src/game/overlay/resource_bar/custom_tooltip.gd" id="1_yce5f"]
+[ext_resource type="Script" uid="uid://chk7hbr771xdi" path="res://src/game/overlay/resource_bar/custom_tooltip.gd" id="1_yce5f"]
 
 [node name="MarginContainer" type="MarginContainer"]
 offset_right = 136.0

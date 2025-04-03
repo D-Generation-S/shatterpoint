@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brm17h88x8w2b"]
 
-[ext_resource type="Script" path="res://src/game/resources/resource_path_animation.gd" id="1_wdnij"]
+[ext_resource type="Script" uid="uid://uxsqc32v222i" path="res://src/game/resources/resource_path_animation.gd" id="1_wdnij"]
 [ext_resource type="PackedScene" uid="uid://c0s0vyjpfpvsi" path="res://scenes/game/animation/DefaultResourcePathAnimator.tscn" id="3_15rxm"]
 
 [node name="ResourcePathAnimation" type="Node2D" node_paths=PackedStringArray("path_root_node")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://clc1q6pkrn00t"]
 
-[ext_resource type="Script" path="res://src/game/buildings/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
+[ext_resource type="Script" uid="uid://dlbdi8p5yfejj" path="res://src/game/buildings/towers/projectiles/bullet_projectile.gd" id="1_ysxik"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="2_atst4"]
 [ext_resource type="Texture2D" uid="uid://c7ot44oopcbo4" path="res://assets/atlast_textures/bullet_hole.tres" id="2_m5uvm"]
 [ext_resource type="AudioStream" uid="uid://ccoxdxlsnykre" path="res://assets/audio/effects/bullet_fired.wav" id="3_0fa51"]

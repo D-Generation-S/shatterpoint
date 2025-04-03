@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="PercentGenerator" load_steps=4 format=3 uid="uid://ccnjsuy2j80lh"]
 
-[ext_resource type="Script" path="res://src/game/modifier/generator/percentage_generator.gd" id="1_2ltm3"]
+[ext_resource type="Script" uid="uid://d3krljx7noydk" path="res://src/game/modifier/generator/percentage_generator.gd" id="1_2ltm3"]
 [ext_resource type="Resource" uid="uid://ctnwbalaa3ow4" path="res://assets/resources/modifiers/percentage_damage.tres" id="1_xntw1"]
 
 [sub_resource type="Curve" id="Curve_7ug2d"]
-min_value = 1.0
-max_value = 10.0
+_limits = [0.99, 10.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 12.6, 0, 0, Vector2(0.502146, 8.34406), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
 point_count = 3
 

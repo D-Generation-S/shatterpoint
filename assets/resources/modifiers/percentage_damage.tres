@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=3 format=3 uid="uid://ctnwbalaa3ow4"]
 
 [ext_resource type="Texture2D" uid="uid://btgxkey214rs2" path="res://assets/atlast_textures/damage_up_percentage_icon.tres" id="1_8qqnp"]
-[ext_resource type="Script" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="2_5yg8y"]
+[ext_resource type="Script" uid="uid://ciqiyta1ahi4g" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="2_5yg8y"]
 
 [resource]
 script = ExtResource("2_5yg8y")

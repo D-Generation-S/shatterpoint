@@ -1,11 +1,10 @@
 [gd_resource type="Resource" script_class="FixedGenerator" load_steps=4 format=3 uid="uid://cg624hbctwrv2"]
 
 [ext_resource type="Resource" uid="uid://x5yrxrlblroj" path="res://assets/resources/modifiers/fixed_damage.tres" id="1_5wndm"]
-[ext_resource type="Script" path="res://src/game/modifier/generator/fixed_generator.gd" id="2_dijuw"]
+[ext_resource type="Script" uid="uid://b1qs6t3rxxlko" path="res://src/game/modifier/generator/fixed_generator.gd" id="2_dijuw"]
 
 [sub_resource type="Curve" id="Curve_lpnb7"]
-min_value = 1.0
-max_value = 5.0
+_limits = [0.99, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 4.0, 0, 1, Vector2(1, 5), 4.0, 0.0, 1, 0]
 point_count = 2
 
