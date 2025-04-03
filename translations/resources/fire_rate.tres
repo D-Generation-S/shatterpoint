@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://k2ejvbucwjs6"]
 
-[ext_resource type="Script" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_yvy5d"]
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_yvy5d"]
 
 [resource]
 script = ExtResource("1_yvy5d")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://btand62vyewq8"]
 
-[ext_resource type="Script" path="res://src/game/overlay/message_center/message_template.gd" id="1_lxiul"]
+[ext_resource type="Script" uid="uid://b04de5se7jtuc" path="res://src/game/overlay/message_center/message_template.gd" id="1_lxiul"]
 
 [node name="MessageContainer" type="MarginContainer"]
 anchors_preset = 5

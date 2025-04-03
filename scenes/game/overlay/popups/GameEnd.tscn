@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk7keckkd78ia"]
 
-[ext_resource type="Script" path="res://src/game/overlay/popup_center/popups/game_end.gd" id="1_jx7rf"]
+[ext_resource type="Script" uid="uid://0jlrerhhthn0" path="res://src/game/overlay/popup_center/popups/game_end.gd" id="1_jx7rf"]
 
 [node name="GameEnd" type="PanelContainer"]
 anchors_preset = 8

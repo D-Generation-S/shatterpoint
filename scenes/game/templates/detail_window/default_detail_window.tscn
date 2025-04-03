@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://rihqoggarad2"]
 
-[ext_resource type="Script" path="res://src/game/systems/entity_detail_window_system/default_window.gd" id="1_nbep3"]
+[ext_resource type="Script" uid="uid://bdv24rsuoi63x" path="res://src/game/systems/entity_detail_window_system/default_window.gd" id="1_nbep3"]
 
 [node name="DefaultDetailWindow" type="Window" node_paths=PackedStringArray("content_target_node")]
 canvas_item_default_texture_filter = 0

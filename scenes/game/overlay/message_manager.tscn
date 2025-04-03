@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c32ggwgxsdo34"]
 
-[ext_resource type="Script" path="res://src/game/overlay/message_center/message_area.gd" id="1_mg4lp"]
+[ext_resource type="Script" uid="uid://b5emdcdx6q7i6" path="res://src/game/overlay/message_center/message_area.gd" id="1_mg4lp"]
 [ext_resource type="PackedScene" uid="uid://btand62vyewq8" path="res://scenes/game/overlay/message_template.tscn" id="2_b538c"]
 [ext_resource type="AudioStream" uid="uid://b0vh6n4c2htsh" path="res://assets/audio/effects/pickup.wav" id="3_26cl6"]
-[ext_resource type="Script" path="res://src/game/overlay/message_center/message_center.gd" id="3_fhwah"]
-[ext_resource type="Script" path="res://src/game/overlay/message_center/message_center_replace.gd" id="4_pxvta"]
+[ext_resource type="Script" uid="uid://borj4jm8e5kk1" path="res://src/game/overlay/message_center/message_center.gd" id="3_fhwah"]
+[ext_resource type="Script" uid="uid://cktq706u02jds" path="res://src/game/overlay/message_center/message_center_replace.gd" id="4_pxvta"]
 
 [node name="MessageArea" type="CanvasLayer"]
 script = ExtResource("1_mg4lp")

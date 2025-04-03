@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=3 uid="uid://cvuwxclyg820x"]
 
-[ext_resource type="Script" path="res://scenes/game/particle/conditional_entity_destruct.gd" id="1_3bwy2"]
-[ext_resource type="Script" path="res://scenes/game/particle/death_animations/fadeout_sprite.gd" id="2_n8rij"]
-[ext_resource type="Shader" path="res://assets/shaders/destroyed_building.gdshader" id="2_p1fj4"]
-[ext_resource type="Script" path="res://src/game/particle/timed_particle_emitter.gd" id="2_vnuva"]
-[ext_resource type="Script" path="res://src/game/particle/self_deleting_particles.gd" id="3_h78jj"]
+[ext_resource type="Script" uid="uid://fsscwqhey1r2" path="res://scenes/game/particle/conditional_entity_destruct.gd" id="1_3bwy2"]
+[ext_resource type="Script" uid="uid://dkjnepenvdmga" path="res://scenes/game/particle/death_animations/fadeout_sprite.gd" id="2_n8rij"]
+[ext_resource type="Shader" uid="uid://c1h2gvwcee1xd" path="res://assets/shaders/destroyed_building.gdshader" id="2_p1fj4"]
+[ext_resource type="Script" uid="uid://dm7prcjrmx0gp" path="res://src/game/particle/timed_particle_emitter.gd" id="2_vnuva"]
+[ext_resource type="Script" uid="uid://y774iuopsr3n" path="res://src/game/particle/self_deleting_particles.gd" id="3_h78jj"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4vafm"]
 noise_type = 0
@@ -17,12 +17,12 @@ noise = SubResource("FastNoiseLite_4vafm")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xiqk3"]
 shader = ExtResource("2_p1fj4")
 shader_parameter/rect_info = Vector4(0, 0, 16, 16)
+shader_parameter/noise = SubResource("NoiseTexture2D_asau5")
 shader_parameter/zoom = 0.4052
 shader_parameter/percent_destroyed = 0.33
 shader_parameter/alpha_threshold = 0.25
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/solid_modifier = 1.32
-shader_parameter/noise = SubResource("NoiseTexture2D_asau5")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ojra6"]
 size = Vector2(16, 16)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8p0gnhowdx23"]
 
-[ext_resource type="Script" path="res://src/game/overlay/version/version_string.gd" id="1_0hp7h"]
+[ext_resource type="Script" uid="uid://cnvejeixgj85q" path="res://src/game/overlay/version/version_string.gd" id="1_0hp7h"]
 [ext_resource type="Resource" uid="uid://sade4s08j2h" path="res://translations/resources/version.tres" id="2_msgwy"]
 
 [node name="Version" type="CanvasLayer"]
