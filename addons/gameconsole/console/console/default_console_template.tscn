@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://c71do5a646sh0"]
 
-[ext_resource type="Script" uid="uid://b1yism2c44ysr" path="res://addons/gameconsole/console/console/console_template.gd" id="1_wfkix"]
-[ext_resource type="Script" uid="uid://bib4woxpspqfy" path="res://addons/gameconsole/console/console/command_enter.gd" id="2_1bnin"]
-[ext_resource type="Script" uid="uid://6paibtvow4sn" path="res://addons/gameconsole/console/autocompletion/autocomplete_service.gd" id="2_5ui7n"]
-[ext_resource type="Script" uid="uid://cho2ki2xdspe6" path="res://addons/gameconsole/console/console/command_send_button.gd" id="2_p027c"]
-[ext_resource type="Script" uid="uid://caidotv4e1pbe" path="res://addons/gameconsole/console/console/console_output.gd" id="3_m4yog"]
-[ext_resource type="Script" uid="uid://dqi4432rn68by" path="res://addons/gameconsole/console/console/autocomplete_label.gd" id="4_jxlgx"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/console/console_template.gd" id="1_wfkix"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/console/command_enter.gd" id="2_1bnin"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/autocompletion/autocomplete_service.gd" id="2_5ui7n"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/console/command_send_button.gd" id="2_p027c"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/console/console_output.gd" id="3_m4yog"]
+[ext_resource type="Script" path="res://addons/gameconsole/console/console/autocomplete_label.gd" id="4_jxlgx"]
 
 [sub_resource type="Resource" id="Resource_vkyqv"]
 script = ExtResource("2_5ui7n")
@@ -14,10 +14,10 @@ script = ExtResource("2_5ui7n")
 process_mode = 3
 layer = 20
 script = ExtResource("1_wfkix")
+autocomplete_service = SubResource("Resource_vkyqv")
 console_content_output = NodePath("PanelContainer/MarginContainer/VBoxContainer/ConsoleOutput")
 console_input = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ConsoleInput")
 console_send_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/ConsoleSendButton")
-autocomplete_service = SubResource("Resource_vkyqv")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 10
