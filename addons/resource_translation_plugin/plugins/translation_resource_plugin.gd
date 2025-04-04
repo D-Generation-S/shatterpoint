@@ -18,11 +18,16 @@ func _parse_file(path: String) -> Array[PackedStringArray]:
         if item.key == "":
             printerr("Empty translation in %s" % path)
             return msgids
-        msgids.append(item.key)
+        var return_data: PackedStringArray = []
+        return_data.append(item.key)
+        msgids.append(return_data)
 
     for sub in _sub_parser:
-        for data in sub.parse(res):
-            msgids.append(data)
+        var data = sub.parse(res)
+        for set in data:
+            var packed_set: PackedStringArray = []
+            packed_set.append(set)
+            msgids.append(packed_set)
 
     return msgids
 

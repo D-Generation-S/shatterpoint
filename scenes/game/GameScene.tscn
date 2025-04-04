@@ -40,7 +40,7 @@
 [ext_resource type="Script" uid="uid://4m8va3ita56r" path="res://src/game/systems/tutorial/game_start_system.gd" id="35_vubuj"]
 [ext_resource type="Script" uid="uid://cabgcquptonfj" path="res://src/game/build_mode/sync_collision_rect_size.gd" id="36_0dt14"]
 [ext_resource type="Resource" uid="uid://dhuk6e5xlsd4o" path="res://assets/resources/buildings/generators/BasicGenerator.tres" id="36_ryx4r"]
-[ext_resource type="PackedScene" uid="uid://bk7keckkd78ia" path="res://scenes/game/overlay/popups/GameEnd.tscn" id="37_18hsh"]
+[ext_resource type="PackedScene" uid="uid://bk7keckkd78ia" path="res://scenes/game/overlay/popups/game_end.tscn" id="37_18hsh"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
 [ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
 [ext_resource type="Script" uid="uid://d1xidde6cypxa" path="res://src/game/build_mode/tools/building_construction.gd" id="39_4s4a4"]
