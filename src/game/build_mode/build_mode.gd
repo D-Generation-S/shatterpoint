@@ -8,6 +8,7 @@ signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount:
 signal trying_to_place_building()
 signal stopped_trying_to_place_building()
 signal building_was_placed()
+signal build_mode_changed(in_build_mode: bool)
 
 @export var resource_overlay: ResourceOverlay
 @export var building_target_node: Node
@@ -115,8 +116,10 @@ func set_current_tool(building_tool: BuildModeTool):
 		draw_turret_range = false
 		queue_redraw()
 		stopped_trying_to_place_building.emit()
+		build_mode_changed.emit(false)
 		return
 	current_tool = building_tool
+	build_mode_changed.emit(true)
 	if current_tool is BuildingConstruction:
 		trying_to_place_building.emit()
 		draw_turret_range = false

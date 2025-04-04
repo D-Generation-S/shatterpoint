@@ -7,12 +7,11 @@ signal add_projectile(bullet: Projectile)
 
 var projectile_scene: PackedScene
 
-
 func fire(current_target: Node2D, damage: float, penetration: float):
 	var projectile = projectile_scene.instantiate() as Projectile
 	if update_collision_mask:
 		projectile.set_custom_collision_mask(projectile_collision_mask)
-	projectile.setup(self.global_position, current_target, damage, penetration, self)
+	projectile.setup(self.global_position, current_target, damage, penetration)
 	add_projectile.emit(projectile)
 	projectile.fire()
 

@@ -19,7 +19,6 @@ signal update_layer_mask(new_mask: int)
 @onready var icon_node: Sprite2D = $"%Visuals"
 
 var initial_position: Vector2
-var visual_effect_container: Node
 var target_node: Node2D
 var carried_damage: float
 var armor_penetration: float
@@ -48,20 +47,18 @@ func _ready():
 func _start_live_time_animation(_time_to_live: float, _visuals: Sprite2D):
 	pass
 
-func _trigger_lifetime_end_effect(_current_position: Vector2, _effect_target_node: Node2D):
+func _trigger_lifetime_end_effect(_current_position: Vector2):
 	GlobalSoundManager.play_sound_at_position(global_position, decay_sound, 2000, randf_range(0.8, 1.2))
 
 func setup(
 	global_start_position: Vector2,
 	target: Node2D,
 	damage: float,
-	penetration: float,
-	visual_effect: Node):
+	penetration: float):
 	initial_position = global_start_position
 	target_node = target
 	carried_damage = damage
 	armor_penetration = penetration
-	visual_effect_container = visual_effect
 
 func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	return target.global_position
@@ -94,7 +91,7 @@ func _on_area_entered(area: Area2D):
 
 
 func _timeout():
-	_trigger_lifetime_end_effect(global_position, visual_effect_container)
+	_trigger_lifetime_end_effect(global_position)
 	queue_free()
 
 	

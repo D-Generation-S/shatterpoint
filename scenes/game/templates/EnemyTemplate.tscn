@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bognmtipmpagl"]
+[gd_scene load_steps=17 format=3 uid="uid://bognmtipmpagl"]
 
-[ext_resource type="Script" uid="uid://cgafo4ylsaboq" path="res://src/game/enemy/enemy.gd" id="1_5svhe"]
-[ext_resource type="Script" uid="uid://po3pk21ocv50" path="res://src/game/enemy/navigation.gd" id="2_e0fie"]
+[ext_resource type="Script" uid="uid://cgafo4ylsaboq" path="res://src/game/unit/unit.gd" id="1_5svhe"]
+[ext_resource type="Script" uid="uid://po3pk21ocv50" path="res://src/game/unit/navigation.gd" id="2_e0fie"]
 [ext_resource type="PackedScene" uid="uid://decq4tsyqwsnf" path="res://scenes/game/components/enemy/enemy_component.tscn" id="3_kfwy2"]
 [ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="4_6pw4g"]
 [ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="4_t1h0s"]
@@ -12,13 +12,16 @@
 [ext_resource type="Script" uid="uid://bsdj25mfq2r1q" path="res://src/game/entity/components/town_reached_component.gd" id="8_735tr"]
 [ext_resource type="Script" uid="uid://buwvnkw0fwgrv" path="res://src/game/entity/components/visuals_component.gd" id="9_eo0or"]
 [ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="10_32ggi"]
+[ext_resource type="Script" uid="uid://cxyp76ux7trh6" path="res://src/game/entity/components/scrap_drop_component.gd" id="11_4q50s"]
 [ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="11_7d726"]
+[ext_resource type="Script" uid="uid://c1kdnvjg8stu" path="res://src/game/entity/components/collision_radius_update.gd" id="12_i5xdg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bpvlt"]
 radius = 8.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy", "ground_enemy"]]
 collision_layer = 2
+collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_5svhe")
@@ -52,19 +55,20 @@ script = ExtResource("8_735tr")
 parent_to_compare = NodePath("../..")
 
 [node name="VisualsComponent" type="Sprite2D" parent="Components"]
-unique_name_in_owner = true
 script = ExtResource("9_eo0or")
 
 [node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
 script = ExtResource("10_32ggi")
 root_node_to_get_parent_from = NodePath("../..")
 
+[node name="ScrapDropComponent" type="Node2D" parent="Components"]
+script = ExtResource("11_4q50s")
+
 [node name="Collision" type="CollisionShape2D" parent="."]
-unique_name_in_owner = true
 shape = SubResource("CircleShape2D_bpvlt")
+script = ExtResource("12_i5xdg")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -80,7 +84,6 @@ show_percentage = false
 script = ExtResource("5_pm5b4")
 
 [node name="ArmorBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -96,13 +99,16 @@ show_percentage = false
 script = ExtResource("5_pm5b4")
 
 [connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
-[connection signal="died" from="." to="Components/TownReachedComponent" method="died"]
 [connection signal="entity_data_changed" from="." to="Components/EnemyComponent" method="enemy_data_changed"]
 [connection signal="entity_data_changed" from="." to="Components/MovementComponent" method="data_updated"]
 [connection signal="entity_data_changed" from="." to="Components/TownReachedComponent" method="stats_updated"]
 [connection signal="entity_data_changed" from="." to="Components/VisualsComponent" method="data_changed"]
+[connection signal="entity_data_changed" from="." to="Components/ScrapDropComponent" method="data_changed"]
+[connection signal="entity_data_changed" from="." to="Collision" method="data_changed"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="is_dying" from="." to="Components/TownReachedComponent" method="died"]
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="is_dying" from="." to="Components/ScrapDropComponent" method="drop_requested"]
 [connection signal="is_in_debug" from="." to="Components/NavigationComponent" method="set_debug"]
 [connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
@@ -113,6 +119,7 @@ script = ExtResource("5_pm5b4")
 [connection signal="request_fire" from="Components/EnemyComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/EnemyComponent" method="enemy_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/EnemyComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="add_projectile_requested"]
 [connection signal="change_velocity" from="Components/MovementComponent" to="." method="set_velocity"]
