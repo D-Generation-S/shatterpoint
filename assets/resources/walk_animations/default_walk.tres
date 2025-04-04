@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="WalkAnimation" load_steps=2 format=3 uid="uid://blkby2fja2f7w"]
+
+[ext_resource type="Script" uid="uid://cwtdyax3xbqa8" path="res://src/resources/entities/animation/walk_animation.gd" id="1_8vil5"]
+
+[resource]
+script = ExtResource("1_8vil5")
+max_rotation = 0.1
+speed = 0.3

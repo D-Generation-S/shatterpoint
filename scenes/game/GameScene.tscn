@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=91 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Script" uid="uid://boqucnmkum862" path="res://src/savegame/prototype_profile_manager.gd" id="1_qbdsg"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bk7keckkd78ia" path="res://scenes/game/overlay/popups/game_end.tscn" id="37_18hsh"]
 [ext_resource type="AudioStream" uid="uid://g5pyh2l5s71d" path="res://assets/audio/effects/building_placed.wav" id="37_uvsn1"]
 [ext_resource type="PackedScene" uid="uid://mwkus00fsoud" path="res://scenes/game/templates/buildings/generators/generator_template.tscn" id="38_3y0yw"]
+[ext_resource type="Script" uid="uid://cb7u20o2oicld" path="res://src/game/selection_mode/selection_mode.gd" id="38_tuqov"]
 [ext_resource type="Script" uid="uid://d1xidde6cypxa" path="res://src/game/build_mode/tools/building_construction.gd" id="39_4s4a4"]
 [ext_resource type="Script" uid="uid://dtfgj0bcno5hx" path="res://src/game/build_mode/build_validators/build_validator.gd" id="40_pmcoi"]
 [ext_resource type="Script" uid="uid://dhuk2qy05qc6y" path="res://src/game/build_mode/build_validators/resource_build_validator.gd" id="41_3ian8"]
@@ -59,6 +60,7 @@
 [ext_resource type="Script" uid="uid://baodtk7kma4ir" path="res://src/global/resources/effect_resource.gd" id="56_y1eit"]
 [ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="57_2w470"]
 [ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="58_o8v4c"]
+[ext_resource type="PackedScene" uid="uid://boms8cbra2mq0" path="res://scenes/game/templates/units/player/player_unit.tscn" id="61_o77dy"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -461,6 +463,9 @@ shape = SubResource("RectangleShape2D_egqb7")
 debug_color = Color(0.801076, 0.29475, 0.753581, 0.42)
 script = ExtResource("36_0dt14")
 
+[node name="SelectionMode" type="Node2D" parent="."]
+script = ExtResource("38_tuqov")
+
 [node name="Systems" type="Node" parent="."]
 
 [node name="GameStateManager" type="Node" parent="Systems" groups=["system"]]
@@ -492,15 +497,31 @@ script = ExtResource("46_vydfs")
 script = ExtResource("55_rw2b2")
 effects = Array[ExtResource("56_y1eit")]([SubResource("Resource_8guxr"), SubResource("Resource_tsnqa")])
 
+[node name="PlayerUnit" parent="." instance=ExtResource("61_o77dy")]
+position = Vector2(-351, 95)
+
+[node name="PlayerUnit2" parent="." instance=ExtResource("61_o77dy")]
+position = Vector2(-325, 143)
+
+[node name="PlayerUnit3" parent="." instance=ExtResource("61_o77dy")]
+position = Vector2(-392, 154)
+
+[node name="PlayerUnit4" parent="." instance=ExtResource("61_o77dy")]
+position = Vector2(-407, 120)
+
+[node name="PlayerUnit5" parent="." instance=ExtResource("61_o77dy")]
+position = Vector2(-294, 117)
+
 [connection signal="game_lost" from="Overlay/ResourceOverlay" to="Systems/GameStateManager" method="game_has_been_lost"]
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="build_tool_selected" from="Overlay/BuildMenu" to="BuildMode" method="set_current_tool"]
 [connection signal="hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_on_menu"]
 [connection signal="no_hover_over_build_menu" from="Overlay/BuildMenu" to="BuildMode" method="mouse_off_menu"]
-[connection signal="mesh_baken" from="WaveMode/NavigationRegion2D" to="WaveMode/TopRightSpawner/TopRightSpawner1" method="ready_up"]
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner1" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner2" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/Path2D/TopSpawner" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
+[connection signal="build_mode_changed" from="BuildMode" to="SelectionMode" method="build_mode_changed"]
+[connection signal="building_was_placed" from="BuildMode" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
@@ -519,3 +540,8 @@ effects = Array[ExtResource("56_y1eit")]([SubResource("Resource_8guxr"), SubReso
 [connection signal="enable_build_mode" from="Systems/GameStartSystem" to="BuildMode" method="enable"]
 [connection signal="set_build_tool" from="Systems/GameStartSystem" to="BuildMode" method="set_current_tool"]
 [connection signal="start_game" from="Systems/GameStartSystem" to="Systems/GameStateManager" method="start_game"]
+[connection signal="selection_changed" from="PlayerUnit" to="PlayerUnit/Components/SelectionComponent" method="selection_changed"]
+[connection signal="selection_changed" from="PlayerUnit2" to="PlayerUnit2/Components/SelectionComponent" method="selection_changed"]
+[connection signal="selection_changed" from="PlayerUnit3" to="PlayerUnit3/Components/SelectionComponent" method="selection_changed"]
+[connection signal="selection_changed" from="PlayerUnit4" to="PlayerUnit4/Components/SelectionComponent" method="selection_changed"]
+[connection signal="selection_changed" from="PlayerUnit5" to="PlayerUnit5/Components/SelectionComponent" method="selection_changed"]

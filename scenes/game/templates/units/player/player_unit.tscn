@@ -1,0 +1,158 @@
+[gd_scene load_steps=30 format=3 uid="uid://boms8cbra2mq0"]
+
+[ext_resource type="Script" uid="uid://cgafo4ylsaboq" path="res://src/game/unit/unit.gd" id="1_2x61i"]
+[ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="2_87xto"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_f0jpk"]
+[ext_resource type="Script" uid="uid://buwvnkw0fwgrv" path="res://src/game/entity/components/visuals_component.gd" id="2_r124x"]
+[ext_resource type="Script" uid="uid://l0uvtac2cfd2" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="3_2x61i"]
+[ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="3_65726"]
+[ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_r124x"]
+[ext_resource type="Script" uid="uid://bb524i34ak5p0" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="4_nkxj3"]
+[ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="4_ty3mv"]
+[ext_resource type="Resource" uid="uid://blkby2fja2f7w" path="res://assets/resources/walk_animations/default_walk.tres" id="5_m7uw5"]
+[ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="5_tyy3c"]
+[ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="8_fbqiu"]
+[ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="10_xc24w"]
+[ext_resource type="PackedScene" uid="uid://decq4tsyqwsnf" path="res://scenes/game/components/enemy/enemy_component.tscn" id="11_fbqiu"]
+[ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="11_nkxj3"]
+[ext_resource type="Script" uid="uid://r47hbsqt8bk6" path="res://src/game/entity/components/unit_selection_component.gd" id="11_xc24w"]
+[ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="12_nkxj3"]
+[ext_resource type="Texture2D" uid="uid://cgco3nen5dirr" path="res://assets/atlast_textures/red_arrow_down.tres" id="14_6yduj"]
+[ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="14_8kx1q"]
+[ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="15_8kx1q"]
+[ext_resource type="Texture2D" uid="uid://dem5kmdf1hwrt" path="res://assets/atlast_textures/unit_selection_rect.tres" id="15_811c7"]
+[ext_resource type="Script" uid="uid://po3pk21ocv50" path="res://src/game/unit/navigation.gd" id="16_a5qta"]
+[ext_resource type="Script" uid="uid://wcrhk0ec1yhc" path="res://src/game/entity/components/movement_component.gd" id="17_kxyyg"]
+
+[sub_resource type="Resource" id="Resource_m7uw5"]
+script = ExtResource("3_2x61i")
+metadata/_custom_type_script = "uid://l0uvtac2cfd2"
+
+[sub_resource type="Resource" id="Resource_fbqiu"]
+script = ExtResource("4_nkxj3")
+metadata/_custom_type_script = "uid://bb524i34ak5p0"
+
+[sub_resource type="Resource" id="Resource_8kx1q"]
+script = ExtResource("11_nkxj3")
+hp = 15.0
+armor = 0.0
+fire_rate = 2.0
+damage = 1.0
+attack_range = 50.0
+armor_penetration = 0.5
+metadata/_custom_type_script = "uid://ljmfbnej7agp"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xvcq"]
+atlas = ExtResource("10_xc24w")
+region = Rect2(272, 85, 16, 16)
+
+[sub_resource type="Resource" id="Resource_a5qta"]
+script = ExtResource("5_tyy3c")
+enemy_template = null
+death_animation = ExtResource("3_65726")
+texture = SubResource("AtlasTexture_1xvcq")
+input_color = Array[Color]([])
+output_color = Array[Color]([])
+min_scrap_drop = 0
+max_scrap_drop = 0
+movement_speed = 40.0
+animation = ExtResource("5_m7uw5")
+allowed_thread_determination = Array[ExtResource("2_87xto")]([SubResource("Resource_m7uw5"), SubResource("Resource_fbqiu")])
+attackable_groups = Array[String](["ground_enemy"])
+projectile = ExtResource("8_fbqiu")
+min_wave_requirement = 1
+stats = SubResource("Resource_8kx1q")
+metadata/_custom_type_script = "uid://ngkvhw5e12vj"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rnq7e"]
+
+[node name="PlayerUnit" type="CharacterBody2D" groups=["player_unit_ground", "selectable"]]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_2x61i")
+start_ready = true
+enemy_data = SubResource("Resource_a5qta")
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="VisualComponent" type="Sprite2D" parent="Components"]
+script = ExtResource("2_r124x")
+
+[node name="EnemyComponent" parent="Components" instance=ExtResource("11_fbqiu")]
+
+[node name="SelectionComponent" type="Node2D" parent="Components"]
+script = ExtResource("11_xc24w")
+
+[node name="SelectionArrow" type="Sprite2D" parent="Components/SelectionComponent"]
+position = Vector2(0, -15)
+texture = ExtResource("14_6yduj")
+
+[node name="SelectedVisuals" type="Sprite2D" parent="Components/SelectionComponent"]
+texture = ExtResource("15_811c7")
+
+[node name="TargetingComponent" parent="Components" node_paths=PackedStringArray("main_entity") instance=ExtResource("12_nkxj3")]
+main_entity = NodePath("../..")
+
+[node name="ShootComponent" type="Node2D" parent="Components"]
+script = ExtResource("14_8kx1q")
+
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("15_8kx1q")
+root_node_to_get_parent_from = NodePath("../..")
+
+[node name="NavigationComponent" type="NavigationAgent2D" parent="Components" node_paths=PackedStringArray("controlled_character")]
+script = ExtResource("16_a5qta")
+controlled_character = NodePath("../..")
+
+[node name="MovementComponent" type="Node2D" parent="Components"]
+script = ExtResource("17_kxyyg")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rnq7e")
+
+[node name="Health" type="ProgressBar" parent="."]
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+theme = ExtResource("2_f0jpk")
+show_percentage = false
+script = ExtResource("3_r124x")
+metadata/_custom_type_script = "uid://dgehqhmydvtpj"
+
+[node name="Armor" type="ProgressBar" parent="."]
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+theme = ExtResource("4_ty3mv")
+show_percentage = false
+script = ExtResource("3_r124x")
+metadata/_custom_type_script = "uid://dgehqhmydvtpj"
+
+[connection signal="armor_changed" from="." to="Armor" method="update_value"]
+[connection signal="entity_data_changed" from="." to="Components/VisualComponent" method="data_changed"]
+[connection signal="entity_data_changed" from="." to="Components/EnemyComponent" method="enemy_data_changed"]
+[connection signal="health_changed" from="." to="Health" method="update_value"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="max_armor_changed" from="." to="Armor" method="set_max_health"]
+[connection signal="max_health_changed" from="." to="Health" method="set_max_health"]
+[connection signal="selection_changed" from="." to="Components/SelectionComponent" method="selection_changed"]
+[connection signal="attack_groups_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_attack_groups"]
+[connection signal="change_attack_radius" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_radius"]
+[connection signal="death_scene_changed" from="Components/EnemyComponent" to="Components/DeathAnimationComponent" method="data_updated"]
+[connection signal="projectile_changed" from="Components/EnemyComponent" to="Components/ShootComponent" method="set_projectile"]
+[connection signal="request_fire" from="Components/EnemyComponent" to="Components/ShootComponent" method="fire"]
+[connection signal="thread_determination_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
+[connection signal="hide_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectionArrow" method="hide"]
+[connection signal="hide_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectedVisuals" method="hide"]
+[connection signal="move_command_issued" from="Components/SelectionComponent" to="Components/NavigationComponent" method="set_move_command"]
+[connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectionArrow" method="show"]
+[connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectedVisuals" method="show"]
+[connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/EnemyComponent" method="enemy_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
+[connection signal="new_target_found" from="Components/TargetingComponent" to="Components/EnemyComponent" method="set_current_target"]
+[connection signal="add_projectile" from="Components/ShootComponent" to="." method="add_projectile_requested"]
+[connection signal="change_velocity" from="Components/NavigationComponent" to="Components/MovementComponent" method="set_velocity"]
+[connection signal="change_velocity" from="Components/MovementComponent" to="." method="set_velocity"]
+[connection signal="change_velocity" from="Components/MovementComponent" to="Components/VisualComponent" method="velocity_changed"]

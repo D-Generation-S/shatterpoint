@@ -56,11 +56,8 @@ func spawn_enemy():
 			printerr("Could not find enemy template!")
 		enemy.enemy_data = entry.enemy_data
 		enemy.global_position = global_position
-		enemy.died.connect(overlay.add_scrap)
-		#enemy.reached_town.connect(overlay.take_city_damage)
 		enemy_root_node.add_child(enemy)
 		enemy.activate.call_deferred()
-		enemy.request_scrap_path.connect(unit_scrap_path_requested)
 		entry.amount -= 1
 
 func unit_scrap_path_requested(unit_node: Node2D, amount: int):
