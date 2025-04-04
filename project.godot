@@ -26,11 +26,13 @@ GlobalMessageLine="*res://src/global/global_message_line.gd"
 ScreenshotSystem="*res://src/global/screenshot_system.gd"
 Console="*res://addons/gameconsole/console/console.gd"
 InteractionHandler="*res://src/global/global_interaction_handler.gd"
+GlobalSaveGameManager="*res://src/savegame/save_game_manager.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=2
 
 [editor_plugins]
 
