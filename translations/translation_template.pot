@@ -45,7 +45,6 @@
 # res://translations/resources/energy_description.tres
 # res://translations/resources/scrap.tres
 # res://translations/resources/scrap_description.tres
-# res://scenes/game/overlay/popups/GameEnd.tscn
 # res://translations/resources/version.tres
 # res://translations/resources/building_destroyed_meta.tres
 # res://src/game/build_mode/build_validators/build_space_blocked.gd
@@ -56,6 +55,8 @@
 # res://src/game/build_mode/build_validators/hp_is_not_full.gd
 # res://src/game/build_mode/build_validators/inside_of_build_area.gd
 # res://src/game/build_mode/build_validators/resource_build_validator.gd
+# res://src/game/overlay/popup_center/popups/game_end.gd
+# res://scenes/game/overlay/popups/game_end.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -297,14 +298,6 @@ msgstr ""
 msgid "SCRAP_DESCRIPTION"
 msgstr ""
 
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "GAME_LOST"
-msgstr ""
-
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "RESTART"
-msgstr ""
-
 #: translations/resources/version.tres
 msgid "VERSION"
 msgstr ""
@@ -333,4 +326,20 @@ msgstr ""
 
 #: src/game/build_mode/build_validators/inside_of_build_area.gd
 msgid "NOT_INSIDE_BUILD_AREA"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "REACHED_WAVE"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "BEST_WAVE"
+msgstr ""
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "GAME_LOST"
+msgstr ""
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "RESTART"
 msgstr ""

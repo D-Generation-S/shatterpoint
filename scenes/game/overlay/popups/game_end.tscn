@@ -34,7 +34,10 @@ size_flags_vertical = 6
 text = "GAME_LOST"
 
 [node name="ReachedWave" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BestWave" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 
@@ -44,4 +47,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RESTART"
 
+[connection signal="change_best_wave" from="." to="MarginContainer/VBoxContainer/BestWave" method="set_text"]
+[connection signal="change_current_wave" from="." to="MarginContainer/VBoxContainer/ReachedWave" method="set_text"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="restart_game"]

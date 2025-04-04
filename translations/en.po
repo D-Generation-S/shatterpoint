@@ -277,14 +277,6 @@ msgstr ""
 "It is getting used to construct new buildings, units or any structure on the "
 "front line."
 
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "GAME_LOST"
-msgstr "Game lost"
-
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "RESTART"
-msgstr "Restart"
-
 #: translations/resources/version.tres
 msgid "VERSION"
 msgstr "Version"
@@ -314,3 +306,19 @@ msgstr "Building is already at full health"
 #: src/game/build_mode/build_validators/inside_of_build_area.gd
 msgid "NOT_INSIDE_BUILD_AREA"
 msgstr "You're not inside the building area"
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "REACHED_WAVE"
+msgstr "You reached wave %s "
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "BEST_WAVE"
+msgstr "Your best wave was %s"
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "GAME_LOST"
+msgstr "Game lost"
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "RESTART"
+msgstr "Restart"
