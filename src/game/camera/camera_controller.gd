@@ -15,6 +15,8 @@ var _wave_position: CameraPosition = null
 var home_move_tween: Tween
 var last_navigation_point: Vector2 = Vector2.ZERO
 
+var camera_controls_active: bool = true
+
 func _ready():
 	_home_position = get_tree().get_first_node_in_group(home_node_group) as CameraPosition
 	_wave_position = get_tree().get_first_node_in_group(wave_node_group) as CameraPosition
@@ -24,9 +26,19 @@ func _ready():
 	_zoom_level = _home_position.target_zoom
 	InteractionHandler.camera_target_request.connect(scroll_to_position)
 
+	Console.console_open.connect(_disable_camera_control)
+	Console.console_closed.connect(_enable_camera_control)
+
 	await get_tree().physics_frame
 	setup_edge_ares()
 	initial_setting_setup()
+
+func _enable_camera_control():
+	camera_controls_active = true
+
+func _disable_camera_control():
+	camera_controls_active = false
+
 
 func initial_setting_setup():
 	position_smoothing_enabled = settings.use_position_smoothing
@@ -55,6 +67,8 @@ func _process(_delta):
 		return
 	if Input.is_action_pressed("go_home"):
 		animate_camera_scroll(_home_position)
+	if !camera_controls_active:
+		return
 	_handle_zoom()
 	_handle_keyboard()
 	_handle_drag()
@@ -110,7 +124,7 @@ func _handle_drag():
 	_last_mouse_position = get_viewport().get_mouse_position()
 
 func edge_scroll(vector: Vector2):
-	if !settings.edge_move_enabled:
+	if !settings.edge_move_enabled or !camera_controls_active:
 		return
 	position += vector * settings.edge_scroll_speed
 

@@ -58,6 +58,7 @@
 # res://src/game/overlay/popup_center/popups/game_end.gd
 # res://scenes/game/overlay/popups/game_end.tscn
 # res://scenes/game/GameScene.tscn
+# res://src/game/build_mode/build_mode.gd
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -347,4 +348,8 @@ msgstr ""
 
 #: scenes/game/GameScene.tscn
 msgid "LOADING"
+msgstr ""
+
+#: src/game/build_mode/build_mode.gd
+msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
 msgstr ""
