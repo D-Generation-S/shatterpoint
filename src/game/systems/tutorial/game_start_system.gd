@@ -19,6 +19,8 @@ var overlay: ResourceOverlay
 func _ready():
 	GlobalMessageLine.building_added.connect(_building_was_placed)
 	GlobalDataAccess.game_started()
+
+func loading_done():
 	overlay = GlobalDataAccess.get_resource_overlay()
 	change_can_abort_building.emit(false)
 	add_new_message.emit(MessagePosition.CENTER, tr("BUILD_SCRAP_STORAGE_TO_START"), 10)
