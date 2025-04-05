@@ -42,3 +42,4 @@ attackable_groups = Array[String](["tower", "generator", "player_unit_ground"])
 projectile = ExtResource("2_j0t2o")
 min_wave_requirement = 3
 stats = SubResource("Resource_w0n3d")
+spawn_scrap_price = 0

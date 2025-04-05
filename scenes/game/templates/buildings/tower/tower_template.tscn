@@ -36,12 +36,10 @@ destroyed_style = ExtResource("3_1v26b")
 custom_destroyed_message = ExtResource("4_fbnch")
 
 [node name="Visuals" type="Sprite2D" parent="."]
-unique_name_in_owner = true
 material = SubResource("ShaderMaterial_vyrh3")
 script = ExtResource("12_8k11b")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

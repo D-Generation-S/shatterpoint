@@ -6,6 +6,7 @@ class_name UnitData extends Resource
 
 @export_group("Visual")
 @export var texture: Texture2D
+@export var unit_name: String
 @export var input_color: Array[Color]
 @export var output_color: Array[Color]
 
@@ -25,6 +26,9 @@ class_name UnitData extends Resource
 @export_group("Difficulty")
 @export var min_wave_requirement: int = 1
 @export var stats: EntityStats
+
+@export_group("Player Unit")
+@export var spawn_scrap_price: int = 0
 
 func get_power_number() -> float:
 	var return_data: float = stats.hp
