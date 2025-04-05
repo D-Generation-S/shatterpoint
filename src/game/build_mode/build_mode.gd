@@ -99,7 +99,7 @@ func _process(_delta):
 func _check_for_building_abort():
 	if Input.is_action_just_pressed("ui_cancel"):
 		if !can_abort_building:
-			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, "CANT_ABORT_BUILDING_RIGHT_NOW", 2)
+			message_requested.emit(MessagePosition.BOTTOM, build_error_message_style, tr("CANT_ABORT_BUILDING_RIGHT_NOW"), 2)
 			return
 		set_current_tool(null)
 

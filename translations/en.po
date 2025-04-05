@@ -326,3 +326,7 @@ msgstr "Restart"
 #: scenes/game/GameScene.tscn
 msgid "LOADING"
 msgstr "Loading, please wait"
+
+#: src/game/build_mode/build_mode.gd
+msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
+msgstr "Can't abort building mode right now"

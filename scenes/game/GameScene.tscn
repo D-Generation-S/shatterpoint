@@ -574,5 +574,5 @@ position = Vector2(-294, 117)
 [connection signal="enable_build_mode" from="Systems/GameStartSystem" to="BuildMode" method="enable"]
 [connection signal="set_build_tool" from="Systems/GameStartSystem" to="BuildMode" method="set_current_tool"]
 [connection signal="start_game" from="Systems/GameStartSystem" to="Systems/GameStateManager" method="start_game"]
-[connection signal="preload_completed" from="Systems/PreloadSystem" to="Systems/GameStartSystem" method="loading_done"]
 [connection signal="preload_completed" from="Systems/PreloadSystem" to="Overlay/LoadingOverlay" method="loading_done"]
+[connection signal="preload_completed" from="Systems/PreloadSystem" to="Systems/GameStartSystem" method="loading_done"]

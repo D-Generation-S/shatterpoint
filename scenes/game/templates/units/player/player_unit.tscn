@@ -149,6 +149,7 @@ metadata/_custom_type_script = "uid://dgehqhmydvtpj"
 [connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectionArrow" method="show"]
 [connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectedVisuals" method="show"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/EnemyComponent" method="enemy_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/EnemyComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="add_projectile_requested"]
 [connection signal="change_velocity" from="Components/NavigationComponent" to="Components/MovementComponent" method="set_velocity"]
