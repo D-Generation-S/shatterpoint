@@ -322,3 +322,7 @@ msgstr "Game lost"
 #: scenes/game/overlay/popups/game_end.tscn
 msgid "RESTART"
 msgstr "Restart"
+
+#: scenes/game/GameScene.tscn
+msgid "LOADING"
+msgstr "Loading, please wait"
