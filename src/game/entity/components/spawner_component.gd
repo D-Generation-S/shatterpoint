@@ -75,7 +75,6 @@ func validate_spawn_positions():
 			if tile_map is TileMapLayer:
 				var map_local = tile_map.to_local(spawn_position.position)
 				var grid_local = tile_map.local_to_map(map_local)
-				print(tile_map.get_cell_tile_data(grid_local))
 				if tile_map.get_cell_tile_data(grid_local) != null:
 						valid = false
 						break

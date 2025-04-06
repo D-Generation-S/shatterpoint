@@ -8,28 +8,32 @@ signal change_attack_radius(new_radius: float)
 
 signal death_scene_changed(scene: PackedScene)
 
-@onready var attack_timer: Timer = $"%AttackTimer"
+@onready var cooldown_timer: Timer = $"%AttackTimer"
 
 var initial_fire: bool = false
 var current_target: EntityWithStats = null
 var stats: UnitData
+var is_on_cooldown: bool = false
 
 func _ready():
-	attack_timer.timeout.connect(fire)
-	attack_timer.one_shot = true
-	attack_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+	cooldown_timer.timeout.connect(_reset_cooldown)
+	cooldown_timer.one_shot = true
+	cooldown_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+	cooldown_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+func _reset_cooldown():
+	is_on_cooldown = false
 
 func _process(_delta):
-	if current_target != null:
-		if initial_fire:
-			initial_fire = false
-			fire()
-		_start_attack_timer()
+	if current_target != null and !is_on_cooldown:
+		fire()
+		cooldown_timer.start()
+		is_on_cooldown = true
 
 func _start_attack_timer():
-	if attack_timer.time_left > 0:
+	if cooldown_timer.time_left > 0:
 		return
-	attack_timer.start(stats.stats.fire_rate)
+	cooldown_timer.start(stats.stats.fire_rate)
 
 func enemy_data_changed(enemy_data: UnitData):
 	stats = enemy_data
@@ -55,7 +59,7 @@ func enable():
 
 func disable():
 	initial_fire = false
-	attack_timer.stop()
+	cooldown_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 
 func enemy_active_changed(on: bool):
