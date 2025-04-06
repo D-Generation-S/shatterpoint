@@ -54,9 +54,9 @@ func got_selected(on: bool):
 	content.append(settings)
 	content.append(statistic)
 	statistic.tree_exiting.connect(func(): data_showed = false)
+	data_showed = true
 	last_data_statistic = statistic 
 	show_detail_window.emit(global_position, Vector2(300,400), tr("TOWER_OPTIONS"), content)
-	data_showed = true
 
 func _modifier_was_added(modifier: StatModifier):
 	block_modifier_generator = true

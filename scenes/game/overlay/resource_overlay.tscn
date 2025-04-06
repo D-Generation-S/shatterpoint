@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://coxxrxmt2muoi"]
 
-[ext_resource type="Script" path="res://src/game/overlay/resource_overlay.gd" id="1_4vyjh"]
+[ext_resource type="Script" uid="uid://bilu1ojc3n5" path="res://src/game/overlay/resource_overlay.gd" id="1_4vyjh"]
 [ext_resource type="PackedScene" uid="uid://h1mxvd5e3sek" path="res://scenes/game/overlay/resource_ui_element.tscn" id="1_b1vq4"]
-[ext_resource type="Script" path="res://src/game/overlay/animated_progress_bar.gd" id="3_8pesf"]
+[ext_resource type="Script" uid="uid://biqrh105grfkf" path="res://src/game/overlay/animated_progress_bar.gd" id="3_8pesf"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_fg4dn"]
 [ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="4_elwtp"]
 [ext_resource type="PackedScene" uid="uid://dn2d63tre8bee" path="res://scenes/game/overlay/build_menu/resource_dynamic_ui_element.tscn" id="5_vt0lm"]
@@ -33,12 +33,10 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Scrap" parent="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_b1vq4")]
-unique_name_in_owner = true
 layout_mode = 2
 resource_texture = ExtResource("3_fg4dn")
 
 [node name="Energy" parent="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("5_vt0lm")]
-unique_name_in_owner = true
 layout_mode = 2
 resource_texture = ExtResource("4_elwtp")
 resource_name = "ENERGY"
@@ -54,5 +52,3 @@ script = ExtResource("3_8pesf")
 [connection signal="power_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy" method="update_value"]
 [connection signal="scrap_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap" method="update_value"]
 [connection signal="set_max_health" from="." to="ResourcePanel/MarginContainer/VBoxContainer/ProgressBar" method="set_min_and_max_value"]
-[connection signal="name_changed" from="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap" to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap/Scrap/ScrapIcon" method="name_changed"]
-[connection signal="name_changed" from="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy" to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy/HBoxContainer/TextureRect" method="name_changed"]

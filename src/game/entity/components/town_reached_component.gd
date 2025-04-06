@@ -19,7 +19,7 @@ func _ready():
 func stats_updated(unit_data: UnitData):
 	current_hp = unit_data.stats.hp
 
-func died(_scrap: int):
+func died():
 	is_alive = false
 
 func town_reached(body: Node2D):

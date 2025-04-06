@@ -23,8 +23,8 @@ func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	var aim_point = target.global_position + target_velocity * time_for_hit
 	return aim_point
 
-func _trigger_lifetime_end_effect(current_position, _effect_target_node):
-	super(current_position, _effect_target_node)
+func _trigger_lifetime_end_effect(current_position):
+	super(current_position)
 	if impact_texture.size() == 0:
 		return
 

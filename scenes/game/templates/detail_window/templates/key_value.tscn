@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2cn44tmy4ia2"]
 
-[ext_resource type="Script" path="res://src/ui/key_value_data.gd" id="1_5ptwc"]
+[ext_resource type="Script" uid="uid://cqnexkvk0k16y" path="res://src/ui/key_value_data.gd" id="1_5ptwc"]
 
 [node name="KeyValue" type="MarginContainer"]
 anchors_preset = 10

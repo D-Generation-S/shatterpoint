@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BuildMenuGroup" load_steps=7 format=3 uid="uid://ftcl2yimtksv"]
+
+[ext_resource type="Script" uid="uid://6ibcbvfvtkdl" path="res://src/game/build_mode/build_menu/build_menu_entry.gd" id="1_mq7ab"]
+[ext_resource type="Script" uid="uid://c58rb3u2ba7ay" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="2_0iclo"]
+[ext_resource type="Texture2D" uid="uid://daqb64beo3ylf" path="res://assets/atlast_textures/moving_gray_soldier.tres" id="2_mn0a2"]
+[ext_resource type="Resource" uid="uid://dhggo6w5by6mp" path="res://assets/resources/build_menu/default_build_constructor.tres" id="2_ymiuj"]
+[ext_resource type="Texture2D" uid="uid://ckh8mpo8ixhaq" path="res://assets/atlast_textures/basic_barraks.tres" id="3_ymiuj"]
+
+[sub_resource type="Resource" id="Resource_hlgjd"]
+script = ExtResource("1_mq7ab")
+building_data = ExtResource("2_ymiuj")
+icon = ExtResource("3_ymiuj")
+metadata/_custom_type_script = "uid://6ibcbvfvtkdl"
+
+[resource]
+script = ExtResource("2_0iclo")
+display_name = ""
+icon = ExtResource("2_mn0a2")
+entries = Array[ExtResource("1_mq7ab")]([SubResource("Resource_hlgjd")])
+metadata/_custom_type_script = "uid://c58rb3u2ba7ay"

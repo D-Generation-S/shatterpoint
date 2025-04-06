@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=18 format=3 uid="uid://sm3tdm00ffby"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=17 format=3 uid="uid://sm3tdm00ffby"]
 
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_bjh4h"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_laaqv"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="3_1ttsk"]
-[ext_resource type="Script" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="4_35qil"]
-[ext_resource type="Script" path="res://src/resources/entities/animation/walk_animation.gd" id="5_aqoq3"]
+[ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_bjh4h"]
+[ext_resource type="Script" uid="uid://ddkfw7ukebdeu" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_laaqv"]
+[ext_resource type="Script" uid="uid://bb524i34ak5p0" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="3_1ttsk"]
+[ext_resource type="Script" uid="uid://l0uvtac2cfd2" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="4_35qil"]
+[ext_resource type="Resource" uid="uid://blkby2fja2f7w" path="res://assets/resources/walk_animations/default_walk.tres" id="5_6igot"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="5_ov2aw"]
 [ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="5_t5fst"]
 [ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="6_bhgw6"]
-[ext_resource type="Script" path="res://src/resources/entities/units/unit_data.gd" id="7_53pih"]
+[ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="7_53pih"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="8_7yxpe"]
-[ext_resource type="Script" path="res://src/resources/entities/entity_stats.gd" id="8_lg637"]
+[ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="8_lg637"]
 
 [sub_resource type="Resource" id="Resource_8asu1"]
 script = ExtResource("2_laaqv")
@@ -20,11 +20,6 @@ script = ExtResource("3_1ttsk")
 
 [sub_resource type="Resource" id="Resource_svf3s"]
 script = ExtResource("4_35qil")
-
-[sub_resource type="Resource" id="Resource_lwdqh"]
-script = ExtResource("5_aqoq3")
-max_rotation = 0.1
-speed = 0.3
 
 [sub_resource type="Resource" id="Resource_w13ft"]
 script = ExtResource("8_lg637")
@@ -44,14 +39,16 @@ script = ExtResource("7_53pih")
 enemy_template = ExtResource("5_t5fst")
 death_animation = ExtResource("6_bhgw6")
 texture = SubResource("AtlasTexture_fs5u0")
+unit_name = ""
 input_color = Array[Color]([])
 output_color = Array[Color]([])
 min_scrap_drop = 0
 max_scrap_drop = 2
 movement_speed = 40.0
-animation = SubResource("Resource_lwdqh")
+animation = ExtResource("5_6igot")
 allowed_thread_determination = Array[ExtResource("1_bjh4h")]([SubResource("Resource_8asu1"), SubResource("Resource_tir2h"), SubResource("Resource_svf3s")])
-attackable_groups = Array[String](["tower", "generator"])
+attackable_groups = Array[String](["tower", "generator", "player_unit_ground"])
 projectile = ExtResource("5_ov2aw")
 min_wave_requirement = 1
 stats = SubResource("Resource_w13ft")
+spawn_scrap_price = 0

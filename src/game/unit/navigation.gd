@@ -45,8 +45,10 @@ func _physics_process(_delta: float):
 	position_counter += 1
 
 	if is_navigation_finished():
+		change_velocity.emit(Vector2.ZERO)
 		position_counter = 0
 		new_target_required.emit()
+		process_mode = ProcessMode.PROCESS_MODE_DISABLED
 
 	if avoidance_enabled:
 		set_velocity(new_velocity)
@@ -57,6 +59,7 @@ func _physics_process(_delta: float):
 
 func set_move_command(target: Vector2):
 	target_position = target
+	process_mode = ProcessMode.PROCESS_MODE_INHERIT
 
 func set_debug(on: bool):
 	debug_enabled = on

@@ -20,4 +20,3 @@ func dying():
 	if texture_to_use != null:
 		scene.add_texture(texture_to_use)
 	root_node_to_get_parent_from.get_parent().add_child(scene)
-

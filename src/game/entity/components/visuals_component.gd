@@ -8,6 +8,7 @@ var animation: EntityAnimation
 func data_changed(data: UnitData):
 	if data.animation == null:
 		return
+	texture = data.texture
 	animation = data.animation.duplicate()
 
 func velocity_changed(new_velocity: Vector2):

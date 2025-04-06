@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bk7keckkd78ia"]
 
-[ext_resource type="Script" path="res://src/game/overlay/popup_center/popups/game_end.gd" id="1_jx7rf"]
+[ext_resource type="Script" uid="uid://0jlrerhhthn0" path="res://src/game/overlay/popup_center/popups/game_end.gd" id="1_jx7rf"]
 
 [node name="GameEnd" type="PanelContainer"]
 anchors_preset = 8
@@ -34,7 +34,10 @@ size_flags_vertical = 6
 text = "GAME_LOST"
 
 [node name="ReachedWave" type="Label" parent="MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="BestWave" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 
@@ -44,4 +47,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "RESTART"
 
+[connection signal="change_best_wave" from="." to="MarginContainer/VBoxContainer/BestWave" method="set_text"]
+[connection signal="change_current_wave" from="." to="MarginContainer/VBoxContainer/ReachedWave" method="set_text"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RestartButton" to="." method="restart_game"]

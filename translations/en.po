@@ -277,14 +277,6 @@ msgstr ""
 "It is getting used to construct new buildings, units or any structure on the "
 "front line."
 
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "GAME_LOST"
-msgstr "Game lost"
-
-#: scenes/game/overlay/popups/GameEnd.tscn
-msgid "RESTART"
-msgstr "Restart"
-
 #: translations/resources/version.tres
 msgid "VERSION"
 msgstr "Version"
@@ -314,3 +306,49 @@ msgstr "Building is already at full health"
 #: src/game/build_mode/build_validators/inside_of_build_area.gd
 msgid "NOT_INSIDE_BUILD_AREA"
 msgstr "You're not inside the building area"
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "REACHED_WAVE"
+msgstr "You reached wave %s "
+
+#: src/game/overlay/popup_center/popups/game_end.gd
+msgid "BEST_WAVE"
+msgstr "Your best wave was %s"
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "GAME_LOST"
+msgstr "Game lost"
+
+#: scenes/game/overlay/popups/game_end.tscn
+msgid "RESTART"
+msgstr "Restart"
+
+#: scenes/game/GameScene.tscn
+msgid "LOADING"
+msgstr "Loading, please wait"
+
+#: src/game/build_mode/build_mode.gd
+msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
+msgstr "Can't abort building mode right now"
+
+#: assets/resources/buildings/spawner/barracks.tres
+msgid "BARRACKS"
+msgstr "Barracks"
+
+#: assets/resources/buildings/spawner/barracks.tres
+msgid "BARRACKS_DESCRIPTION"
+msgstr "Some barracks, they can be used to spawn soldiers to defend the city"
+
+#: src/game/entity/components/spawner_information_panel.gd
+msgid "UNIT_SPAWN"
+msgstr "Unit Spawn"
+
+#: assets/resources/player_units/player_default_soldier.tres
+msgid "SOLDIER"
+msgstr "Soldier"
+
+#: assets/resources/player_units/player_default_soldier.tres
+msgid "SOLDIER_DESCRIPTION"
+msgstr ""
+"There is nothing special about the solder, you can command him around to "
+"defend your position."

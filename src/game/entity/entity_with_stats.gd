@@ -6,6 +6,7 @@ signal max_health_changed(new_max_health: float)
 signal armor_changed(value: float)
 signal max_armor_changed(new_max_health: float)
 
+## Signal if the entity died by reaching 0 HP
 signal is_dying()
 
 signal request_message(target: int, style: MessageStyle, message: String, time_to_show: float, message_icon: Texture)
@@ -88,7 +89,6 @@ func calculate_penetration_damage(damage: float, penetration_percentage: float) 
 
 func _hp_reached_zero():
 	is_dying.emit()
-	pass
 
 func _is_dying():
 	is_alive = false

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cgco3nen5dirr"]
+
+[ext_resource type="Texture2D" uid="uid://h8sbbxloewf4" path="res://assets/textures/wave-breaker-items.png" id="1_d6fkm"]
+
+[resource]
+atlas = ExtResource("1_d6fkm")
+region = Rect2(16, 16, 16, 16)

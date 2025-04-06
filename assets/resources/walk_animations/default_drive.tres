@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DrivingAnimation" load_steps=2 format=3 uid="uid://bacgsnekh52af"]
+
+[ext_resource type="Script" uid="uid://dbnshbbod8kg7" path="res://src/resources/entities/animation/driving_animation.gd" id="1_y6s56"]
+
+[resource]
+script = ExtResource("1_y6s56")
+max_movement = Vector2(0, -3)
+speed = 0.15

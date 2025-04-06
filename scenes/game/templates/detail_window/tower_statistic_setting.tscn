@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://b0d3k3rsr84ma"]
 
-[ext_resource type="Script" path="res://src/game/overlay/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
+[ext_resource type="Script" uid="uid://d1po1snrcyage" path="res://src/game/overlay/detail_window/tower_statistic_content.gd" id="1_xnbd2"]
 [ext_resource type="PackedScene" uid="uid://c2cn44tmy4ia2" path="res://scenes/game/templates/detail_window/templates/key_value.tscn" id="2_j3cg2"]
 [ext_resource type="Texture2D" uid="uid://ek4s20818gv" path="res://assets/atlast_textures/damage_icon.tres" id="3_8nd3g"]
 [ext_resource type="Resource" uid="uid://bu74y80pm6yog" path="res://translations/resources/hp.tres" id="3_klr26"]

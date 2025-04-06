@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://sn0lvuj8s7uj"]
 
-[ext_resource type="Script" path="res://src/game/particle/self_deleting_particles.gd" id="1_d2mi6"]
-[ext_resource type="Script" path="res://scenes/game/particle/conditional_entity_destruct.gd" id="1_s0un5"]
-[ext_resource type="Script" path="res://src/game/particle/sticker_area_spawner.gd" id="2_mgjab"]
+[ext_resource type="Script" uid="uid://y774iuopsr3n" path="res://src/game/particle/self_deleting_particles.gd" id="1_d2mi6"]
+[ext_resource type="Script" uid="uid://fsscwqhey1r2" path="res://scenes/game/particle/conditional_entity_destruct.gd" id="1_s0un5"]
+[ext_resource type="Script" uid="uid://nchchlrhq7ps" path="res://src/game/particle/sticker_area_spawner.gd" id="2_mgjab"]
 
 [sub_resource type="Gradient" id="Gradient_nkiyu"]
 colors = PackedColorArray(0.88, 0, 0, 1, 0.39, 0, 0, 1)

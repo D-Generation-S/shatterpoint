@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn2d63tre8bee"]
 
-[ext_resource type="Script" path="res://src/game/overlay/resource_dynamic_ui_element.gd" id="1_mnyf2"]
-[ext_resource type="Script" path="res://src/game/overlay/changeable_texture_rect.gd" id="2_xo8nf"]
-[ext_resource type="Script" path="res://src/game/overlay/animated_progress_bar.gd" id="3_k012w"]
+[ext_resource type="Script" uid="uid://dnh68rmqonxa7" path="res://src/game/overlay/resource_dynamic_ui_element.gd" id="1_mnyf2"]
+[ext_resource type="Script" uid="uid://beerc0adkd7x7" path="res://src/game/overlay/changeable_texture_rect.gd" id="2_xo8nf"]
+[ext_resource type="Script" uid="uid://biqrh105grfkf" path="res://src/game/overlay/animated_progress_bar.gd" id="3_k012w"]
 [ext_resource type="Theme" uid="uid://xkcu15qx7e2g" path="res://assets/styles/energy_bar.tres" id="3_kfuvb"]
 
 [node name="Energy" type="MarginContainer"]
