@@ -8,7 +8,7 @@ signal change_attack_radius(new_radius: float)
 signal update_death_animation(scene: PackedScene)
 
 
-@onready var attack_timer: Timer = $"%AttackTimer"
+@onready var cooldown_timer: Timer = $"%AttackTimer"
 
 var isDebug: bool = false
 var tower_data: TowerData
@@ -17,26 +17,26 @@ var current_thread_determination: ThreatDetermination
 var current_target: EntityWithStats = null
 var initial_fire: bool = false
 
+var is_on_cooldown: bool = false
+
 var resource_overlay: ResourceOverlay
 
 func _ready():
 	resource_overlay = GlobalDataAccess.get_resource_overlay()
 	
-	attack_timer.timeout.connect(fire)
-	attack_timer.one_shot = true
-	attack_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+	cooldown_timer.timeout.connect(_reset_cooldown)
+	cooldown_timer.one_shot = true
+	cooldown_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
+	cooldown_timer.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+func _reset_cooldown():
+	is_on_cooldown = false
 
 func _process(_delta):
-	if current_target != null:
-		if initial_fire:
-			initial_fire = false
-			fire()
-		_start_attack_timer()
-
-func _start_attack_timer():
-	if attack_timer.time_left > 0:
-		return
-	attack_timer.start(tower_data.stats.fire_rate)
+	if current_target != null and !is_on_cooldown:
+		fire()
+		cooldown_timer.start()
+		is_on_cooldown = true
 
 func fire():
 	if !isDebug:
@@ -53,7 +53,7 @@ func enable():
 func disable():
 	super()
 	initial_fire = false
-	attack_timer.stop()
+	cooldown_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 
 func building_data_updated(building_data: BuildingBase):
