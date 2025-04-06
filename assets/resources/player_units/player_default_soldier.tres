@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="UnitData" load_steps=14 format=3 uid="uid://mp2qt7qsah3a"]
+
+[ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_cid65"]
+[ext_resource type="Script" uid="uid://l0uvtac2cfd2" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="2_3pms2"]
+[ext_resource type="Script" uid="uid://bb524i34ak5p0" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="3_dpgpl"]
+[ext_resource type="Resource" uid="uid://blkby2fja2f7w" path="res://assets/resources/walk_animations/default_walk.tres" id="4_seumc"]
+[ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="5_sn7jf"]
+[ext_resource type="PackedScene" uid="uid://boms8cbra2mq0" path="res://scenes/game/templates/units/player/player_unit.tscn" id="6_cid65"]
+[ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="7_88ylx"]
+[ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="8_7304v"]
+[ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="9_g4e02"]
+[ext_resource type="Texture2D" uid="uid://dwfsfgfr04txg" path="res://assets/atlast_textures/gray_soldier.tres" id="10_cid65"]
+
+[sub_resource type="Resource" id="Resource_m7uw5"]
+script = ExtResource("2_3pms2")
+metadata/_custom_type_script = "uid://l0uvtac2cfd2"
+
+[sub_resource type="Resource" id="Resource_fbqiu"]
+script = ExtResource("3_dpgpl")
+metadata/_custom_type_script = "uid://bb524i34ak5p0"
+
+[sub_resource type="Resource" id="Resource_8kx1q"]
+script = ExtResource("9_g4e02")
+hp = 15.0
+armor = 0.0
+fire_rate = 2.0
+damage = 1.0
+attack_range = 75.0
+armor_penetration = 0.0
+metadata/_custom_type_script = "uid://ljmfbnej7agp"
+
+[resource]
+script = ExtResource("8_7304v")
+enemy_template = ExtResource("6_cid65")
+death_animation = ExtResource("5_sn7jf")
+texture = ExtResource("10_cid65")
+unit_name = "SOLDIER"
+input_color = Array[Color]([])
+output_color = Array[Color]([])
+min_scrap_drop = 0
+max_scrap_drop = 0
+movement_speed = 40.0
+animation = ExtResource("4_seumc")
+allowed_thread_determination = Array[ExtResource("1_cid65")]([SubResource("Resource_m7uw5"), SubResource("Resource_fbqiu")])
+attackable_groups = Array[String](["ground_enemy"])
+projectile = ExtResource("7_88ylx")
+min_wave_requirement = 1
+stats = SubResource("Resource_8kx1q")
+spawn_scrap_price = 2
+metadata/_custom_type_script = "uid://ngkvhw5e12vj"

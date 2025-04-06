@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://yox5ftbsglmt"]
+
+[ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_xowhw"]
+[ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="2_1edep"]
+[ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_108cc"]
+[ext_resource type="Script" uid="uid://dwp7yeqoo3dtf" path="res://src/game/entity/components/spawner_component.gd" id="2_ly7j2"]
+[ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_1edep"]
+[ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="3_ly7j2"]
+[ext_resource type="Script" uid="uid://cys57plbwnmgx" path="res://src/game/entity/components/spawner_information_panel.gd" id="5_iuglh"]
+[ext_resource type="PackedScene" uid="uid://bpe3tlb8oywha" path="res://scenes/game/templates/detail_window/spawner_popup.tscn" id="6_x6yf5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xowhw"]
+
+[node name="spawn_building" type="Node2D"]
+script = ExtResource("1_xowhw")
+
+[node name="Visuals" type="Sprite2D" parent="."]
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="SpawnerComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("parent_node")]
+script = ExtResource("2_ly7j2")
+parent_node = NodePath("../..")
+
+[node name="DeathAnimationComponent" type="Node2D" parent="Components" node_paths=PackedStringArray("root_node_to_get_parent_from")]
+script = ExtResource("2_1edep")
+root_node_to_get_parent_from = NodePath("../..")
+
+[node name="SingleSelectionComponent" parent="Components" instance=ExtResource("3_ly7j2")]
+
+[node name="SpawnerInformationPanel" type="Node2D" parent="Components"]
+script = ExtResource("5_iuglh")
+spawn_overview = ExtResource("6_x6yf5")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_108cc")
+show_percentage = false
+script = ExtResource("3_1edep")
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+shape = SubResource("CircleShape2D_xowhw")
+
+[connection signal="building_data_changed" from="." to="Components/SpawnerComponent" method="data_updated"]
+[connection signal="building_data_changed" from="." to="Components/SpawnerInformationPanel" method="data_updated"]
+[connection signal="health_changed" from="." to="HealthBar" method="update_value"]
+[connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
+[connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/SpawnerInformationPanel" method="got_selected"]
+[connection signal="show_detail_window" from="Components/SpawnerInformationPanel" to="." method="request_detail_window"]
+[connection signal="spawn_requested" from="Components/SpawnerInformationPanel" to="Components/SpawnerComponent" method="spawn_requested"]

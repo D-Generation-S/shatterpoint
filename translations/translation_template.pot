@@ -59,6 +59,7 @@
 # res://scenes/game/overlay/popups/game_end.tscn
 # res://scenes/game/GameScene.tscn
 # res://src/game/build_mode/build_mode.gd
+# res://assets/resources/buildings/spawner/barracks.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -352,4 +353,12 @@ msgstr ""
 
 #: src/game/build_mode/build_mode.gd
 msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
+msgstr ""
+
+#: assets/resources/buildings/spawner/barracks.tres
+msgid "BARRACKS"
+msgstr ""
+
+#: assets/resources/buildings/spawner/barracks.tres
+msgid "BARRACKS_DESCRIPTION"
 msgstr ""
