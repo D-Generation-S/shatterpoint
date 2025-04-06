@@ -29,6 +29,7 @@ region = Rect2(136, 137, 16, 14)
 script = ExtResource("2_amdfa")
 enemy_template = ExtResource("3_u4bhp")
 texture = SubResource("AtlasTexture_gqdlc")
+unit_name = ""
 input_color = Array[Color]([])
 output_color = Array[Color]([])
 min_scrap_drop = 2

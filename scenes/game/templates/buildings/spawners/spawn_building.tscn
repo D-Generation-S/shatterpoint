@@ -11,10 +11,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xowhw"]
 
-[node name="spawn_building" type="Node2D"]
+[node name="spawn_building" type="Node2D" groups=["navigation_polygon_source"]]
 script = ExtResource("1_xowhw")
 
 [node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Components" type="Node2D" parent="."]
 
@@ -47,7 +48,7 @@ theme = ExtResource("2_108cc")
 show_percentage = false
 script = ExtResource("3_1edep")
 
-[node name="Collision" type="Area2D" parent="."]
+[node name="Collision" type="StaticBody2D" parent="."]
 collision_layer = 9
 collision_mask = 0
 
