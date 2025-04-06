@@ -7,6 +7,7 @@ var _message_area: MessageArea
 var _popup_manager: PopupManager
 var _entity_detail_window: EntityDetailWindowSystem
 var _sticker_system: StickerSystem
+var _tile_map_grid_layer: TileMapLayer
 
 
 func get_resource_overlay() -> ResourceOverlay:
@@ -30,6 +31,12 @@ func get_entity_detail_system() -> EntityDetailWindowSystem:
 func get_sticker_system() -> StickerSystem:
 	return _sticker_system
 
+func set_grid_template(map: TileMapLayer):
+	_tile_map_grid_layer = map
+
+func get_grid_template() -> TileMapLayer:
+	return _tile_map_grid_layer
+	
 func game_started():
 	for overlay in get_tree().get_nodes_in_group("overlay"):
 		if overlay is ResourceOverlay:
@@ -53,3 +60,8 @@ func game_stopped():
 	_resource_overlay = null
 	_phase_manager = null
 	_item_path_system = null
+	_message_area = null
+	_popup_manager = null
+	_entity_detail_window = null
+	_sticker_system = null
+	_tile_map_grid_layer = null

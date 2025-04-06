@@ -8,7 +8,8 @@ func _ready():
     icon = stored_data.texture
     _scrap_updated(GlobalDataAccess.get_resource_overlay().get_scrap())
     GlobalDataAccess.get_resource_overlay().scrap_updated.connect(_scrap_updated)
-    text = "%s (%s)" % [stored_data.unit_name, stored_data.spawn_scrap_price]
+    text = "%s (%s)" % [tr(stored_data.unit_name), stored_data.spawn_scrap_price]
+    tooltip_text = tr("%s_DESCRIPTION" % stored_data.unit_name)
 
 func _scrap_updated(amount: int):
     disabled = amount < stored_data.spawn_scrap_price

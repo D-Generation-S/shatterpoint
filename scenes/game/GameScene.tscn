@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=98 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Script" uid="uid://boqucnmkum862" path="res://src/savegame/prototype_profile_manager.gd" id="1_qbdsg"]
@@ -67,9 +67,7 @@
 [ext_resource type="Script" uid="uid://baodtk7kma4ir" path="res://src/global/resources/effect_resource.gd" id="56_y1eit"]
 [ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="57_2w470"]
 [ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="58_o8v4c"]
-[ext_resource type="PackedScene" uid="uid://boms8cbra2mq0" path="res://scenes/game/templates/units/player/player_unit.tscn" id="61_o77dy"]
 [ext_resource type="Script" uid="uid://doevmjhkfikb2" path="res://src/game/systems/preload/preload_system.gd" id="61_v078p"]
-[ext_resource type="Resource" uid="uid://mp2qt7qsah3a" path="res://assets/resources/player_units/player_default_soldier.tres" id="70_4wyay"]
 
 [sub_resource type="Resource" id="Resource_ywp2m"]
 script = ExtResource("5_udn8i")
@@ -94,6 +92,8 @@ zoom_duration = 0.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_12alq"]
 parsed_collision_mask = 9
+source_geometry_mode = 1
+source_geometry_group_name = &"navigation_polygon_source"
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_t1oyk"]
 noise_type = 2
@@ -367,7 +367,7 @@ move_vector = Vector2(0, 1)
 
 [node name="WaveMode" type="Node" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WaveMode"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="WaveMode" groups=["navigation_polygon_source"]]
 z_index = -2
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_12alq")
@@ -390,12 +390,6 @@ navigation_enabled = false
 [node name="Details" type="TileMapLayer" parent="WaveMode/NavigationRegion2D" groups=["obstracles"]]
 tile_set = ExtResource("16_175xq")
 navigation_enabled = false
-
-[node name="Entites" type="Node" parent="WaveMode/NavigationRegion2D"]
-
-[node name="Enemies" type="Node" parent="WaveMode/NavigationRegion2D/Entites"]
-
-[node name="Buildings" type="Node" parent="WaveMode/NavigationRegion2D/Entites"]
 
 [node name="EnemyTarget" type="Node2D" parent="WaveMode"]
 position = Vector2(-586, 137)
@@ -428,13 +422,13 @@ curve = SubResource("Curve2D_2a14o")
 position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
-enemy_root_node = NodePath("../../NavigationRegion2D/Entites/Enemies")
+enemy_root_node = NodePath("../../../Entites/Enemies")
 
 [node name="TopRightSpawner2" type="PathFollow2D" parent="WaveMode/TopRightSpawner" node_paths=PackedStringArray("enemy_root_node") groups=["spawner"]]
 position = Vector2(520, -560)
 script = ExtResource("18_s7e6s")
 configuration = SubResource("Resource_gii0u")
-enemy_root_node = NodePath("../../NavigationRegion2D/Entites/Enemies")
+enemy_root_node = NodePath("../../../Entites/Enemies")
 active_after_wave = 5
 
 [node name="Path2D" type="Path2D" parent="WaveMode"]
@@ -444,12 +438,18 @@ curve = SubResource("Curve2D_47tol")
 position = Vector2(-967, -560)
 script = ExtResource("18_s7e6s")
 configuration = ExtResource("19_kvgan")
-enemy_root_node = NodePath("../../NavigationRegion2D/Entites/Enemies")
+enemy_root_node = NodePath("../../../Entites/Enemies")
+
+[node name="Entites" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="Entites"]
+
+[node name="Buildings" type="Node" parent="Entites"]
 
 [node name="BuildMode" type="Node2D" parent="." node_paths=PackedStringArray("resource_overlay", "building_target_node", "scrap_resource_trave_node")]
 script = ExtResource("25_ghlpk")
 resource_overlay = NodePath("../Overlay/ResourceOverlay")
-building_target_node = NodePath("../WaveMode/NavigationRegion2D/Entites/Buildings")
+building_target_node = NodePath("../Entites/Buildings")
 scrap_resource_trave_node = NodePath("../Camera/Camera2D/ScrapResource")
 resource_path_template = ExtResource("26_yjpy8")
 default_message_style = ExtResource("7_h7fcw")
@@ -538,26 +538,6 @@ effects = Array[ExtResource("56_y1eit")]([SubResource("Resource_8guxr"), SubReso
 [node name="PreloadSystem" type="Node" parent="Systems"]
 script = ExtResource("61_v078p")
 scenes_to_preload = Array[PackedScene]([ExtResource("57_2w470"), ExtResource("58_o8v4c")])
-
-[node name="PlayerUnit" parent="." instance=ExtResource("61_o77dy")]
-position = Vector2(-351, 95)
-enemy_data = ExtResource("70_4wyay")
-
-[node name="PlayerUnit2" parent="." instance=ExtResource("61_o77dy")]
-position = Vector2(-325, 143)
-enemy_data = ExtResource("70_4wyay")
-
-[node name="PlayerUnit3" parent="." instance=ExtResource("61_o77dy")]
-position = Vector2(-392, 154)
-enemy_data = ExtResource("70_4wyay")
-
-[node name="PlayerUnit4" parent="." instance=ExtResource("61_o77dy")]
-position = Vector2(-407, 120)
-enemy_data = ExtResource("70_4wyay")
-
-[node name="PlayerUnit5" parent="." instance=ExtResource("61_o77dy")]
-position = Vector2(-294, 117)
-enemy_data = ExtResource("70_4wyay")
 
 [connection signal="game_lost" from="Overlay/ResourceOverlay" to="Systems/GameStateManager" method="game_has_been_lost"]
 [connection signal="message_requested" from="Overlay/ResourceOverlay" to="Overlay/MessageArea" method="add_new_message"]

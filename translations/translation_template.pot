@@ -60,6 +60,9 @@
 # res://scenes/game/GameScene.tscn
 # res://src/game/build_mode/build_mode.gd
 # res://assets/resources/buildings/spawner/barracks.tres
+# res://scenes/game/templates/detail_window/spawner_popup.tscn
+# res://src/game/entity/components/spawner_information_panel.gd
+# res://assets/resources/player_units/player_default_soldier.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -361,4 +364,16 @@ msgstr ""
 
 #: assets/resources/buildings/spawner/barracks.tres
 msgid "BARRACKS_DESCRIPTION"
+msgstr ""
+
+#: src/game/entity/components/spawner_information_panel.gd
+msgid "UNIT_SPAWN"
+msgstr ""
+
+#: assets/resources/player_units/player_default_soldier.tres
+msgid "SOLDIER"
+msgstr ""
+
+#: assets/resources/player_units/player_default_soldier.tres
+msgid "SOLDIER_DESCRIPTION"
 msgstr ""

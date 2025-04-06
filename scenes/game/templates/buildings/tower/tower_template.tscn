@@ -81,7 +81,7 @@ statistic_translation = ExtResource("15_xryhp")
 script = ExtResource("17_0hwiu")
 root_node_to_get_parent_from = NodePath("../..")
 
-[node name="Collision" type="Area2D" parent="."]
+[node name="Collision" type="StaticBody2D" parent="." groups=["navigation_polygon_source"]]
 collision_layer = 9
 collision_mask = 0
 
