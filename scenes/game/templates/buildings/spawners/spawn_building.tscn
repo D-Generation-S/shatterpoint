@@ -11,7 +11,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xowhw"]
 
-[node name="spawn_building" type="Node2D" groups=["navigation_polygon_source"]]
+[node name="spawn_building" type="Node2D" groups=["navigation_polygon_source", "unit_spawner"]]
 script = ExtResource("1_xowhw")
 
 [node name="Visuals" type="Sprite2D" parent="."]

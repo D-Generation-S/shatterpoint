@@ -24,7 +24,6 @@ func _init(modifier_data: StatModifier, current_global_scrap: int):
 	var value = snapped(modifier.get_value(), 0.01)
 
 	text = "%s [%s] (%s)" % [tr(modifier.get_display_name()),value, modifier.get_scrap_requirement()]
-	print(tr(modifier.get_display_description()))
 	var description = tr(modifier.get_display_description()) % value
 	tooltip_text = description
 	expand_icon = true

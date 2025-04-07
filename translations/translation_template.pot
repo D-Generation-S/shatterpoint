@@ -63,6 +63,12 @@
 # res://scenes/game/templates/detail_window/spawner_popup.tscn
 # res://src/game/entity/components/spawner_information_panel.gd
 # res://assets/resources/player_units/player_default_soldier.tres
+# res://assets/resources/modifiers/special/damage/high_explosives.tres
+# res://assets/resources/modifiers/special/damage/uran_ammo.tres
+# res://assets/resources/modifiers/special/range/telescope.tres
+# res://scenes/game/overlay/popups/special_modifier_scene.tscn
+# res://src/game/overlay/popup_center/popups/special_modifier_scene.gd
+# res://assets/resources/modifiers/special/heal/citizen_support.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -376,4 +382,52 @@ msgstr ""
 
 #: assets/resources/player_units/player_default_soldier.tres
 msgid "SOLDIER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE"
+msgstr ""
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SELECT_A_SPECIAL_MODIFIER"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SKIP"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP_TOOLTIP"
+msgstr ""
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT"
+msgstr ""
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT_DESCRIPTION"
 msgstr ""
