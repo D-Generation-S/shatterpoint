@@ -352,3 +352,59 @@ msgid "SOLDIER_DESCRIPTION"
 msgstr ""
 "There is nothing special about the solder, you can command him around to "
 "defend your position."
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES"
+msgstr "High Explosives"
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES_DESCRIPTION"
+msgstr ""
+"Add High Explosive ammo to your towers, this will increase the damage by %s "
+"percent."
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE"
+msgstr "Uran Core"
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE_DESCRIPTION"
+msgstr ""
+"Improve ammonition with uran cores, this will increase the tower damage by "
+"%s points flat."
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE"
+msgstr "Telescope"
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE_DESCRIPTION"
+msgstr ""
+"Give your soldiers working on a tower a telescope, this will increase the "
+"range by %s flat"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SELECT_A_SPECIAL_MODIFIER"
+msgstr "Select One of the special modifiers listed below"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SKIP"
+msgstr "Skip"
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP"
+msgstr "Skip (%s)"
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP_TOOLTIP"
+msgstr ""
+"Skip the selection and get %s scrap instead\n"
+"Keep in mind that you will need space for that on your storage"
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT"
+msgstr "Citizen Support"
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT_DESCRIPTION"
+msgstr "The inhabitants of the city will repair your buildings by %s percent"

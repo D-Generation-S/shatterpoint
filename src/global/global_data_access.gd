@@ -8,6 +8,7 @@ var _popup_manager: PopupManager
 var _entity_detail_window: EntityDetailWindowSystem
 var _sticker_system: StickerSystem
 var _tile_map_grid_layer: TileMapLayer
+var _modifier_system: ModifierSystem
 
 
 func get_resource_overlay() -> ResourceOverlay:
@@ -36,6 +37,9 @@ func set_grid_template(map: TileMapLayer):
 
 func get_grid_template() -> TileMapLayer:
 	return _tile_map_grid_layer
+
+func get_modifier_system() -> ModifierSystem:
+	return _modifier_system
 	
 func game_started():
 	for overlay in get_tree().get_nodes_in_group("overlay"):
@@ -55,6 +59,8 @@ func game_started():
 			_entity_detail_window = system
 		if system is StickerSystem:
 			_sticker_system = system
+		if system is ModifierSystem:
+			_modifier_system = system
 
 func game_stopped():
 	_resource_overlay = null
@@ -65,3 +71,4 @@ func game_stopped():
 	_entity_detail_window = null
 	_sticker_system = null
 	_tile_map_grid_layer = null
+	_modifier_system = null

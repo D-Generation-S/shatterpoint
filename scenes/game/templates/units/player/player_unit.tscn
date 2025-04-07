@@ -69,7 +69,7 @@ metadata/_custom_type_script = "uid://ngkvhw5e12vj"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnq7e"]
 
-[node name="PlayerUnit" type="CharacterBody2D" groups=["player_unit_ground", "selectable"]]
+[node name="PlayerUnit" type="CharacterBody2D" groups=["player_unit", "player_unit_ground", "selectable"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_2x61i")
