@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://boms8cbra2mq0"]
+[gd_scene load_steps=34 format=3 uid="uid://boms8cbra2mq0"]
 
 [ext_resource type="Script" uid="uid://cgafo4ylsaboq" path="res://src/game/unit/unit.gd" id="1_2x61i"]
 [ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="2_87xto"]
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="2_f0jpk"]
-[ext_resource type="Script" uid="uid://buwvnkw0fwgrv" path="res://src/game/entity/components/visuals_component.gd" id="2_r124x"]
+[ext_resource type="Script" uid="uid://buwvnkw0fwgrv" path="res://src/game/entity/components/unit_visual_component.gd" id="2_r124x"]
 [ext_resource type="Script" uid="uid://l0uvtac2cfd2" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="3_2x61i"]
 [ext_resource type="PackedScene" uid="uid://sn0lvuj8s7uj" path="res://scenes/game/particle/blood_particle.tscn" id="3_65726"]
 [ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_r124x"]
@@ -11,19 +11,21 @@
 [ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="4_ty3mv"]
 [ext_resource type="Resource" uid="uid://blkby2fja2f7w" path="res://assets/resources/walk_animations/default_walk.tres" id="5_m7uw5"]
 [ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="5_tyy3c"]
-[ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="7_811c7"]
+[ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/enemy_template.tscn" id="7_811c7"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="8_fbqiu"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="10_xc24w"]
 [ext_resource type="PackedScene" uid="uid://decq4tsyqwsnf" path="res://scenes/game/components/enemy/enemy_component.tscn" id="11_fbqiu"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="11_nkxj3"]
 [ext_resource type="Script" uid="uid://r47hbsqt8bk6" path="res://src/game/entity/components/unit_selection_component.gd" id="11_xc24w"]
 [ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="12_nkxj3"]
+[ext_resource type="Shader" uid="uid://benw47q1db78q" path="res://assets/shaders/horizontal_flip_shader.gdshader" id="12_vye7a"]
 [ext_resource type="Texture2D" uid="uid://cgco3nen5dirr" path="res://assets/atlast_textures/red_arrow_down.tres" id="14_6yduj"]
 [ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="14_8kx1q"]
 [ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="15_8kx1q"]
 [ext_resource type="Texture2D" uid="uid://dem5kmdf1hwrt" path="res://assets/atlast_textures/unit_selection_rect.tres" id="15_811c7"]
 [ext_resource type="Script" uid="uid://po3pk21ocv50" path="res://src/game/unit/navigation.gd" id="16_a5qta"]
 [ext_resource type="Script" uid="uid://wcrhk0ec1yhc" path="res://src/game/entity/components/movement_component.gd" id="17_kxyyg"]
+[ext_resource type="Script" uid="uid://c1kdnvjg8stu" path="res://src/game/entity/components/collision_radius_update.gd" id="23_21i42"]
 
 [sub_resource type="Resource" id="Resource_m7uw5"]
 script = ExtResource("3_2x61i")
@@ -67,6 +69,11 @@ stats = SubResource("Resource_8kx1q")
 spawn_scrap_price = 0
 metadata/_custom_type_script = "uid://ngkvhw5e12vj"
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21i42"]
+shader = ExtResource("12_vye7a")
+shader_parameter/rect_info = Vector4(0, 0, 16, 16)
+shader_parameter/progress = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_rnq7e"]
 
 [node name="PlayerUnit" type="CharacterBody2D" groups=["player_unit", "player_unit_ground", "selectable"]]
@@ -78,10 +85,11 @@ enemy_data = SubResource("Resource_a5qta")
 
 [node name="Components" type="Node2D" parent="."]
 
-[node name="VisualComponent" type="Sprite2D" parent="Components"]
-script = ExtResource("2_r124x")
-
 [node name="EnemyComponent" parent="Components" instance=ExtResource("11_fbqiu")]
+
+[node name="VisualComponent" type="Sprite2D" parent="Components"]
+material = SubResource("ShaderMaterial_21i42")
+script = ExtResource("2_r124x")
 
 [node name="SelectionComponent" type="Node2D" parent="Components"]
 script = ExtResource("11_xc24w")
@@ -112,6 +120,7 @@ script = ExtResource("17_kxyyg")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_rnq7e")
+script = ExtResource("23_21i42")
 
 [node name="Health" type="ProgressBar" parent="."]
 offset_left = -12.5
@@ -134,8 +143,9 @@ script = ExtResource("3_r124x")
 metadata/_custom_type_script = "uid://dgehqhmydvtpj"
 
 [connection signal="armor_changed" from="." to="Armor" method="update_value"]
-[connection signal="entity_data_changed" from="." to="Components/VisualComponent" method="data_changed"]
 [connection signal="entity_data_changed" from="." to="Components/EnemyComponent" method="enemy_data_changed"]
+[connection signal="entity_data_changed" from="." to="Components/VisualComponent" method="data_changed"]
+[connection signal="entity_data_changed" from="." to="Components/MovementComponent" method="data_updated"]
 [connection signal="health_changed" from="." to="Health" method="update_value"]
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="max_armor_changed" from="." to="Armor" method="set_max_health"]
@@ -153,6 +163,7 @@ metadata/_custom_type_script = "uid://dgehqhmydvtpj"
 [connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectionArrow" method="show"]
 [connection signal="show_selected_sprite" from="Components/SelectionComponent" to="Components/SelectionComponent/SelectedVisuals" method="show"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/EnemyComponent" method="enemy_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/EnemyComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="add_projectile_requested"]
 [connection signal="change_velocity" from="Components/NavigationComponent" to="Components/MovementComponent" method="set_velocity"]

@@ -52,6 +52,8 @@ func _updated_stats():
 	
 func set_current_target(entity: EntityWithStats):
 	current_target = entity
+	if current_target != null:
+		enable()
 
 func enable():
 	initial_fire = true
@@ -59,7 +61,6 @@ func enable():
 
 func disable():
 	initial_fire = false
-	cooldown_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 
 func enemy_active_changed(on: bool):

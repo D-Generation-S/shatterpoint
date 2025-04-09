@@ -53,7 +53,6 @@ func enable():
 func disable():
 	super()
 	initial_fire = false
-	cooldown_timer.stop()
 	process_mode = PROCESS_MODE_DISABLED
 
 func building_data_updated(building_data: BuildingBase):
@@ -74,6 +73,8 @@ func set_is_debug(on: bool):
 
 func set_current_target(entity: EntityWithStats):
 	current_target = entity
+	if current_target != null:
+		enable()
 
 func tower_active_changed(on: bool):
 	if on:
