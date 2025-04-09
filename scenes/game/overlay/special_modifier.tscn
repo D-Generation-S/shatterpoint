@@ -39,11 +39,26 @@ bbcode_enabled = true
 fit_content = true
 horizontal_alignment = 1
 
+[node name="AppliesToLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "APPLIES_TO
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AppliesTo" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "SELECT"
 
+[connection signal="applies_to_changed" from="." to="MarginContainer/VBoxContainer/AppliesTo" method="append_text"]
 [connection signal="description_changed" from="." to="MarginContainer/VBoxContainer/Description" method="append_text"]
 [connection signal="icon_changed" from="." to="MarginContainer/VBoxContainer/Icon" method="set_texture"]
 [connection signal="name_changed" from="." to="MarginContainer/VBoxContainer/Name" method="set_text"]

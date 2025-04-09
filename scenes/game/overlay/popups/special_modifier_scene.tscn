@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d11k10i535ilq"]
+[gd_scene load_steps=16 format=3 uid="uid://d11k10i535ilq"]
 
 [ext_resource type="Script" uid="uid://vd5molnqkopp" path="res://src/game/overlay/popup_center/popups/special_modifier_scene.gd" id="1_seofy"]
 [ext_resource type="PackedScene" uid="uid://v81exap0w6ht" path="res://scenes/game/overlay/special_modifier.tscn" id="2_akge4"]
@@ -7,10 +7,12 @@
 [ext_resource type="Resource" uid="uid://byk2is1sfi5gr" path="res://assets/resources/modifiers/special/range/telescope.tres" id="4_4jqbo"]
 [ext_resource type="Resource" uid="uid://spwhcjfw4jun" path="res://assets/resources/modifiers/special/damage/uran_ammo.tres" id="5_y0pq7"]
 [ext_resource type="Resource" uid="uid://c42yhpaeh2tv2" path="res://assets/resources/modifiers/special/heal/citizen_support.tres" id="6_y0pq7"]
+[ext_resource type="Resource" uid="uid://vt5tidr8ui6s" path="res://assets/resources/modifiers/special/penetration/ap_rounds.tres" id="7_7atgx"]
+[ext_resource type="Resource" uid="uid://c05v5ccvq0cnt" path="res://assets/resources/modifiers/special/armor/improvised_reinforcement.tres" id="8_mpuwb"]
 
 [sub_resource type="Resource" id="Resource_mpuwb"]
 script = ExtResource("2_b5yjc")
-probability = 1
+probability = 10
 scope = 2
 modifier = ExtResource("3_7ywoy")
 permanent = true
@@ -26,7 +28,7 @@ metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
 
 [sub_resource type="Resource" id="Resource_gikfn"]
 script = ExtResource("2_b5yjc")
-probability = 1
+probability = 10
 scope = 2
 modifier = ExtResource("5_y0pq7")
 permanent = true
@@ -34,9 +36,25 @@ metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
 
 [sub_resource type="Resource" id="Resource_mat3j"]
 script = ExtResource("2_b5yjc")
-probability = 1
+probability = 10
 scope = 14
 modifier = ExtResource("6_y0pq7")
+permanent = false
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
+
+[sub_resource type="Resource" id="Resource_kh1t5"]
+script = ExtResource("2_b5yjc")
+probability = 1
+scope = 2
+modifier = ExtResource("7_7atgx")
+permanent = true
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
+
+[sub_resource type="Resource" id="Resource_lj3bl"]
+script = ExtResource("2_b5yjc")
+probability = 5
+scope = 30
+modifier = ExtResource("8_mpuwb")
 permanent = false
 metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
 
@@ -48,7 +66,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_seofy")
-special_modifiers = Array[ExtResource("2_b5yjc")]([SubResource("Resource_mpuwb"), SubResource("Resource_7atgx"), SubResource("Resource_gikfn"), SubResource("Resource_mat3j")])
+special_modifiers = Array[ExtResource("2_b5yjc")]([SubResource("Resource_mpuwb"), SubResource("Resource_7atgx"), SubResource("Resource_gikfn"), SubResource("Resource_mat3j"), SubResource("Resource_kh1t5"), SubResource("Resource_lj3bl")])
 card_template = ExtResource("2_akge4")
 target_node = NodePath("MarginContainer/MarginContainer/VBoxContainer")
 pause_game = true

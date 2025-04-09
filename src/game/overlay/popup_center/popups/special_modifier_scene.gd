@@ -11,6 +11,8 @@ signal modifier_was_selected(modifier: SpecialModifierConfiguration)
 
 @export var target_node: Control
 
+# Rework logic to copy the possible modifiers and remove all which are already taken or not accessible right now.
+# Choose one, remove it from the list and continue until selections reached.
 func _ready():
 	super()
 	var loot = LootTable.new()

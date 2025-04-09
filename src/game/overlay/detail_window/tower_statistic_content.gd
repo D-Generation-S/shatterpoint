@@ -41,7 +41,7 @@ func _add_statistic(data: BuildingBase):
 	_clear_statistic()
 	_add_statistic_data(_hp_text.key, data.stats.max_hp, _hp_description.key, _hp_icon)
 	_add_statistic_data(_armor_text.key, data.stats.armor, _armor_description.key, _armor_icon)
-	_add_statistic_data(_armor_penetration_text.key, data.stats.armor_penetration * 100, _armor_penetration_description.key, _armor_penetration_icon, "%")
+	_add_statistic_data(_armor_penetration_text.key, data.stats.armor_penetration * 100.0, _armor_penetration_description.key, _armor_penetration_icon, "%")
 	_add_statistic_data(_fire_rate_text.key, data.stats.fire_rate, _fire_rate_description.key, _fire_rate_icon)
 	_add_statistic_data(_damage_rate_text.key, data.stats.damage, _damage_rate_description.key, _damage_rate_icon)
 	_add_statistic_data(_range_rate_text.key, data.stats.attack_range, _range_description.key, _range_rate_icon)

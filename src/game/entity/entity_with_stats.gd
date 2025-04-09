@@ -24,9 +24,11 @@ var is_alive: bool = true
 func _ready():
 	_copy_stats()
 	stats.max_hp = stats.hp
+	
 	max_health_changed.emit(stats.max_hp)
-	max_armor_changed.emit(stats.armor)
 	health_changed.emit(stats.hp)
+
+	max_armor_changed.emit(stats.armor)
 	armor_changed.emit(stats.armor)
 	request_message.connect(GlobalDataAccess.get_message_area().add_new_message)
 	

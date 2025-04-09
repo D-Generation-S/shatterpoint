@@ -69,6 +69,11 @@
 # res://scenes/game/overlay/popups/special_modifier_scene.tscn
 # res://src/game/overlay/popup_center/popups/special_modifier_scene.gd
 # res://assets/resources/modifiers/special/heal/citizen_support.tres
+# res://assets/resources/modifiers/fixed_penetration.tres
+# res://assets/resources/modifiers/special/penetration/ap_rounds.tres
+# res://assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+# res://src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+# res://scenes/game/overlay/special_modifier.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -430,4 +435,56 @@ msgstr ""
 
 #: assets/resources/modifiers/special/heal/citizen_support.tres
 msgid "CITIZEN_SUPPORT_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS"
+msgstr ""
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT"
+msgstr ""
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT_DESCRIPTION"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_TOWERS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_GENERATORS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_SCRAP_STORAGES"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNIT_SPAWNERS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNITS"
+msgstr ""
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "APPLIES_TO\n"
+msgstr ""
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "SELECT"
 msgstr ""

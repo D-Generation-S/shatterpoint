@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=18 format=3 uid="uid://ctrcr440rcqre"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://ctrcr440rcqre"]
 
 [ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_orkoc"]
 [ext_resource type="Script" uid="uid://ddkfw7ukebdeu" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_ee4fy"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://ccnjsuy2j80lh" path="res://assets/resources/modifiers/generators/default_percentage_damage_modifier.tres" id="7_38btf"]
 [ext_resource type="Resource" uid="uid://11hmytmsgkqd" path="res://assets/resources/modifiers/generators/default_fixed_range_generator.tres" id="8_32o02"]
 [ext_resource type="Texture2D" uid="uid://dlxo0pmajycsy" path="res://assets/atlast_textures/orange_tower.tres" id="8_uhtxb"]
+[ext_resource type="Resource" uid="uid://f0egmj7p3ol1" path="res://assets/resources/modifiers/generators/default_fixed_penetration_generator.tres" id="10_t5xlx"]
 
 [sub_resource type="Resource" id="Resource_vsnd1"]
 script = ExtResource("2_ee4fy")
@@ -38,7 +39,7 @@ allowed_thread_determination = Array[ExtResource("1_orkoc")]([SubResource("Resou
 attackable_groups = Array[String](["ground_enemy"])
 projectile = ExtResource("5_xateg")
 power_usage_per_shot = 2.0
-possible_generators = Array[ExtResource("5_rtxmx")]([ExtResource("6_2ehaf"), ExtResource("7_38btf"), ExtResource("8_32o02")])
+possible_generators = Array[ExtResource("5_rtxmx")]([ExtResource("6_2ehaf"), ExtResource("7_38btf"), ExtResource("8_32o02"), ExtResource("10_t5xlx")])
 death_animation = ExtResource("5_lgbie")
 scrap_required = 3
 building_name = "BASIC_TOWER"

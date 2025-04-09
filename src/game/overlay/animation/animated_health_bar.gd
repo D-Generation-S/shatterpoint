@@ -1,6 +1,8 @@
 class_name AnimatedHealthBar extends ProgressBar
 
 @export var animation_time = 0.3
+@export var always_show: bool = false
+@export var hide_if_empty: bool = false
 @export var auto_hide_if_full: bool = true
 @export var flash_if_low: bool = true
 @export var lower_flash_alpha: float = 0.5
@@ -11,14 +13,25 @@ var real_value: float
 
 func _ready():
 	process_mode = PROCESS_MODE_PAUSABLE
-	visible = false
+	visible = always_show
+	if always_show:
+		auto_hide_if_full = false
 
 func set_max_health(new_max_health: float):
+	if new_max_health <= 0:
+		visible = false
+	else:
+		if always_show:
+			visible = true
+		else: if value < new_max_health:
+			visible = true
 	max_value = new_max_health
 
 func update_value(new_value: float):
 	if new_value < max_value:
 		visible = true
+	if new_value <= 0 and hide_if_empty:
+		visible = false
 
 	if new_value <= max_value * 0.05:
 		_flashing()

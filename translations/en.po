@@ -408,3 +408,60 @@ msgstr "Citizen Support"
 #: assets/resources/modifiers/special/heal/citizen_support.tres
 msgid "CITIZEN_SUPPORT_DESCRIPTION"
 msgstr "The inhabitants of the city will repair your buildings by %s percent"
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER"
+msgstr "Fixed Penetration"
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER_DESCRIPTION"
+msgstr ""
+"Increase the penetration for the projectiles of this tower to %s percent."
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS"
+msgstr "Armor Piercing Rounds"
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS_DESCRIPTION"
+msgstr ""
+"This upgrade will make your rounds armor piercing, this will help to "
+"penetrate enemy armor by %s percent."
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT"
+msgstr "Improvised Reinforcement"
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT_DESCRIPTION"
+msgstr ""
+"You will improvise some reinforcement for your buildings, this will give "
+"them %s of armor. Keep in mind that armor cannot be restored once destroyed."
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_TOWERS"
+msgstr "Defence Towers"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_GENERATORS"
+msgstr "Power Generators"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_SCRAP_STORAGES"
+msgstr "Scrap Storages"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNIT_SPAWNERS"
+msgstr "Barracks"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNITS"
+msgstr "Player Units"
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "APPLIES_TO\n"
+msgstr "Applies To\n"
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "SELECT"
+msgstr "Select"

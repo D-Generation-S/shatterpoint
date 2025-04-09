@@ -68,6 +68,7 @@ func add_modifier(modifier: StatModifier):
 	health_changed.emit(stats.hp)
 	max_health_changed.emit(stats.max_hp)
 
+	max_armor_changed.emit(stats.armor)
 	armor_changed.emit(stats.armor)
 
 func _is_dying():
