@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FixedPenetrationModifier" load_steps=3 format=3 uid="uid://vt5tidr8ui6s"]
+
+[ext_resource type="Texture2D" uid="uid://c4h2617ovhmow" path="res://assets/atlast_textures/ap_round_icon.tres" id="1_388eq"]
+[ext_resource type="Script" uid="uid://vkia3ncah0e6" path="res://src/game/modifier/stats/fixed_penetration_modifier.gd" id="1_x0p6g"]
+
+[resource]
+script = ExtResource("1_x0p6g")
+_name = "AP_ROUNDS"
+_icon = ExtResource("1_388eq")
+_scrap_cost = 0
+priority = 10000
+value = 20.0
+metadata/_custom_type_script = "uid://vkia3ncah0e6"

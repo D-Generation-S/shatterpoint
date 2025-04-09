@@ -9,4 +9,5 @@ _name = "CITIZEN_SUPPORT"
 _icon = ExtResource("1_sheqp")
 _scrap_cost = 0
 priority = 10000
+one_time_usage = true
 value = 25.0

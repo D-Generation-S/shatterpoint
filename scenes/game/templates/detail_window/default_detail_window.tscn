@@ -4,6 +4,7 @@
 
 [node name="DefaultDetailWindow" type="Window" node_paths=PackedStringArray("content_target_node")]
 canvas_item_default_texture_filter = 0
+mouse_passthrough = true
 script = ExtResource("1_nbep3")
 content_target_node = NodePath("MarginContainer")
 

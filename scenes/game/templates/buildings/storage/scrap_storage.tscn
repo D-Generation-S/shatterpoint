@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6l2b21q7muf0"]
+[gd_scene load_steps=10 format=3 uid="uid://b6l2b21q7muf0"]
 
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="1_3wnx1"]
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_7e4xk"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="3_qyg3l"]
 [ext_resource type="Script" uid="uid://b2jvkht6ei77m" path="res://src/game/entity/components/scrap_storage_component.gd" id="5_msbm5"]
 [ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="5_t0q4q"]
+[ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="6_qyjmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_updg7"]
 
@@ -19,7 +20,6 @@ custom_destroyed_message = ExtResource("3_qyg3l")
 unique_name_in_owner = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-unique_name_in_owner = true
 offset_left = -12.5
 offset_top = 11.795
 offset_right = 12.5
@@ -27,6 +27,18 @@ offset_bottom = 15.795
 theme = ExtResource("1_3wnx1")
 show_percentage = false
 script = ExtResource("2_pl675")
+
+[node name="ArmorBar" type="ProgressBar" parent="."]
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+theme = ExtResource("6_qyjmw")
+show_percentage = false
+script = ExtResource("2_pl675")
+always_show = true
+auto_hide_if_full = false
+flash_if_low = false
 
 [node name="Components" type="Node2D" parent="."]
 
@@ -42,10 +54,14 @@ root_node_to_get_parent_from = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 shape = SubResource("CircleShape2D_updg7")
 
+[connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
 [connection signal="building_data_changed" from="." to="Components/ScrapStorageComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
 [connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
 [connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
+[connection signal="bar_is_hidden" from="ArmorBar" to="HealthBar" method="reset_show_options"]
+[connection signal="bar_is_shown" from="ArmorBar" to="HealthBar" method="force_show"]
 [connection signal="update_death_animation" from="Components/ScrapStorageComponent" to="Components/DeathAnimationComponent" method="data_updated"]

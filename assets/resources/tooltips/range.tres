@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://dk0pyekth2lqb"]
+
+[ext_resource type="Resource" uid="uid://bdqnnvgrlavm3" path="res://translations/resources/range_description.tres" id="1_688kp"]
+[ext_resource type="Resource" uid="uid://bxqawttuhu7io" path="res://translations/resources/range.tres" id="2_4geht"]
+[ext_resource type="Texture2D" uid="uid://cw135dw5l2swk" path="res://assets/atlast_textures/range_icon.tres" id="3_1pu1u"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="4_fgst3"]
+
+[resource]
+script = ExtResource("4_fgst3")
+key = "RANGE"
+icon = ExtResource("3_1pu1u")
+headline = ExtResource("2_4geht")
+content = ExtResource("1_688kp")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

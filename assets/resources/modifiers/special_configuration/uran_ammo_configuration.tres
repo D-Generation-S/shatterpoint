@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://o42vsuccxvf1"]
+
+[ext_resource type="Resource" uid="uid://spwhcjfw4jun" path="res://assets/resources/modifiers/special/damage/uran_ammo.tres" id="1_nb7v4"]
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_skxoh"]
+
+[resource]
+script = ExtResource("2_skxoh")
+probability = 10
+scope = 2
+modifier = ExtResource("1_nb7v4")
+permanent = true
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://h1mxvd5e3sek"]
+[gd_scene load_steps=5 format=3 uid="uid://h1mxvd5e3sek"]
 
 [ext_resource type="Script" uid="uid://dd3da4ucg0crm" path="res://src/game/overlay/resource_ui_element.gd" id="1_2y46m"]
+[ext_resource type="PackedScene" uid="uid://k52v1ivbl781" path="res://scenes/game/overlay/tooltips/explain_tooltip_template.tscn" id="3_07rf5"]
 [ext_resource type="Script" uid="uid://beerc0adkd7x7" path="res://src/game/overlay/changeable_texture_rect.gd" id="3_621qp"]
 [ext_resource type="Script" uid="uid://dw0vl0gb3ylf7" path="res://src/game/overlay/animated_changeable_label.gd" id="5_o8m7h"]
 
@@ -29,6 +30,7 @@ mouse_filter = 0
 expand_mode = 2
 stretch_mode = 5
 script = ExtResource("3_621qp")
+tooltip_template = ExtResource("3_07rf5")
 
 [node name="ResourceValue" type="Label" parent="Scrap"]
 layout_mode = 2

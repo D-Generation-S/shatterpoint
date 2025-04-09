@@ -21,4 +21,5 @@ script = ExtResource("2_qej0q")
 [node name="HSeparator" type="HSeparator" parent="."]
 layout_mode = 2
 
+[connection signal="icon_changed" from="." to="Button" method="set_texture_normal"]
 [connection signal="pressed" from="Button" to="." method="pressed"]

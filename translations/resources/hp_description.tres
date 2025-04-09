@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_7fp2k")
-key = "HP"
+key = "HP_DESCRIPTION"

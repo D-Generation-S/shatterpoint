@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_ufqv4")
-key = "ARMOR_PENETRATION"
+key = "ARMOR_PENETRATION_DESCRIPTION"

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ArmorIncreaseModifier" load_steps=3 format=3 uid="uid://c05v5ccvq0cnt"]
+
+[ext_resource type="Texture2D" uid="uid://tngll1481eo7" path="res://assets/atlast_textures/armor_icon.tres" id="1_offj7"]
+[ext_resource type="Script" uid="uid://bhf3c61x42wtl" path="res://src/game/modifier/stats/armor_increase_modifier.gd" id="2_8gtqw"]
+
+[resource]
+script = ExtResource("2_8gtqw")
+_name = "IMPROVISED_REINFORCEMENT"
+_icon = ExtResource("1_offj7")
+_scrap_cost = 0
+priority = 10000
+one_time_usage = true
+value = 50.0
+metadata/_custom_type_script = "uid://bhf3c61x42wtl"

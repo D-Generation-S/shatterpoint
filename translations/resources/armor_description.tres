@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_fc2vs")
-key = "ARMOR"
+key = "ARMOR_DESCRIPTION"

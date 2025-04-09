@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2cn44tmy4ia2"]
+[gd_scene load_steps=3 format=3 uid="uid://c2cn44tmy4ia2"]
 
 [ext_resource type="Script" uid="uid://cqnexkvk0k16y" path="res://src/ui/key_value_data.gd" id="1_5ptwc"]
+[ext_resource type="Script" uid="uid://cytc4jt7lvi5v" path="res://src/ui/explain_rich_text_label.gd" id="2_vq5b7"]
 
 [node name="KeyValue" type="MarginContainer"]
 anchors_preset = 10
@@ -28,12 +29,15 @@ size_flags_vertical = 4
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Key" type="Label" parent="HBoxContainer"]
+[node name="Key" type="RichTextLabel" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "KEY"
 vertical_alignment = 1
+script = ExtResource("2_vq5b7")
+metadata/_custom_type_script = "uid://cytc4jt7lvi5v"
 
 [node name="Value" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true

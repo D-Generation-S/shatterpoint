@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://birf74sat6vva"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_rxccf"]
+
+[resource]
+script = ExtResource("1_rxccf")
+key = "STORAGE_INFRASTRUCTURE_DESCRIPTION"

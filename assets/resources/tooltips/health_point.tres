@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://doyqtvee545k7"]
+
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="1_jj0xa"]
+[ext_resource type="Resource" uid="uid://hdjpd1lmmt61" path="res://translations/resources/hp_description.tres" id="1_s5p5g"]
+[ext_resource type="Resource" uid="uid://bu74y80pm6yog" path="res://translations/resources/hp.tres" id="2_3brof"]
+[ext_resource type="Texture2D" uid="uid://cwb7af1m00i6i" path="res://assets/atlast_textures/health_icon.tres" id="3_7o3ms"]
+
+[resource]
+script = ExtResource("1_jj0xa")
+key = "HP"
+icon = ExtResource("3_7o3ms")
+headline = ExtResource("2_3brof")
+content = ExtResource("1_s5p5g")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"
