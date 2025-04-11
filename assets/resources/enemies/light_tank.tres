@@ -39,6 +39,6 @@ animation = ExtResource("3_0rfhb")
 allowed_thread_determination = Array[ExtResource("1_the3p")]([SubResource("Resource_7jnor")])
 attackable_groups = Array[String](["tower", "generator", "player_unit_ground"])
 projectile = ExtResource("4_37pi8")
-min_wave_requirement = 5
+min_wave_requirement = 6
 stats = SubResource("Resource_cqvcy")
 spawn_scrap_price = 0
