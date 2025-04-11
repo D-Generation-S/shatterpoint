@@ -14,8 +14,11 @@ func _init():
 	
 	add_child(root)
 
-	for file in DirAccess.get_files_at(base_folder):
-		var real_file = "%s%s" % [base_folder, file]
+	for file_name in DirAccess.get_files_at(base_folder):
+		# https://forum.godotengine.org/t/issue-with-reading-tres-files-after-exporting-project/75731/4
+		if file_name.ends_with(".remap"):
+			file_name = file_name.trim_suffix(".remap")
+		var real_file = "%s%s" % [base_folder, file_name]
 		var data = load(real_file) as TooltipData
 		if data == null:
 			continue
