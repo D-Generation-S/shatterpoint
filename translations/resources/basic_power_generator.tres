@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://ba1iq0w01p7ab"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_jsnba"]
+
+[resource]
+script = ExtResource("1_jsnba")
+key = "BASIC_POWER_GENERATOR"
+metadata/_custom_type_script = "uid://bliprh1pw2801"

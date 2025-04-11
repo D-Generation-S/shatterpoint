@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=23 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -28,6 +28,9 @@ shader_parameter/set_colors = 0
 shader_parameter/threshold = 0.001
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p24bp"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnabk"]
 radius = 8.0
 
 [node name="TowerTemplate" type="Node2D" groups=["building", "tower"]]
@@ -98,12 +101,19 @@ statistic_translation = ExtResource("15_xryhp")
 script = ExtResource("17_0hwiu")
 root_node_to_get_parent_from = NodePath("../..")
 
-[node name="Collision" type="StaticBody2D" parent="." groups=["navigation_polygon_source"]]
+[node name="NavigationCollision" type="StaticBody2D" parent="." groups=["navigation_polygon_source"]]
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationCollision"]
 shape = SubResource("CircleShape2D_p24bp")
+
+[node name="EnemyTargetCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTargetCollision"]
+shape = SubResource("CircleShape2D_vnabk")
 
 [connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
 [connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
@@ -124,6 +134,7 @@ shape = SubResource("CircleShape2D_p24bp")
 [connection signal="thread_determination_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
 [connection signal="update_death_animation" from="Components/TowerComponent" to="Components/DeathAnimationComponent" method="data_updated"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/TowerComponent" method="tower_active_changed"]
+[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/TowerComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="request_add_projectile"]
 [connection signal="selection_changed" from="Components/SingleSelectionComponent" to="Components/TargetingComponent" method="draw_attack_radius"]

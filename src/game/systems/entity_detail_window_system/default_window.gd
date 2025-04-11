@@ -13,7 +13,7 @@ var planned_content: Array[DefaultDetailContent]
 func _ready():
 	title_changed.emit(planned_title)
 	if planned_content.size() == 1:
-		add_child(planned_content[0])
+		content_target_node.add_child(planned_content[0])
 	else:
 		add_multi_content(planned_content)
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FixedDamageModifier" load_steps=3 format=3 uid="uid://cbybo3el1dfnu"]
+
+[ext_resource type="Texture2D" uid="uid://dv0lh2pp52brn" path="res://assets/atlast_textures/full_metal_jacket.tres" id="1_8vare"]
+[ext_resource type="Script" uid="uid://iuf62vyjue5v" path="res://src/game/modifier/stats/fixed_damage_modifier.gd" id="1_vgjtn"]
+
+[resource]
+script = ExtResource("1_vgjtn")
+_name = "FULL_METAL_JACKET"
+_icon = ExtResource("1_8vare")
+_scrap_cost = 0
+priority = 10000
+one_time_usage = false
+value = 3.0
+metadata/_custom_type_script = "uid://iuf62vyjue5v"

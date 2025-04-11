@@ -84,6 +84,8 @@
 # res://translations/resources/storage_infrastructure_description.tres
 # res://translations/resources/tools.tres
 # res://translations/resources/tools_description.tres
+# res://assets/resources/modifiers/special/fire_rate/autoloader.tres
+# res://assets/resources/modifiers/special/damage/full_metal_jacket.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -310,6 +312,14 @@ msgstr ""
 msgid "DETAILS"
 msgstr ""
 
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "TITLE"
+msgstr ""
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "X"
+msgstr ""
+
 #: scenes/game/templates/detail_window/tower_settings_content.tscn
 msgid "THREAT_MODE"
 msgstr ""
@@ -529,4 +539,20 @@ msgstr ""
 
 #: scenes/game/overlay/special_modifier.tscn
 msgid "SELECT"
+msgstr ""
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER"
+msgstr ""
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET_DESCRIPTION"
 msgstr ""

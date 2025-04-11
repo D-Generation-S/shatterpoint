@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://wu5w0vbjlyno"]
+
+[ext_resource type="Resource" uid="uid://cic2ik8tc7au2" path="res://translations/resources/bulldozer_description.tres" id="1_lrghm"]
+[ext_resource type="Resource" uid="uid://bou5qp4fcq77k" path="res://translations/resources/bulldozer.tres" id="2_cnqmh"]
+[ext_resource type="Texture2D" uid="uid://dbym3q5ao630a" path="res://assets/atlast_textures/bulldozer_icon.tres" id="3_v7sp8"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="4_2gk7m"]
+
+[resource]
+script = ExtResource("4_2gk7m")
+key = "BULLDOZER"
+icon = ExtResource("3_v7sp8")
+headline = ExtResource("2_cnqmh")
+content = ExtResource("1_lrghm")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

@@ -47,6 +47,7 @@ func _animate_flip(flip_state: bool):
 		return
 	if flip_tween != null and flip_tween.is_valid():
 		flip_tween.kill()
+		_animate_shader_progress(0)
 	target_h_flip = flip_state
 
 	flip_tween = create_tween()

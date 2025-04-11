@@ -23,10 +23,8 @@ func _ready():
 
 func _visibility_changed():
 	if visible:
-		print("visible: %s" % name)
 		bar_is_shown.emit()
 	else:
-		print("hidden: %s" % name)
 		bar_is_hidden.emit()
 	
 
@@ -78,7 +76,6 @@ func reset_show_options():
 	_check_auto_hide()
 
 func _check_auto_hide():
-	print ("auto check %s" % name)
 	if value < max_value:
 		visible = true
 		return

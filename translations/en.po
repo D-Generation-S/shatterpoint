@@ -220,7 +220,7 @@ msgstr ""
 
 #: assets/resources/modifiers/percentage_damage.tres
 msgid "PROCEDUAL_DAMAGE"
-msgstr "Percentage Dame"
+msgstr "Percentage Damage"
 
 #: assets/resources/modifiers/percentage_damage.tres
 msgid "PROCEDUAL_DAMAGE_DESCRIPTION"
@@ -282,6 +282,14 @@ msgstr "How far a unit or building can fire."
 #: translations/resources/details.tres
 msgid "DETAILS"
 msgstr "Details"
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "TITLE"
+msgstr ""
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "X"
+msgstr ""
 
 #: scenes/game/templates/detail_window/tower_settings_content.tscn
 msgid "THREAT_MODE"
@@ -539,3 +547,24 @@ msgstr "Applies To\n"
 #: scenes/game/overlay/special_modifier.tscn
 msgid "SELECT"
 msgstr "Select"
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER"
+msgstr "Autoloader"
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER_DESCRIPTION"
+msgstr ""
+"The autoloader will reduce your [img=16x16]res://assets/atlast_textures/"
+"fire_rate_icon.tres[/img] [url=fire_rate]fire rate[/url] by %s seconds."
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET"
+msgstr "Full metal jacket"
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET_DESCRIPTION"
+msgstr ""
+"Upgrade your projectiles to full metal jacket projectiles increasing the "
+"[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
+"[url=damage]damage[/url] by %s points flat."

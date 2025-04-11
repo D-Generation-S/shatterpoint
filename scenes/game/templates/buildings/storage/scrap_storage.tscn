@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6l2b21q7muf0"]
+[gd_scene load_steps=11 format=3 uid="uid://b6l2b21q7muf0"]
 
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="1_3wnx1"]
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_7e4xk"]
@@ -10,6 +10,9 @@
 [ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="6_qyjmw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_updg7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyjmw"]
+radius = 8.0
 
 [node name="ScrapStorage" type="Node2D" groups=["building", "navigation_polygon_source", "storage"]]
 script = ExtResource("1_7e4xk")
@@ -49,10 +52,19 @@ script = ExtResource("5_msbm5")
 script = ExtResource("5_t0q4q")
 root_node_to_get_parent_from = NodePath("../..")
 
-[node name="Collision" type="StaticBody2D" parent="."]
+[node name="NavigationCollision" type="StaticBody2D" parent="."]
+collision_layer = 9
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationCollision"]
 shape = SubResource("CircleShape2D_updg7")
+
+[node name="EnemyTargetCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTargetCollision"]
+shape = SubResource("CircleShape2D_qyjmw")
 
 [connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
 [connection signal="building_data_changed" from="." to="Components/ScrapStorageComponent" method="building_data_updated"]

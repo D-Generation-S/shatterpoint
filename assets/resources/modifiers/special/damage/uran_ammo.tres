@@ -9,5 +9,6 @@ _name = "URAN_CORE"
 _icon = ExtResource("1_iwf28")
 _scrap_cost = 0
 priority = 10000
+one_time_usage = false
 value = 5.0
 metadata/_custom_type_script = "uid://iuf62vyjue5v"
