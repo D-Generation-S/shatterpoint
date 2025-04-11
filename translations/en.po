@@ -88,44 +88,55 @@ msgid "WAVE_PHASE_STARTED"
 msgstr "Wave %s has started"
 
 #: assets/resources/build_menu/groups/defence_infastructure.tres
+#: translations/resources/defence_infrastructure.tres
 msgid "DEFENCE_INFRASTRUCTURE"
 msgstr "Defence Structures"
 
 #: assets/resources/build_menu/groups/defence_infastructure.tres
+#: translations/resources/defence_infrastructure_description.tres
 msgid "DEFENCE_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
 "This category will contain all defence structure like towers available for "
 "building."
 
 #: assets/resources/build_menu/groups/power_infastructure.tres
+#: translations/resources/power_infrastructure.tres
 msgid "POWER_INFRASTRUCTURE"
 msgstr "Power Infastructure"
 
 #: assets/resources/build_menu/groups/power_infastructure.tres
+#: translations/resources/power_infrastructure_description.tres
 msgid "POWER_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
-"Contains building to keep your infastructure running.\n"
+"Contains building to keep your power infastructure running.\n"
 "\n"
-"Those are building like, for example generators"
+"Those are building like, for example generators.\n"
+"This whole section will deal with the  [img=16x16]res://assets/"
+"atlast_textures/power.tres[/img][url=energy]energy[/url] resource."
 
 #: assets/resources/build_menu/groups/scrap_infastructure.tres
+#: translations/resources/storage_infrastructure.tres
 msgid "STORAGE_INFRASTRUCTURE"
 msgstr "Storage infastructure"
 
 #: assets/resources/build_menu/groups/scrap_infastructure.tres
+#: translations/resources/storage_infrastructure_description.tres
 msgid "STORAGE_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
 "This category will contain buildings to increase your global storage "
 "amount.\n"
 "\n"
 "You should always make sure to keep that storage higher than what you "
-"collect to prevent scrap getting lost"
+"collect to prevent [img=16x16]res://assets/atlast_textures/scrap.tres[/img] "
+"[url=scrap]scrap[/url] getting lost"
 
 #: assets/resources/build_menu/groups/tools.tres
+#: translations/resources/tools.tres
 msgid "TOOLS"
 msgstr "Tools"
 
 #: assets/resources/build_menu/groups/tools.tres
+#: translations/resources/tools_description.tres
 msgid "TOOLS_DESCRIPTION"
 msgstr "This will contain tools to repair or remove your buildings"
 
@@ -134,31 +145,26 @@ msgid "STATISTIC"
 msgstr "Statistic"
 
 #: translations/resources/armor.tres
-#: translations/resources/armor_description.tres
 msgid "ARMOR"
 msgstr "Armor"
 
 #: translations/resources/armor_penetration.tres
-#: translations/resources/armor_penetration_description.tres
 msgid "ARMOR_PENETRATION"
 msgstr "Armor Penetration"
 
 #: translations/resources/damage.tres
-#: translations/resources/damage_description.tres
 msgid "DAMAGE"
 msgstr "Damage"
 
 #: translations/resources/fire_rate.tres
-#: translations/resources/fire_rate_description.tres
 msgid "FIRE_RATE"
 msgstr "Fire rate"
 
-#: translations/resources/hp.tres translations/resources/hp_description.tres
+#: translations/resources/hp.tres
 msgid "HP"
 msgstr "Health Points"
 
 #: translations/resources/range.tres
-#: translations/resources/range_description.tres
 msgid "RANGE"
 msgstr "Range"
 
@@ -214,15 +220,76 @@ msgstr ""
 
 #: assets/resources/modifiers/percentage_damage.tres
 msgid "PROCEDUAL_DAMAGE"
-msgstr "Percentage Dame"
+msgstr "Percentage Damage"
 
 #: assets/resources/modifiers/percentage_damage.tres
 msgid "PROCEDUAL_DAMAGE_DESCRIPTION"
 msgstr "This modifier will increase the damage of the entity by %s"
 
+#: translations/resources/armor_description.tres
+msgid "ARMOR_DESCRIPTION"
+msgstr ""
+"Armor does work like [img=16x16]res://assets/atlast_textures/"
+"health_icon.tres[/img] [url=hp]HP[/url].\n"
+"The downside of it is that it can't be repaired, once it's gone you can't "
+"get it back.\n"
+"Therefor 1 Armor point is a strong as 2 [img=16x16]res://assets/"
+"atlast_textures/health_icon.tres[/img] [url=hp]HP[/url].\n"
+"If you get attacked, armor will be attacked first, but if the enemy does "
+"have some [img=16x16]res://assets/atlast_textures/penetration_icon.tres[/"
+"img] [url=armor_penetration]penetration[/url] \n"
+"it will ignore a specific percentage of armor and attack the "
+"[img=16x16]res://assets/atlast_textures/health_icon.tres[/img] [url=hp]HP[/"
+"url] directly."
+
+#: translations/resources/armor_penetration_description.tres
+msgid "ARMOR_PENETRATION_DESCRIPTION"
+msgstr ""
+"The percentage of damage which will ignore the [img=16x16]res://assets/"
+"atlast_textures/armor_icon.tres[/img] [url=armor]armor[/url] and deals "
+"[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
+"[url=damage]damage[/url] directly to the [img=16x16]res://assets/"
+"atlast_textures/health_icon.tres[/img] [url=hp]HP[/url]"
+
+#: translations/resources/damage_description.tres
+msgid "DAMAGE_DESCRIPTION"
+msgstr ""
+"The amount of damage each bullet will deal to the enemy [img=16x16]res://"
+"assets/atlast_textures/armor_icon.tres[/img] [url=armor]armor[/url] and "
+"[img=16x16]res://assets/atlast_textures/health_icon.tres[/img] [url=hp]HP[/"
+"url]"
+
+#: translations/resources/fire_rate_description.tres
+msgid "FIRE_RATE_DESCRIPTION"
+msgstr ""
+"How fast a unit can fire, the number will tell you the cooldown in seconds, "
+"between each shot.\n"
+"Keep in mind that most units will need [img=16x16]res://assets/"
+"atlast_textures/power.tres[/img][url=energy]energy[/url] to fire a shot"
+
+#: translations/resources/hp_description.tres
+msgid "HP_DESCRIPTION"
+msgstr ""
+"Those are the health point of that building or unit, keep it above 0 or the "
+"entity will die.\n"
+"The health points can be protected with [img=16x16]res://assets/"
+"atlast_textures/armor_icon.tres[/img] [url=armor]armor[/url]"
+
+#: translations/resources/range_description.tres
+msgid "RANGE_DESCRIPTION"
+msgstr "How far a unit or building can fire."
+
 #: translations/resources/details.tres
 msgid "DETAILS"
 msgstr "Details"
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "TITLE"
+msgstr ""
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "X"
+msgstr ""
 
 #: scenes/game/templates/detail_window/tower_settings_content.tscn
 msgid "THREAT_MODE"
@@ -332,10 +399,12 @@ msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
 msgstr "Can't abort building mode right now"
 
 #: assets/resources/buildings/spawner/barracks.tres
+#: translations/resources/barracks.tres
 msgid "BARRACKS"
 msgstr "Barracks"
 
 #: assets/resources/buildings/spawner/barracks.tres
+#: translations/resources/barracks_description.tres
 msgid "BARRACKS_DESCRIPTION"
 msgstr "Some barracks, they can be used to spawn soldiers to defend the city"
 
@@ -352,3 +421,150 @@ msgid "SOLDIER_DESCRIPTION"
 msgstr ""
 "There is nothing special about the solder, you can command him around to "
 "defend your position."
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES"
+msgstr "High Explosives"
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES_DESCRIPTION"
+msgstr ""
+"Add High Explosive ammo to your towers, this will increase the "
+"[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
+"[url=damage]damage[/url] by %s percent."
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE"
+msgstr "Uran Core"
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE_DESCRIPTION"
+msgstr ""
+"Improve ammonition with Uran cores, this will increase the tower "
+"[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
+"[url=damage]damage[/url] by %s points flat."
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE"
+msgstr "Telescope"
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE_DESCRIPTION"
+msgstr ""
+"Give your soldiers working on a tower a telescope, this will increase the "
+"[img=16x16]res://assets/atlast_textures/range_icon.tres[/img] "
+"[url=range]range[/url] by %s flat"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SELECT_A_SPECIAL_MODIFIER"
+msgstr "Select One of the special modifiers listed below"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SKIP"
+msgstr "Skip"
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP"
+msgstr "Skip (%s)"
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP_TOOLTIP"
+msgstr ""
+"Skip the selection and get %s scrap instead\n"
+"Keep in mind that you will need space for that on your storage"
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT"
+msgstr "Citizen Support"
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT_DESCRIPTION"
+msgstr ""
+"The inhabitants of the city will repair your buildings [img=16x16]res://"
+"assets/atlast_textures/health_icon.tres[/img] [url=hp]HP[/url] by %s percent"
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER"
+msgstr "Fixed Penetration"
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER_DESCRIPTION"
+msgstr ""
+"Increase the penetration for the projectiles of this tower to %s percent."
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS"
+msgstr "Armor Piercing Rounds"
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS_DESCRIPTION"
+msgstr ""
+"This upgrade will make your rounds armor piercing, this will help to "
+"[img=16x16]res://assets/atlast_textures/penetration_icon.tres[/img] "
+"[url=armor_penetration]penetrate[/url] enemy [img=16x16]res://assets/"
+"atlast_textures/armor_icon.tres[/img] [url=armor]armor[/url] by %s percent."
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT"
+msgstr "Improvised Reinforcement"
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT_DESCRIPTION"
+msgstr ""
+"You will improvise some reinforcement for your buildings, this will give "
+"them %s of [img=16x16]res://assets/atlast_textures/armor_icon.tres[/img] "
+"[url=armor]armor[/url].\n"
+"Keep in mind that armor cannot be restored once destroyed."
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_TOWERS"
+msgstr "Defence Towers"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_GENERATORS"
+msgstr "Power Generators"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_SCRAP_STORAGES"
+msgstr "Scrap Storages"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNIT_SPAWNERS"
+msgstr "Barracks"
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNITS"
+msgstr "Player Units"
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "MODIFIER_NAME"
+msgstr "Modifier Name"
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "APPLIES_TO\n"
+msgstr "Applies To\n"
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "SELECT"
+msgstr "Select"
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER"
+msgstr "Autoloader"
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER_DESCRIPTION"
+msgstr ""
+"The autoloader will reduce your [img=16x16]res://assets/atlast_textures/"
+"fire_rate_icon.tres[/img] [url=fire_rate]fire rate[/url] by %s seconds."
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET"
+msgstr "Full metal jacket"
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET_DESCRIPTION"
+msgstr ""
+"Upgrade your projectiles to full metal jacket projectiles increasing the "
+"[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
+"[url=damage]damage[/url] by %s points flat."

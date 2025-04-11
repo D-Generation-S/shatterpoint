@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://ccpfn0vc4gmun"]
+
+[ext_resource type="Resource" uid="uid://vt5tidr8ui6s" path="res://assets/resources/modifiers/special/penetration/ap_rounds.tres" id="1_l3e0e"]
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_gmv7n"]
+
+[resource]
+script = ExtResource("2_gmv7n")
+probability = 1
+scope = 2
+modifier = ExtResource("1_l3e0e")
+permanent = true
+selectable_after_wave = 0
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

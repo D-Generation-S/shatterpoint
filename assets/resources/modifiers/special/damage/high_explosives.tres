@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=3 format=3 uid="uid://dk5plb5h44hyq"]
+
+[ext_resource type="Texture2D" uid="uid://diinhd1pbo83k" path="res://assets/atlast_textures/he_round_Icon.tres" id="1_thxd2"]
+[ext_resource type="Script" uid="uid://ciqiyta1ahi4g" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="2_36n26"]
+
+[resource]
+script = ExtResource("2_36n26")
+_name = "HIGH_EXPLOSIVES"
+_icon = ExtResource("1_thxd2")
+_scrap_cost = 0
+priority = 10000
+one_time_usage = false
+value = 50.0
+metadata/_custom_type_script = "uid://ciqiyta1ahi4g"

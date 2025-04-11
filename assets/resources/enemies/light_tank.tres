@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bb524i34ak5p0" path="res://src/game/buildings/towers/threat_determination_algorithms/highest_hp.gd" id="2_0s81q"]
 [ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="2_amdfa"]
 [ext_resource type="Resource" uid="uid://bacgsnekh52af" path="res://assets/resources/walk_animations/default_drive.tres" id="3_0rfhb"]
-[ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/EnemyTemplate.tscn" id="3_u4bhp"]
+[ext_resource type="PackedScene" uid="uid://bognmtipmpagl" path="res://scenes/game/templates/enemy_template.tscn" id="3_u4bhp"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="3_xits5"]
 [ext_resource type="PackedScene" uid="uid://clc1q6pkrn00t" path="res://scenes/game/templates/projectiles/Bullet.tscn" id="4_37pi8"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="4_f6088"]
@@ -37,8 +37,8 @@ max_scrap_drop = 5
 movement_speed = 30.0
 animation = ExtResource("3_0rfhb")
 allowed_thread_determination = Array[ExtResource("1_the3p")]([SubResource("Resource_7jnor")])
-attackable_groups = Array[String](["tower", "generator", "player_unit_ground"])
+attackable_groups = Array[String](["tower", "generator", "player_unit_ground", "storage", "unit_spawner"])
 projectile = ExtResource("4_37pi8")
-min_wave_requirement = 5
+min_wave_requirement = 6
 stats = SubResource("Resource_cqvcy")
 spawn_scrap_price = 0

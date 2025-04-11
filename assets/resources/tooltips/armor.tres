@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://clebsaeb72axq"]
+
+[ext_resource type="Resource" uid="uid://fc3jwp22jf7y" path="res://translations/resources/armor_description.tres" id="1_u2s3b"]
+[ext_resource type="Resource" uid="uid://dg4ivlf8y6nff" path="res://translations/resources/armor.tres" id="2_h0464"]
+[ext_resource type="Texture2D" uid="uid://tngll1481eo7" path="res://assets/atlast_textures/armor_icon.tres" id="3_x6gbo"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="4_lfuqv"]
+
+[resource]
+script = ExtResource("4_lfuqv")
+key = "ARMOR"
+icon = ExtResource("3_x6gbo")
+headline = ExtResource("2_h0464")
+content = ExtResource("1_u2s3b")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

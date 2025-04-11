@@ -63,6 +63,29 @@
 # res://scenes/game/templates/detail_window/spawner_popup.tscn
 # res://src/game/entity/components/spawner_information_panel.gd
 # res://assets/resources/player_units/player_default_soldier.tres
+# res://assets/resources/modifiers/special/damage/high_explosives.tres
+# res://assets/resources/modifiers/special/damage/uran_ammo.tres
+# res://assets/resources/modifiers/special/range/telescope.tres
+# res://scenes/game/overlay/popups/special_modifier_scene.tscn
+# res://src/game/overlay/popup_center/popups/special_modifier_scene.gd
+# res://assets/resources/modifiers/special/heal/citizen_support.tres
+# res://assets/resources/modifiers/fixed_penetration.tres
+# res://assets/resources/modifiers/special/penetration/ap_rounds.tres
+# res://assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+# res://src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+# res://scenes/game/overlay/special_modifier.tscn
+# res://translations/resources/barracks.tres
+# res://translations/resources/barracks_description.tres
+# res://translations/resources/defence_infrastructure.tres
+# res://translations/resources/defence_infrastructure_description.tres
+# res://translations/resources/power_infrastructure.tres
+# res://translations/resources/power_infrastructure_description.tres
+# res://translations/resources/storage_infrastructure.tres
+# res://translations/resources/storage_infrastructure_description.tres
+# res://translations/resources/tools.tres
+# res://translations/resources/tools_description.tres
+# res://assets/resources/modifiers/special/fire_rate/autoloader.tres
+# res://assets/resources/modifiers/special/damage/full_metal_jacket.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -138,34 +161,42 @@ msgid "WAVE_PHASE_STARTED"
 msgstr ""
 
 #: assets/resources/build_menu/groups/defence_infastructure.tres
+#: translations/resources/defence_infrastructure.tres
 msgid "DEFENCE_INFRASTRUCTURE"
 msgstr ""
 
 #: assets/resources/build_menu/groups/defence_infastructure.tres
+#: translations/resources/defence_infrastructure_description.tres
 msgid "DEFENCE_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
 
 #: assets/resources/build_menu/groups/power_infastructure.tres
+#: translations/resources/power_infrastructure.tres
 msgid "POWER_INFRASTRUCTURE"
 msgstr ""
 
 #: assets/resources/build_menu/groups/power_infastructure.tres
+#: translations/resources/power_infrastructure_description.tres
 msgid "POWER_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
 
 #: assets/resources/build_menu/groups/scrap_infastructure.tres
+#: translations/resources/storage_infrastructure.tres
 msgid "STORAGE_INFRASTRUCTURE"
 msgstr ""
 
 #: assets/resources/build_menu/groups/scrap_infastructure.tres
+#: translations/resources/storage_infrastructure_description.tres
 msgid "STORAGE_INFRASTRUCTURE_DESCRIPTION"
 msgstr ""
 
 #: assets/resources/build_menu/groups/tools.tres
+#: translations/resources/tools.tres
 msgid "TOOLS"
 msgstr ""
 
 #: assets/resources/build_menu/groups/tools.tres
+#: translations/resources/tools_description.tres
 msgid "TOOLS_DESCRIPTION"
 msgstr ""
 
@@ -174,32 +205,26 @@ msgid "STATISTIC"
 msgstr ""
 
 #: translations/resources/armor.tres
-#: translations/resources/armor_description.tres
 msgid "ARMOR"
 msgstr ""
 
 #: translations/resources/armor_penetration.tres
-#: translations/resources/armor_penetration_description.tres
 msgid "ARMOR_PENETRATION"
 msgstr ""
 
 #: translations/resources/damage.tres
-#: translations/resources/damage_description.tres
 msgid "DAMAGE"
 msgstr ""
 
 #: translations/resources/fire_rate.tres
-#: translations/resources/fire_rate_description.tres
 msgid "FIRE_RATE"
 msgstr ""
 
 #: translations/resources/hp.tres
-#: translations/resources/hp_description.tres
 msgid "HP"
 msgstr ""
 
 #: translations/resources/range.tres
-#: translations/resources/range_description.tres
 msgid "RANGE"
 msgstr ""
 
@@ -259,8 +284,40 @@ msgstr ""
 msgid "PROCEDUAL_DAMAGE_DESCRIPTION"
 msgstr ""
 
+#: translations/resources/armor_description.tres
+msgid "ARMOR_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/armor_penetration_description.tres
+msgid "ARMOR_PENETRATION_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/damage_description.tres
+msgid "DAMAGE_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/fire_rate_description.tres
+msgid "FIRE_RATE_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/hp_description.tres
+msgid "HP_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/range_description.tres
+msgid "RANGE_DESCRIPTION"
+msgstr ""
+
 #: translations/resources/details.tres
 msgid "DETAILS"
+msgstr ""
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "TITLE"
+msgstr ""
+
+#: scenes/game/templates/detail_window/default_detail_window.tscn
+msgid "X"
 msgstr ""
 
 #: scenes/game/templates/detail_window/tower_settings_content.tscn
@@ -359,10 +416,12 @@ msgid "CANT_ABORT_BUILDING_RIGHT_NOW"
 msgstr ""
 
 #: assets/resources/buildings/spawner/barracks.tres
+#: translations/resources/barracks.tres
 msgid "BARRACKS"
 msgstr ""
 
 #: assets/resources/buildings/spawner/barracks.tres
+#: translations/resources/barracks_description.tres
 msgid "BARRACKS_DESCRIPTION"
 msgstr ""
 
@@ -376,4 +435,124 @@ msgstr ""
 
 #: assets/resources/player_units/player_default_soldier.tres
 msgid "SOLDIER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/high_explosives.tres
+msgid "HIGH_EXPLOSIVES_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/uran_ammo.tres
+msgid "URAN_CORE_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE"
+msgstr ""
+
+#: assets/resources/modifiers/special/range/telescope.tres
+msgid "TELESCOPE_DESCRIPTION"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SELECT_A_SPECIAL_MODIFIER"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "SKIP"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "SKIP_WITH_SCRAP_TOOLTIP"
+msgstr ""
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT"
+msgstr ""
+
+#: assets/resources/modifiers/special/heal/citizen_support.tres
+msgid "CITIZEN_SUPPORT_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER"
+msgstr ""
+
+#: assets/resources/modifiers/fixed_penetration.tres
+msgid "FIXED_PENETRATION_MODIFIER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS"
+msgstr ""
+
+#: assets/resources/modifiers/special/penetration/ap_rounds.tres
+msgid "AP_ROUNDS_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT"
+msgstr ""
+
+#: assets/resources/modifiers/special/armor/improvised_reinforcement.tres
+msgid "IMPROVISED_REINFORCEMENT_DESCRIPTION"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_TOWERS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_GENERATORS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_SCRAP_STORAGES"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNIT_SPAWNERS"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+msgid "APPLIES_TO_UNITS"
+msgstr ""
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "MODIFIER_NAME"
+msgstr ""
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "APPLIES_TO\n"
+msgstr ""
+
+#: scenes/game/overlay/special_modifier.tscn
+msgid "SELECT"
+msgstr ""
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER"
+msgstr ""
+
+#: assets/resources/modifiers/special/fire_rate/autoloader.tres
+msgid "AUTOLOADER_DESCRIPTION"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET"
+msgstr ""
+
+#: assets/resources/modifiers/special/damage/full_metal_jacket.tres
+msgid "FULL_METAL_JACKET_DESCRIPTION"
 msgstr ""

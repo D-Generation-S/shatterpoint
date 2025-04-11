@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://k52v1ivbl781"]
+
+[ext_resource type="Theme" uid="uid://combu86t7iwx7" path="res://assets/styles/explanation_theme.tres" id="1_db36y"]
+[ext_resource type="Script" uid="uid://fdgkor3u7xf3" path="res://src/game/overlay/tooltip/explain_tooltip.gd" id="1_ph0x8"]
+[ext_resource type="Script" uid="uid://cytc4jt7lvi5v" path="res://src/ui/explain_rich_text_label.gd" id="3_4gp8h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r1ev8"]
+
+[node name="PopupPanel" type="PanelContainer" node_paths=PackedStringArray("tooltip_header", "tooltip_icon", "tooltip_content")]
+top_level = true
+custom_minimum_size = Vector2(400, 400)
+offset_right = 145.0
+offset_bottom = 259.0
+theme = ExtResource("1_db36y")
+script = ExtResource("1_ph0x8")
+tooltip_header = NodePath("ExplainTooltipTemplate/VBoxContainer/Header/Label")
+tooltip_icon = NodePath("ExplainTooltipTemplate/VBoxContainer/Header/TextureRect")
+tooltip_content = NodePath("ExplainTooltipTemplate/VBoxContainer/Body")
+
+[node name="ExplainTooltipTemplate" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ExplainTooltipTemplate"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="ExplainTooltipTemplate/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ExplainTooltipTemplate/VBoxContainer/Header"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_r1ev8")
+
+[node name="Label" type="Label" parent="ExplainTooltipTemplate/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "HEADLINE"
+
+[node name="CloseButton" type="Button" parent="ExplainTooltipTemplate/VBoxContainer/Header"]
+visible = false
+layout_mode = 2
+text = "X"
+
+[node name="HSeparator" type="HSeparator" parent="ExplainTooltipTemplate/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="Body" type="RichTextLabel" parent="ExplainTooltipTemplate/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+bbcode_enabled = true
+text = "BODY_TEXT"
+fit_content = true
+script = ExtResource("3_4gp8h")
+
+[connection signal="is_locked" from="." to="ExplainTooltipTemplate/VBoxContainer/Header/CloseButton" method="show"]
+[connection signal="pressed" from="ExplainTooltipTemplate/VBoxContainer/Header/CloseButton" to="." method="close_now"]
+[connection signal="meta_clicked" from="ExplainTooltipTemplate/VBoxContainer/Body" to="." method="explanation_requested"]

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://3k4feqtvj2nr"]
+
+[ext_resource type="Resource" uid="uid://clpky3dckva13" path="res://translations/resources/repair_description.tres" id="1_6esh3"]
+[ext_resource type="Resource" uid="uid://bff0u87n5wxfm" path="res://translations/resources/repair.tres" id="2_c8jjy"]
+[ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="3_68ge1"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="4_f8vx7"]
+
+[resource]
+script = ExtResource("4_f8vx7")
+key = "REPAIR"
+icon = ExtResource("3_68ge1")
+headline = ExtResource("2_c8jjy")
+content = ExtResource("1_6esh3")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

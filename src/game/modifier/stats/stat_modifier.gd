@@ -4,6 +4,7 @@ class_name StatModifier extends Resource
 @export var _icon: Texture
 @export var _scrap_cost: int = 1
 @export var priority: int = 10000
+@export var one_time_usage: bool = false
 
 @export var value: float
 

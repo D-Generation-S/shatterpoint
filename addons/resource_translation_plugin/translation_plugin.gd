@@ -22,7 +22,6 @@ func load_sub_parser(directory: String):
 			continue
 		var path = directory + file
 		var parser = load(path).new() as TranslationParser
-		print(parser)
 		if parser != null:
 			print("Add \"%s\" as sub parser" % parser.get_name())
 			_sub_parser.append(parser)

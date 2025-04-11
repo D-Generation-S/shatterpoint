@@ -20,7 +20,7 @@ func _generate_command_list(commands: Array) -> String:
     var cell_data = "";
     for command in commands:
         if command is Command:
-            cell_data += "[cell][left]%s[/left][/cell][cell][right]   %s[/right][/cell]" % [command.get_interactive_command(), command.get_command_short_description()]
+            cell_data += "[cell][left]%s[/left][/cell][cell][right]%s[/right][/cell]" % [command.get_interactive_command(), command.get_command_short_description()]
     
     return "\n[p][table=2][cell][i]Command[/i][/cell][cell][right][i]Description[/i][/right][/cell]%s[/table][/p]\n" % cell_data
 

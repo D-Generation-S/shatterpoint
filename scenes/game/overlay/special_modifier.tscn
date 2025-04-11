@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://v81exap0w6ht"]
+
+[ext_resource type="Script" path="res://src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd" id="1_iaf0s"]
+[ext_resource type="Script" uid="uid://cytc4jt7lvi5v" path="res://src/ui/explain_rich_text_label.gd" id="2_uvdfl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_seofy"]
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 700)
+offset_right = 250.0
+offset_bottom = 500.0
+script = ExtResource("1_iaf0s")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MODIFIER_NAME"
+horizontal_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("PlaceholderTexture2D_seofy")
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("2_uvdfl")
+metadata/_custom_type_script = "uid://cytc4jt7lvi5v"
+
+[node name="AppliesToLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "APPLIES_TO
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AppliesTo" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "SELECT"
+
+[connection signal="applies_to_changed" from="." to="MarginContainer/VBoxContainer/AppliesTo" method="append_text"]
+[connection signal="description_changed" from="." to="MarginContainer/VBoxContainer/Description" method="append_text"]
+[connection signal="icon_changed" from="." to="MarginContainer/VBoxContainer/Icon" method="set_texture"]
+[connection signal="name_changed" from="." to="MarginContainer/VBoxContainer/Name" method="set_text"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="button_was_pressed"]

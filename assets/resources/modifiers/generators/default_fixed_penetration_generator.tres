@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="FixedGenerator" load_steps=4 format=3 uid="uid://f0egmj7p3ol1"]
+
+[ext_resource type="Resource" uid="uid://cu0jgml2gnaha" path="res://assets/resources/modifiers/fixed_penetration.tres" id="1_5ee5o"]
+[ext_resource type="Script" uid="uid://b1qs6t3rxxlko" path="res://src/game/modifier/generator/fixed_generator.gd" id="1_feaxk"]
+
+[sub_resource type="Curve" id="Curve_feaxk"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 5.6, 0, 0, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_feaxk")
+min_value = 1.0
+max_base_value = 4.0
+sample_curve = SubResource("Curve_feaxk")
+valid_after_wave = 0
+valid_until_wave = 100
+modifier_template = ExtResource("1_5ee5o")
+metadata/_custom_type_script = "uid://b1qs6t3rxxlko"

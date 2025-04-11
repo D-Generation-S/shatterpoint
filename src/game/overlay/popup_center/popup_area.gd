@@ -9,10 +9,14 @@ class_name PopupArea extends Control
 			 "Center Right:5",
 			 "Bottom Left:6",
 			 "Bottom Center:7",
-			 "Bottom Right:8") var _popup_position: int
+			 "Bottom Right:8",
+			 "Full Screen: 9") var _popup_position: int
 
 var popup_queue: Array[GamePopup]
 var currently_active_popup: GamePopup = null
+
+func _init():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func show_popup(popup_position: int, popup: GamePopup, replace_popup: bool = false) -> bool:
 	if popup_position != _popup_position:

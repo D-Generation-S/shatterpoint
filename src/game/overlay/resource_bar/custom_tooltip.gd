@@ -1,8 +1,8 @@
 class_name CustomTooltip extends Control
 
-@onready var tooltip_header: Label = $"%TooltipHeader"
-@onready var tooltip_icon: TextureRect = $"%TooltipIcon"
-@onready var tooltip_content: RichTextLabel = $"%TooltipContent"
+@export var tooltip_header: Label
+@export var tooltip_icon: TextureRect
+@export var tooltip_content: RichTextLabel
 
 var text: String
 var description: String

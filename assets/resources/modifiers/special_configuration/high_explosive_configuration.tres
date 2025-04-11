@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://c4toesd8kl8jq"]
+
+[ext_resource type="Resource" uid="uid://dk5plb5h44hyq" path="res://assets/resources/modifiers/special/damage/high_explosives.tres" id="1_jn1kh"]
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_yewv7"]
+
+[resource]
+script = ExtResource("2_yewv7")
+probability = 10
+scope = 2
+modifier = ExtResource("1_jn1kh")
+permanent = true
+selectable_after_wave = 0
+modifier_requirements = Array[String]([])
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

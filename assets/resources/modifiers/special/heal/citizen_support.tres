@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealPercentageModifier" load_steps=3 format=3 uid="uid://c42yhpaeh2tv2"]
+
+[ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="1_sheqp"]
+[ext_resource type="Script" uid="uid://cfi5csy1oasao" path="res://src/game/modifier/stats/heal_modifier.gd" id="2_flrlw"]
+
+[resource]
+script = ExtResource("2_flrlw")
+_name = "CITIZEN_SUPPORT"
+_icon = ExtResource("1_sheqp")
+_scrap_cost = 0
+priority = 10000
+one_time_usage = true
+value = 25.0

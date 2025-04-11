@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://dct2hwa0yh4ft"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_heqr4"]
+
+[resource]
+script = ExtResource("1_heqr4")
+key = "BARRACKS_DESCRIPTION"

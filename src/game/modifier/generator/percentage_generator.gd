@@ -12,7 +12,8 @@ func generate_stats(wave_number: int) -> StatModifier:
 	var new_max = max_base_percentage * multiplier
 
 	var modifier =  _get_template()
-	modifier.value = randf_range(min_percentage, new_max)
+	var target_value = randf_range(min_percentage, new_max)
+	modifier.value = snappedf(target_value, 0.5)
 
 	return modifier
 	

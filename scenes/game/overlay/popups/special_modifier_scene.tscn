@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://d11k10i535ilq"]
+
+[ext_resource type="Script" uid="uid://vd5molnqkopp" path="res://src/game/overlay/popup_center/popups/special_modifier_scene.gd" id="1_seofy"]
+[ext_resource type="PackedScene" uid="uid://v81exap0w6ht" path="res://scenes/game/overlay/special_modifier.tscn" id="2_akge4"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("target_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_seofy")
+card_template = ExtResource("2_akge4")
+target_node = NodePath("MarginContainer/MarginContainer/VBoxContainer")
+pause_game = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.815686)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "SELECT_A_SPECIAL_MODIFIER"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="SkipSelection" type="Button" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+button_mask = 5
+text = "SKIP"
+
+[connection signal="set_button_text" from="." to="MarginContainer/SkipSelection" method="set_text"]
+[connection signal="set_tooltip_text" from="." to="MarginContainer/SkipSelection" method="set_tooltip_text"]
+[connection signal="pressed" from="MarginContainer/SkipSelection" to="." method="scrap_selected"]

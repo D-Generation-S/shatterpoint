@@ -33,4 +33,5 @@ mouse_filter = 1
 stretch_mode = 5
 script = ExtResource("3_dknb1")
 
+[connection signal="icon_changed" from="." to="VBoxContainer2/ActivationButton" method="set_texture_normal"]
 [connection signal="pressed" from="VBoxContainer2/ActivationButton" to="." method="pressed"]

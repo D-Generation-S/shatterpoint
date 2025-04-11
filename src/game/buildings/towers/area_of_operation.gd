@@ -14,7 +14,6 @@ func _ready():
 	body_entered.connect(_body_entered)
 	area_entered.connect(_shape_entered)
 	collision_shape.shape = CircleShape2D.new()
-	
 
 func _body_entered(_body: Node2D):
 	if !body_active:

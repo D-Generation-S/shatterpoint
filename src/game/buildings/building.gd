@@ -33,6 +33,10 @@ func _ready():
 	resource_overlay = GlobalDataAccess.get_resource_overlay()
 	var detail_system = GlobalDataAccess.get_entity_detail_system()
 	show_detail_window.connect(detail_system.request_window)
+
+	GlobalDataAccess.get_modifier_system().modifier_selected.connect(_add_global_modifier)
+	for modifier in GlobalDataAccess.get_modifier_system().get_active_modifiers():
+		_add_global_modifier(modifier)
 	
 
 	texture_changed.emit(building_data.texture)
@@ -47,10 +51,28 @@ func request_add_projectile(node: Node2D):
 func request_detail_window(request_position: Vector2, size: Vector2, title: String, content: Array[DefaultDetailContent]):
 	show_detail_window.emit(request_position, size, title, content, true)
 
+func _add_global_modifier(modifier: SpecialModifierConfiguration):
+	if modifier.scope & (1 << ModifierSystem.ModifierScope.TOWER) and is_in_group("tower"):
+		add_modifier(modifier.modifier)
+	if modifier.scope & (1 << ModifierSystem.ModifierScope.GENERATOR) and is_in_group("generator"):
+		add_modifier(modifier.modifier)
+	if modifier.scope & (1 << ModifierSystem.ModifierScope.SCRAP_STORAGE) and is_in_group("storage"):
+		add_modifier(modifier.modifier)
+	if modifier.scope & (1 << ModifierSystem.ModifierScope.UNIT_SPAWNER) and is_in_group("unit_spawner"):
+		add_modifier(modifier.modifier)
+
 func add_modifier(modifier: StatModifier):
+	var previous_armor = stats.armor
 	super(modifier)
 	building_data.stats = stats
 	building_data_changed.emit(building_data)
+
+	health_changed.emit(stats.hp)
+	max_health_changed.emit(stats.max_hp)
+
+	if previous_armor != stats.armor:
+		max_armor_changed.emit(stats.armor)
+	armor_changed.emit(stats.armor)
 
 func _is_dying():
 	super()

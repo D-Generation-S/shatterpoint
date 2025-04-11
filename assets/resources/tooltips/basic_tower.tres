@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=4 format=3 uid="uid://ceah6g8q3kmdg"]
+
+[ext_resource type="Resource" uid="uid://kf20y2rclni8" path="res://translations/resources/basic_tower_description.tres" id="1_gdnpm"]
+[ext_resource type="Resource" uid="uid://cpkmegffpjrlv" path="res://translations/resources/basic_tower.tres" id="2_jf1dl"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="3_88b45"]
+
+[resource]
+script = ExtResource("3_88b45")
+key = "BASIC_TOWER"
+headline = ExtResource("2_jf1dl")
+content = ExtResource("1_gdnpm")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"
