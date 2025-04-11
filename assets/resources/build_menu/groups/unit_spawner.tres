@@ -14,7 +14,7 @@ metadata/_custom_type_script = "uid://6ibcbvfvtkdl"
 
 [resource]
 script = ExtResource("2_0iclo")
-display_name = ""
+display_name = "BARRACKS"
 icon = ExtResource("2_mn0a2")
 entries = Array[ExtResource("1_mq7ab")]([SubResource("Resource_hlgjd")])
 metadata/_custom_type_script = "uid://c58rb3u2ba7ay"

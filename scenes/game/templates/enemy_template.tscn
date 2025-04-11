@@ -126,7 +126,6 @@ script = ExtResource("15_qdb8f")
 [connection signal="request_fire" from="Components/EnemyComponent" to="Components/ShootComponent" method="fire"]
 [connection signal="thread_determination_changed" from="Components/EnemyComponent" to="Components/TargetingComponent" method="set_current_threat_determination"]
 [connection signal="active_state_changed" from="Components/TargetingComponent" to="Components/EnemyComponent" method="enemy_active_changed"]
-[connection signal="change_body_or_shape_entered" from="Components/TargetingComponent" to="Components/TargetingComponent/AreaOfOperation" method="change_body_or_shape_entered"]
 [connection signal="new_target_found" from="Components/TargetingComponent" to="Components/EnemyComponent" method="set_current_target"]
 [connection signal="add_projectile" from="Components/ShootComponent" to="." method="add_projectile_requested"]
 [connection signal="change_velocity" from="Components/MovementComponent" to="." method="set_velocity"]

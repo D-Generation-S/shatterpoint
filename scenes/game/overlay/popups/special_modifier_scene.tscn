@@ -1,44 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d11k10i535ilq"]
+[gd_scene load_steps=3 format=3 uid="uid://d11k10i535ilq"]
 
 [ext_resource type="Script" uid="uid://vd5molnqkopp" path="res://src/game/overlay/popup_center/popups/special_modifier_scene.gd" id="1_seofy"]
 [ext_resource type="PackedScene" uid="uid://v81exap0w6ht" path="res://scenes/game/overlay/special_modifier.tscn" id="2_akge4"]
-[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_b5yjc"]
-[ext_resource type="Resource" uid="uid://dk5plb5h44hyq" path="res://assets/resources/modifiers/special/damage/high_explosives.tres" id="3_7ywoy"]
-[ext_resource type="Resource" uid="uid://byk2is1sfi5gr" path="res://assets/resources/modifiers/special/range/telescope.tres" id="4_4jqbo"]
-[ext_resource type="Resource" uid="uid://spwhcjfw4jun" path="res://assets/resources/modifiers/special/damage/uran_ammo.tres" id="5_y0pq7"]
-[ext_resource type="Resource" uid="uid://c42yhpaeh2tv2" path="res://assets/resources/modifiers/special/heal/citizen_support.tres" id="6_y0pq7"]
-
-[sub_resource type="Resource" id="Resource_mpuwb"]
-script = ExtResource("2_b5yjc")
-probability = 1
-scope = 2
-modifier = ExtResource("3_7ywoy")
-permanent = true
-metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
-
-[sub_resource type="Resource" id="Resource_7atgx"]
-script = ExtResource("2_b5yjc")
-probability = 1
-scope = 2
-modifier = ExtResource("4_4jqbo")
-permanent = true
-metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
-
-[sub_resource type="Resource" id="Resource_gikfn"]
-script = ExtResource("2_b5yjc")
-probability = 1
-scope = 2
-modifier = ExtResource("5_y0pq7")
-permanent = true
-metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
-
-[sub_resource type="Resource" id="Resource_mat3j"]
-script = ExtResource("2_b5yjc")
-probability = 1
-scope = 14
-modifier = ExtResource("6_y0pq7")
-permanent = false
-metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
 
 [node name="Control" type="Control" node_paths=PackedStringArray("target_node")]
 layout_mode = 3
@@ -48,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_seofy")
-special_modifiers = Array[ExtResource("2_b5yjc")]([SubResource("Resource_mpuwb"), SubResource("Resource_7atgx"), SubResource("Resource_gikfn"), SubResource("Resource_mat3j")])
 card_template = ExtResource("2_akge4")
 target_node = NodePath("MarginContainer/MarginContainer/VBoxContainer")
 pause_game = true

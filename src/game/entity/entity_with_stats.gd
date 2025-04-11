@@ -24,9 +24,11 @@ var is_alive: bool = true
 func _ready():
 	_copy_stats()
 	stats.max_hp = stats.hp
+	
 	max_health_changed.emit(stats.max_hp)
-	max_armor_changed.emit(stats.armor)
 	health_changed.emit(stats.hp)
+
+	max_armor_changed.emit(stats.armor)
 	armor_changed.emit(stats.armor)
 	request_message.connect(GlobalDataAccess.get_message_area().add_new_message)
 	
@@ -34,9 +36,11 @@ func _copy_stats():
 	var copy_stats: bool = stats != null
 	var current_hp = 0
 	var current_max_hp = 1
+	var current_armor: float = 0.0
 	if copy_stats:
 		current_hp = stats.hp
 		current_max_hp = stats.max_hp
+		current_armor = stats.armor
 
 	_base_stats_copy = _base_stats.duplicate()
 	stats = _base_stats_copy.duplicate()
@@ -44,10 +48,12 @@ func _copy_stats():
 	if copy_stats:
 		stats.hp = current_hp
 		stats.max_hp = current_max_hp
+		stats.armor = current_armor
 
 func add_modifier(modifier: StatModifier):
 	stat_modifiers.append(modifier)
 	_calculate_modifier_stats()
+	stat_modifiers = stat_modifiers.filter(func(current_modifier): return not current_modifier.one_time_usage)
 
 func remove_modifier(_modifier: StatModifier):
 	printerr("Not implemented")

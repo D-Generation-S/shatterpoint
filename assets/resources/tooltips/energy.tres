@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://ccbyq0vd10e6d"]
+
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="1_kwpfs"]
+[ext_resource type="Resource" uid="uid://dlnvl3ra8qcgs" path="res://translations/resources/energy_description.tres" id="1_yiyv0"]
+[ext_resource type="Resource" uid="uid://dcoi5mbdw45td" path="res://translations/resources/energy.tres" id="2_bnspe"]
+[ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="3_bnspe"]
+
+[resource]
+script = ExtResource("1_kwpfs")
+key = "ENERGY"
+icon = ExtResource("3_bnspe")
+headline = ExtResource("2_bnspe")
+content = ExtResource("1_yiyv0")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

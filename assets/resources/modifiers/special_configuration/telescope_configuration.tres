@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://bcplednu03qs"]
+
+[ext_resource type="Resource" uid="uid://byk2is1sfi5gr" path="res://assets/resources/modifiers/special/range/telescope.tres" id="1_lvxhy"]
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_0wrdo"]
+
+[resource]
+script = ExtResource("2_0wrdo")
+probability = 1
+scope = 2
+modifier = ExtResource("1_lvxhy")
+permanent = true
+selectable_after_wave = 0
+modifier_requirements = Array[String]([])
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

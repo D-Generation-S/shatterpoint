@@ -51,6 +51,7 @@ func _damage_all_buildings(percentage: String) -> String:
 			var real_percentage = float(percentage)
 			real_percentage = clampf(real_percentage, 0.0, 1.0)
 			var damage = building.stats.max_hp * real_percentage
+			damage += building.stats.armor * 2 * real_percentage
 			building.deal_damage(damage, 0)
 			return_data += "%s: %s\n" % [building.name, damage]
 			count += 1

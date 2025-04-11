@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FixedDamageModifier" load_steps=3 format=3 uid="uid://spwhcjfw4jun"]
 
 [ext_resource type="Script" uid="uid://iuf62vyjue5v" path="res://src/game/modifier/stats/fixed_damage_modifier.gd" id="1_04ljb"]
-[ext_resource type="Texture2D" uid="uid://70qbmyo1uyox" path="res://assets/atlast_textures/damage_up_icon.tres" id="1_iwf28"]
+[ext_resource type="Texture2D" uid="uid://bbhcb5ee7ofl8" path="res://assets/atlast_textures/Radioactive_icon.tres" id="1_iwf28"]
 
 [resource]
 script = ExtResource("1_04ljb")
@@ -9,5 +9,6 @@ _name = "URAN_CORE"
 _icon = ExtResource("1_iwf28")
 _scrap_cost = 0
 priority = 10000
+one_time_usage = false
 value = 5.0
 metadata/_custom_type_script = "uid://iuf62vyjue5v"

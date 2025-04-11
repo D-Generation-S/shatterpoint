@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://ctjx5v36p48q6"]
+
+[ext_resource type="Resource" uid="uid://b22rn7dtmou1y" path="res://translations/resources/fire_rate_description.tres" id="1_yewhk"]
+[ext_resource type="Resource" uid="uid://k2ejvbucwjs6" path="res://translations/resources/fire_rate.tres" id="2_4msif"]
+[ext_resource type="Texture2D" uid="uid://bdgluljy3r0y2" path="res://assets/atlast_textures/fire_rate_icon.tres" id="3_yewhk"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="4_2onwp"]
+
+[resource]
+script = ExtResource("4_2onwp")
+key = "FIRE_RATE"
+icon = ExtResource("3_yewhk")
+headline = ExtResource("2_4msif")
+content = ExtResource("1_yewhk")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

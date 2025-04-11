@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_uoc5y")
-key = "FIRE_RATE"
+key = "FIRE_RATE_DESCRIPTION"

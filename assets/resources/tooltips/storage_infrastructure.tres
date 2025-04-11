@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=4 format=3 uid="uid://cu1k64bb48bki"]
+
+[ext_resource type="Resource" uid="uid://birf74sat6vva" path="res://translations/resources/storage_infrastructure_description.tres" id="1_lccjp"]
+[ext_resource type="Resource" uid="uid://brx1hqu4qvq64" path="res://translations/resources/storage_infrastructure.tres" id="2_6pqmv"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="3_x8ovi"]
+
+[resource]
+script = ExtResource("3_x8ovi")
+key = "STORAGE_INFRASTRUCTURE"
+headline = ExtResource("2_6pqmv")
+content = ExtResource("1_lccjp")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

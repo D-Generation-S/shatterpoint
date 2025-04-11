@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://drhbhpbmlvv4l"]
+
+[ext_resource type="Resource" uid="uid://cpfskmpfqhbdk" path="res://translations/resources/scrap_description.tres" id="1_bq7s2"]
+[ext_resource type="Resource" uid="uid://d1n1bkspi01d3" path="res://translations/resources/scrap.tres" id="2_h82vq"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="3_3tmmr"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_h82vq"]
+
+[resource]
+script = ExtResource("3_3tmmr")
+key = "SCRAP"
+icon = ExtResource("3_h82vq")
+headline = ExtResource("2_h82vq")
+content = ExtResource("1_bq7s2")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

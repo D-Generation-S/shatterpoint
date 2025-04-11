@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2ccdfwya86u4"]
+[gd_scene load_steps=23 format=3 uid="uid://d2ccdfwya86u4"]
 
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
 [ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="4_fbnch"]
 [ext_resource type="PackedScene" uid="uid://k5yf0vythp0r" path="res://scenes/game/components/entity/single_selection_component.tscn" id="5_fim6w"]
+[ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="9_vnabk"]
 [ext_resource type="Shader" uid="uid://b677y63fsco3n" path="res://assets/shaders/color_replace.gdshader" id="11_put42"]
 [ext_resource type="Script" uid="uid://bwv4gjn6yb33y" path="res://src/game/entity/components/tower_information_request_component.gd" id="11_rsxk6"]
 [ext_resource type="Script" uid="uid://jhvpiusmqkxw" path="res://src/game/shaders/color_replace_shader.gd" id="12_8k11b"]
@@ -29,6 +30,9 @@ shader_parameter/threshold = 0.001
 [sub_resource type="CircleShape2D" id="CircleShape2D_p24bp"]
 radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vnabk"]
+radius = 8.0
+
 [node name="TowerTemplate" type="Node2D" groups=["building", "tower"]]
 script = ExtResource("1_maaal")
 building_data = ExtResource("2_iggqc")
@@ -36,6 +40,7 @@ destroyed_style = ExtResource("3_1v26b")
 custom_destroyed_message = ExtResource("4_fbnch")
 
 [node name="Visuals" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 material = SubResource("ShaderMaterial_vyrh3")
 script = ExtResource("12_8k11b")
 
@@ -54,13 +59,28 @@ theme = ExtResource("13_o6x4w")
 show_percentage = false
 script = ExtResource("14_v4ldh")
 
+[node name="ArmorBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("9_vnabk")
+show_percentage = false
+script = ExtResource("14_v4ldh")
+always_show = true
+auto_hide_if_full = false
+flash_if_low = false
+
 [node name="Components" type="Node2D" parent="."]
 
 [node name="TowerComponent" type="Node2D" parent="Components"]
 script = ExtResource("3_ml2b7")
-
-[node name="AttackTimer" type="Timer" parent="Components/TowerComponent"]
-unique_name_in_owner = true
 
 [node name="TargetingComponent" parent="Components" node_paths=PackedStringArray("main_entity") instance=ExtResource("3_mywu7")]
 main_entity = NodePath("../..")
@@ -81,21 +101,32 @@ statistic_translation = ExtResource("15_xryhp")
 script = ExtResource("17_0hwiu")
 root_node_to_get_parent_from = NodePath("../..")
 
-[node name="Collision" type="StaticBody2D" parent="." groups=["navigation_polygon_source"]]
+[node name="NavigationCollision" type="StaticBody2D" parent="." groups=["navigation_polygon_source"]]
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationCollision"]
 shape = SubResource("CircleShape2D_p24bp")
 
+[node name="EnemyTargetCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTargetCollision"]
+shape = SubResource("CircleShape2D_vnabk")
+
+[connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
 [connection signal="building_data_changed" from="." to="Components/TowerComponent" method="building_data_updated"]
 [connection signal="building_data_changed" from="." to="Components/TowerInformationRequestComponent" method="data_was_changed"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="in_debug_mode" from="." to="Components/TowerComponent" method="set_is_debug"]
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
 [connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
 [connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
+[connection signal="bar_is_hidden" from="ArmorBar" to="HealthBar" method="reset_show_options"]
+[connection signal="bar_is_shown" from="ArmorBar" to="HealthBar" method="force_show"]
 [connection signal="attack_groups_changed" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_attack_groups"]
 [connection signal="change_attack_radius" from="Components/TowerComponent" to="Components/TargetingComponent" method="set_radius"]
 [connection signal="projectile_changed" from="Components/TowerComponent" to="Components/ShootComponent" method="set_projectile"]

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_e7cvf")
-key = "RANGE"
+key = "RANGE_DESCRIPTION"

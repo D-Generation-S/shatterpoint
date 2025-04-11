@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://clrq4mchlp6r"]
+
+[ext_resource type="Resource" uid="uid://c42yhpaeh2tv2" path="res://assets/resources/modifiers/special/heal/citizen_support.tres" id="1_x7k6q"]
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="2_juuwf"]
+
+[resource]
+script = ExtResource("2_juuwf")
+probability = 10
+scope = 30
+modifier = ExtResource("1_x7k6q")
+permanent = false
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

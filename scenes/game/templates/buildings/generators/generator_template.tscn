@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mwkus00fsoud"]
+[gd_scene load_steps=11 format=3 uid="uid://mwkus00fsoud"]
 
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_t6acd"]
 [ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_3w0gm"]
@@ -6,9 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="3_e2bha"]
 [ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="3_qpi2g"]
 [ext_resource type="Script" uid="uid://dtu2ytgj813j" path="res://src/game/entity/components/generator_component.gd" id="4_d4hvb"]
+[ext_resource type="Theme" uid="uid://cavdiwmkdcr4c" path="res://assets/styles/armor_bar.tres" id="6_lr4hy"]
 [ext_resource type="Script" uid="uid://co06gulxjdpyu" path="res://src/game/entity/components/death_animation_component.gd" id="6_xwd6p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_if2x2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lr4hy"]
+radius = 8.0
 
 [node name="GeneratorTemplate" type="Node2D" groups=["building", "generator", "navigation_polygon_source"]]
 script = ExtResource("1_t6acd")
@@ -32,6 +36,22 @@ theme = ExtResource("2_50n60")
 show_percentage = false
 script = ExtResource("3_qpi2g")
 
+[node name="ArmorBar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.5
+offset_top = 11.795
+offset_right = 12.5
+offset_bottom = 15.795
+grow_horizontal = 2
+theme = ExtResource("6_lr4hy")
+show_percentage = false
+script = ExtResource("3_qpi2g")
+always_show = true
+auto_hide_if_full = false
+flash_if_low = false
+
 [node name="Components" type="Node2D" parent="."]
 
 [node name="GeneratorComponent" type="Node2D" parent="Components"]
@@ -41,17 +61,28 @@ script = ExtResource("4_d4hvb")
 script = ExtResource("6_xwd6p")
 root_node_to_get_parent_from = NodePath("../..")
 
-[node name="Collision" type="StaticBody2D" parent="."]
+[node name="NavigationCollision" type="StaticBody2D" parent="."]
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationCollision"]
 shape = SubResource("CircleShape2D_if2x2")
 
+[node name="EnemyTargetCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTargetCollision"]
+shape = SubResource("CircleShape2D_lr4hy")
+
+[connection signal="armor_changed" from="." to="ArmorBar" method="update_value"]
 [connection signal="building_data_changed" from="." to="Components/GeneratorComponent" method="building_data_updated"]
 [connection signal="health_changed" from="." to="HealthBar" method="update_value"]
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
+[connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
 [connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
 [connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
+[connection signal="bar_is_hidden" from="ArmorBar" to="HealthBar" method="reset_show_options"]
+[connection signal="bar_is_shown" from="ArmorBar" to="HealthBar" method="force_show"]
 [connection signal="update_death_animation" from="Components/GeneratorComponent" to="Components/DeathAnimationComponent" method="data_updated"]

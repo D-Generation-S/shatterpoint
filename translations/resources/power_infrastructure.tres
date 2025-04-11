@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://balaurfj1pqcb"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_6xifp"]
+
+[resource]
+script = ExtResource("1_6xifp")
+key = "POWER_INFRASTRUCTURE"

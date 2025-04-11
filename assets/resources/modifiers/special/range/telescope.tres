@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FixedRangeModifier" load_steps=3 format=3 uid="uid://byk2is1sfi5gr"]
 
 [ext_resource type="Script" uid="uid://cyxnsglgvjalc" path="res://src/game/modifier/stats/fixed_range_modifier.gd" id="1_n3ywp"]
-[ext_resource type="Texture2D" uid="uid://cw135dw5l2swk" path="res://assets/atlast_textures/range_icon.tres" id="1_sqmd6"]
+[ext_resource type="Texture2D" uid="uid://bd1r220qb2e3u" path="res://assets/atlast_textures/telescope.tres" id="1_sqmd6"]
 
 [resource]
 script = ExtResource("1_n3ywp")
@@ -9,5 +9,6 @@ _name = "TELESCOPE"
 _icon = ExtResource("1_sqmd6")
 _scrap_cost = 0
 priority = 10000
+one_time_usage = false
 value = 50.0
 metadata/_custom_type_script = "uid://cyxnsglgvjalc"

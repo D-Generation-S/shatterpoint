@@ -249,6 +249,7 @@ script = ExtResource("1_qbdsg")
 
 [node name="LoadingOverlay" type="CanvasLayer" parent="Overlay"]
 layer = 20
+visible = false
 script = ExtResource("2_6q4se")
 
 [node name="ColorRect" type="ColorRect" parent="Overlay/LoadingOverlay"]

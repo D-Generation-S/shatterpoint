@@ -1,6 +1,7 @@
 class_name BuildMenuGroupEntry extends Control
 
 signal building_selected(building_tool: BuildModeTool)
+signal icon_changed(texture: Texture)
 
 @export var entry_target_node: Control
 @export var build_menu_entry_template: PackedScene
@@ -15,9 +16,8 @@ func _ready():
 	if _group_data.entries.size() == 0:
 		queue_free()
 	build_menu_inactive()
-	_button.texture_normal = _group_data.icon
-	_button.tooltip_text = _group_data.get_display_name()
-	_button.description = _group_data.get_display_description()
+	icon_changed.emit(_group_data.icon)
+	_button.tooltip_key = _group_data.get_display_name()
 	for entry in _group_data.entries:
 		_add_entry(entry)
 
