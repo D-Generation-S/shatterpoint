@@ -24,10 +24,10 @@ void fragment() {
 	float mix_value = step(percent_destroyed, region_uv.y);
 	float upper_alpha = step(alpha_threshold, noise_texture.r) * ( 1.0 - mix_value) * COLOR.a;
 	float target_alpha = COLOR.a * mix_value + upper_alpha;
-	
+
 	float gradient = (region_uv.y + 1.0 - percent_destroyed * solid_modifier) * step((1.0 - COLOR.a), region_uv.y);
-	
+
 	target_alpha = clamp(target_alpha, 0.0, 1.0);
 	COLOR.a = target_alpha * gradient;
-} 
+}
 

@@ -45,8 +45,11 @@ func _show_modifier_popup():
 
 func _load_possible_modifiers():
 	_all_special_modifiers.clear()
-	for file in DirAccess.get_files_at(_modifier_path):
-		var full_file_name = "%s%s" % [_modifier_path, file]
+	for file_name in DirAccess.get_files_at(_modifier_path):
+		# https://forum.godotengine.org/t/issue-with-reading-tres-files-after-exporting-project/75731/4
+		if file_name.ends_with(".remap"):
+			file_name = file_name.trim_suffix(".remap")
+		var full_file_name = "%s%s" % [_modifier_path, file_name]
 		var modifier = load(full_file_name) as SpecialModifierConfiguration
 		if modifier != null:
 			_all_special_modifiers.append(modifier)
