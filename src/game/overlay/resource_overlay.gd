@@ -165,9 +165,11 @@ func building_was_added(_building: Building):
 func building_was_destroyed(_building: Building):
 	recalculate_resource_limit()
 
-func get_scrap():
+func get_scrap() -> int:
 	return _resource_data.get_scrap()
 
+func get_max_scrap() -> int:
+	return _resource_data.get_max_scrap()
 
 func _add_commands():
 	Console.register_custom_command("add scrap", add_scrap_command, ["(int) scrap amount"])

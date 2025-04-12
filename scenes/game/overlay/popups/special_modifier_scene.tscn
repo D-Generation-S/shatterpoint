@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d11k10i535ilq"]
+[gd_scene load_steps=6 format=3 uid="uid://d11k10i535ilq"]
 
 [ext_resource type="Script" uid="uid://vd5molnqkopp" path="res://src/game/overlay/popup_center/popups/special_modifier_scene.gd" id="1_seofy"]
 [ext_resource type="PackedScene" uid="uid://v81exap0w6ht" path="res://scenes/game/overlay/special_modifier.tscn" id="2_akge4"]
+[ext_resource type="Script" uid="uid://d3wgdibsppn2m" path="res://src/game/systems/modifier_system/reroll_shop.gd" id="3_3ncy7"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_7ywoy"]
+[ext_resource type="Script" uid="uid://dw0vl0gb3ylf7" path="res://src/game/overlay/animated_changeable_label.gd" id="4_b5yjc"]
 
 [node name="Control" type="Control" node_paths=PackedStringArray("target_node")]
 layout_mode = 3
@@ -12,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_seofy")
 card_template = ExtResource("2_akge4")
-target_node = NodePath("MarginContainer/MarginContainer/VBoxContainer")
+target_node = NodePath("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer")
 pause_game = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -22,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.815686)
+color = Color(0, 0, 0, 0.941176)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,33 +39,94 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "SELECT_A_SPECIAL_MODIFIER"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+[node name="AvailableScarp" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="Available" type="Label" parent="MarginContainer/VBoxContainer/AvailableScarp"]
+layout_mode = 2
+text = "AVAILABLE"
+
+[node name="ScrapIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/AvailableScarp"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_7ywoy")
+
+[node name="ScrapCount" type="Label" parent="MarginContainer/VBoxContainer/AvailableScarp"]
+layout_mode = 2
+text = "0"
+script = ExtResource("4_b5yjc")
+
+[node name="MaxScrap" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MaxScrap" type="Label" parent="MarginContainer/VBoxContainer/MaxScrap"]
+layout_mode = 2
+text = "MAX_SCRAP"
+
+[node name="ScrapIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/MaxScrap"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_7ywoy")
+
+[node name="ScrapCount" type="Label" parent="MarginContainer/VBoxContainer/MaxScrap"]
+layout_mode = 2
+text = "0"
+script = ExtResource("4_b5yjc")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 200
 
-[node name="SkipSelection" type="Button" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_vertical = 8
+
+[node name="SkipSelection" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 8
 button_mask = 5
 text = "SKIP"
 
-[connection signal="set_button_text" from="." to="MarginContainer/SkipSelection" method="set_text"]
-[connection signal="set_tooltip_text" from="." to="MarginContainer/SkipSelection" method="set_tooltip_text"]
-[connection signal="pressed" from="MarginContainer/SkipSelection" to="." method="scrap_selected"]
+[node name="RerollShop" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "REROLL"
+script = ExtResource("3_3ncy7")
+
+[connection signal="set_button_text" from="." to="MarginContainer/VBoxContainer/HBoxContainer/SkipSelection" method="set_text"]
+[connection signal="set_reroll_button_text" from="." to="MarginContainer/VBoxContainer/HBoxContainer/RerollShop" method="set_text"]
+[connection signal="set_tooltip_text" from="." to="MarginContainer/VBoxContainer/HBoxContainer/SkipSelection" method="set_tooltip_text"]
+[connection signal="update_global_scrap_count" from="." to="MarginContainer/VBoxContainer/AvailableScarp/ScrapCount" method="set_value_animated"]
+[connection signal="update_max_scrap_count" from="." to="MarginContainer/VBoxContainer/MaxScrap/ScrapCount" method="set_value_animated"]
+[connection signal="update_reroll_price" from="." to="MarginContainer/VBoxContainer/HBoxContainer/RerollShop" method="change_reroll_price"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SkipSelection" to="." method="scrap_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RerollShop" to="." method="_reroll_shop"]

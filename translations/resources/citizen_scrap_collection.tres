@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_ywbab")
-key = ""
+key = "CITIZEN_SCRAP_COLLECTION"
 metadata/_custom_type_script = "uid://bliprh1pw2801"

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dw0vl0gb3ylf7" path="res://src/game/overlay/animated_changeable_label.gd" id="5_o8m7h"]
 
 [node name="MarginContainer" type="MarginContainer"]
+process_mode = 3
 offset_right = 84.0
 offset_bottom = 60.0
 size_flags_vertical = 0
