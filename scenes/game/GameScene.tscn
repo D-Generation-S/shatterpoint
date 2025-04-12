@@ -374,6 +374,7 @@ move_vector = Vector2(0, 1)
 z_index = -2
 y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_12alq")
+use_edge_connections = false
 script = ExtResource("14_1ioao")
 
 [node name="Ground" type="TileMapLayer" parent="WaveMode/NavigationRegion2D" groups=["ground"]]
@@ -555,7 +556,6 @@ selection_scene = ExtResource("70_4wyay")
 [connection signal="request_path" from="WaveMode/TopRightSpawner/TopRightSpawner2" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="request_path" from="WaveMode/Path2D/TopSpawner" to="Systems/ItemPathAnimator" method="create_new_travel_path"]
 [connection signal="build_mode_changed" from="BuildMode" to="SelectionMode" method="build_mode_changed"]
-[connection signal="building_was_placed" from="BuildMode" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="can_build_changed" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="can_build_changed"]
 [connection signal="change_ghost_texture" from="BuildMode" to="BuildMode/BuildingGhost/BuildGrid/GhostSprite" method="set_texture"]
 [connection signal="message_requested" from="BuildMode" to="Overlay/MessageArea" method="add_new_message"]
@@ -566,7 +566,6 @@ selection_scene = ExtResource("70_4wyay")
 [connection signal="message_requested" from="Systems/GameStateManager" to="Overlay/MessageArea" method="add_new_message"]
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="Overlay/BuildMenu" method="is_disabled"]
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="Camera/Camera2D" method="move_to_wave"]
-[connection signal="wave_phase_started" from="Systems/GameStateManager" to="WaveMode/NavigationRegion2D" method="rebake"]
 [connection signal="wave_phase_started" from="Systems/GameStateManager" to="BuildMode" method="disable"]
 [connection signal="add_new_message" from="Systems/GameStartSystem" to="Overlay/MessageArea" method="add_simple_message"]
 [connection signal="change_can_abort_building" from="Systems/GameStartSystem" to="BuildMode" method="allow_build_abort"]

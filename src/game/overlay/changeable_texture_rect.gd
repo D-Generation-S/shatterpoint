@@ -19,7 +19,7 @@ func name_changed(new_name: String, new_description: String, icon: Texture):
 	tooltip_description = tr(new_description)
 	tooltip_icon = icon
 
-func _make_custom_tooltip(for_text) -> Object:
+func _make_custom_tooltip(_for_text) -> Object:
 	GlobalExplainTooltip.show_tooltip(global_position, tooltip_key)
 
 	var dummy = Label.new()

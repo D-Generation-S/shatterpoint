@@ -7,7 +7,6 @@ signal request_path(icon: Texture, start_node: Node2D, end_node: Node2D, amount:
 
 signal trying_to_place_building()
 signal stopped_trying_to_place_building()
-signal building_was_placed()
 signal build_mode_changed(in_build_mode: bool)
 
 @export var resource_overlay: ResourceOverlay
@@ -65,7 +64,6 @@ func _unhandled_input(event):
 			end_node = scrap_resource_trave_node
 			
 		request_path.emit(resource_overlay.scrap_icon, source_node, end_node, absi(scrap), 1)
-		building_was_placed.emit()
 		resource_overlay.add_scrap(scrap)
 		last_global_position = Vector2(-100000, -100000)
 

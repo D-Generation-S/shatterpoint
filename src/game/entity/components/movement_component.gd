@@ -10,3 +10,4 @@ func data_updated(data: UnitData):
 
 func set_velocity(velocity: Vector2):
 	change_velocity.emit(velocity * movement_speed)
+	GlobalMessageLine.request_rebake()

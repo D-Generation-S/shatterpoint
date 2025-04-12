@@ -123,6 +123,7 @@ func build_phase_ended():
 	current_phase = WAVE
 	var message = tr("WAVE_PHASE_STARTED") % (current_wave - 1)
 	message_requested.emit(MessagePosition.CENTER, message_style, message, 1.0)
+	GlobalMessageLine.request_rebake()
 
 func start_game():
 	all_units_dead = true

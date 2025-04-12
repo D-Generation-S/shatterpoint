@@ -13,7 +13,7 @@ func _process(_delta):
     if Input.is_action_just_pressed("command_move"):
         var mouse_position = get_global_mouse_position()
         move_command_issued.emit(mouse_position)
-    pass
+        GlobalMessageLine.request_rebake()
 
 func selection_changed(selected: bool):
     _currently_selected = selected

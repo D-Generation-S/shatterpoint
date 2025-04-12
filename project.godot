@@ -150,6 +150,10 @@ locale/test="en"
 2d_physics/layer_4="player_buildings"
 2d_physics/layer_24="Trigger"
 
+[navigation]
+
+2d/use_edge_connections=false
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
