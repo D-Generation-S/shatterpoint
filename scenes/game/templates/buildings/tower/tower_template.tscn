@@ -123,6 +123,8 @@ shape = SubResource("CircleShape2D_vnabk")
 [connection signal="is_dying" from="." to="Components/DeathAnimationComponent" method="dying"]
 [connection signal="max_armor_changed" from="." to="ArmorBar" method="set_max_health"]
 [connection signal="max_health_changed" from="." to="HealthBar" method="set_max_health"]
+[connection signal="modifier_was_added" from="." to="Components/ShootComponent" method="modifier_added"]
+[connection signal="modifier_was_removed" from="." to="Components/ShootComponent" method="modifier_removed"]
 [connection signal="texture_changed" from="." to="Visuals" method="set_texture"]
 [connection signal="texture_changed" from="." to="Components/DeathAnimationComponent" method="visuals_to_set"]
 [connection signal="bar_is_hidden" from="ArmorBar" to="HealthBar" method="reset_show_options"]

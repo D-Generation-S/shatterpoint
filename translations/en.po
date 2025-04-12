@@ -31,10 +31,12 @@ msgid "BUILDING_WAS_DESTROYED"
 msgstr "Building %s was destroyed"
 
 #: assets/resources/buildings/generators/BasicGenerator.tres
+#: translations/resources/basic_power_generator.tres
 msgid "BASIC_POWER_GENERATOR"
 msgstr "Basic Power Generator"
 
 #: assets/resources/buildings/generators/BasicGenerator.tres
+#: translations/resources/basic_power_generator_description.tres
 msgid "BASIC_POWER_GENERATOR_DESCRIPTION"
 msgstr ""
 "The basic power generator, one of them should be enough to keep your first "
@@ -45,21 +47,25 @@ msgstr ""
 
 #: assets/resources/buildings/storage/basic_scrap_storage.tres
 #: assets/resources/buildings/storage/startup_scrap_storage.tres
+#: translations/resources/scrap_storage.tres
 msgid "SCRAP_STORAGE"
 msgstr "Scrap Storage"
 
 #: assets/resources/buildings/storage/basic_scrap_storage.tres
 #: assets/resources/buildings/storage/startup_scrap_storage.tres
+#: translations/resources/scrap_storage_description.tres
 msgid "SCRAP_STORAGE_DESCRIPTION"
 msgstr ""
 "This storage will increase your global scrap cap allowing you to collect "
 "more of it."
 
 #: assets/resources/buildings/towers/base_tower.tres
+#: translations/resources/basic_tower.tres
 msgid "BASIC_TOWER"
 msgstr "Basic Tower"
 
 #: assets/resources/buildings/towers/base_tower.tres
+#: translations/resources/basic_tower_description.tres
 msgid "BASIC_TOWER_DESCRIPTION"
 msgstr "This is your basic tower there is nothing special about it."
 
@@ -536,6 +542,11 @@ msgstr "Barracks"
 msgid "APPLIES_TO_UNITS"
 msgstr "Player Units"
 
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+#: translations/resources/applies_to_global.tres
+msgid "APPLIES_TO_GLOBAL"
+msgstr "Global"
+
 #: scenes/game/overlay/special_modifier.tscn
 msgid "MODIFIER_NAME"
 msgstr "Modifier Name"
@@ -568,3 +579,22 @@ msgstr ""
 "Upgrade your projectiles to full metal jacket projectiles increasing the "
 "[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
 "[url=damage]damage[/url] by %s points flat."
+
+#: translations/resources/applies_to_global_description.tres
+msgid "APPLIES_TO_GLOBAL_DESCRIPTION"
+msgstr ""
+"Modifiers of this category will change global values, this can be some "
+"additional [img=16x16]res://assets/atlast_textures/scrap.tres[/img] "
+"[url=scrap]scrap[/url] or something like an extended build time."
+
+#: translations/resources/citizen_scrap_collection.tres
+msgid "CITIZEN_SCRAP_COLLECTION"
+msgstr "Citizen scrap collection"
+
+#: translations/resources/citizen_scrap_collection_description.tres
+msgid "CITIZEN_SCRAP_COLLECTION_DESCRIPTION"
+msgstr ""
+"The citizen will search through there homes to find %s [img=16x16]res://"
+"assets/atlast_textures/scrap.tres[/img] [url=scrap]scrap[/url], you can use "
+"that to build additional buildings or get upgrades.\n"
+"Make sure that you do have enough space to collect such an amount of scrap."

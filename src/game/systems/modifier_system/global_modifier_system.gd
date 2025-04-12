@@ -6,7 +6,8 @@ enum ModifierScope
 	TOWER,
 	GENERATOR,
 	SCRAP_STORAGE,
-	UNIT_SPAWNER
+	UNIT_SPAWNER,
+	GLOBAL
 }
 
 signal modifier_selected(modifier: SpecialModifierConfiguration)
@@ -126,6 +127,7 @@ func filter_by_type(modifier: SpecialModifierConfiguration, scope: ModifierScope
 func _modifier_selected(modifier: SpecialModifierConfiguration):
 	if modifier.permanent:
 		_selected_modifiers.append(modifier)
+	modifier.modifier.modifier_selected()
 	modifier_selected.emit(modifier)
 
 func _exit_tree():

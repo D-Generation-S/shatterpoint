@@ -64,15 +64,15 @@ func _add_global_modifier(modifier: SpecialModifierConfiguration):
 func add_modifier(modifier: StatModifier):
 	var previous_armor = stats.armor
 	super(modifier)
-	building_data.stats = stats
-	building_data_changed.emit(building_data)
-
-	health_changed.emit(stats.hp)
-	max_health_changed.emit(stats.max_hp)
 
 	if previous_armor != stats.armor:
 		max_armor_changed.emit(stats.armor)
 	armor_changed.emit(stats.armor)
+
+func _stats_changed():
+	building_data.stats = stats
+	building_data_changed.emit(building_data)
+	super()
 
 func _is_dying():
 	super()

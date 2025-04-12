@@ -86,6 +86,16 @@
 # res://translations/resources/tools_description.tres
 # res://assets/resources/modifiers/special/fire_rate/autoloader.tres
 # res://assets/resources/modifiers/special/damage/full_metal_jacket.tres
+# res://translations/resources/applies_to_global.tres
+# res://translations/resources/applies_to_global_description.tres
+# res://translations/resources/basic_power_generator.tres
+# res://translations/resources/basic_power_generator_description.tres
+# res://translations/resources/basic_tower.tres
+# res://translations/resources/basic_tower_description.tres
+# res://translations/resources/citizen_scrap_collection.tres
+# res://translations/resources/citizen_scrap_collection_description.tres
+# res://translations/resources/scrap_storage.tres
+# res://translations/resources/scrap_storage_description.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -111,28 +121,34 @@ msgid "BUILDING_WAS_DESTROYED"
 msgstr ""
 
 #: assets/resources/buildings/generators/BasicGenerator.tres
+#: translations/resources/basic_power_generator.tres
 msgid "BASIC_POWER_GENERATOR"
 msgstr ""
 
 #: assets/resources/buildings/generators/BasicGenerator.tres
+#: translations/resources/basic_power_generator_description.tres
 msgid "BASIC_POWER_GENERATOR_DESCRIPTION"
 msgstr ""
 
 #: assets/resources/buildings/storage/basic_scrap_storage.tres
 #: assets/resources/buildings/storage/startup_scrap_storage.tres
+#: translations/resources/scrap_storage.tres
 msgid "SCRAP_STORAGE"
 msgstr ""
 
 #: assets/resources/buildings/storage/basic_scrap_storage.tres
 #: assets/resources/buildings/storage/startup_scrap_storage.tres
+#: translations/resources/scrap_storage_description.tres
 msgid "SCRAP_STORAGE_DESCRIPTION"
 msgstr ""
 
 #: assets/resources/buildings/towers/base_tower.tres
+#: translations/resources/basic_tower.tres
 msgid "BASIC_TOWER"
 msgstr ""
 
 #: assets/resources/buildings/towers/base_tower.tres
+#: translations/resources/basic_tower_description.tres
 msgid "BASIC_TOWER_DESCRIPTION"
 msgstr ""
 
@@ -529,6 +545,11 @@ msgstr ""
 msgid "APPLIES_TO_UNITS"
 msgstr ""
 
+#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
+#: translations/resources/applies_to_global.tres
+msgid "APPLIES_TO_GLOBAL"
+msgstr ""
+
 #: scenes/game/overlay/special_modifier.tscn
 msgid "MODIFIER_NAME"
 msgstr ""
@@ -555,4 +576,16 @@ msgstr ""
 
 #: assets/resources/modifiers/special/damage/full_metal_jacket.tres
 msgid "FULL_METAL_JACKET_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/applies_to_global_description.tres
+msgid "APPLIES_TO_GLOBAL_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/citizen_scrap_collection.tres
+msgid "CITIZEN_SCRAP_COLLECTION"
+msgstr ""
+
+#: translations/resources/citizen_scrap_collection_description.tres
+msgid "CITIZEN_SCRAP_COLLECTION_DESCRIPTION"
 msgstr ""

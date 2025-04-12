@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpecialModifierConfiguration" load_steps=3 format=3 uid="uid://chrlisshyjv15"]
+
+[ext_resource type="Script" uid="uid://dljqdfjdh7hqa" path="res://src/game/overlay/popup_center/resources/special_modifier_configuration.gd" id="1_50pdf"]
+[ext_resource type="Resource" uid="uid://o1122hraajko" path="res://assets/resources/modifiers/special/scrap/citizen_scrap_collection.tres" id="1_t10g5"]
+
+[resource]
+script = ExtResource("1_50pdf")
+probability = 2
+scope = 32
+modifier = ExtResource("1_t10g5")
+permanent = false
+selectable_after_wave = 0
+modifier_requirements = Array[String]([])
+metadata/_custom_type_script = "uid://dljqdfjdh7hqa"

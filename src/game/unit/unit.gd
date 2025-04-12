@@ -19,6 +19,8 @@ func _ready():
 	if start_ready:
 		activate()
 
+	GlobalDataAccess.get_modifier_system().modifier_selected.connect(_add_global_modifier)
+
 func was_selected():
 	selection_changed.emit(true)
 
@@ -34,3 +36,6 @@ func activate():
 func add_projectile_requested(projectile: Projectile):
 	get_parent().add_child(projectile)
 	
+func _add_global_modifier(modifier: SpecialModifierConfiguration):
+		if modifier.scope & (1 << ModifierSystem.ModifierScope.UNIT) and is_in_group("player_unit"):
+			add_modifier(modifier.modifier)
