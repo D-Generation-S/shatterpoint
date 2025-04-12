@@ -107,6 +107,7 @@ func spawn_requested(data: UnitData):
 	template.enemy_data = data
 	parent_node.get_parent().add_child(template)
 	template.activate()
+	GlobalMessageLine.request_rebake()
 	GlobalDataAccess.get_resource_overlay().add_scrap(-data.spawn_scrap_price)
 	GlobalDataAccess.get_item_path_system().create_new_travel_path(GlobalDataAccess.get_resource_overlay().scrap_icon,
 																   GlobalDataAccess.get_resource_overlay().scrap_animation_node,
