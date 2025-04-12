@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://cku776new5jmx"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_rglt2"]
+
+[resource]
+script = ExtResource("1_rglt2")
+key = "APPLIES_TO_GLOBAL_DESCRIPTION"
+metadata/_custom_type_script = "uid://bliprh1pw2801"

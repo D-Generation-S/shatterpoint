@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://bvf0ot4lil4tk"]
+
+[ext_resource type="Resource" uid="uid://cmdftut2hh6vl" path="res://translations/resources/citizen_scrap_collection_description.tres" id="1_mlig4"]
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="1_ox4tm"]
+[ext_resource type="Resource" uid="uid://dwws0m4xdxs8c" path="res://translations/resources/citizen_scrap_collection.tres" id="2_l2ili"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="3_geog1"]
+
+[resource]
+script = ExtResource("1_ox4tm")
+key = "CITIZEN_SCRAP_COLLECTION"
+icon = ExtResource("3_geog1")
+headline = ExtResource("2_l2ili")
+content = ExtResource("1_mlig4")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

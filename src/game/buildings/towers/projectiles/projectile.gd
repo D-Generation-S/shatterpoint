@@ -22,6 +22,7 @@ var initial_position: Vector2
 var target_node: Node2D
 var carried_damage: float
 var armor_penetration: float
+var carried_modifiers: Array[StatModifier]
 var timer: Timer
 
 # Called when the node enters the scene tree for the first time.
@@ -54,11 +55,13 @@ func setup(
 	global_start_position: Vector2,
 	target: Node2D,
 	damage: float,
-	penetration: float):
+	penetration: float,
+	modifiers: Array[StatModifier] = []):
 	initial_position = global_start_position
 	target_node = target
 	carried_damage = damage
 	armor_penetration = penetration
+	carried_modifiers = modifiers
 
 func _calculate_impact_point(target: EntityWithStats) -> Vector2:
 	return target.global_position
@@ -78,6 +81,9 @@ func _process(_delta):
 func _on_collision_entered(body: Node2D):
 	if body is EntityWithStats:
 		body.deal_damage(carried_damage, armor_penetration)
+		if carried_modifiers.size() > 0:
+			for modifier in carried_modifiers:
+				body.add_modifier(modifier)
 		GlobalSoundManager.play_sound_at_position(global_position, hit_sound, 2000, randf_range(0.8, 1.2))
 
 	queue_free()

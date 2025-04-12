@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ScrapDropModifier" load_steps=3 format=3 uid="uid://o1122hraajko"]
+
+[ext_resource type="Script" uid="uid://bok8fe1cim6ap" path="res://src/game/modifier/stats/scrap_drop_modifier.gd" id="1_7d3xb"]
+[ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="1_pv74j"]
+
+[resource]
+script = ExtResource("1_7d3xb")
+_name = "CITIZEN_SCRAP_COLLECTION"
+_icon = ExtResource("1_pv74j")
+_scrap_cost = 0
+priority = 10000
+one_time_usage = true
+value = 50.0
+metadata/_custom_type_script = "uid://bok8fe1cim6ap"

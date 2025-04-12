@@ -6,6 +6,9 @@ signal max_health_changed(new_max_health: float)
 signal armor_changed(value: float)
 signal max_armor_changed(new_max_health: float)
 
+signal modifier_was_added(modifier: StatModifier)
+signal modifier_was_removed(modifier: StatModifier)
+
 ## Signal if the entity died by reaching 0 HP
 signal is_dying()
 
@@ -31,7 +34,30 @@ func _ready():
 	max_armor_changed.emit(stats.armor)
 	armor_changed.emit(stats.armor)
 	request_message.connect(GlobalDataAccess.get_message_area().add_new_message)
+	GlobalTickSystem.game_tick.connect(_tick_triggered)
 	
+func _tick_triggered():
+	var triggered = false
+	var removed = false
+	for modifier in stat_modifiers.filter(func(modifier): return modifier is TickStatModifier):
+		modifier.tick_stat_change(stats)
+		if !modifier.is_valid():
+			stat_modifiers.erase(modifier)
+			modifier_was_removed.emit(modifier)
+			removed = true
+		triggered = true
+	if removed:
+		_calculate_modifier_stats()
+		_stats_changed()
+		return
+	if triggered:
+		_stats_changed()
+
+func _stats_changed():
+	health_changed.emit(stats.hp)
+	max_health_changed.emit(stats.max_hp)
+	armor_changed.emit(stats.armor)
+
 func _copy_stats():
 	var copy_stats: bool = stats != null
 	var current_hp = 0
@@ -52,8 +78,10 @@ func _copy_stats():
 
 func add_modifier(modifier: StatModifier):
 	stat_modifiers.append(modifier)
+	modifier_was_added.emit(modifier)
 	_calculate_modifier_stats()
 	stat_modifiers = stat_modifiers.filter(func(current_modifier): return not current_modifier.one_time_usage)
+	_stats_changed()
 
 func remove_modifier(_modifier: StatModifier):
 	printerr("Not implemented")
@@ -110,4 +138,6 @@ func _calculate_modifier_stats():
 	_copy_stats()
 	stat_modifiers.sort_custom(func(a,b): return a.priority < b.priority)
 	for modifier in stat_modifiers:
+		if modifier.projectile_modifier:
+			continue
 		modifier.change_stats(_base_stats_copy, stats)

@@ -55,6 +55,8 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 fit_content = true
+script = ExtResource("2_uvdfl")
+metadata/_custom_type_script = "uid://cytc4jt7lvi5v"
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -9,4 +9,6 @@ probability = 10
 scope = 30
 modifier = ExtResource("1_x7k6q")
 permanent = false
+selectable_after_wave = 0
+modifier_requirements = Array[String]([])
 metadata/_custom_type_script = "uid://dljqdfjdh7hqa"
