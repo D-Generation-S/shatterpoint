@@ -482,7 +482,23 @@ msgid "SELECT_A_SPECIAL_MODIFIER"
 msgstr ""
 
 #: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "AVAILABLE"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "0"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "MAX_SCRAP"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
 msgid "SKIP"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "REROLL"
 msgstr ""
 
 #: src/game/overlay/popup_center/popups/special_modifier_scene.gd
@@ -491,6 +507,10 @@ msgstr ""
 
 #: src/game/overlay/popup_center/popups/special_modifier_scene.gd
 msgid "SKIP_WITH_SCRAP_TOOLTIP"
+msgstr ""
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "REROLL_BUTTON"
 msgstr ""
 
 #: assets/resources/modifiers/special/heal/citizen_support.tres

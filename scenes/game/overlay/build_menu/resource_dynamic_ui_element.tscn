@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://xkcu15qx7e2g" path="res://assets/styles/energy_bar.tres" id="3_kfuvb"]
 
 [node name="Energy" type="MarginContainer"]
+process_mode = 3
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15

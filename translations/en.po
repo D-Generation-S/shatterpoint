@@ -466,8 +466,24 @@ msgid "SELECT_A_SPECIAL_MODIFIER"
 msgstr "Select One of the special modifiers listed below"
 
 #: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "AVAILABLE"
+msgstr "Available:"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "0"
+msgstr ""
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "MAX_SCRAP"
+msgstr "Storage capacity:"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
 msgid "SKIP"
 msgstr "Skip"
+
+#: scenes/game/overlay/popups/special_modifier_scene.tscn
+msgid "REROLL"
+msgstr "Reroll (%s)"
 
 #: src/game/overlay/popup_center/popups/special_modifier_scene.gd
 msgid "SKIP_WITH_SCRAP"
@@ -478,6 +494,10 @@ msgid "SKIP_WITH_SCRAP_TOOLTIP"
 msgstr ""
 "Skip the selection and get %s scrap instead\n"
 "Keep in mind that you will need space for that on your storage"
+
+#: src/game/overlay/popup_center/popups/special_modifier_scene.gd
+msgid "REROLL_BUTTON"
+msgstr "Reroll (%s)"
 
 #: assets/resources/modifiers/special/heal/citizen_support.tres
 msgid "CITIZEN_SUPPORT"
