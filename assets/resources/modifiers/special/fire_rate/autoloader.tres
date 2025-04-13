@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FireRateModifier" load_steps=3 format=3 uid="uid://dnikmoikqxk5f"]
 
-[ext_resource type="Script" uid="uid://rvtiqnyqnoue" path="res://src/game/modifier/stats/fire_rate_modifier.gd" id="1_5by2t"]
+[ext_resource type="Script" uid="uid://rvtiqnyqnoue" path="res://src/game/modifier/stats/fixed_fire_rate_modifier.gd" id="1_5by2t"]
 [ext_resource type="Texture2D" uid="uid://bdgluljy3r0y2" path="res://assets/atlast_textures/fire_rate_icon.tres" id="1_l5kfb"]
 
 [resource]
