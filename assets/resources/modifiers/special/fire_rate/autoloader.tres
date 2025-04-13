@@ -10,5 +10,6 @@ _icon = ExtResource("1_l5kfb")
 _scrap_cost = 0
 priority = 10000
 one_time_usage = false
+projectile_modifier = false
 value = 1.5
 metadata/_custom_type_script = "uid://rvtiqnyqnoue"

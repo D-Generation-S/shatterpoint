@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dsn2kfn1h5clt" path="res://assets/styles/health_bar.tres" id="1_3wnx1"]
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_7e4xk"]
-[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="2_6v1xe"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://assets/resources/message_area/styles/ErrorMessage.tres" id="2_6v1xe"]
 [ext_resource type="Script" uid="uid://dgehqhmydvtpj" path="res://src/game/overlay/animation/animated_health_bar.gd" id="2_pl675"]
 [ext_resource type="PackedScene" uid="uid://dguw0vagfbv55" path="res://scenes/game/overlay/message_template/interactive_message_template.tscn" id="3_qyg3l"]
 [ext_resource type="Script" uid="uid://b2jvkht6ei77m" path="res://src/game/entity/components/scrap_storage_component.gd" id="5_msbm5"]

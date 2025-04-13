@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MessageStyle" load_steps=2 format=3 uid="uid://d26kpn1ruk1t8"]
 
-[ext_resource type="Script" uid="uid://dqvfr1ti64it3" path="res://src/resources/message_style.gd" id="1_u2dkg"]
+[ext_resource type="Script" uid="uid://dqvfr1ti64it3" path="res://src/game/overlay/message_center/resources/message_style.gd" id="1_u2dkg"]
 
 [resource]
 script = ExtResource("1_u2dkg")
