@@ -11,6 +11,9 @@ func _ready():
 		if message_center is MessageCenter:
 			message_centers.append(message_center)
 
+func add_preconfigured_message(template: MessageTemplateResource):
+	add_new_message(template.get_position(), template.style, template.get_prepared_text(), template.time_to_show)
+
 func add_simple_message(target: int, message: String, time_to_show: float):
 	add_new_message(target, default_message_style, message, time_to_show)
 

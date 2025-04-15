@@ -1,15 +1,15 @@
-[gd_scene load_steps=100 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=99 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Script" uid="uid://boqucnmkum862" path="res://src/savegame/prototype_profile_manager.gd" id="1_qbdsg"]
 [ext_resource type="Script" uid="uid://dhvamvkyubw8r" path="res://src/ui/loading_overlay.gd" id="2_6q4se"]
 [ext_resource type="Texture2D" uid="uid://c5u4k3mgqiqts" path="res://assets/atlast_textures/scrap.tres" id="2_g3tpg"]
 [ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="3_7fdg0"]
-[ext_resource type="Resource" uid="uid://bgpl4p85ey5s4" path="res://src/game/overlay/message_center/resources/PositiveMessage.tres" id="3_k65at"]
-[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="4_q7jgq"]
+[ext_resource type="Resource" uid="uid://bgpl4p85ey5s4" path="res://assets/resources/message_area/styles/PositiveMessage.tres" id="3_k65at"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://assets/resources/message_area/styles/ErrorMessage.tres" id="4_q7jgq"]
 [ext_resource type="Script" uid="uid://c2yrfmnotvncj" path="res://src/game/resources/resource_data.gd" id="5_udn8i"]
 [ext_resource type="PackedScene" uid="uid://c32ggwgxsdo34" path="res://scenes/game/overlay/message_manager.tscn" id="6_iw2jt"]
-[ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://src/game/overlay/message_center/resources/NormalMessage.tres" id="7_h7fcw"]
+[ext_resource type="Resource" uid="uid://cp1buhxlclu7s" path="res://assets/resources/message_area/styles/NormalMessage.tres" id="7_h7fcw"]
 [ext_resource type="PackedScene" uid="uid://3wauxg2sw8r3" path="res://scenes/game/overlay/build_menu/build_menu.tscn" id="8_arm70"]
 [ext_resource type="Script" uid="uid://niymu0dq4cs3" path="res://src/game/camera/camera_position.gd" id="9_mxlxq"]
 [ext_resource type="PackedScene" uid="uid://c8p0gnhowdx23" path="res://scenes/game/overlay/version_overlay.tscn" id="10_tprig"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://c58rb3u2ba7ay" path="res://src/game/build_mode/build_menu/build_menu_group.gd" id="12_4wyay"]
 [ext_resource type="Script" uid="uid://dsygxden65u4v" path="res://src/game/overlay/update_position_to_fixed_screen.gd" id="12_j2gqh"]
 [ext_resource type="Resource" uid="uid://cwyrg0w0yofi4" path="res://assets/resources/build_menu/groups/scrap_infastructure.tres" id="13_76060"]
-[ext_resource type="PackedScene" uid="uid://dgcygfjfykbdw" path="res://scenes/game/overlay/popup_manager/popup_manager.tscn" id="13_qkw67"]
 [ext_resource type="Script" uid="uid://cfui7yvbwnio6" path="res://src/game/camera/edge_scroll_area.gd" id="13_vwlyg"]
 [ext_resource type="Script" uid="uid://bf7ucy0mqty4o" path="res://src/game/map/navigation_mesh.gd" id="14_1ioao"]
 [ext_resource type="Resource" uid="uid://bhnojr5uyl0ai" path="res://assets/resources/build_menu/groups/power_infastructure.tres" id="14_6xlry"]
@@ -296,8 +295,6 @@ _menu_data = Array[ExtResource("12_4wyay")]([ExtResource("13_76060"), ExtResourc
 [node name="EntityDetailWindowSystem" type="CanvasLayer" parent="Overlay" groups=["system"]]
 script = ExtResource("48_kdeyx")
 default_window_template = ExtResource("14_wn1c3")
-
-[node name="PopupManager" parent="Overlay" groups=["overlay"] instance=ExtResource("13_qkw67")]
 
 [node name="Camera" type="Node" parent="."]
 

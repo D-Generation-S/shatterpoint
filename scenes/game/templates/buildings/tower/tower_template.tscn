@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cymieyetd0wut" path="res://src/game/buildings/building.gd" id="1_maaal"]
 [ext_resource type="Resource" uid="uid://ctrcr440rcqre" path="res://assets/resources/buildings/towers/base_tower.tres" id="2_iggqc"]
-[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://src/game/overlay/message_center/resources/ErrorMessage.tres" id="3_1v26b"]
+[ext_resource type="Resource" uid="uid://d26kpn1ruk1t8" path="res://assets/resources/message_area/styles/ErrorMessage.tres" id="3_1v26b"]
 [ext_resource type="Script" uid="uid://ckory6mlhxw1r" path="res://src/game/entity/components/tower_component.gd" id="3_ml2b7"]
 [ext_resource type="PackedScene" uid="uid://qhihjjgqvq2" path="res://scenes/game/components/entity/targeting_component.tscn" id="3_mywu7"]
 [ext_resource type="Script" uid="uid://dggqofctyr00t" path="res://src/game/entity/components/shoot_component.gd" id="3_njweq"]
