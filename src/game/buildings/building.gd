@@ -52,13 +52,6 @@ func request_detail_window(request_position: Vector2, size: Vector2, title: Stri
 	show_detail_window.emit(request_position, size, title, content, true)
 
 func _add_global_modifier(modifier: SpecialModifierConfiguration):
-	if modifier.scope & (1 << ModifierSystem.ModifierScope.TOWER) and is_in_group("tower"):
-		add_modifier(modifier.modifier)
-	if modifier.scope & (1 << ModifierSystem.ModifierScope.GENERATOR) and is_in_group("generator"):
-		add_modifier(modifier.modifier)
-	if modifier.scope & (1 << ModifierSystem.ModifierScope.SCRAP_STORAGE) and is_in_group("storage"):
-		add_modifier(modifier.modifier)
-	if modifier.scope & (1 << ModifierSystem.ModifierScope.UNIT_SPAWNER) and is_in_group("unit_spawner"):
 		add_modifier(modifier.modifier)
 
 func add_modifier(modifier: StatModifier):

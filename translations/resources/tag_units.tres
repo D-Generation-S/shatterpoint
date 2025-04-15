@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TranslationResource" load_steps=2 format=3 uid="uid://cimdhulnw7lkj"]
+
+[ext_resource type="Script" uid="uid://bliprh1pw2801" path="res://addons/resource_translation_plugin/resources/translation_resource.gd" id="1_25x4b"]
+
+[resource]
+script = ExtResource("1_25x4b")
+key = "TAG_UNITS"
+metadata/_custom_type_script = "uid://bliprh1pw2801"

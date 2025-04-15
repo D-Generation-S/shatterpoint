@@ -542,31 +542,6 @@ msgstr ""
 "[url=armor]armor[/url].\n"
 "Keep in mind that armor cannot be restored once destroyed."
 
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_TOWERS"
-msgstr "Defence Towers"
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_GENERATORS"
-msgstr "Power Generators"
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_SCRAP_STORAGES"
-msgstr "Scrap Storages"
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_UNIT_SPAWNERS"
-msgstr "Barracks"
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_UNITS"
-msgstr "Player Units"
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-#: translations/resources/applies_to_global.tres
-msgid "APPLIES_TO_GLOBAL"
-msgstr "Global"
-
 #: scenes/game/overlay/special_modifier.tscn
 msgid "MODIFIER_NAME"
 msgstr "Modifier Name"
@@ -600,6 +575,10 @@ msgstr ""
 "[img=16x16]res://assets/atlast_textures/damage_icon.tres[/img] "
 "[url=damage]damage[/url] by %s points flat."
 
+#: translations/resources/applies_to_global.tres
+msgid "APPLIES_TO_GLOBAL"
+msgstr "Global"
+
 #: translations/resources/applies_to_global_description.tres
 msgid "APPLIES_TO_GLOBAL_DESCRIPTION"
 msgstr ""
@@ -618,3 +597,90 @@ msgstr ""
 "assets/atlast_textures/scrap.tres[/img] [url=scrap]scrap[/url], you can use "
 "that to build additional buildings or get upgrades.\n"
 "Make sure that you do have enough space to collect such an amount of scrap."
+
+#: translations/resources/tag_buildings.tres
+msgid "TAG_BUILDINGS"
+msgstr "Buildings"
+
+#: translations/resources/tag_buildings_description.tres
+msgid "TAG_BUILDINGS_DESCRIPTION"
+msgstr ""
+"This tag includes all the player structures build, this will include "
+"[url=tag_generator]generators[/url], [url=tag_scrap_storage]scrap storages[/"
+"url], [url=tag_spawn_building]spawn buildings[/url], [url=tag_tower]towers[/"
+"url]."
+
+#: translations/resources/tag_generator.tres
+msgid "TAG_GENERATOR"
+msgstr "Generators"
+
+#: translations/resources/tag_generator_description.tres
+msgid "TAG_GENERATOR_DESCRIPTION"
+msgstr "This tag will include all the buildings which will generate power."
+
+#: translations/resources/tag_resource.tres
+msgid "TAG_RESOURCES"
+msgstr "Resources"
+
+#: translations/resources/tag_resources_description.tres
+msgid "TAG_RESOURCES_DESCRIPTION"
+msgstr ""
+"This tag will change the resources for this run, this could be "
+"[img=16x16]res://assets/atlast_textures/scrap.tres[/img] [url=scrap]scrap[/"
+"url] for example."
+
+#: translations/resources/tag_scrap_storage.tres
+msgid "TAG_SCRAP_STORAGE"
+msgstr "Scrap Storage"
+
+#: translations/resources/tag_scrap_storage_description.tres
+msgid "TAG_SCRAP_STORAGE_DESCRIPTION"
+msgstr ""
+"This tag will include all the building which are able to store scrap in them."
+
+#: translations/resources/tag_spawn_building.tres
+msgid "TAG_SPAWN_BUILDING"
+msgstr "Spawn Buildings"
+
+#: translations/resources/tag_spawn_building_description.tres
+msgid "TAG_SPAWN_BUILDING_DESCRIPTION"
+msgstr "This tag will include all the buildings the player can spawn units in."
+
+#: translations/resources/tag_tower.tres
+msgid "TAG_TOWER"
+msgstr "Towers"
+
+#: translations/resources/tag_tower_description.tres
+msgid "TAG_TOWER_DESCRIPTION"
+msgstr "This tag includes all the tower buildings build by the player."
+
+#: translations/resources/tag_units.tres
+msgid "TAG_UNITS"
+msgstr "Units"
+
+#: translations/resources/tag_unit_description.tres
+msgid "TAG_UNIT_DESCRIPTION"
+msgstr "This tag contains all the units build by the player."
+
+#: translations/resources/tag_power_storage.tres
+msgid "TAG_POWER_STORAGE"
+msgstr "Power Storage"
+
+#: translations/resources/tag_power_storage_description.tres
+msgid "TAG_POWER_STORAGE_DESCRIPTION"
+msgstr "This tag includes all buildings which can store power."
+
+#~ msgid "APPLIES_TO_TOWERS"
+#~ msgstr "Defence Towers"
+
+#~ msgid "APPLIES_TO_GENERATORS"
+#~ msgstr "Power Generators"
+
+#~ msgid "APPLIES_TO_SCRAP_STORAGES"
+#~ msgstr "Scrap Storages"
+
+#~ msgid "APPLIES_TO_UNIT_SPAWNERS"
+#~ msgstr "Barracks"
+
+#~ msgid "APPLIES_TO_UNITS"
+#~ msgstr "Player Units"

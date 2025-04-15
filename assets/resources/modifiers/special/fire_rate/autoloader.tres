@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FireRateModifier" load_steps=3 format=3 uid="uid://dnikmoikqxk5f"]
+[gd_resource type="Resource" script_class="FireRateModifier" load_steps=5 format=3 uid="uid://dnikmoikqxk5f"]
 
 [ext_resource type="Script" uid="uid://rvtiqnyqnoue" path="res://src/game/modifier/stats/fixed_fire_rate_modifier.gd" id="1_5by2t"]
 [ext_resource type="Texture2D" uid="uid://bdgluljy3r0y2" path="res://assets/atlast_textures/fire_rate_icon.tres" id="1_l5kfb"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_545nn"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="3_d5fbi"]
 
 [resource]
 script = ExtResource("1_5by2t")
@@ -11,5 +13,6 @@ _scrap_cost = 0
 priority = 10000
 one_time_usage = false
 projectile_modifier = false
+_tags = Array[ExtResource("2_545nn")]([ExtResource("3_d5fbi")])
 value = 1.5
 metadata/_custom_type_script = "uid://rvtiqnyqnoue"

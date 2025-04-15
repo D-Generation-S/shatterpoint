@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://c78f74e5u62bg"]
+
+[ext_resource type="Resource" uid="uid://brpu0twehqd15" path="res://translations/resources/tag_buildings.tres" id="1_hltpd"]
+[ext_resource type="Resource" uid="uid://pb2w0sdvx1fj" path="res://assets/resources/tooltips/tag_buildings.tres" id="1_mcenj"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_mcenj"]
+
+[resource]
+script = ExtResource("2_mcenj")
+_name = ExtResource("1_hltpd")
+key = "TAG_BUILDINGS"
+_explanation_box = ExtResource("1_mcenj")
+_color = Color(1.92523e-07, 0, 0.753831, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

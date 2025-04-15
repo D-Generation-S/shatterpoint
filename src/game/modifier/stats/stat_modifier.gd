@@ -7,37 +7,48 @@ class_name StatModifier extends Resource
 @export var priority: int = 10000
 @export var one_time_usage: bool = false
 @export var projectile_modifier: bool = false
+@export var _tags: Array[Tag]
 
 @export var value: float
 
 var valid: bool = true
+var _sorted: bool = false
 
 ## Method to run once if a modifier was selected, this can be used for special modifiers to do global changes
 func modifier_selected():
-    pass
+	pass
 
 ## Change stat every tick, can be used for effects over time
 func tick_stat_change(_real_stats: EntityStats):
-    pass
+	pass
 
 func change_stats(_base_stats: EntityStats, _real_stats: EntityStats):
-    pass
+	pass
 
 ## Is this modifier valid, if not it should not change any stats
 func is_valid() -> bool:
-    return valid
+	return valid
 
 func get_scrap_requirement() -> int:
-    return _scrap_cost
+	return _scrap_cost
 
 func get_display_name() -> String:
-    return _name
+	return _name
 
 func get_display_description() -> String:
-    return _name + "_DESCRIPTION"
+	return _name + "_DESCRIPTION"
 
 func get_display_icon() -> Texture:
-    return _icon
+	return _icon
 
 func get_value() -> float:
-    return value
+	return value
+
+func get_tags() -> Array[Tag]:
+	if !_sorted:
+		_tags.sort_custom(_sort_tags)
+		_sorted = true
+	return _tags
+
+func _sort_tags(a: Tag, b: Tag) -> bool:
+	return tr(a.get_display_name()) < tr(b.get_display_name())

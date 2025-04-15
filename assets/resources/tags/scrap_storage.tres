@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://b6knnmpd4046w"]
+
+[ext_resource type="Resource" uid="uid://chvatgixqft8v" path="res://assets/resources/tooltips/tag_scrap_storage.tres" id="1_acded"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="1_mdu2p"]
+[ext_resource type="Resource" uid="uid://lx876pt8tjjp" path="res://translations/resources/tag_scrap_storage.tres" id="1_mlfgq"]
+
+[resource]
+script = ExtResource("1_mdu2p")
+_name = ExtResource("1_mlfgq")
+key = "TAG_SCRAP_STORAGE"
+_explanation_box = ExtResource("1_acded")
+_color = Color(0.187176, 0.187176, 0.187176, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

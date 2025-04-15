@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg67h66qxqjac"]
+
+[ext_resource type="Script" uid="uid://ckq7r0ebgmday" path="res://src/ui/tag_template.gd" id="1_ilo0y"]
+[ext_resource type="Theme" uid="uid://bgywavmcea6l6" path="res://assets/styles/tag_theme.tres" id="2_0tmfw"]
+[ext_resource type="Script" uid="uid://cs4y4k62wcpwq" path="res://src/ui/tag_panel.gd" id="3_yy15v"]
+[ext_resource type="Script" uid="uid://bf4p1jv5ruxss" path="res://src/ui/explain_label.gd" id="4_yy15v"]
+
+[node name="MarginContainer" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+script = ExtResource("1_ilo0y")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("2_0tmfw")
+script = ExtResource("3_yy15v")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="DisplayName" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "TAG_BUILDINGS"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_yy15v")
+metadata/_custom_type_script = "uid://bf4p1jv5ruxss"
+
+[connection signal="color_changed" from="." to="PanelContainer" method="set_color"]
+[connection signal="explanation_changed" from="." to="PanelContainer/MarginContainer/DisplayName" method="set_tooltip_key"]
+[connection signal="text_changed" from="." to="PanelContainer/MarginContainer/DisplayName" method="set_text"]

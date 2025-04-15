@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=17 format=3 uid="uid://sm3tdm00ffby"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=18 format=3 uid="uid://sm3tdm00ffby"]
 
 [ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_bjh4h"]
 [ext_resource type="Script" uid="uid://ddkfw7ukebdeu" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_laaqv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="7_53pih"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="8_7yxpe"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="8_lg637"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="11_t4woj"]
 
 [sub_resource type="Resource" id="Resource_8asu1"]
 script = ExtResource("2_laaqv")
@@ -29,6 +30,7 @@ fire_rate = 2.0
 damage = 1.0
 attack_range = 75.0
 armor_penetration = 0.0
+tags = Array[ExtResource("11_t4woj")]([])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs5u0"]
 atlas = ExtResource("8_7yxpe")

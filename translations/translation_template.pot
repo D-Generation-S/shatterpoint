@@ -96,6 +96,22 @@
 # res://translations/resources/citizen_scrap_collection_description.tres
 # res://translations/resources/scrap_storage.tres
 # res://translations/resources/scrap_storage_description.tres
+# res://translations/resources/tag_buildings.tres
+# res://translations/resources/tag_buildings_description.tres
+# res://translations/resources/tag_generator.tres
+# res://translations/resources/tag_generator_description.tres
+# res://translations/resources/tag_resource.tres
+# res://translations/resources/tag_resources_description.tres
+# res://translations/resources/tag_scrap_storage.tres
+# res://translations/resources/tag_scrap_storage_description.tres
+# res://translations/resources/tag_spawn_building.tres
+# res://translations/resources/tag_spawn_building_description.tres
+# res://translations/resources/tag_tower.tres
+# res://translations/resources/tag_tower_description.tres
+# res://translations/resources/tag_units.tres
+# res://translations/resources/tag_unit_description.tres
+# res://translations/resources/tag_power_storage.tres
+# res://translations/resources/tag_power_storage_description.tres
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -545,31 +561,6 @@ msgstr ""
 msgid "IMPROVISED_REINFORCEMENT_DESCRIPTION"
 msgstr ""
 
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_TOWERS"
-msgstr ""
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_GENERATORS"
-msgstr ""
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_SCRAP_STORAGES"
-msgstr ""
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_UNIT_SPAWNERS"
-msgstr ""
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-msgid "APPLIES_TO_UNITS"
-msgstr ""
-
-#: src/game/overlay/popup_center/popups/sub/special_modifier_selection.gd
-#: translations/resources/applies_to_global.tres
-msgid "APPLIES_TO_GLOBAL"
-msgstr ""
-
 #: scenes/game/overlay/special_modifier.tscn
 msgid "MODIFIER_NAME"
 msgstr ""
@@ -598,6 +589,10 @@ msgstr ""
 msgid "FULL_METAL_JACKET_DESCRIPTION"
 msgstr ""
 
+#: translations/resources/applies_to_global.tres
+msgid "APPLIES_TO_GLOBAL"
+msgstr ""
+
 #: translations/resources/applies_to_global_description.tres
 msgid "APPLIES_TO_GLOBAL_DESCRIPTION"
 msgstr ""
@@ -608,4 +603,68 @@ msgstr ""
 
 #: translations/resources/citizen_scrap_collection_description.tres
 msgid "CITIZEN_SCRAP_COLLECTION_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_buildings.tres
+msgid "TAG_BUILDINGS"
+msgstr ""
+
+#: translations/resources/tag_buildings_description.tres
+msgid "TAG_BUILDINGS_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_generator.tres
+msgid "TAG_GENERATOR"
+msgstr ""
+
+#: translations/resources/tag_generator_description.tres
+msgid "TAG_GENERATOR_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_resource.tres
+msgid "TAG_RESOURCES"
+msgstr ""
+
+#: translations/resources/tag_resources_description.tres
+msgid "TAG_RESOURCES_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_scrap_storage.tres
+msgid "TAG_SCRAP_STORAGE"
+msgstr ""
+
+#: translations/resources/tag_scrap_storage_description.tres
+msgid "TAG_SCRAP_STORAGE_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_spawn_building.tres
+msgid "TAG_SPAWN_BUILDING"
+msgstr ""
+
+#: translations/resources/tag_spawn_building_description.tres
+msgid "TAG_SPAWN_BUILDING_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_tower.tres
+msgid "TAG_TOWER"
+msgstr ""
+
+#: translations/resources/tag_tower_description.tres
+msgid "TAG_TOWER_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_units.tres
+msgid "TAG_UNITS"
+msgstr ""
+
+#: translations/resources/tag_unit_description.tres
+msgid "TAG_UNIT_DESCRIPTION"
+msgstr ""
+
+#: translations/resources/tag_power_storage.tres
+msgid "TAG_POWER_STORAGE"
+msgstr ""
+
+#: translations/resources/tag_power_storage_description.tres
+msgid "TAG_POWER_STORAGE_DESCRIPTION"
 msgstr ""

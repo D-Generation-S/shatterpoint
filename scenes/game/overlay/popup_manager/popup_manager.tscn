@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://0cupmso47crb" path="res://src/game/overlay/popup_center/popup_manager.gd" id="1_2pvq8"]
 [ext_resource type="Script" uid="uid://d7ivydi5esmw" path="res://src/game/overlay/popup_center/popup_area.gd" id="2_m311a"]
 
-[node name="PopupManager" type="CanvasLayer"]
+[node name="PopupManager" type="CanvasLayer" groups=["overlay"]]
 script = ExtResource("1_2pvq8")
 
 [node name="Center" type="Control" parent="."]

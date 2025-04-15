@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://c7u68664rpt15"]
+
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="1_0bjm4"]
+[ext_resource type="Resource" uid="uid://dquxrl1sep8mb" path="res://translations/resources/tag_tower_description.tres" id="1_njnq4"]
+[ext_resource type="Resource" uid="uid://duu5krr4vfwwq" path="res://translations/resources/tag_tower.tres" id="2_jtxc8"]
+[ext_resource type="Texture2D" uid="uid://c2avbyuivc0ce" path="res://assets/atlast_textures/gray_tower.tres" id="3_jtxc8"]
+
+[resource]
+script = ExtResource("1_0bjm4")
+key = "TAG_TOWER"
+icon = ExtResource("3_jtxc8")
+headline = ExtResource("2_jtxc8")
+content = ExtResource("1_njnq4")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

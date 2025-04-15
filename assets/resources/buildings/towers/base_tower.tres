@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TowerData" load_steps=19 format=3 uid="uid://ctrcr440rcqre"]
+[gd_resource type="Resource" script_class="TowerData" load_steps=22 format=3 uid="uid://ctrcr440rcqre"]
 
 [ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_orkoc"]
 [ext_resource type="Script" uid="uid://ddkfw7ukebdeu" path="res://src/game/buildings/towers/threat_determination_algorithms/closest_threat.gd" id="2_ee4fy"]
@@ -14,6 +14,9 @@
 [ext_resource type="Resource" uid="uid://11hmytmsgkqd" path="res://assets/resources/modifiers/generators/default_fixed_range_generator.tres" id="8_32o02"]
 [ext_resource type="Texture2D" uid="uid://dlxo0pmajycsy" path="res://assets/atlast_textures/orange_tower.tres" id="8_uhtxb"]
 [ext_resource type="Resource" uid="uid://f0egmj7p3ol1" path="res://assets/resources/modifiers/generators/default_fixed_penetration_generator.tres" id="10_t5xlx"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="14_t77q6"]
+[ext_resource type="Resource" uid="uid://c78f74e5u62bg" path="res://assets/resources/tags/buildings.tres" id="14_xvf7d"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="15_xvf7d"]
 
 [sub_resource type="Resource" id="Resource_vsnd1"]
 script = ExtResource("2_ee4fy")
@@ -32,6 +35,7 @@ fire_rate = 2.0
 damage = 1.0
 attack_range = 130.0
 armor_penetration = 0.0
+_tags = Array[ExtResource("14_t77q6")]([ExtResource("14_xvf7d"), ExtResource("15_xvf7d")])
 
 [resource]
 script = ExtResource("6_y6q1c")

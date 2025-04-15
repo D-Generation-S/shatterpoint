@@ -53,4 +53,3 @@ script = ExtResource("3_8pesf")
 [connection signal="scrap_updated" from="." to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap" method="update_value"]
 [connection signal="set_max_health" from="." to="ResourcePanel/MarginContainer/VBoxContainer/ProgressBar" method="set_min_and_max_value"]
 [connection signal="name_changed" from="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap" to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Scrap/Scrap/ScrapIcon" method="name_changed"]
-[connection signal="name_changed" from="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy" to="ResourcePanel/MarginContainer/VBoxContainer/HBoxContainer/Energy/HBoxContainer/TextureRect" method="name_changed"]

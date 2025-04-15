@@ -77,6 +77,8 @@ func _copy_stats():
 		stats.armor = current_armor
 
 func add_modifier(modifier: StatModifier):
+	if !stats.contains_any_tag(modifier.get_tags()):
+		return
 	stat_modifiers.append(modifier)
 	modifier_was_added.emit(modifier)
 	_calculate_modifier_stats()

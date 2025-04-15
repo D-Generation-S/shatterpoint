@@ -36,9 +36,6 @@ func got_selected(on: bool):
 		if stored_data.allowed_thread_determination[i] == current_threat_determination:
 			pre_selected_thread = i
 			break
-	var modifications = stored_data.possible_generators.duplicate()
-
-	modifications.shuffle()
 	
 	settings.setup(stored_data.allowed_thread_determination, modifiers_for_round, block_modifier_generator, pre_selected_thread)
 	settings.threat_changed.connect(threat_changed)
@@ -94,7 +91,7 @@ func generate_new_modifiers_for_wave(wave_number: int):
 	modifiers_for_round = []
 	block_modifier_generator = false
 	for i in range(modifiers_to_generate):
-		var generator = stored_data.possible_generators.filter(func(generator_template): return generator_template.is_valid(wave_number)).pick_random()
+		var generator = GlobalStatGeneratorManager.get_generators_with_tags(stored_data.stats.get_tags()).duplicate().filter(func(generator_template): return generator_template.is_valid(wave_number)).pick_random()
 		if generator == null:
 			break
 		modifiers_for_round.append(generator.generate_stats(wave_number))

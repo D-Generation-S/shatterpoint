@@ -30,4 +30,3 @@ void fragment() {
 	target_alpha = clamp(target_alpha, 0.0, 1.0);
 	COLOR.a = target_alpha * gradient;
 }
-

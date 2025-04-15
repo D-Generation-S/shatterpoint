@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SpawnerStats" load_steps=8 format=3 uid="uid://doh46e7ioeasg"]
+[gd_resource type="Resource" script_class="SpawnerStats" load_steps=11 format=3 uid="uid://doh46e7ioeasg"]
 
 [ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_7u51t"]
 [ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="2_2srsh"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://cq4p2dece7bai" path="res://src/resources/entities/buildings/spawner_stats.gd" id="3_vos57"]
 [ext_resource type="Texture2D" uid="uid://ckh8mpo8ixhaq" path="res://assets/atlast_textures/basic_barraks.tres" id="4_2srsh"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="4_vos57"]
+[ext_resource type="Resource" uid="uid://c78f74e5u62bg" path="res://assets/resources/tags/buildings.tres" id="6_6dst8"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="6_jno1x"]
+[ext_resource type="Resource" uid="uid://b4pqetg6x1nxu" path="res://assets/resources/tags/spawn_building.tres" id="7_n0wak"]
 
 [sub_resource type="Resource" id="Resource_av417"]
 script = ExtResource("4_vos57")
@@ -15,6 +18,7 @@ fire_rate = 0.0
 damage = 0.0
 attack_range = 0.0
 armor_penetration = 0.0
+_tags = Array[ExtResource("6_jno1x")]([ExtResource("6_6dst8"), ExtResource("7_n0wak")])
 metadata/_custom_type_script = "uid://ljmfbnej7agp"
 
 [resource]

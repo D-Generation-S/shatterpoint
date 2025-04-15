@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=3 format=3 uid="uid://dk5plb5h44hyq"]
+[gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=5 format=3 uid="uid://dk5plb5h44hyq"]
 
 [ext_resource type="Texture2D" uid="uid://diinhd1pbo83k" path="res://assets/atlast_textures/he_round_Icon.tres" id="1_thxd2"]
 [ext_resource type="Script" uid="uid://ciqiyta1ahi4g" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="2_36n26"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_xafiq"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="3_0akqs"]
 
 [resource]
 script = ExtResource("2_36n26")
@@ -10,5 +12,7 @@ _icon = ExtResource("1_thxd2")
 _scrap_cost = 0
 priority = 10000
 one_time_usage = false
+projectile_modifier = false
+_tags = Array[ExtResource("2_xafiq")]([ExtResource("3_0akqs")])
 value = 50.0
 metadata/_custom_type_script = "uid://ciqiyta1ahi4g"
