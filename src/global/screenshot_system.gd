@@ -8,6 +8,7 @@ func _ready():
 		Console.print("Screenshot system is not available on web platform.")
 		queue_free()
 
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	var dir = DirAccess.open("user://")
 	dir.make_dir(screenshot_path)
 	Console.register_custom_command("take_screenshot", take_screenshot, [], "Take a screenshot of the current viewport.")
