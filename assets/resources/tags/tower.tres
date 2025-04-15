@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://3kv7qm22yp50"]
+
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="1_5uwdy"]
+[ext_resource type="Resource" uid="uid://c7u68664rpt15" path="res://assets/resources/tooltips/tag_tower.tres" id="1_c6u48"]
+[ext_resource type="Resource" uid="uid://duu5krr4vfwwq" path="res://translations/resources/tag_tower.tres" id="1_xigy6"]
+
+[resource]
+script = ExtResource("1_5uwdy")
+_name = ExtResource("1_xigy6")
+key = "TAG_TOWER"
+_explanation_box = ExtResource("1_c6u48")
+_color = Color(0.741176, 0, 0.0235294, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="HealPercentageModifier" load_steps=3 format=3 uid="uid://c42yhpaeh2tv2"]
+[gd_resource type="Resource" script_class="HealPercentageModifier" load_steps=5 format=3 uid="uid://c42yhpaeh2tv2"]
 
 [ext_resource type="Texture2D" uid="uid://sj2lkonpxgo6" path="res://assets/atlast_textures/repair.tres" id="1_sheqp"]
 [ext_resource type="Script" uid="uid://cfi5csy1oasao" path="res://src/game/modifier/stats/heal_modifier.gd" id="2_flrlw"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_su2mu"]
+[ext_resource type="Resource" uid="uid://c78f74e5u62bg" path="res://assets/resources/tags/buildings.tres" id="3_jgnmx"]
 
 [resource]
 script = ExtResource("2_flrlw")
@@ -10,4 +12,6 @@ _icon = ExtResource("1_sheqp")
 _scrap_cost = 0
 priority = 10000
 one_time_usage = true
+projectile_modifier = false
+_tags = Array[ExtResource("2_su2mu")]([ExtResource("3_jgnmx")])
 value = 25.0

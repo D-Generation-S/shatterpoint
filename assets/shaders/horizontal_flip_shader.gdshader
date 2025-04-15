@@ -18,6 +18,6 @@ void fragment() {
 	vec2 region_uv = uv_to_region_uv(UV, TEXTURE_PIXEL_SIZE);
 	float cut_left = step(progress / 2.0, region_uv.x);
 	float cut_right = 1.0 - step(1.0 - progress / 2.0 ,region_uv.x);
-	
+
 	COLOR.a = cut_left  * cut_right * COLOR.a;
 }

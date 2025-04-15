@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=3 format=3 uid="uid://ctnwbalaa3ow4"]
+[gd_resource type="Resource" script_class="PercentageDamageModifier" load_steps=5 format=3 uid="uid://ctnwbalaa3ow4"]
 
 [ext_resource type="Texture2D" uid="uid://btgxkey214rs2" path="res://assets/atlast_textures/damage_up_percentage_icon.tres" id="1_8qqnp"]
 [ext_resource type="Script" uid="uid://ciqiyta1ahi4g" path="res://src/game/modifier/stats/percentage_damage_modifier.gd" id="2_5yg8y"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_im1qk"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="3_ybg64"]
 
 [resource]
 script = ExtResource("2_5yg8y")
@@ -9,4 +11,7 @@ _name = "PROCEDUAL_DAMAGE"
 _icon = ExtResource("1_8qqnp")
 _scrap_cost = 5
 priority = 10000
+one_time_usage = false
+projectile_modifier = false
+_tags = Array[ExtResource("2_im1qk")]([ExtResource("3_ybg64")])
 value = 0.0

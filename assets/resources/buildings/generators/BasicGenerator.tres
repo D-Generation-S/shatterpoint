@@ -1,9 +1,13 @@
-[gd_resource type="Resource" script_class="GeneratorData" load_steps=7 format=3 uid="uid://dhuk6e5xlsd4o"]
+[gd_resource type="Resource" script_class="GeneratorData" load_steps=11 format=3 uid="uid://dhuk6e5xlsd4o"]
 
 [ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_6n0l8"]
 [ext_resource type="Script" uid="uid://l8625rc5lh1j" path="res://src/resources/entities/buildings/generator_data.gd" id="1_bda1w"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="2_05f2s"]
 [ext_resource type="Texture2D" uid="uid://beuckj33b1ovu" path="res://assets/textures/tilemap.png" id="3_h2qto"]
+[ext_resource type="Resource" uid="uid://c78f74e5u62bg" path="res://assets/resources/tags/buildings.tres" id="4_cx7t8"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="4_xlqlh"]
+[ext_resource type="Resource" uid="uid://cfh20imq61jj3" path="res://assets/resources/tags/generator.tres" id="5_0hy1o"]
+[ext_resource type="Resource" uid="uid://p5x55gjjtieb" path="res://assets/resources/tags/power_storage.tres" id="6_0hy1o"]
 
 [sub_resource type="Resource" id="Resource_r7ifn"]
 script = ExtResource("2_05f2s")
@@ -13,6 +17,7 @@ fire_rate = 0.0
 damage = 0.0
 attack_range = 0.0
 armor_penetration = 0.0
+_tags = Array[ExtResource("4_xlqlh")]([ExtResource("4_cx7t8"), ExtResource("5_0hy1o"), ExtResource("6_0hy1o")])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cefxj"]
 atlas = ExtResource("3_h2qto")

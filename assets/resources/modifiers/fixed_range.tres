@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FixedRangeModifier" load_steps=3 format=3 uid="uid://wuh8vjaergc3"]
+[gd_resource type="Resource" script_class="FixedRangeModifier" load_steps=5 format=3 uid="uid://wuh8vjaergc3"]
 
 [ext_resource type="Texture2D" uid="uid://ct2alj8wgb4ba" path="res://assets/atlast_textures/range_up_icon.tres" id="1_yheb1"]
 [ext_resource type="Script" uid="uid://cyxnsglgvjalc" path="res://src/game/modifier/stats/fixed_range_modifier.gd" id="2_7r2m0"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_dp05l"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="3_ikme5"]
 
 [resource]
 script = ExtResource("2_7r2m0")
@@ -9,4 +11,7 @@ _name = "FIXED_RANGE"
 _icon = ExtResource("1_yheb1")
 _scrap_cost = 4
 priority = 10000
+one_time_usage = false
+projectile_modifier = false
+_tags = Array[ExtResource("2_dp05l")]([ExtResource("3_ikme5")])
 value = 0.0

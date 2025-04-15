@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FixedPenetrationModifier" load_steps=3 format=3 uid="uid://cu0jgml2gnaha"]
+[gd_resource type="Resource" script_class="FixedPenetrationModifier" load_steps=5 format=3 uid="uid://cu0jgml2gnaha"]
 
 [ext_resource type="Texture2D" uid="uid://xotv5afg46dk" path="res://assets/atlast_textures/penetration_up_icon.tres" id="1_dorpx"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="2_g6x42"]
 [ext_resource type="Script" uid="uid://vkia3ncah0e6" path="res://src/game/modifier/stats/fixed_penetration_modifier.gd" id="2_geqoy"]
+[ext_resource type="Resource" uid="uid://3kv7qm22yp50" path="res://assets/resources/tags/tower.tres" id="3_qtoxj"]
 
 [resource]
 script = ExtResource("2_geqoy")
@@ -9,5 +11,8 @@ _name = "FIXED_PENETRATION_MODIFIER"
 _icon = ExtResource("1_dorpx")
 _scrap_cost = 6
 priority = 10000
+one_time_usage = false
+projectile_modifier = false
+_tags = Array[ExtResource("2_g6x42")]([ExtResource("3_qtoxj")])
 value = 0.0
 metadata/_custom_type_script = "uid://vkia3ncah0e6"

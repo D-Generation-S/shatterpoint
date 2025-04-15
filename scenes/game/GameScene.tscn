@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://3wl8ye02weqh"]
+[gd_scene load_steps=100 format=4 uid="uid://3wl8ye02weqh"]
 
 [ext_resource type="PackedScene" uid="uid://coxxrxmt2muoi" path="res://scenes/game/overlay/resource_overlay.tscn" id="1_52r8n"]
 [ext_resource type="Script" uid="uid://boqucnmkum862" path="res://src/savegame/prototype_profile_manager.gd" id="1_qbdsg"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://c77gb5hott444" path="res://src/game/spawner/spawner.gd" id="18_s7e6s"]
 [ext_resource type="Resource" uid="uid://787f37sn4rlu" path="res://assets/resources/spawning/default_spawner_configuration.tres" id="19_kvgan"]
 [ext_resource type="Script" uid="uid://2k8ptcljw81k" path="res://src/game/spawner/default_generator.gd" id="20_qox08"]
+[ext_resource type="PackedScene" uid="uid://dgcygfjfykbdw" path="res://scenes/game/overlay/popup_manager/popup_manager.tscn" id="21_4wyay"]
 [ext_resource type="Script" uid="uid://ngkvhw5e12vj" path="res://src/resources/entities/units/unit_data.gd" id="21_snw6j"]
 [ext_resource type="Script" uid="uid://cbcxhvraahlhh" path="res://src/game/spawner/unit_power_function.gd" id="23_ppst3"]
 [ext_resource type="Script" uid="uid://cp30mxi8xfoof" path="res://src/game/spawner/spawner_configuration.gd" id="24_8m5a3"]
@@ -295,6 +296,8 @@ _menu_data = Array[ExtResource("12_4wyay")]([ExtResource("13_76060"), ExtResourc
 [node name="EntityDetailWindowSystem" type="CanvasLayer" parent="Overlay" groups=["system"]]
 script = ExtResource("48_kdeyx")
 default_window_template = ExtResource("14_wn1c3")
+
+[node name="PopupManager" parent="Overlay" instance=ExtResource("21_4wyay")]
 
 [node name="Camera" type="Node" parent="."]
 

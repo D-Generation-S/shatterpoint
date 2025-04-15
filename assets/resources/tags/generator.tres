@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://cfh20imq61jj3"]
+
+[ext_resource type="Resource" uid="uid://cl6qirmx3irv4" path="res://translations/resources/tag_generator.tres" id="1_7upfw"]
+[ext_resource type="Resource" uid="uid://cr6ysyl2eu0wf" path="res://assets/resources/tooltips/tag_generator.tres" id="1_52jh5"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="1_pns4d"]
+
+[resource]
+script = ExtResource("1_pns4d")
+_name = ExtResource("1_7upfw")
+key = "TAG_GENERATOR"
+_explanation_box = ExtResource("1_52jh5")
+_color = Color(0.561306, 0.515233, 0, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

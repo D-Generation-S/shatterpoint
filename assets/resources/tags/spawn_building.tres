@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://b4pqetg6x1nxu"]
+
+[ext_resource type="Resource" uid="uid://igek4ro4gvmr" path="res://assets/resources/tooltips/tag_spawn_building.tres" id="1_a5bx7"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="1_ixeit"]
+[ext_resource type="Resource" uid="uid://b3naaxc43qnsb" path="res://translations/resources/tag_spawn_building.tres" id="2_runei"]
+
+[resource]
+script = ExtResource("1_ixeit")
+_name = ExtResource("2_runei")
+key = "SPAWN_BUILDING"
+_explanation_box = ExtResource("1_a5bx7")
+_color = Color(0.652227, 2.04556e-06, 1.44392e-07, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

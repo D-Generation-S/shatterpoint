@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TooltipData" load_steps=5 format=3 uid="uid://d4edkwqaqo2uh"]
+
+[ext_resource type="Script" uid="uid://cjffyp56wn15d" path="res://src/resources/translation/tooltip.gd" id="1_prop6"]
+[ext_resource type="Resource" uid="uid://cnlwq7togjuk6" path="res://translations/resources/tag_power_storage_description.tres" id="1_s4spm"]
+[ext_resource type="Resource" uid="uid://c7x28vrgujpsa" path="res://translations/resources/tag_power_storage.tres" id="2_nht8k"]
+[ext_resource type="Texture2D" uid="uid://drh8qs6weqfht" path="res://assets/atlast_textures/power.tres" id="3_bmgni"]
+
+[resource]
+script = ExtResource("1_prop6")
+key = ""
+icon = ExtResource("3_bmgni")
+headline = ExtResource("2_nht8k")
+content = ExtResource("1_s4spm")
+metadata/_custom_type_script = "uid://cjffyp56wn15d"

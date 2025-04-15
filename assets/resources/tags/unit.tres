@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Tag" load_steps=4 format=3 uid="uid://suud2wunmj6c"]
+
+[ext_resource type="Resource" uid="uid://c3d5xfh268lqa" path="res://assets/resources/tooltips/tag_unit.tres" id="1_0ts7n"]
+[ext_resource type="Resource" uid="uid://cimdhulnw7lkj" path="res://translations/resources/tag_units.tres" id="1_1sbt1"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="1_athk4"]
+
+[resource]
+script = ExtResource("1_athk4")
+_name = ExtResource("1_1sbt1")
+key = "TAG_UNITS"
+_explanation_box = ExtResource("1_0ts7n")
+_color = Color(1.44392e-06, 0.333806, 0.395815, 1)
+metadata/_custom_type_script = "uid://d00bvi0yun0me"

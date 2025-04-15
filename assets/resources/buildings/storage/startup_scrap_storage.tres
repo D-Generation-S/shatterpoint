@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="StorageData" load_steps=6 format=3 uid="uid://7iywprfg275c"]
+[gd_resource type="Resource" script_class="StorageData" load_steps=9 format=3 uid="uid://7iywprfg275c"]
 
 [ext_resource type="PackedScene" uid="uid://cvuwxclyg820x" path="res://scenes/game/particle/death_animations/building_destroyed.tscn" id="1_krsr6"]
 [ext_resource type="Script" uid="uid://ctv6y23chh4kp" path="res://src/resources/entities/buildings/storage_data.gd" id="1_wuqmi"]
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="2_8av8j"]
 [ext_resource type="Texture2D" uid="uid://doqhrkci5n1l6" path="res://assets/atlast_textures/scrap_storage.tres" id="3_5u5lh"]
+[ext_resource type="Resource" uid="uid://b6knnmpd4046w" path="res://assets/resources/tags/scrap_storage.tres" id="4_jsd5r"]
+[ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="4_tufxv"]
+[ext_resource type="Resource" uid="uid://c78f74e5u62bg" path="res://assets/resources/tags/buildings.tres" id="5_rhv25"]
 
 [sub_resource type="Resource" id="Resource_5qovb"]
 script = ExtResource("2_8av8j")
@@ -13,6 +16,7 @@ fire_rate = 0.0
 damage = 0.0
 attack_range = 0.0
 armor_penetration = 0.0
+_tags = Array[ExtResource("4_tufxv")]([ExtResource("4_jsd5r"), ExtResource("5_rhv25")])
 
 [resource]
 script = ExtResource("1_wuqmi")
