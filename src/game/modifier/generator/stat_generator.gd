@@ -15,3 +15,18 @@ func _get_template() -> StatModifier:
 
 func generate_stats(_wave_number: int) -> StatModifier:
 	return null
+
+func get_tags() -> Array[Tag]:
+	return modifier_template.get_tags()
+
+func contains_tag(tag: Tag) -> bool:
+	return get_tags().any(func(current_tag): return current_tag.is_equal(tag))
+
+func contains_tags(tags: Array[Tag]) -> bool:
+	var return_value: bool = false
+	for tag in tags:
+		if contains_tag(tag):
+			return_value = true
+			break
+
+	return return_value

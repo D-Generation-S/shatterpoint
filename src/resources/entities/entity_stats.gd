@@ -17,6 +17,9 @@ class_name EntityStats extends Resource
 
 var max_hp: float = 1
 
+func get_tags() -> Array[Tag]:
+	return _tags
+
 func contains_tag(tag: Tag) -> bool:
 	return _tags.any(func(current_tag): return current_tag.is_equal(tag))
 

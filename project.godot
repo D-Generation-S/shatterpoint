@@ -28,6 +28,7 @@ Console="*res://addons/gameconsole/console/console.gd"
 InteractionHandler="*res://src/global/global_interaction_handler.gd"
 GlobalSaveGameManager="*res://src/savegame/save_game_manager.gd"
 GlobalExplainTooltip="*res://src/global/global_explain_tooltip.gd"
+GlobalStatGeneratorManager="*res://src/global/global_stat_generator_manager.gd"
 
 [display]
 
