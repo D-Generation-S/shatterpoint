@@ -12,6 +12,7 @@ class_name StatModifier extends Resource
 @export var value: float
 
 var valid: bool = true
+var _sorted: bool = false
 
 ## Method to run once if a modifier was selected, this can be used for special modifiers to do global changes
 func modifier_selected():
@@ -44,5 +45,10 @@ func get_value() -> float:
 	return value
 
 func get_tags() -> Array[Tag]:
-	#@TODO Add sorting!
+	if !_sorted:
+		_tags.sort_custom(_sort_tags)
+		_sorted = true
 	return _tags
+
+func _sort_tags(a: Tag, b: Tag) -> bool:
+	return tr(a.get_display_name()) < tr(b.get_display_name())

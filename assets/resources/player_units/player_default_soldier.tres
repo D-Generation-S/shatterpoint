@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="UnitData" load_steps=15 format=3 uid="uid://mp2qt7qsah3a"]
+[gd_resource type="Resource" script_class="UnitData" load_steps=16 format=3 uid="uid://mp2qt7qsah3a"]
 
 [ext_resource type="Script" uid="uid://x3gslgthhq1r" path="res://src/game/buildings/towers/threat_determination_algorithms/threat_determination.gd" id="1_cid65"]
 [ext_resource type="Script" uid="uid://l0uvtac2cfd2" path="res://src/game/buildings/towers/threat_determination_algorithms/lowest_hp.gd" id="2_3pms2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://ljmfbnej7agp" path="res://src/resources/entities/entity_stats.gd" id="9_g4e02"]
 [ext_resource type="Script" uid="uid://d00bvi0yun0me" path="res://src/game/resources/tag.gd" id="10_3pms2"]
 [ext_resource type="Texture2D" uid="uid://dwfsfgfr04txg" path="res://assets/atlast_textures/gray_soldier.tres" id="10_cid65"]
+[ext_resource type="Resource" uid="uid://suud2wunmj6c" path="res://assets/resources/tags/unit.tres" id="10_dpgpl"]
 
 [sub_resource type="Resource" id="Resource_m7uw5"]
 script = ExtResource("2_3pms2")
@@ -28,7 +29,7 @@ fire_rate = 2.0
 damage = 1.0
 attack_range = 75.0
 armor_penetration = 0.0
-tags = Array[ExtResource("10_3pms2")]([])
+_tags = Array[ExtResource("10_3pms2")]([ExtResource("10_dpgpl")])
 metadata/_custom_type_script = "uid://ljmfbnej7agp"
 
 [resource]
