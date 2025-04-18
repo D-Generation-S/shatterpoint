@@ -120,7 +120,7 @@ func recalculate_max_power():
 		message = tr("TOTAL_ENERGY_LOST")
 		message_style = resource_lost_message_type
 
-	message = message % power_change
+	message = message % int(power_change)
 	
 	message_requested.emit(MessagePosition.BOTTOM_RIGHT, message_style, message, 4.0, energy_icon)
 
