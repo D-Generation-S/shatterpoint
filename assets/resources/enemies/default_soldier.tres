@@ -30,7 +30,7 @@ fire_rate = 2.0
 damage = 1.0
 attack_range = 75.0
 armor_penetration = 0.0
-tags = Array[ExtResource("11_t4woj")]([])
+_tags = Array[ExtResource("11_t4woj")]([])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fs5u0"]
 atlas = ExtResource("8_7yxpe")
